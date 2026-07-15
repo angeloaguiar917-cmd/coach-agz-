@@ -1,0 +1,10 @@
+coach-agz-/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+└── README.md
+git add .
+git commit -m "Initial PostHog landing page setup"
+git push origin main
