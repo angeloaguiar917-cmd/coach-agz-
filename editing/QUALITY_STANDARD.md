@@ -8,6 +8,7 @@ The look comes from the chosen style and the current video's direction (see **Ac
 - Graphics exist to make the point clearer.
 - Don't fill the screen with unrelated icons, or rely on captions alone.
 - **Overlays depict; they don't quote.** Captions carry the spoken words. Overlays never repeat them as text cards. Instead they show the real-world thing behind the point, as a visual example with context and nuance. Example: "they'll order peptides from China without questioning" becomes a shipping box labelled "lab supplies", vials, and a self-issued Certificate of Analysis with the weak spots highlighted. Text inside a depiction is part of the object (a label, a form field), not a restatement of the line.
+- **Clinical and aggressive, never cartoonish.** Present depictions as evidence: frosted dark inspection panels, desaturated document scans, X-ray or line schematics, red detection brackets with short forensic tags, and hard verdict bars. Move with fast snaps and focus pulls; no bouncy overshoot, squash-and-stretch, cartoon props or playful sounds (tocks, clinks). Use clinical sound: sub hits, scan sweeps, digital ticks, one heavy impact per beat. Reference: `editing/drafts/editor-test-03/`.
 
 ## 2. Make the Reel feel connected
 - Carry something into the next moment: a word becomes a title, a line becomes a divider, a panel expands into a video, a shape becomes the next scene's frame.
