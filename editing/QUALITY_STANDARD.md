@@ -65,19 +65,36 @@ The current clips are simple edits. Treat them as the **baseline to upgrade from
 - **Keep:** the voice, the delivery, how the footage is framed, the topics and the brand look.
 - **Upgrade:** everything about the edit. Apply this standard on top.
 
-### Upgrade path: from simple to the target
-Fill in the "Now" column after reviewing the actual clips. Until then it is a hypothesis.
+### Upgrade path: from the current edit to the target
+"Now" comes from reviewing the five top talking-head Reels (see review notes below).
 
-| Area | Now (typical simple edit, to be confirmed) | Target |
+| Area | Now (observed) | Target |
 |---|---|---|
-| Captions | Same style, same position, word-pop all the way through | Phone-safe layout. Brand type: Bebas for key lines, DM Sans for support. Accent words go gold or red as they're spoken. Strong lines hold still. Captions can sit behind the subject when it helps. |
-| Graphics | Few or none, or a static card dropped on top | The carousel and overlay system comes to life: the kicker line draws on, tag pills land, stats count up, comparison rows tick off, the spectrum marker slides into place. Each one is tied to the spoken point. |
-| Structure | Talking head with cuts | Talking head, then a full-screen graphic scene, then back to the talking head, joined by handoffs (the gold left line becomes a divider, an overlay card expands to full screen, a stat becomes the next title). |
-| Camera | Static, or a constant punch-in | Steady while graphics build. Reframes and punch-ins only for emphasis or reveals. |
-| Depth | Flat | Separate the subject from the background. Cards sit in front of or behind the person, with shadows and a soft glow. |
-| Pace | One speed | Fast, dense builds for lists and data. Space for the hook, the key warning and the CTA. |
-| Sound | Music bed only, or a whoosh on every cut | Hits on landings, soft ticks on rows, a low thud on big stats, quiet moments around warnings. Speech always clear. |
-| Ending | Abrupt | The last scene resolves into a branded end card ("Screenshot this" schedule style). |
+| Hook | Instagram-native white caps in a black rounded box at the top for about 5 s, then gone | A brand title card: gold kicker line draws on, then a Bebas headline lands with the key word in gold or red. It hands off into the first caption or graphic. |
+| Captions | Small white sentence captions (2 lines, about 3% of frame height), sitting on the cap or the chest. Clip 3 uses single serif words. Clip 5 uses small red condensed words. No emphasis, nothing phone-optimised. | Phone-safe and 2 to 3× larger. Bebas for key lines, DM Sans for support. Accent words go gold or red when spoken. Captions stay clear of the face and the Instagram UI zones. Strong lines hold still. |
+| Graphics | Clips 1–4: none. Clip 5: stock photos, AI gym images, emoji on generic grid backgrounds, keyword pops | Brand overlay cards and full-screen carousel scenes that animate the actual point: mechanism diagrams, marker ranges, dose numbers, checklists. No emoji or generic grids. |
+| Structure | One continuous selfie take, 84–145 s. Clip 3 has 3 jump cuts; clip 5 has flash cuts to B-roll. | Talking head alternates with graphic scenes every few beats. Handoffs join them. Jump cuts and punch-ins mark new points. |
+| Camera | Handheld selfie with natural drift. No reframes. | Keep the natural footage, stabilise lightly, and use purposeful punch-ins (about 110–120%) on key lines. Hold steady while graphics build. |
+| Depth | Flat | The subject is cut out, so cards and titles can sit behind the head. Soft shadows. |
+| Pace | Even, dense talking all the way through (no silent gaps over 0.4 s in any clip) | Denser builds in explanation sections. Short holds on warnings, the key stat and the CTA. |
+| Sound | All five are mastered to about −14 LUFS with speech clear. I could only measure levels, not listen, so check music and SFX by ear. | Keep speech at about −14 LUFS. Hits on landings, soft ticks on rows. Restrained. |
+| Brand | The navy/gold/crimson system appears nowhere. Hats and settings vary (BLACKBIRD, APEX, A-logo). | Every graphic uses `BRAND.md`. The @coach.agz watermark and disclaimer are consistent. |
+| Ending | A spoken "comment X and I'll send it" CTA with no visual | A branded end card with the comment keyword as a large gold tag pill (e.g. `COMMENT "GYNO"`). |
 
-### Review notes on the clips
-Nothing has been analysed yet. For each clip, record: what already works, what reads as simple, and the timestamps that should become graphic builds or handoffs.
+### Review notes on the clips (reviewed 2026-11-02)
+Method: timestamped contact sheets (1 frame every 4 s), full-size stills, frame strips around transitions at 10 fps, cut detection, and loudness measurement. I could not listen to the audio.
+
+| # | Topic (hook) | Length | What works | What reads as simple |
+|---|---|---|---|---|
+| 1 | "The compound twice as powerful as Tren?" | 2:16 | Strong curiosity hook. Confident, steady delivery in the car. | No cuts. Tiny captions sit on the cap brim. The mechanism talk (DHT, aromatisation, 5α-reductase) is never shown visually. |
+| 2 | "How to microdose Tren — full breakdown" | 2:25 | Clear "full breakdown" promise. Natural outdoor light. | No cuts and no graphics for doses, schedules or bloodwork. Captions are unreadable at phone size. |
+| 3 | "500mg of testosterone truth — what to expect?" | 1:37 | Single-word captions keep pace. Three jump cuts (0:41, 1:01, 1:20). | The serif caption clashes with the brand. No emphasis. Pharmacology terms are never shown. |
+| 4 | "Can you reverse gyno?" | 1:24 | Tightest one: clear problem, mechanism and CTA. | Captions too small. "Soft vs hard lump" and "AI vs SERM" are perfect comparisons that are only spoken. |
+| 5 | "500mg Test vs 500mg Test" | 2:23 | Most edited: B-roll, keyword pops, a split screen (1:36), a phone-mockup CTA. | Generic stock and AI images. Emoji on stock grids. White flash cuts (a full white frame). Red captions too small and low-contrast. Off-brand. |
+
+**Moments to build first:**
+- 1 → a testosterone → DHT / E2 flow diagram (the overlay style already exists).
+- 2 → a dose and schedule table (carousel "audit schedule" style).
+- 3 → a list of what to expect, with markers ticking in.
+- 4 → a SOFT vs HARD comparison panel, then a "surgery" verdict.
+- 5 → genetics, receptors and bloodwork shown as a spectrum with a marker.
