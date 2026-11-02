@@ -59,20 +59,20 @@ Use it for floating explainer cards over talking-head footage.
 
 Card anatomy: large rounded corners (about 24px at 960 wide), a crimson bar on the left, a centred or left-aligned crimson tracked kicker, cream condensed headline, muted sub-line and an `@COACH.AGZ` watermark at bottom right. Diagrams use white 3px outlines, rounded boxes, crimson numbered dots and arrows.
 
-## Overlay accent palette (high-pop, from editor test 05, pending approval)
+## Overlay accent palette (high-pop, from editor test 06, pending approval)
 These are for Reel overlays and graphics on a near-black push. Brand gold `#C9A96E` stays for the edge rule, titles and the logo.
 
 | Token | Hex | Use |
 |---|---|---|
-| `deep` | `#020308` | Background push (80%) and frosted panels (92%) |
+| `deep` | `#020308` | Frosted overlay panels (92%). The footage push behind graphics stays `#050810` at 68%. |
 | `v-red` | `#FF221C` | Flags, tags, verdict bars, caption block. Bloom allowed. |
 | `v-gold` | `#FFC21A` | Panel frames, brackets, header labels. Bloom allowed. |
 | `cyan` | `#00E5FF` | X-ray and scan imagery, scan lines. Heavy bloom. |
 | `green` | `#1EFF6E` | Verified or OK checks only |
 | `coa-red` | `#D20A14` | Document header bands |
 
-- **Footage grade:** contrast ×1.18, saturation ×1.28, a gentle S-curve and a face-centred vignette.
-- **Bloom:** a screen-blend bloom on edges and lines. Never put it under body text. On solid bars, bloom only the edges.
+- **Footage:** leave it as shot. No colour grade, saturation or contrast boost unless Coach AGZ asks for one specifically.
+- **Bloom:** a screen-blend bloom on edges and lines. Never put it under body text. On solid bars, bloom only the edges. Red tags and bars use a lit gradient: hot top edge, saturated body, dark base.
 
 ## Fonts on file
 No font files have been supplied yet. Put the real files in `fonts/`. Until then, draft mockups use free stand-ins (Bebas Neue, DM Sans, JetBrains Mono, Barlow Condensed) and label them as stand-ins.
