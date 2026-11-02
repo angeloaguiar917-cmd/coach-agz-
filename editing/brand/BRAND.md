@@ -1,5 +1,12 @@
 # @coach.agz — Brand Style Guide (for Reels, overlays and carousels)
 
+## Identity
+- **Name:** Coach AGZ (written **COACH AGZ** in headers and logo lockups)
+- **Instagram handle:** **@coach.agz** (lowercase, with the dot). Use exactly this on every watermark, header and end card.
+- **Logo:** `logo/coach-agz-logo-round.jpg`. A layered "A" triangle in cracked, textured antique gold over black paper texture, with faint ember-red flecks and "COACH AGZ®" below.
+  - Logo palette (sampled): highlight `#C0B090`, mid gold `#A09070`, shadow bronze `#706040`, background `#050505`.
+  - It's a raster image with a baked-in background. Ask for a transparent PNG or SVG before animating the mark on its own.
+
 Source: carousel and overlay examples in `reference/`. Hex values were sampled from those files. Font names are best visual matches and haven't been confirmed. Replace them with the real font files if they differ.
 
 ## Voice on screen
@@ -51,6 +58,9 @@ Use it for floating explainer cards over talking-head footage.
 | Spectrum | blue `#4FA3E0`, green `#3CCB6A`, amber `#F0A030` | Low / dialed-in / high scales only |
 
 Card anatomy: large rounded corners (about 24px at 960 wide), a crimson bar on the left, a centred or left-aligned crimson tracked kicker, cream condensed headline, muted sub-line and an `@COACH.AGZ` watermark at bottom right. Diagrams use white 3px outlines, rounded boxes, crimson numbered dots and arrows.
+
+## Fonts on file
+No font files have been supplied yet. Put the real files in `fonts/`. Until then, draft mockups use free stand-ins (Bebas Neue, DM Sans, JetBrains Mono, Barlow Condensed) and label them as stand-ins.
 
 ## Type
 | Role | Style | Likely font |
