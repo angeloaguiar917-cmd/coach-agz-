@@ -7,6 +7,7 @@ The look comes from the chosen style and the current video's direction (see **Ac
 - Show ideas through actions: a choice gets selected, a stack builds, a number changes, a panel opens to reveal something useful.
 - Graphics exist to make the point clearer.
 - Don't fill the screen with unrelated icons, or rely on captions alone.
+- **Overlays depict; they don't quote.** Captions carry the spoken words. Overlays never repeat them as text cards. Instead they show the real-world thing behind the point, as a visual example with context and nuance. Example: "they'll order peptides from China without questioning" becomes a shipping box labelled "lab supplies", vials, and a self-issued Certificate of Analysis with the weak spots highlighted. Text inside a depiction is part of the object (a label, a form field), not a restatement of the line.
 
 ## 2. Make the Reel feel connected
 - Carry something into the next moment: a word becomes a title, a line becomes a divider, a panel expands into a video, a shape becomes the next scene's frame.
