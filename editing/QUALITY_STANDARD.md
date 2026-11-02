@@ -57,7 +57,27 @@ The look comes from the chosen style and the current video's direction (see **Ac
 | Item | Value |
 |---|---|
 | Brand | @coach.agz — see `editing/brand/BRAND.md` and `editing/brand/reference/` |
-| Motion/editing style reference | @itsaustinmyers |
+| Example clips | @coach.agz's own Reels |
 | Current video direction | "multitaskers" |
 
-Notes from studying the reference examples go here once the actual clips are supplied and reviewed (timing, spacing, easing, handoffs, sound). Nothing has been analyzed yet.
+### How to use the @coach.agz clips
+The current clips are simple edits. Treat them as the **baseline to upgrade from**, not the ceiling:
+- **Keep:** the voice, the delivery, how the footage is framed, the topics and the brand look.
+- **Upgrade:** everything about the edit. Apply this standard on top.
+
+### Upgrade path: from simple to the target
+Fill in the "Now" column after reviewing the actual clips. Until then it is a hypothesis.
+
+| Area | Now (typical simple edit, to be confirmed) | Target |
+|---|---|---|
+| Captions | Same style, same position, word-pop all the way through | Phone-safe layout. Brand type: Bebas for key lines, DM Sans for support. Accent words go gold or red as they're spoken. Strong lines hold still. Captions can sit behind the subject when it helps. |
+| Graphics | Few or none, or a static card dropped on top | The carousel and overlay system comes to life: the kicker line draws on, tag pills land, stats count up, comparison rows tick off, the spectrum marker slides into place. Each one is tied to the spoken point. |
+| Structure | Talking head with cuts | Talking head, then a full-screen graphic scene, then back to the talking head, joined by handoffs (the gold left line becomes a divider, an overlay card expands to full screen, a stat becomes the next title). |
+| Camera | Static, or a constant punch-in | Steady while graphics build. Reframes and punch-ins only for emphasis or reveals. |
+| Depth | Flat | Separate the subject from the background. Cards sit in front of or behind the person, with shadows and a soft glow. |
+| Pace | One speed | Fast, dense builds for lists and data. Space for the hook, the key warning and the CTA. |
+| Sound | Music bed only, or a whoosh on every cut | Hits on landings, soft ticks on rows, a low thud on big stats, quiet moments around warnings. Speech always clear. |
+| Ending | Abrupt | The last scene resolves into a branded end card ("Screenshot this" schedule style). |
+
+### Review notes on the clips
+Nothing has been analysed yet. For each clip, record: what already works, what reads as simple, and the timestamps that should become graphic builds or handoffs.
