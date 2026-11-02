@@ -49,3 +49,22 @@ Cut: the first EQ attempt, three "in basic terms" retakes, the duplicate hook, "
   - A stray flag stub.
 - **Sound sync:** the panel hit, AI-block impact, lab thud, verdict impact and CTA thud were each detected within 1 ms of their target frames.
 - **Not done:** listening. All lab and document values are illustrative placeholders. The fonts are stand-ins.
+
+---
+## Version 02: tightened (`coach-agz_masteron-primo-eq_full-test-02_720p30.mp4`, 1:37.2)
+Feedback on v01: there were still dead spots needing jump cuts, and misspoken parts to cut.
+- **Misspeaks removed** (found with a filler-preserving transcription pass; the clean transcript had hidden them):
+  - At about 0:19, the abandoned first "When we take a look at… it, Mast-"; the clean restart is kept.
+  - At about 0:51, the repeated "E1 has, E1 has"; "E1 has weaker…" is kept.
+- **Dead air:** 0.45 s of lead-in, and every silent run of 0.22 s or more trimmed to about 0.12 s. That's 20 frame-aligned cuts, 6.2 s removed in total, with 8 ms audio crossfades.
+  - One trim was dropped deliberately because it fell on the soft tail of "takes".
+- **Punch-in** alternates at every jump cut, both take changes and trims.
+- **Graphics and SFX** are remapped through the trim: each output frame draws overlays at its original speech moment. All SFX survived; none fell inside a cut.
+- **Captions** were rebuilt from a transcript of the trimmed audio (the old caption times had pointed at the removed takes, and five words had been dropped).
+  - "absolutely" and "and" were corrected by speech-energy onset.
+- **QC:**
+  - 352/352 caption words against 353 heard; no stumbles remain.
+  - Caption drift median 0.00 s, p95 0.06 s.
+  - The only pauses left are about 0.22–0.26 s around "takes. Neither".
+  - −14.1 LUFS.
+  - Cut frames inspected. Mechanism 01 now exits on a hard cut (its old blur-out was inside the removed stumble).
