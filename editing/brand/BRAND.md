@@ -59,6 +59,20 @@ Use it for floating explainer cards over talking-head footage.
 
 Card anatomy: large rounded corners (about 24px at 960 wide), a crimson bar on the left, a centred or left-aligned crimson tracked kicker, cream condensed headline, muted sub-line and an `@COACH.AGZ` watermark at bottom right. Diagrams use white 3px outlines, rounded boxes, crimson numbered dots and arrows.
 
+## Overlay accent palette (vibrant, from editor test 04, pending approval)
+These are for Reel overlays and graphics, used on top of the deep background. Brand gold `#C9A96E` stays for the edge rule, titles and the logo.
+
+| Token | Hex | Use |
+|---|---|---|
+| `deep` | `#050810` | Background push and frosted panels |
+| `v-red` | `#FF3028` | Flags, tags, verdict bars, caption block. Glow allowed. |
+| `v-gold` | `#FFB830` | Panel frames, brackets, header labels. Glow allowed. |
+| `cyan` | `#28DCFF` | X-ray and scan imagery, scan lines |
+| `green` | `#2EE66E` | Verified or OK checks only |
+| `coa-red` | `#960E14` | Deep red document header bands |
+
+Glow is a screen-blend bloom on edges and lines. Never put it under body text.
+
 ## Fonts on file
 No font files have been supplied yet. Put the real files in `fonts/`. Until then, draft mockups use free stand-ins (Bebas Neue, DM Sans, JetBrains Mono, Barlow Condensed) and label them as stand-ins.
 
