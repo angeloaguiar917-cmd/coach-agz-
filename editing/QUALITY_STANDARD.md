@@ -56,7 +56,8 @@ The look comes from the chosen style and the current video's direction (see **Ac
 ## Active references
 | Item | Value |
 |---|---|
-| Style reference | @itsaustinmyers |
+| Brand | @coach.agz — see `editing/brand/BRAND.md` and `editing/brand/reference/` |
+| Motion/editing style reference | @itsaustinmyers |
 | Current video direction | "multitaskers" |
 
 Notes from studying the reference examples go here once the actual clips are supplied and reviewed (timing, spacing, easing, handoffs, sound). Nothing has been analyzed yet.
