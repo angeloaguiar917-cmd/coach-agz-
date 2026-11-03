@@ -95,3 +95,9 @@ The face sits lower in this clip: the chin is at about y 1400–1500 (1080 space
   - The requisition lists tests to order, not results.
   - Compound names (aromatase inhibitor, cabergoline) are the ones Coach AGZ names.
   - The curves are illustrative shapes, with no data points.
+
+## Audio fix (2026-11-03): voice was right channel only
+The source recording carries the voice in the **right channel only** (left silent, about −109 dB). The earlier version of this preview carried that through, so the voice played in one ear on headphones. It also skewed the loudness readings.
+- **Fix:** the right channel is copied to both channels (dual-mono), then the voice is re-mastered with the SFX bed. Left and right are now identical.
+- **Result:** −14.2 to −14.3 LUFS, peaks about −2.0 dBFS. Video, captions and timing are unchanged.
+- The pipeline now checks channel balance before mixing.
