@@ -82,3 +82,9 @@ The LV heart schematic from MECHANISM 02 returns at 87.8 s for the "existing LV 
   - The panels depict Coach AGZ's own mechanisms and claims. No doses, lab values, study names or numbers are shown.
   - The meters and curves are illustrative.
   - The fixed disclaimer is on the pinned title and the end card.
+
+## Audio fix (2026-11-03): voice was right channel only
+The source recording carries the voice in the **right channel only** (left silent, about −109 dB). The earlier version of this preview carried that through, so the voice played in one ear on headphones. It also skewed the loudness readings.
+- **Fix:** the right channel is copied to both channels (dual-mono), then the voice is re-mastered with the SFX bed. Left and right are now identical.
+- **Result:** −14.2 to −14.3 LUFS, peaks about −2.0 dBFS. Video, captions and timing are unchanged.
+- The pipeline now checks channel balance before mixing.
