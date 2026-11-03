@@ -1,0 +1,47 @@
+{
+  "video": "Gram vs 6pack (Drive 1MlOQQ2YWdHHQvUzdYDHtk8uNWTCMb2ES)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["1 GRAM vs 6 BEERS", "same red flags"],
+    "emphasis": ["1 GRAM", "6 BEERS"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 262 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["1 GRAM vs 6 BEERS", "the real winner"],
+    ["BLOODWORK just exposed", "your nightly 6 PACK"]
+  ],
+  "candidates_scored": [
+    { "formula": "A", "lines": ["1 GRAM vs 6 BEERS", "same red flags"], "score": 28, "notes": "subject 5, curiosity 4, specificity 5, power phrase 4 (twist of 'same red flag every time'), glance 5, alignment 5" },
+    { "formula": "B", "lines": ["1 GRAM vs 6 BEERS", "the real winner"], "score": 26 },
+    { "formula": "C", "lines": ["BLOODWORK just exposed", "your nightly 6 PACK"], "score": 21 },
+    { "formula": "A", "lines": ["900 calories nightly", "your 6 PACK habit"], "score": 20 },
+    { "formula": "A", "lines": ["6 BEERS a night", "3 years unchecked"], "score": 24, "notes": "rejected on lock-in: paid off at 1:22, not in 0:04-0:12" }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-6.60 So a thousand milligrams of testosterone a week versus a six pack of beer every single night. Which one is actually worse for your body?",
+    "lock_in_zone": "6.80-14.0 You start off with a gram of testosterone weekly. Now your hematocrit tends to climb, your blood thickens, your blood pressure rises, your HDL drops, and your ApoB tends to climb.",
+    "first_frame": "car interior; face lower in frame (cap top ~y600, eyes ~y900); bright windscreen and roof behind the hook area -> boxed lines",
+    "subject": "1 GRAM of testosterone a week vs 6 BEERS a night",
+    "pain": "both raise red flags on the same bloodwork (BP, lipids, liver, hormones)",
+    "outcome": "know what each one is doing to you",
+    "state_change": "the real question is who's checking their bloodwork",
+    "specifics": ["1000 mg / 1 gram a week", "6 beers / 6 standard drinks a night", "~900 calories daily", "every 8-10 weeks", "3 years", "Group 1 carcinogen"]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:08 (gram-side red flags: hematocrit, BP, HDL, ApoB); both sides 'on the same bloodwork' at 0:55",
+    "trust_anchor": "MISSING"
+  },
+  "visual_hook": "108% punch-in snaps in on the spoken subject 'a thousand milligrams' at 0.20 s",
+  "topic_band": { "text": "1 GRAM a week vs 6 BEERS a night", "from": 6.0, "to": "midpoint (nearest jump cut)", "y_px": [212, 372] },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "trust anchor MISSING in the lock-in zone (no lab, study or client result 0:04-0:12); no proof assets supplied, nothing invented",
+    "spoken hook runs 6.6 s, so the hold is capped at 6.0 s (rule 9)"
+  ]
+}
