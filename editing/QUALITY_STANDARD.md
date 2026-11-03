@@ -11,6 +11,10 @@ The look comes from the chosen style and the current video's direction (see **Ac
 - **Clinical and aggressive, never cartoonish.** Present depictions as evidence: frosted dark inspection panels, desaturated document scans, X-ray or line schematics, red detection brackets with short forensic tags, and hard verdict bars. Move with fast snaps and focus pulls; no bouncy overshoot, squash-and-stretch, cartoon props or playful sounds (tocks, clinks). Use clinical sound: sub hits, scan sweeps, digital ticks, one heavy impact per beat. Reference: `editing/drafts/editor-test-03/`.
 - **Styling the overlays never touches the footage.** Requests for more vibrance, pop or contrast apply to graphics, captions and overlays only. Don't grade, saturate or add contrast to the original footage unless asked for specifically. Test 05 broke this; test 06 is the corrected reference.
 
+## 1b. On-screen text hook
+- Every edit opens with a frame-0 text hook built by `editing/TEXT_HOOK_ENGINE.md`, run before anything else is rendered.
+- That file's hard rules override any other title styling for the first 3–6 seconds.
+
 ## 2. Make the Reel feel connected
 - Carry something into the next moment: a word becomes a title, a line becomes a divider, a panel expands into a video, a shape becomes the next scene's frame.
 - Use handoffs where they help the story. Let other moments hold.
