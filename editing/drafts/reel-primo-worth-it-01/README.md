@@ -7,7 +7,9 @@
 ## Order of work (per CLAUDE.md and the engine)
 1. **Cut:** filler-preserving and clean transcription found no stumbles. 11 dead-air trims (≥0.22 s → about 0.12 s, frame-aligned, 8 ms fades) removed 2.03 s. The cut was re-transcribed: 358/358 words, nothing clipped.
 2. **Text hook engine** on the edited cut's transcript. The JSON is in `edit_log.json`.
-   - **Winner (C · state change):** **PRIMO** holy grail / both camps got it wrong
+   - **On screen now (Coach AGZ's wording, 2026-11-03):** **Primobolan** Only Works / For One Type Of Person?
+     - This overrides the engine. It breaks rule 3 ("?") and rule 8 (Title Case; subject emphasised by colour only, not caps). Its promise is paid off at the verdict (1:03–1:18), not in the lock-in zone. All of this is flagged in `edit_log.json`.
+   - **Engine winner (C · state change):** **PRIMO** holy grail / both camps got it wrong
    - **Runners-up:** "PRIMO worth the price / the real verdict" and "PRIMO crashing / your estrogen too low"
    - **Flags:** `winners.md` missing (used the starter bank). Trust anchor missing in the lock-in zone: no lab, study or result between 0:04 and 0:12, and nothing invented.
 3. Captions, graphics, sound, render.

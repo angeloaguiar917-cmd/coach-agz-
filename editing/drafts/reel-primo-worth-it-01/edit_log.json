@@ -1,26 +1,78 @@
 {
   "video": "Primo Ai edit (Drive 1cXPmoIQfuKga_uvYr8oEMxOVNeGv242E)",
   "text_hook": {
-    "formula": "subject+state_change",
-    "lines": ["PRIMO holy grail", "both camps got it wrong"],
-    "emphasis": ["PRIMO"],
+    "formula": "subject+outcome (client-specified)",
+    "lines": [
+      "Primobolan Only Works",
+      "For One Type Of Person?"
+    ],
+    "emphasis": [
+      "Primobolan"
+    ],
     "mode": "premium",
     "start": 0.0,
     "end": 5.12,
-    "position": { "anchor": "top-center", "y_px": 262 },
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
     "animation_in": "none",
-    "animation_out": "fade_0.15s"
+    "animation_out": "fade_0.15s",
+    "override": "Coach AGZ asked for this exact wording on 2026-11-03; it replaces the engine winner"
   },
   "runners_up": [
-    ["PRIMO worth the price", "the real verdict"],
-    ["PRIMO crashing", "your estrogen too low"]
+    [
+      "PRIMO worth the price",
+      "the real verdict"
+    ],
+    [
+      "PRIMO crashing",
+      "your estrogen too low"
+    ]
   ],
   "candidates_scored": [
-    { "formula": "C", "lines": ["PRIMO holy grail", "both camps got it wrong"], "score": 25, "notes": "subject 5, curiosity 5, specificity 2, power phrase 4, glance 4, alignment 5" },
-    { "formula": "B", "lines": ["PRIMO worth the price", "the real verdict"], "score": 23 },
-    { "formula": "A", "lines": ["Most faked compound", "your PRIMO might be fake"], "score": 23, "notes": "rejected on lock-in: the claim is paid off at 0:52, not in 0:04-0:12" },
-    { "formula": "A", "lines": ["PRIMO crashing", "your estrogen too low"], "score": 22 },
-    { "formula": "B", "lines": ["Clean dry look", "on PRIMO"], "score": 22 }
+    {
+      "formula": "C",
+      "lines": [
+        "PRIMO holy grail",
+        "both camps got it wrong"
+      ],
+      "score": 25,
+      "notes": "subject 5, curiosity 5, specificity 2, power phrase 4, glance 4, alignment 5"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "PRIMO worth the price",
+        "the real verdict"
+      ],
+      "score": 23
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "Most faked compound",
+        "your PRIMO might be fake"
+      ],
+      "score": 23,
+      "notes": "rejected on lock-in: the claim is paid off at 0:52, not in 0:04-0:12"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "PRIMO crashing",
+        "your estrogen too low"
+      ],
+      "score": 22
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "Clean dry look",
+        "on PRIMO"
+      ],
+      "score": 22
+    }
   ],
   "inputs": {
     "spoken_hook": "0.00-4.62 So, Primobolan is the holy grail, or it's the most expensive placebo in bodybuilding.",
@@ -30,17 +82,40 @@
     "pain": "estrogen crashed too low; one of the most faked compounds; premium price for a mild signal",
     "outcome": "clean dry look, worth it with a strong foundation",
     "state_change": "both the holy-grail and the placebo camps are wrong",
-    "specifics": ["60 seconds", "10 years", "two ways"]
+    "specifics": [
+      "60 seconds",
+      "10 years",
+      "two ways"
+    ]
   },
   "lock_in_check": {
-    "claim_confirmed": true,
-    "confirmed_at": "0:05",
+    "claim_confirmed": false,
+    "confirmed_at": "1:03-1:18 (verdict checklist), not in the 0:04-0:12 lock-in zone",
     "trust_anchor": "MISSING"
   },
   "visual_hook": "108% punch-in snaps in on the spoken subject word 'Primobolan' at 0.40 s",
-  "topic_band": { "text": "PRIMO holy grail or placebo", "from": 5.12, "to": "midpoint (nearest jump cut)", "y_px": [212, 372] },
+  "topic_band": {
+    "text": "PRIMO holy grail or placebo",
+    "from": 5.12,
+    "to": "midpoint (nearest jump cut)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
   "flags": [
     "winners.md missing: used the starter power-phrase bank",
-    "trust anchor MISSING in the lock-in zone (no lab, study or client result 0:04-0:12); no proof assets supplied, nothing invented"
-  ]
+    "trust anchor MISSING in the lock-in zone (no lab, study or client result 0:04-0:12); no proof assets supplied, nothing invented",
+    "client override: rule 3 broken (question mark)",
+    "client override: rule 8 broken (Title Case on every word; subject not in ALL CAPS, emphasised with colour only)",
+    "lock-in: the 'one type of person' promise is paid off at 1:03-1:18, not in 0:04-0:12"
+  ],
+  "text_hook_engine_pick": {
+    "lines": [
+      "PRIMO holy grail",
+      "both camps got it wrong"
+    ],
+    "formula": "subject+state_change",
+    "score": 25
+  }
 }

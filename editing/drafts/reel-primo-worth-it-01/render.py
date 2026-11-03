@@ -418,7 +418,7 @@ DISC='FOR RESEARCH & EDUCATIONAL PURPOSES ONLY'
 
 # ---- TEXT HOOK (editing/TEXT_HOOK_ENGINE.md): fully visible on frame 0, no entry animation, 0.15 s fade out;
 #      then a compact topic band until the midpoint (nearest jump cut), then the top stays clear ----
-HOOK_LINES=[[('PRIMO',VGOLD),(' holy grail',CREAM)],[('both camps got it wrong',CREAM)]]
+HOOK_LINES=[[('Primobolan',VGOLD),(' Only Works',CREAM)],[('For One Type Of Person?',CREAM)]]   # Coach AGZ's own wording (2026-11-03), overrides the engine pick
 HOOK_END=5.12; HOOK_FADE=0.15; HOOK_Y=262
 THO=(HOOK_END,HOOK_END+HOOK_FADE)
 _mid=DUR/2; BAND_OUT=min(CUTS,key=lambda c:abs(c-_mid))      # exits on the jump cut nearest the midpoint
