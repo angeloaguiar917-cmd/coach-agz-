@@ -63,7 +63,7 @@
 - **Audio:**
   - Dual-mono, left and right identical.
   - −14.3 LUFS, peaks −1.8 dBFS (no AAC overshoot).
-  - All heavy hits within 1 ms of their frames.
+  - All heavy hits within 1 ms of their frames. A duplicate thud on the "42" (0.26 s after the panel landing) was removed: one heavy hit per beat.
   - No music.
   - The source clipping (101 samples) is left as recorded and **needs a listen**.
 

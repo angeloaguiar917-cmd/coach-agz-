@@ -263,7 +263,7 @@ def evB(d,t):
         if t>=26.48: d.text((X0+182,646),'6 A NIGHT × 7',font=f(MONO,24),fill=MUTED+(int(255*clamp((t-26.48)/0.15)),))
     for i,(lab,t0,t1,st,up) in enumerate(ROWS_B): marker_row(d,t,730+i*74,lab,t0,t1,st,up)
     verdict_bar(d,t,34.56,'GROUP 1 CARCINOGEN',None)
-sfx(25.84,'thud',w=1.4,g=-17)
+# (no separate thud for the 42: the SIDE B panel lands 0.26 s earlier and carries the beat)
 for _,t0,t1,_,_ in ROWS_B: sfx(t1,'tick',g=-30)
 sfx(34.66,'impact',g=-13)
 
