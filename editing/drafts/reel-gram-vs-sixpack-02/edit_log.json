@@ -1,0 +1,114 @@
+{
+  "video": "Gram vs 6pack, take 2 (Drive 13nhuwmyLQYanj8CwA_cuUa5xs2JcfhUm)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "1 GRAM vs 42 DRINKS",
+      "your heart pays either way"
+    ],
+    "emphasis": [
+      "1 GRAM",
+      "42 DRINKS"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "42 DRINKS a week",
+      "vs 1 GRAM of TEST"
+    ],
+    [
+      "1 GRAM of TEST",
+      "cardiac remodeling risk"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "A",
+      "lines": [
+        "1 GRAM vs 42 DRINKS",
+        "your heart pays either way"
+      ],
+      "score": 28,
+      "notes": "subject 5, curiosity 5, specificity 5 (42 drinks = 6 a night x 7, said at 0:25), power phrase 4, glance 4, alignment 5"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "1 GRAM vs 6 BEERS",
+        "the faster killer"
+      ],
+      "score": 27,
+      "notes": "rejected: the verdict (0:48) is that it can't be determined, so the hook would bait"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "42 DRINKS a week",
+        "vs 1 GRAM of TEST"
+      ],
+      "score": 23
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "1 GRAM of TEST",
+        "cardiac remodeling risk"
+      ],
+      "score": 22
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "Your nightly 6 PACK",
+        "is a Group 1 carcinogen"
+      ],
+      "score": 24,
+      "notes": "rejected on lock-in: paid off at 0:33"
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-6.30 You got a thousand milligrams of testosterone a week or a six-pack of beers every single night. Which one is actually destroying your body faster?",
+    "lock_in_zone": "6.76-17.0 hematocrit climbs, blood pressure rises, HDL crashes, ApoB can increase, natural production suppressed; long-term effects",
+    "first_frame": "walking outdoors; cap top ~y500, eyes ~y800; bright sky behind the hook area -> boxed lines",
+    "subject": "1 GRAM of test a week vs a 6-pack a night (42 DRINKS a week)",
+    "pain": "cardiovascular damage on both sides",
+    "outcome": "know what each is doing to you",
+    "state_change": "none stated",
+    "specifics": [
+      "1000 mg / 1 gram a week",
+      "6-pack a night = 42 drinks a week",
+      "3, 4, 5 years without bloodwork",
+      "Group 1 carcinogen"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:17-0:21 (cardiac remodeling, cardiovascular disease on the gram side); both sides damage cardiovascular at 0:40",
+    "trust_anchor": "MISSING"
+  },
+  "visual_hook": "108% punch-in snaps in on the spoken subject 'a thousand milligrams' at 0.26 s",
+  "topic_band": {
+    "text": "1 GRAM a week vs 6 BEERS a night",
+    "from": 6.0,
+    "to": "midpoint 44.57 s (no jump cut within 1.5 s)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "trust anchor MISSING in the lock-in zone (no lab, study or client result 0:04-0:12); no proof assets supplied, nothing invented",
+    "spoken hook runs 6.3 s, so the hold is capped at 6.0 s (rule 9)",
+    "same topic as reel-gram-vs-sixpack-01; hook chosen to differ from that edit's 'same red flags'"
+  ]
+}
