@@ -39,3 +39,35 @@ Eleven formats, with no style repeated back to back.
 - Subject cutout.
 - Real fonts (stand-ins).
 - `winners.md`.
+
+---
+## Variant B (A/B test): `coach-agz_25mg-tren_1080p_phone_B.mp4`
+Coach AGZ asked for a version with **totally different overlays** and the hook "**25 MG** vs **400 MG** / the real **TREN** difference", to test on Instagram trials. The cut, captions, audio mix level and timing are identical to variant A, so the test isolates the hook and the graphics. Built by `render_b.py`; its edit log is `edit_log_variant_b.json`.
+
+**Visual language:** no frosted panels, no gold corner brackets, no panel headers. Instead: full-screen data scenes over the pushed-back footage, kinetic type, free-floating graphics, a lower-third and a diagonal end card. There's a new accent set (mint, hot pink, lime, sky) alongside the brand gold. The topic band hides during full-screen scenes.
+
+| Time | Variant A | Variant B |
+|---|---|---|
+| 6.0 s | VS card | **Balance scale**: the 400 MG weight crashes its side down, 25 MG rises (UPSIDE / NIGHTMARE) |
+| 8.2 s | Dashboard + warning lights | **"THE OLD WAY" step-area chart**: the dose climbs 400 → 500 → 600 as a glowing pink step line with area fill; red forensic tags snap on for each side effect |
+| 20 s | Report-sheet scene | **Kinetic type**: 10+ YEARS / COACHING / ANECDOTAL / + CLINICAL / **500+** / BLOODWORK PANELS slam in from alternating sides |
+| 30 s | Molecule strip | **Lower-third bar**: TREN · 19-NOR, "extremely potent anabolic steroid" |
+| 33 s | Dose-response curves | **Split-screen**: HIGH DOSE (red half) vs LOW DOSE (mint half), grouped bars for exposure, androgenic and side effects, "SAME SIGNAL?" |
+| 49 s | Sleep-ring card | **Clock face** with a 30-minute wedge, "30 MIN OF SLEEP = NO GROWTH" |
+| 65 s | Gauges + receptor docks | **Bar race** TEST 100 vs TREN 500 with a **5×** stamp, then **orbit diagrams**: ligands spiral onto the androgen receptor (affinity) and the glucocorticoid receptor (ANTI-CATABOLIC) |
+| 84 s | Bubbles + donut + radar | **"THE NEW WAY" dose slider**: the handle slides from 600 into the 25–50 zone; **triple activity rings** fill for partitioning, nitrogen and fat oxidation; an empty red **0** ring for the notorious sides |
+| 106 s | Centred logo + gold pill | **Diagonal split end card**: MY FULL TREN MICRODOSE PROTOCOL on navy, a giant **MICRO** keyword on gold, SENT TO YOU · FREE |
+
+**Sound:** 45 cues (one whoosh and a sub thud per scene, ticks on data, impacts on the 500+ and 5× stamps). Same voice gain as A.
+
+**Variant B checks:**
+- **Decode:** 3,569 frames at 1080×1920, 39.4 MB.
+- **Audio:** −14.4 LUFS (same as A), peaks −1.9 dBFS. All 11 heavy hits within 2 ms of their frames.
+- **Frames:** strips at every scene in and out, the lower-third, the end-card build and the keyword stamp.
+- **Fixed in review:**
+  - Scene titles collided with the topic band (the band now hides during scenes).
+  - The balance scale was too small and overlapped the band.
+  - History tags were undersized.
+  - The activity rings merged into one blob.
+  - The clock labels were unreadable over the face.
+  - The TEST value was dark-on-dark.
