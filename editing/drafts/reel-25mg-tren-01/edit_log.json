@@ -1,0 +1,112 @@
+{
+  "video": "Can 25mg Tren.hook (Drive 1LLf9WBj_Y72QRIVwaVd1H1PZYNk3h7MV)",
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": [
+      "25 MG of TREN",
+      "all upside no nightmare"
+    ],
+    "emphasis": [
+      "25 MG",
+      "TREN"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "25 MG vs 400 MG",
+      "the real TREN difference"
+    ],
+    [
+      "TREN at 25 MG",
+      "skip the 400 MG nightmare"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "B",
+      "lines": [
+        "25 MG of TREN",
+        "all upside no nightmare"
+      ],
+      "score": 27,
+      "notes": "first draft 'upside without the nightmare' was 28 chars (rule 7), tightened"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "25 MG vs 400 MG",
+        "the real TREN difference"
+      ],
+      "score": 25
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "TREN at 25 MG",
+        "skip the 400 MG nightmare"
+      ],
+      "score": 24
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "400 MG of TREN",
+        "makes you want to kill"
+      ],
+      "score": null,
+      "notes": "rejected: frames the joke as a claim"
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "Skip 500 MG of TREN",
+        "do this instead"
+      ],
+      "score": null,
+      "notes": "rejected: used on take 3"
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-7.96 So could running 25 mg of tren actually give you some of the upside without the nightmare of the 400 mg that'll make you f*cking kill someone? Let's break it down.",
+    "lock_in_zone": "8.22-17.5 the 400/500/600 mg years and their side effects",
+    "subject": "TREN at 25 MG",
+    "specifics": [
+      "25 mg",
+      "400 mg",
+      "400/500/600",
+      "500+ panels",
+      "rating 500 / 5x",
+      "25-50 mg"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:08 (the nightmare: 400-600 mg sides); the upside is paid off 1:25-1:40",
+    "trust_anchor": "0:18-0:27 decade coaching + 500+ panels, just after the lock-in window"
+  },
+  "visual_hook": "108% punch-in on the spoken subject '25 mg of tren' at 0.44 s",
+  "topic_band": {
+    "text": "TREN microdosing",
+    "from": 6.0,
+    "to": "midpoint 59.48 s",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "spoken hook runs 7.96 s, so the hold is capped at 6.0 s (rule 9)",
+    "trust anchor lands at 0:18, just after the lock-in window",
+    "the spoken hook is a question; the text hook drops the '?' per rule 3"
+  ]
+}
