@@ -1,0 +1,115 @@
+{
+  "video": "Micro tren hook 2 (Drive 1RPRd303Shvdb_r9HjgqK1XGQpfemKKuC)",
+  "text_hook": {
+    "formula": "subject+state_change",
+    "lines": [
+      "I stopped running",
+      "600 MG of TREN"
+    ],
+    "emphasis": [
+      "600 MG",
+      "TREN"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "25 MG of TREN",
+      "growth without the sides"
+    ],
+    [
+      "TREN microdosing",
+      "changed my protocol"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "C",
+      "lines": [
+        "I stopped running",
+        "600 MG of TREN"
+      ],
+      "score": 27,
+      "notes": "subject 5, curiosity 5, specificity 5, power phrase 3, glance 5, alignment 4"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "25 MG of TREN",
+        "growth without the sides"
+      ],
+      "score": 25,
+      "notes": "lock-in partial: 25 mg is paid off at 1:23"
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "TREN microdosing",
+        "changed my protocol"
+      ],
+      "score": 21
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "600 MG of TREN",
+        "the sides nobody warns about"
+      ],
+      "score": null,
+      "notes": "rejected: 'nobody warns about' is a claim the video doesn't make"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "25 TO 50 MG of TREN",
+        "the dose I run now"
+      ],
+      "score": null,
+      "notes": "rejected on lock-in: paid off at 1:23"
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-7.71 Listen, if I had to run trenbolone acetate for the first time all over again, this is exactly what I would do to get the optimized growth without the negative side effects.",
+    "lock_in_zone": "8.29-17.6 for years we were running 400, 500, 600 mg of tren dealing with the night sweats, the destroyed sleep, the terrible cardio, and the massive mood changes",
+    "first_frame": "indoors by a window; cap top ~y500; bright window light behind the hook area -> boxed lines",
+    "subject": "TREN (trenbolone acetate)",
+    "pain": "night sweats, destroyed sleep, terrible cardio, mood changes at 400-600 mg",
+    "outcome": "growth without the side effects",
+    "state_change": "from 400-600 mg to microdosing (what he does now)",
+    "specifics": [
+      "400, 500, 600 mg",
+      "over a decade coaching",
+      "500+ bloodwork panels",
+      "androgenic rating 500 / 5x testosterone",
+      "25-50 mg a week"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:08 (400-600 mg history + sides)",
+    "trust_anchor": "0:18-0:27 over a decade coaching, anecdotal evidence, clinical research, 500+ bloodwork panels (shown as the EVIDENCE BASE panel; just after the 0:04-0:12 window)"
+  },
+  "visual_hook": "108% punch-in snaps in on the spoken subject 'trenbolone' at 0.76 s",
+  "topic_band": {
+    "text": "TREN microdosing",
+    "from": 6.0,
+    "to": "59.17 s (jump cut nearest the 59.5 s midpoint)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "spoken hook runs 7.7 s, so the hold is capped at 6.0 s (rule 9)",
+    "trust anchor lands at 0:18, just after the 0:04-0:12 lock-in window"
+  ]
+}
