@@ -152,11 +152,10 @@ _acc=0; CUTS=[]
 for a,b in TRIM['keep_frames'][:-1]: _acc+=b-a; CUTS.append(_acc/FPS)      # jump-cut times in the trimmed cut
 def seg_of(t): return sum(1 for c in CUTS if c<=t+1e-6)
 P=(64,470,1016,1260)
-PANELS=[dict(o=8.29,c=27.95,hdr='HISTORY',st=[(8.29,'WHERE I CAME FROM'),(18.29,'EVIDENCE BASE')],hdr2={18.29:'TRUST'}),
-        dict(o=33.33,c=43.70,hdr='THE QUESTION',st=[(33.33,'LOWER DOSE · SAME SIGNAL?')]),
+PANELS=[dict(o=8.29,c=18.30,hdr='HISTORY',st=[(8.29,'DOSE vs SIDE-EFFECT LOAD')]),
+        dict(o=33.33,c=43.70,hdr='THE QUESTION',st=[(33.33,'DOSE-RESPONSE')]),
         dict(o=63.03,c=80.95,hdr='MECHANISM',st=[(63.03,'WHY A LITTLE IS A LOT')]),
         dict(o=83.59,c=105.30,hdr='PROTOCOL',st=[(83.59,'THE MICRODOSE')])]
-
 OPEN_D=0.22; CLOSE_D=0.18
 for p in PANELS:
     sfx(p['o'],'whoosh',d=0.20,g=-27); sfx(p['o']+OPEN_D,'thud',w=1.4,g=-15); sfx(p['c']-0.02,'whoosh',d=0.18,g=-30)
@@ -219,115 +218,287 @@ def meter_row(d,x0,y,label,v,col,a,arrow=None):
     meter(d,x0,y+46,XR-44,v,col,22)
     if arrow is not None: tri(d,XR-30,y+42,28,arrow,col+(a,))
 
-# ---- shared rows ----
-def check_row(d,t,y,label,t0,ok=True,size=40):
-    q=expo((t-t0)/0.14)
-    if q<=0: return
-    aa=int(255*q); dx=-24*(1-q); col=GREEN if ok else RED
-    d.rectangle([X0+dx,y+4,X0+dx+40,y+44],outline=col+(aa,),width=3)
-    if ok: check(d,X0+dx+8,y+12,col+(aa,),5,1.0)
-    else: d.line([(X0+dx+10,y+14),(X0+dx+30,y+34)],fill=col+(aa,),width=5); d.line([(X0+dx+30,y+14),(X0+dx+10,y+34)],fill=col+(aa,),width=5)
-    if GL and t<t0+0.4: GL.rectangle([X0+dx,y+4,X0+dx+40,y+44],outline=col+(int(200*(1-(t-t0)/0.4)),),width=8)
-    d.text((X0+64+dx,y+2),label,font=f(BAR,size),fill=CREAM+(aa,))
-def meter_lab(d,t,y,label,t0,v,col,up=None):
-    q=expo((t-t0)/0.14)
-    if q<=0: return
-    aa=int(255*q); d.text((X0,y),label,font=f(BAR,40),fill=CREAM+(aa,)); meter(d,X0,y+52,XR-48,v,col,26)
-    if up is not None: tri(d,XR-34,y+50,28,up,col+(aa,))
+# ================= v2 overlays: graphs, gauges, docking schematics, cards, full-screen scene =================
+ORANGE=(255,122,26); MAGENTA=(255,46,140)
+def grad_rect(lay,box,c_top,c_bot,a=255):
+    x0,y0,x1,y1=[int(v) for v in box]
+    if x1<=x0 or y1<=y0: return
+    h=y1-y0; g=np.zeros((h,1,4),np.uint8)
+    for i in range(h):
+        k=i/max(1,h-1); g[i,0,:3]=[int(lerp(c_top[j],c_bot[j],k)) for j in range(3)]; g[i,0,3]=a
+    lay.alpha_composite(Image.fromarray(np.repeat(g,x1-x0,1),'RGBA'),(x0,y0))
+def glow_line(d,pts,col,w=6,a=255):
+    d.line(pts,fill=col+(a,),width=w,joint='curve')
+    if GL: GL.line(pts,fill=col+(int(a*0.8),),width=w*3,joint='curve')
+def illus(d,x,y):
+    d.text((x,y),'ILLUSTRATIVE',font=f(MONO,18),fill=LABEL+(200,))
+# ---- tiny vector icons (line art, brand colours) ----
+def ic_drop(d,cx,cy,s,col,a):
+    d.polygon([(cx,cy-s),(cx+s*0.62,cy+s*0.15),(cx,cy+s*0.75),(cx-s*0.62,cy+s*0.15)],fill=col+(a,))
+    d.ellipse([cx-s*0.62,cy-s*0.2,cx+s*0.62,cy+s*0.78],fill=col+(a,))
+def ic_zz(d,cx,cy,s,col,a):
+    fn=f(BEB,int(s*1.6)); d.text((cx-s*0.8,cy-s*0.9),'Z',font=fn,fill=col+(a,)); d.text((cx+s*0.05,cy-s*1.35),'z',font=f(BEB,int(s*1.1)),fill=col+(a,))
+def ic_pulse(d,cx,cy,s,col,a):
+    pts=[(cx-s,cy),(cx-s*0.4,cy),(cx-s*0.2,cy-s*0.7),(cx+s*0.1,cy+s*0.7),(cx+s*0.35,cy-s*0.3),(cx+s*0.5,cy),(cx+s,cy)]
+    d.line(pts,fill=col+(a,),width=max(3,int(s*0.16)),joint='curve')
+def ic_bolt(d,cx,cy,s,col,a):
+    d.polygon([(cx+s*0.15,cy-s),(cx-s*0.5,cy+s*0.1),(cx-s*0.02,cy+s*0.1),(cx-s*0.2,cy+s),(cx+s*0.55,cy-s*0.15),(cx+s*0.05,cy-s*0.15)],fill=col+(a,))
+def ic_flame(d,cx,cy,s,col,a):
+    d.polygon([(cx,cy-s),(cx+s*0.6,cy+s*0.1),(cx+s*0.45,cy+s*0.8),(cx-s*0.45,cy+s*0.8),(cx-s*0.6,cy+s*0.1),(cx-s*0.15,cy-s*0.2)],fill=col+(a,))
+    d.polygon([(cx,cy-s*0.1),(cx+s*0.28,cy+s*0.4),(cx,cy+s*0.75),(cx-s*0.28,cy+s*0.4)],fill=(255,230,150,a))
+def ic_arrows_in(d,cx,cy,s,col,a):
+    for ang in (0,90,180,270):
+        r=math.radians(ang); x1,y1=cx+math.cos(r)*s,cy+math.sin(r)*s; x2,y2=cx+math.cos(r)*s*0.35,cy+math.sin(r)*s*0.35
+        d.line([(x1,y1),(x2,y2)],fill=col+(a,),width=6); d.ellipse([x2-7,y2-7,x2+7,y2+7],fill=col+(a,))
+    d.ellipse([cx-s*0.22,cy-s*0.22,cx+s*0.22,cy+s*0.22],outline=col+(a,),width=5)
+def ic_N(d,cx,cy,s,col,a):
+    d.ellipse([cx-s,cy-s,cx+s,cy+s],outline=col+(a,),width=6); fn=f(BEB,int(s*1.5)); d.text((cx-d.textlength('N',font=fn)/2,cy-s*0.78),'N',font=fn,fill=col+(a,))
+def ic_shield(d,cx,cy,s,col,a):
+    d.polygon([(cx,cy-s),(cx+s*0.8,cy-s*0.6),(cx+s*0.7,cy+s*0.3),(cx,cy+s),(cx-s*0.7,cy+s*0.3),(cx-s*0.8,cy-s*0.6)],outline=col+(a,),width=6)
+def ic_muscle(d,cx,cy,s,col,a):
+    for k in range(-2,3): d.ellipse([cx-s,cy+k*s*0.22-s*0.11,cx+s,cy+k*s*0.22+s*0.11],outline=col+(a,),width=3)
+ICONS=[(ic_drop,CYAN),(ic_zz,(180,140,255)),(ic_pulse,RED),(ic_bolt,VGOLD)]
 
-# -- HISTORY stage 1: 400 -> 500 -> 600 mg and what came with it --
+# -- HISTORY: dose bars (gradient) + side-effect load line with icon markers --
 DOSES=[(400,10.51),(500,11.27),(600,11.79)]; SIDES=[('NIGHT SWEATS',13.55),('DESTROYED SLEEP',14.29),('TERRIBLE CARDIO',15.35),('MOOD CHANGES',16.79)]
 def evA(d,t):
-    a=int(255*clamp((t-8.71)/0.15)); d.text((X0,566),'FOR YEARS · MG OF TREN / WEEK',font=f(MONO,24),fill=LABEL+(a,))
-    base=900; sc=0.42
-    for i,(mg,tt) in enumerate(DOSES):
-        q=ease_io((t-tt)/0.30)
+    lay=d._image; gx0,gx1,gy0,gy1=X0+40,XR-10,600,1000
+    a=int(255*clamp((t-8.71)/0.15))
+    d.text((X0,556),'MG / WEEK',font=f(MONO,22),fill=ORANGE+(a,)); d.line([(X0+150,568),(X0+190,568)],fill=MAGENTA+(a,),width=5); d.text((X0+200,556),'SIDE-EFFECT LOAD',font=f(MONO,22),fill=MAGENTA+(a,))
+    for k in range(5):
+        y=gy1-(gy1-gy0)*k/4; d.line([(gx0,y),(gx1,y)],fill=MUTED+(int(a*0.15),),width=1)
+    d.line([(gx0,gy1),(gx1,gy1)],fill=MUTED+(a,),width=2)
+    bw=150; xs=[gx0+40+i*260 for i in range(3)]
+    for (mg,tt),x in zip(DOSES,xs):
+        q=ease_io((t-tt)/0.35)
         if q<=0: continue
-        x0=X0+i*290; h=mg*sc*q; d.rectangle([x0,base-h,x0+230,base],fill=RED+(int(220*min(1,q*2)),))
-        if GL: GL.rectangle([x0,base-h,x0+230,base],outline=RED+(160,),width=6)
-        fn=f(BEB,72); s=str(mg); d.text((x0+115-d.textlength(s,font=fn)/2,base-h-80),s,font=fn,fill=CREAM+(int(255*min(1,q*2)),))
-    d.line([(X0,base),(XR,base)],fill=MUTED+(a,),width=2)
-    x=X0; y=950
-    for lab,tt in SIDES:
-        q=expo((t-tt)/0.14)
-        if q<=0: continue
-        fn=f(BAR,38); tw=d.textlength(lab,font=fn); aa=int(255*q)
-        if x+tw+36>XR: x=X0; y+=74
-        d.rectangle([x,y,x+tw+36,y+58],fill=CHIP+(int(240*q),),outline=RED+(aa,),width=2); d.text((x+18,y+6),lab,font=fn,fill=(255,150,140,aa)); x+=tw+52
-# -- HISTORY stage 2: the evidence base (trust anchor, his own words) --
-def evB(d,t):
-    check_row(d,t,580,'10+ YEARS COACHING',20.09)
-    check_row(d,t,660,'ANECDOTAL EVIDENCE',21.77)
-    check_row(d,t,740,'CLINICAL RESEARCH',23.21)
-    q=expo((t-25.53)/0.18)
-    if q>0:
-        n=int(lerp(0,500,ease_io((t-25.53)/0.5))); fn=f(BEB,220); s=f'{n}+' if n>=500 else str(n)
-        d.text((X0,830),s,font=fn,fill=VGOLD+(int(255*q),))
-        if GL and t<26.4: GL.text((X0,830),s,font=fn,fill=VGOLD+(120,))
-        w=d.textlength('500+',font=fn)
-        if t>=25.95: d.text((X0+w+30,880),'BLOODWORK',font=f(BEB,80),fill=CREAM+(int(255*clamp((t-25.95)/0.15)),))
-        if t>=26.39: d.text((X0+w+30,962),'PANELS REVIEWED',font=f(BAR,44),fill=CREAM+(int(255*clamp((t-26.39)/0.15)),))
-        if t>=26.89: d.text((X0+w+32,1020),'LAST COUPLE OF YEARS',font=f(MONO,24),fill=MUTED+(int(255*clamp((t-26.89)/0.15)),))
-for _,tt in DOSES: sfx(tt,'tick',g=-26)
-for _,tt in SIDES: sfx(tt,'tick',g=-31)
-sfx(20.09,'tick',g=-29); sfx(21.77,'tick',g=-29); sfx(23.21,'tick',g=-29); sfx(25.53,'scan',d=0.5,g=-31); sfx(26.05,'thud',w=1.4,g=-17)
+        h=(gy1-gy0)*(mg/650)*q; grad_rect(lay,(x,gy1-h,x+bw,gy1),(255,170,60),(200,20,20),int(235*min(1,q*2)))
+        if GL: GL.rectangle([x,gy1-h,x+bw,gy1],outline=ORANGE+(140,),width=6)
+        fn=f(BEB,64); s=str(mg); d.text((x+bw/2-d.textlength(s,font=fn)/2,gy1-h-72),s,font=fn,fill=CREAM+(int(255*min(1,q*2)),))
+    # load line rises with the sides; icons pop on it
+    lq=ease_io((t-13.40)/3.6)
+    if lq>0:
+        pts=[]
+        for k in range(61):
+            u=k/60*lq; x=lerp(gx0,gx1,u); y=gy1-(gy1-gy0)*(0.15+0.8*u**1.6); pts.append((x,y))
+        glow_line(d,pts,MAGENTA,6)
+        for i,(lab,tt) in enumerate(SIDES):
+            q=expo((t-tt)/0.16)
+            if q<=0: continue
+            u=(i+1)/4.2; x=lerp(gx0,gx1,u); y=gy1-(gy1-gy0)*(0.15+0.8*u**1.6)
+            r=34*q; d.ellipse([x-r,y-r,x+r,y+r],fill=(20,8,24,int(240*q)),outline=MAGENTA+(int(255*q),),width=3)
+            fn_,col=ICONS[i]; fn_(d,x,y,20*q,col,int(255*q))
+            fw=f(MONOB,20); tw=d.textlength(lab,font=fw); lx=min(max(x-tw/2,X0),XR-tw)
+            d.text((lx,1020+ (i%2)*30),lab,font=fw,fill=CREAM+(int(255*q),))
+            d.line([(x,y+r),(x,1016+(i%2)*30)],fill=MAGENTA+(int(120*q),),width=2)
+    illus(d,X0,1180)
 
-# -- THE QUESTION: cut the dose -> exposure down; keep the androgenic signal?; sides down --
+# -- THE QUESTION: dose-response curves; a marker slides from high dose to low dose --
 def evC(d,t):
-    if t>=33.51: meter_lab(d,t,580,'TOTAL EXPOSURE',33.51,lerp(0.88,0.22,ease_io((t-34.35)/1.6)),VGOLD,False if t>=35.9 else None)
-    if t>=38.29:
-        meter_lab(d,t,720,'ANDROGENIC EFFECT',38.29,0.80,VGOLD,None)
-        if t>=38.99: gold_tag(d,XR,700,'PRESERVED?',24,right=True)
-    if t>=40.75: meter_lab(d,t,860,'SIDE EFFECTS',40.75,lerp(0.86,0.24,ease_io((t-41.25)/1.6)),RED,False if t>=42.9 else None)
-sfx(34.35,'scan',d=1.6,g=-33); sfx(38.99,'tick',g=-27); sfx(41.25,'scan',d=1.6,g=-33)
+    gx0,gx1,gy0,gy1=X0+40,XR-20,600,1060
+    a=int(255*clamp((t-33.45)/0.15))
+    d.line([(gx0,gy0),(gx0,gy1),(gx1,gy1)],fill=MUTED+(a,),width=2)
+    d.text((gx0,gy1+12),'LOW',font=f(MONO,20),fill=LABEL+(a,)); s='HIGH DOSE'; d.text((gx1-d.textlength(s,font=f(MONO,20)),gy1+12),s,font=f(MONO,20),fill=LABEL+(a,))
+    eff=lambda u: 0.92*(1-math.exp(-7*u)); side=lambda u: 0.06+0.88*u**2.4
+    P_=lambda fn,u:(lerp(gx0,gx1,u),gy1-(gy1-gy0)*fn(u))
+    qe=ease_io((t-33.60)/0.8); qs=ease_io((t-33.90)/0.8)
+    if qe>0: glow_line(d,[P_(eff,k/80*qe) for k in range(81)],VGOLD,6)
+    if qs>0: glow_line(d,[P_(side,k/80*qs) for k in range(81)],RED,6)
+    if qe>=1: d.text((gx0+20,gy0-6),'ANDROGENIC EFFECT',font=f(MONOB,22),fill=VGOLD+(255,))
+    if qs>=1: s='SIDE EFFECTS'; d.text((gx1-d.textlength(s,font=f(MONOB,22)),gy0+60),s,font=f(MONOB,22),fill=RED+(255,))
+    if t>=34.35:
+        u=lerp(0.95,0.12,ease_io((t-34.35)/1.9)); x=lerp(gx0,gx1,u)
+        d.line([(x,gy0-10),(x,gy1)],fill=CYAN+(255,),width=3)
+        if GL: GL.line([(x,gy0-10),(x,gy1)],fill=CYAN+(200,),width=8)
+        for fn_,col in ((eff,VGOLD),(side,RED)):
+            xx,yy=P_(fn_,u); d.ellipse([xx-11,yy-11,xx+11,yy+11],fill=col+(255,))
+        d.text((x+10,gy1-40),'DOSE',font=f(MONOB,22),fill=CYAN+(255,))
+    if t>=38.99: gold_tag(d,X0,1110,'EFFECT HOLDS?',26)
+    if t>=41.91: red_tag(d,XR,1110,'SIDES DROP',26,right=True)
+    illus(d,XR-150,1200)
 
-# -- MECHANISM: 19-nor, androgenic rating 500 (5x test), AR affinity 5x, also glucocorticoid receptor -> anti-catabolic --
+# -- MECHANISM: rating gauge, lock-and-key AR dock, glucocorticoid shield --
+def gauge(d,cx,cy,r,val,col,a,label):
+    d.arc([cx-r,cy-r,cx+r,cy+r],180,360,fill=MUTED+(int(a*0.4),),width=16)
+    end=180+180*clamp(val/600)
+    d.arc([cx-r,cy-r,cx+r,cy+r],180,end,fill=col+(a,),width=16)
+    if GL: GL.arc([cx-r,cy-r,cx+r,cy+r],180,end,fill=col+(int(a*0.7),),width=30)
+    ang=math.radians(end); d.line([(cx,cy),(cx+math.cos(ang)*(r-30),cy+math.sin(ang)*(r-30))],fill=CREAM+(a,),width=6); d.ellipse([cx-12,cy-12,cx+12,cy+12],fill=CREAM+(a,))
+    fn=f(BEB,64); s=str(int(val)); d.text((cx-d.textlength(s,font=fn)/2,cy+10),s,font=fn,fill=col+(a,))
+    fn=f(MONO,22); d.text((cx-d.textlength(label,font=fn)/2,cy+80),label,font=fn,fill=CREAM+(a,))
+def dock(d,cx,cy,col,a,q,ripples=0,label='',blocked=False):
+    # receptor socket (U) + ligand key dropping in
+    d.line([(cx-70,cy-60),(cx-70,cy+40),(cx-24,cy+40),(cx-24,cy),(cx+24,cy),(cx+24,cy+40),(cx+70,cy+40),(cx+70,cy-60)],fill=col+(a,),width=6)
+    ky=lerp(cy-150,cy-4,q)
+    d.rectangle([cx-20,ky-60,cx+20,ky],fill=(VGOLD if not blocked else RED)+(a,))
+    for k in range(ripples):
+        rr=60+k*26; d.arc([cx-rr,cy-20-rr,cx+rr,cy-20+rr],200,340,fill=VGOLD+(int(a*(1-k/5)),),width=3)
+    fn=f(MONOB,20); d.text((cx-d.textlength(label,font=fn)/2,cy+56),label,font=fn,fill=col+(a,))
 def evD(d,t):
     q=expo((t-63.85)/0.14)
-    if q>0: gold_tag(d,X0,560,'19-NOR',28)
-    q=expo((t-66.49)/0.18)
-    if q>0:
-        d.text((X0,624),'ANDROGENIC RATING',font=f(MONO,24),fill=LABEL+(int(255*q),))
-        fn=f(BEB,150); d.text((X0,650),'500',font=fn,fill=VGOLD+(int(255*q),))
-        if t>=67.49: d.text((X0+260,690),'= 5× TESTOSTERONE',font=f(BEB,64),fill=CREAM+(int(255*clamp((t-67.49)/0.15)),))
+    if q>0: gold_tag(d,X0,556,'19-NOR',26)
+    if t>=65.39:
+        a=int(255*clamp((t-65.39)/0.15)); d.text((540-d.textlength('ANDROGENIC RATING',font=f(MONO,22))/2,560),'ANDROGENIC RATING',font=f(MONO,22),fill=LABEL+(a,))
+        gauge(d,300,780,150,lerp(0,100,ease_io((t-65.6)/0.4)),CREAM,a,'TESTOSTERONE')
+        gauge(d,720,780,150,lerp(0,500,ease_io((t-66.49)/0.8)),VGOLD,a,'TREN')
+        if t>=67.49: fn=f(BEB,80); d.text((540-d.textlength('5×',font=fn)/2,640),'5×',font=fn,fill=VGOLD+(int(255*clamp((t-67.49)/0.15)),))
     if t>=70.47:
-        a=int(255*clamp((t-70.47)/0.15)); y=840; d.text((X0,y),'ANDROGEN RECEPTOR AFFINITY',font=f(MONO,24),fill=LABEL+(a,))
-        u=(XR-X0)/5.2
-        d.text((X0,y+40),'TEST',font=f(BAR,36),fill=CREAM+(a,)); d.rectangle([X0+150,y+48,X0+150+u*0.6*ease_io((t-70.47)/0.3),y+80],fill=(205,200,190,a))
-        g=ease_io((t-71.89)/0.5)
-        if g>0:
-            d.text((X0,y+96),'TREN',font=f(BAR,36),fill=VGOLD+(a,)); d.rectangle([X0+150,y+104,X0+150+u*3.0*g,y+136],fill=VGOLD+(255,))
-            if GL: GL.rectangle([X0+150,y+104,X0+150+u*3.0*g,y+136],outline=VGOLD+(150,),width=6)
-            if g>=1: d.text((X0+150+u*3.0+18,y+96),'5×',font=f(BEB,48),fill=VGOLD+(255,))
+        a=int(255*clamp((t-70.47)/0.15)); d.line([(X0,905),(XR,905)],fill=MUTED+(int(a*0.3),),width=2)
+        rp=int(clamp((t-72.19)/0.5)*5)
+        dock(d,300,1060,VGOLD,a,ease_io((t-70.47)/0.5),rp,'ANDROGEN RECEPTOR · 5× AFFINITY')
     if t>=75.19:
-        a=int(255*clamp((t-75.19)/0.15)); y=1010; d.line([(X0,y-14),(XR,y-14)],fill=MUTED+(int(a*0.3),),width=2)
-        d.text((X0,y),'ALSO BINDS · GLUCOCORTICOID RECEPTOR',font=f(MONO,24),fill=CYAN+(a,))
-        if t>=78.41: gold_tag(d,X0,y+44,'ANTI-CATABOLIC',28)
-        if t>=79.85: d.text((X0+300,y+52),'KEEPS MUSCLE IN A DEFICIT',font=f(MONO,26),fill=CREAM+(int(255*clamp((t-79.85)/0.15)),))
-sfx(63.85,'tick',g=-28); sfx(66.59,'thud',w=1.4,g=-17); sfx(67.49,'tick',g=-28); sfx(71.89,'scan',d=0.5,g=-31); sfx(75.19,'tick',g=-28); sfx(78.41,'tick',g=-26)
+        a=int(255*clamp((t-75.19)/0.15))
+        dock(d,780,1060,CYAN,a,ease_io((t-75.19)/0.5),0,'GLUCOCORTICOID RECEPTOR')
+        if t>=78.41:
+            s=expo((t-78.41)/0.2); ic_shield(d,920,960,48*s,GREEN,int(255*s)); ic_muscle(d,920,962,26*s,GREEN,int(255*s))
+            if GL: GL.ellipse([870,910,970,1010],outline=GREEN+(int(160*s),),width=8)
+            gold_tag(d,XR,1140,'ANTI-CATABOLIC',24,right=True)
 
-# -- THE MICRODOSE: 25-50 mg a week; meaningful AR activation; what you get / what you don't --
+# -- PROTOCOL: dose tube 600 -> 25-50 window, receptor-activation donut, icon tiles, callback of the sides struck out --
 def evE(d,t):
+    lay=d._image; tx0,tx1,ty0,ty1=X0,X0+90,560,1180
+    a=int(255*clamp((t-83.65)/0.15))
+    d.rounded_rectangle([tx0,ty0,tx1,ty1],radius=40,outline=CREAM+(a,),width=4)
+    for mg in (0,100,200,300,400,500,600):
+        y=ty1-(ty1-ty0-20)*mg/600-10; d.line([(tx1,y),(tx1+16,y)],fill=MUTED+(a,),width=2); d.text((tx1+22,y-12),str(mg),font=f(MONO,18),fill=LABEL+(a,))
+    lv=lerp(600,50,ease_io((t-83.65)/1.0)); y=ty1-(ty1-ty0-20)*lv/600-10
+    col=(255,90,40) if lv>200 else VGOLD
+    grad_rect(lay,(tx0+8,y,tx1-8,ty1-8),col,(180,40,10) if lv>200 else (200,140,10),230)
+    if t>=84.15:
+        y25=ty1-(ty1-ty0-20)*25/600-10; y50=ty1-(ty1-ty0-20)*50/600-10
+        d.rectangle([tx0-10,y50,tx1+10,y25],outline=VGOLD+(255,),width=4)
+        if GL: GL.rectangle([tx0-10,y50,tx1+10,y25],outline=VGOLD+(220,),width=10)
+        y600=ty1-(ty1-ty0-20)*600/600-10; d.line([(tx0-14,y600),(tx1+14,y600)],fill=RED+(255,),width=4); d.text((tx1+70,y600-14),'WAS 600',font=f(MONOB,20),fill=RED+(255,))
     q=expo((t-83.59)/0.18)
     if q>0:
-        fn=f(BEB,150); s1='25'; d.text((X0,550),s1,font=fn,fill=VGOLD+(int(255*q),)); x=X0+d.textlength(s1,font=fn)
-        if t>=84.15:
-            q2=expo((t-84.15)/0.16); d.text((x+10,550),'–50',font=fn,fill=VGOLD+(int(255*q2),)); x+=d.textlength('–50',font=fn)+10
-        if t>=84.43: d.text((x+24,600),'MG / WEEK',font=f(BEB,72),fill=CREAM+(int(255*clamp((t-84.43)/0.15)),))
-        if GL and t<84.6: GL.text((X0,550),s1,font=fn,fill=VGOLD+(120,))
-    if t>=85.29: d.text((X0,712),'TO START',font=f(MONO,24),fill=MUTED+(int(255*clamp((t-85.29)/0.15)),))
-    if t>=87.09: gold_tag(d,XR,712,'MEANINGFUL AR ACTIVATION',22,right=True)
-    if t>=91.25: d.text((X0,770),'TRACE AMOUNTS · HIGH AFFINITY',font=f(MONO,24),fill=CYAN+(int(255*clamp((t-91.25)/0.15)),))
-    if t>=96.31: d.text((X0,832),"WHAT YOU'RE GETTING",font=f(MONO,24),fill=GREEN+(int(255*clamp((t-96.31)/0.15)),))
-    check_row(d,t,866,'NUTRIENT PARTITIONING',97.07,True,38)
-    check_row(d,t,930,'NITROGEN RETENTION',98.61,True,38)
-    check_row(d,t,994,'FAT OXIDATION',100.11,True,38)
-    if t>=101.53: d.text((X0,1066),"WHAT YOU'RE NOT",font=f(MONO,24),fill=RED+(int(255*clamp((t-101.53)/0.15)),))
-    check_row(d,t,1100,'THE NOTORIOUS SIDES',102.43,False,38)
-sfx(83.69,'thud',w=1.5,g=-16); sfx(84.15,'tick',g=-27); sfx(87.09,'tick',g=-28); sfx(91.25,'scan',d=0.6,g=-32)
-sfx(97.07,'tick',g=-30); sfx(98.61,'tick',g=-30); sfx(100.11,'tick',g=-30); sfx(102.43,'tick',g=-24)
-CONTENT={0:[(8.29,evA),(18.29,evB)],1:[(33.33,evC)],2:[(63.03,evD)],3:[(83.59,evE)]}
+        fn=f(BEB,120); d.text((330,560),'25–50',font=fn,fill=VGOLD+(int(255*q),)); d.text((330,676),'MG / WEEK · TO START',font=f(MONOB,24),fill=CREAM+(int(255*q),))
+    if t>=87.09:   # receptor activation donut
+        s=ease_io((t-87.09)/0.8); cx,cy,r=470,830,80
+        d.ellipse([cx-r,cy-r,cx+r,cy+r],outline=MUTED+(80,),width=18)
+        d.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+300*s,fill=GREEN+(255,),width=18)
+        if GL: GL.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+300*s,fill=GREEN+(180,),width=34)
+        d.text((cx+110,cy-44),'AR ACTIVATION',font=f(MONOB,24),fill=CREAM+(255,)); d.text((cx+110,cy-8),'MEANINGFUL',font=f(MONO,22),fill=GREEN+(255,))
+        if t>=91.25: d.text((cx+110,cy+26),'FROM TRACE AMOUNTS',font=f(MONO,22),fill=CYAN+(int(255*clamp((t-91.25)/0.15)),))
+    tiles=[('NUTRIENT','PARTITIONING',97.07,ic_arrows_in),('NITROGEN','RETENTION',98.61,ic_N),('FAT','OXIDATION',100.11,ic_flame)]
+    for i,(l1,l2,tt,ic) in enumerate(tiles):
+        q=expo((t-tt)/0.16)
+        if q<=0: continue
+        x0=300+i*235; y0=960; aa=int(255*q)
+        d.rounded_rectangle([x0,y0,x0+215,y0+170],radius=16,fill=(10,30,18,int(220*q)),outline=GREEN+(aa,),width=3)
+        if GL and t<tt+0.5: GL.rounded_rectangle([x0,y0,x0+215,y0+170],radius=16,outline=GREEN+(int(200*(1-(t-tt)/0.5)),),width=8)
+        ic(d,x0+107,y0+58,34,GREEN if ic is not ic_flame else ORANGE,aa)
+        fn=f(MONOB,20); d.text((x0+107-d.textlength(l1,font=fn)/2,y0+108),l1,font=fn,fill=CREAM+(aa,)); d.text((x0+107-d.textlength(l2,font=fn)/2,y0+134),l2,font=fn,fill=CREAM+(aa,))
+    if t>=102.43:   # callback: the history icons, struck out
+        q=expo((t-102.43)/0.16); y=1180
+        d.text((300,y+8),"NOT GETTING",font=f(MONOB,22),fill=RED+(int(255*q),))
+        for i,(fn_,col) in enumerate(ICONS):
+            cx=520+i*110; fn_(d,cx,y+20,20,col,int(200*q))
+            sq=expo((t-102.43-0.08*i)/0.14); d.line([(cx-26,y+46),(lerp(cx-26,cx+26,sq),y-6)],fill=RED+(255,),width=6)
+    illus(d,XR-150,1232)
+CONTENT={0:[(8.29,evA)],1:[(33.33,evC)],2:[(63.03,evD)],3:[(83.59,evE)]}
 SHAKES=[]
+for _,tt in DOSES: sfx(tt,'tick',g=-26)
+for _,tt in SIDES: sfx(tt,'tick',g=-30)
+sfx(13.40,'scan',d=1.2,g=-34)
+sfx(33.60,'scan',d=0.8,g=-32); sfx(34.35,'scan',d=1.9,g=-33); sfx(38.99,'tick',g=-27); sfx(41.91,'tick',g=-27)
+sfx(63.85,'tick',g=-28); sfx(66.49,'scan',d=0.8,g=-31); sfx(67.49,'thud',w=1.4,g=-17); sfx(70.97,'thud',w=1.1,g=-19); sfx(72.19,'scan',d=0.5,g=-32); sfx(75.69,'thud',w=1.0,g=-20); sfx(78.41,'tick',g=-26)
+sfx(83.69,'scan',d=1.0,g=-31); sfx(84.15,'thud',w=1.4,g=-17); sfx(87.09,'scan',d=0.8,g=-32); sfx(97.07,'tick',g=-29); sfx(98.61,'tick',g=-29); sfx(100.11,'tick',g=-29); sfx(102.43,'tick',g=-24)
+
+# ---- full-screen EVIDENCE scene (18.29-27.95): report sheets stack, 500+ counter, 10+ yr ring ----
+EV_IN,EV_OUT=17.92,27.95
+sfx(EV_IN,'whoosh',d=0.25,g=-28); sfx(20.09,'thud',w=1.2,g=-19); sfx(21.77,'tick',g=-29); sfx(23.21,'tick',g=-29); sfx(25.53,'scan',d=0.6,g=-31); sfx(26.05,'impact',g=-15); sfx(EV_OUT-0.05,'whoosh',d=0.2,g=-30)
+_SHEET=None
+def sheet():
+    global _SHEET
+    if _SHEET is None:
+        im=Image.new('RGBA',(300,390),(250,249,246,255)); d=ImageDraw.Draw(im)
+        d.rectangle([0,0,299,46],fill=(210,10,20,255)); d.text((14,8),'BLOODWORK PANEL',font=f(BEB,34),fill=(255,255,255,255))
+        rng=np.random.default_rng(9)
+        for k in range(9):
+            y=66+k*34; d.rectangle([16,y,16+int(rng.integers(90,150)),y+12],fill=(70,72,80,255)); d.rectangle([200,y,200+int(rng.integers(30,70)),y+12],fill=(150,150,156,255))
+        d.rectangle([0,0,299,389],outline=(150,148,140,255),width=2); _SHEET=im
+    return _SHEET
+def evidence_scene(im,t):
+    if t<EV_IN or t>EV_OUT+0.25: return
+    a=ease_io((t-EV_IN)/0.25)*(1-ease_io((t-EV_OUT)/0.25))
+    im.alpha_composite(scene_bg(a)); L,d=newL(); A=int(255*a)
+    # 10+ years ring
+    s=ease_io((t-20.09)/0.7)
+    if s>0:
+        cx,cy,r=230,560,110; d.ellipse([cx-r,cy-r,cx+r,cy+r],outline=MUTED+(int(60*a),),width=14)
+        d.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+360*s,fill=VGOLD+(A,),width=14)
+        if GL: GL.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+360*s,fill=VGOLD+(int(170*a),),width=28)
+        fn=f(BEB,96); d.text((cx-d.textlength('10+',font=fn)/2,cy-56),'10+',font=fn,fill=CREAM+(A,)); fs=f(MONOB,22); d.text((cx-d.textlength('YEARS',font=fs)/2,cy+34),'YEARS',font=fs,fill=VGOLD+(A,))
+        d.text((cx+150,cy-40),'COACHING',font=f(BEB,72),fill=CREAM+(A,))
+    for i,(lab,tt) in enumerate((('ANECDOTAL EVIDENCE',21.77),('CLINICAL RESEARCH',23.21))):
+        q=expo((t-tt)/0.16)
+        if q<=0: continue
+        x=380+i*0; y=520+80+i*56; check(d,x,y+8,GREEN+(int(A*q),),5,1.0); d.text((x+40,y),lab,font=f(BAR,40),fill=CREAM+(int(A*q),))
+    im.alpha_composite(L)
+    # sheets fan in from the right and stack
+    n=int(clamp((t-24.40)/1.6)*14)
+    for k in range(n):
+        p=clamp((t-24.40-k*0.11)/0.25); pe=1-(1-p)**3
+        sh=sheet().rotate(-14+k*2.1,expand=True,resample=Image.BICUBIC)
+        x=int(lerp(1150,180+k*26,pe)); y=int(lerp(820,800-k*10,pe)); sh.putalpha(sh.split()[3].point(lambda v:int(v*a*min(1,p*2))))
+        im.alpha_composite(sh,(x,y))
+    L,d=newL()
+    q=expo((t-25.53)/0.18)
+    if q>0:
+        nn=int(lerp(0,500,ease_io((t-25.53)/0.6))); fn=f(BEB,300); s=f'{nn}+' if nn>=500 else str(nn)
+        tw=d.textlength('500+',font=fn); x=1016-tw
+        d.text((x,1000),s,font=fn,fill=VGOLD+(int(A*q),))
+        if GL: GL.text((x,1000),s,font=fn,fill=VGOLD+(int(150*a*q),))
+        if t>=25.95: fs=f(BEB,72); d.text((1016-d.textlength('BLOODWORK PANELS',font=fs),1300),'BLOODWORK PANELS',font=fs,fill=CREAM+(int(A*clamp((t-25.95)/0.15)),))
+    im.alpha_composite(L)
+
+# ---- side cards: frosted, gold brackets, slide in from the edge ----
+def card(im,t,box,t0,t1,draw,frm='left'):
+    if t<t0 or t>t1+0.2: return
+    q=expo((t-t0)/0.22); o=ease_io((t-t1)/0.2); x0,y0,x1,y1=box; w=x1-x0
+    dx=(-(w+60) if frm=='left' else (w+60) if frm=='right' else 0)*(1-q)+(-(w+60) if frm=='left' else (w+60) if frm=='right' else 0)*o
+    dy=(-40 if frm=='top' else 0)*(1-q)
+    bx=(x0+dx,y0+dy,x1+dx,y1+dy); a=int(255*min(q,1-o))
+    if a<=0: return
+    frosted(im,bx,0.88*a/255,12); L,d=newL()
+    d.rectangle(bx,outline=VGOLD+(int(a*0.7),),width=2); brackets(d,*bx,VGOLD+(a,),26,5)
+    if GL: brackets(GL,*bx,VGOLD+(a,),24,10)
+    draw(d,bx,t,a); im.alpha_composite(L)
+def draw_mol(d,bx,t,a):
+    x0,y0,x1,y1=bx; cx,cy,r=x0+120,(y0+y1)/2+4,26
+    hexes=[(cx-3*r,cy),(cx-1.3*r,cy-r*0.98),(cx+0.4*r,cy),(cx+2.1*r,cy-r*0.55)]
+    for i,(hx,hy) in enumerate(hexes):
+        n=6 if i<3 else 5; pts=[(hx+r*math.cos(math.radians(60*k+30 if n==6 else 72*k-90)),hy+r*math.sin(math.radians(60*k+30 if n==6 else 72*k-90))) for k in range(n+1)]
+        d.line(pts,fill=CYAN+(a,),width=4)
+        if GL: GL.line(pts,fill=CYAN+(int(a*0.7),),width=9)
+    q=expo((t-31.53)/0.16)
+    if q>0:
+        mx,my=cx-1.3*r,cy-r*0.98-r; d.ellipse([mx-12,my-12,mx+12,my+12],outline=RED+(int(a*q),),width=4); d.line([(mx-14,my-14),(mx+14,my+14)],fill=RED+(int(a*q),),width=4)
+        d.text((x0+260,y0+22),'19-NOR',font=f(BEB,64),fill=VGOLD+(int(a*q),))
+        d.text((x0+262,y0+88),'ANABOLIC STEROID · EXTREMELY POTENT',font=f(MONO,20),fill=CREAM+(int(a*clamp((t-32.15)/0.15)),))
+def draw_sleep(d,bx,t,a):
+    x0,y0,x1,y1=bx; cx,cy,r=(x0+x1)/2,y0+150,95
+    d.text((x0+24,y0+18),'SLEEP',font=f(MONOB,24),fill=CREAM+(a,)); d.text((x1-24-d.textlength('LAST NIGHT',font=f(MONO,20)),y0+22),'LAST NIGHT',font=f(MONO,20),fill=LABEL+(a,))
+    d.ellipse([cx-r,cy-r,cx+r,cy+r],outline=MUTED+(int(a*0.3),),width=16)
+    s=ease_io((t-49.40)/0.6); d.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+360*(0.5/8)*s,fill=RED+(a,),width=16)
+    if GL: GL.arc([cx-r,cy-r,cx+r,cy+r],-90,-90+360*(0.5/8)*s,fill=RED+(int(a*0.8),),width=30)
+    fn=f(BEB,72); s_='0H 30M'; d.text((cx-d.textlength(s_,font=fn)/2,cy-40),s_,font=fn,fill=RED+(a,))
+    d.text((cx-d.textlength('A NIGHT',font=f(MONO,20))/2,cy+38),'A NIGHT',font=f(MONO,20),fill=LABEL+(a,))
+    if t>=48.89: red_tag(d,(x0+x1)/2+70,y1-62,'NO GROWTH',22,right=True)
+def draw_dna(d,bx,t,a):
+    x0,y0,x1,y1=bx; cx=(x0+x1)/2; ph=t*3
+    for k in range(26):
+        y=y0+40+k*(y1-y0-90)/25; w=70*math.sin(k*0.5+ph)
+        xa,xb=cx-w,cx+w; d.ellipse([xa-6,y-6,xa+6,y+6],fill=CYAN+(a,)); d.ellipse([xb-6,y-6,xb+6,y+6],fill=MAGENTA+(a,))
+        if k%2==0: d.line([(xa,y),(xb,y)],fill=MUTED+(int(a*0.5),),width=2)
+    fn=f(MONOB,22); s='GENETIC'; d.text((cx-d.textlength(s,font=fn)/2,y1-46),s,font=fn,fill=CREAM+(a,))
+def cards(im,t):
+    card(im,t,(64,392,1016,532),30.10,33.20,draw_mol,'top')
+    card(im,t,(40,600,410,1000),49.20,53.60,draw_sleep,'left')
+    card(im,t,(40,560,300,960),61.00,62.95,draw_dna,'left')
+sfx(30.10,'whoosh',d=0.2,g=-30); sfx(31.53,'tick',g=-26); sfx(49.20,'whoosh',d=0.2,g=-30); sfx(49.40,'tick',g=-25); sfx(61.0,'whoosh',d=0.2,g=-31)
+
+
 
 
 
@@ -521,7 +692,7 @@ def frame(src,t):
     im.alpha_composite(scr)
     global GL
     glow=Image.new('RGBA',(W,H),(0,0,0,0)); GL=ImageDraw.Draw(glow,'RGBA')
-    panels(im,t); chips(im,t); end_card(im,t)
+    panels(im,t); chips(im,t); evidence_scene(im,t); cards(im,t); end_card(im,t)
     GL=None
     if glow.getbbox():
         gb=np.asarray(glow.filter(ImageFilter.GaussianBlur(14))).astype(np.float32)/255

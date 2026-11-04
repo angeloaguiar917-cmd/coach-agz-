@@ -65,3 +65,22 @@
 - Subject cutout.
 - Real fonts (stand-ins).
 - `winners.md`.
+
+## Version 2 (2026-11-04): overlay variety
+Feedback: the same overlay type over and over. Wanted graphs, more graphics, more vibrance.
+Timing, captions, hook and audio are unchanged; only the overlays were rebuilt into **eight different formats**:
+
+| Time | Format | Content |
+|---|---|---|
+| 8.3 | **Dual-axis graph** | Gradient dose bars 400/500/600 plus a glowing magenta SIDE-EFFECT LOAD line, with icon markers popping on it (sweat drop, Zz, pulse, bolt) as each side effect is named |
+| 18.0 | **Full-screen scene** | 10+ YEARS ring badge, ✓ anecdotal / clinical, bloodwork report sheets fanning in and stacking, giant **500+** counter |
+| 30.1 | **Top strip card** | Cyan steroid ring skeleton with the 19-nor position marked |
+| 33.3 | **Dose-response graph** | Effect curve plateaus early, side-effect curve climbs steeply; a cyan dose marker slides from high to low dose; EFFECT HOLDS? / SIDES DROP |
+| 49.2 | **Side card: sleep tracker** | Red ring at 0H 30M a night, NO GROWTH |
+| 61.0 | **Side card: DNA helix** | Animated helix, GENETIC |
+| 63.0 | **Gauges + docking schematics** | Rating speedometers (test 100, tren sweeps to 500, 5×); lock-and-key androgen-receptor dock with affinity ripples; glucocorticoid dock with shield and muscle (ANTI-CATABOLIC) |
+| 83.6 | **Dose tube + donut + icon tiles** | Tube drains from WAS 600 to the 25–50 window; green AR-activation donut; three icon tiles (partitioning, nitrogen, fat oxidation); callback of the history icons, struck out |
+
+- Graphs are shape-only and labelled ILLUSTRATIVE; no data values are invented.
+- **Fixed in review:** a label collision on the history graph, and a 0.3 s face flash between the graph and the evidence scene (they now overlap).
+- **Re-checked:** all 3,570 frames decode at 1080×1920; −14.3 LUFS; heavy hits within 1 ms.
