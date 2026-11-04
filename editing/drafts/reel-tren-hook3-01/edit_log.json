@@ -1,0 +1,111 @@
+{
+  "video": "Tren hook 3 (Drive 16g-d_PpP8i8knQmcQvVZgH6kHDk9iuM7)",
+  "text_hook": {
+    "formula": "subject+state_change",
+    "lines": [
+      "Skip 500 MG of TREN",
+      "do this instead"
+    ],
+    "emphasis": [
+      "500 MG",
+      "TREN"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "Redo my first TREN cycle",
+      "without 500 MG"
+    ],
+    [
+      "25 MG of TREN",
+      "growth without the sides"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "C",
+      "lines": [
+        "Skip 500 MG of TREN",
+        "do this instead"
+      ],
+      "score": 27
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "Redo my first TREN cycle",
+        "without 500 MG"
+      ],
+      "score": 24
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "25 MG of TREN",
+        "growth without the sides"
+      ],
+      "score": 24,
+      "notes": "25 mg paid off at 1:25"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "500 MG of TREN",
+        "nobody gets hurt"
+      ],
+      "score": null,
+      "notes": "rejected: plays the 'kill somebody' joke as a claim"
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "I stopped running",
+        "600 MG of TREN"
+      ],
+      "score": null,
+      "notes": "rejected: already used on the previous take (reel-micro-tren-01)"
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-9.46 If I had to run trenbolone acetate for the first time all over again, instead of running 500 mg a week, this is exactly what I would do so I don't kill somebody while maximizing the growth effects.",
+    "lock_in_zone": "10.14-19.4 400, 500, 600 mg of tren, night sweats, destroyed sleep, terrible cardio, massive mood changes",
+    "first_frame": "indoors by a window; bright window behind the hook area -> boxed lines",
+    "subject": "TREN",
+    "specifics": [
+      "500 mg a week",
+      "400/500/600 mg",
+      "500+ panels",
+      "rating 500 / 5x",
+      "25-50 mg"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:10 (the 400-600 mg years and their sides; 'instead' is paid off at 1:25 with 25-50 mg)",
+    "trust_anchor": "0:20-0:29 decade coaching + 500+ bloodwork panels (full-screen scene), just after the lock-in window"
+  },
+  "visual_hook": "108% punch-in snaps in on the spoken subject 'Trenbolone' at 0.60 s",
+  "topic_band": {
+    "text": "TREN microdosing",
+    "from": 6.0,
+    "to": "midpoint 60.45 s",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "spoken hook runs 9.5 s, so the hold is capped at 6.0 s (rule 9)",
+    "trust anchor lands at 0:20, just after the 0:04-0:12 lock-in window"
+  ]
+}
