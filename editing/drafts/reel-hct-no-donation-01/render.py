@@ -877,7 +877,7 @@ def tube(L,d,t):
     if t>=TB_PCT:
         s=clamp((t-TB_PCT)/0.2); d.text((x1+84,680),'HCT = % OF BLOOD',font=f(MONOB,30),fill=CREAM+(int(a*s),))
         d.text((x1+84,722),'THAT IS RED CELLS',font=f(MONOB,30),fill=CREAM+(int(a*s),))
-    if t>=TB_DEH: pill(d,700,800,'DEHYDRATED',f(MONOB,36),SKY,DEEP,int(a*clamp((t-TB_DEH)/0.2)))
+    if t>=TB_DEH: pill(d,830,500,'DEHYDRATED',f(MONOB,36),SKY,DEEP,int(a*clamp((t-TB_DEH)/0.2)))
     if t>=TB_HI:
         s=expo((t-TB_HI)/0.18); ctext(d,'HCT READS',f(BEB,70),720,960,CREAM,int(a*s)); ctext(d,'HIGHER',f(BEB,120),700,1030,HOT,int(a*s),True)
         tri(d,880,1050,60,True,HOT+(int(a*s),))
