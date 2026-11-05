@@ -1,7 +1,7 @@
 # Reel: "HCT no Donation" — dropping hematocrit without blood donation (native 1080p + phone copy)
 
 **Source:** Drive file `10XsFfl3C5ZSVvaOyq9FyIU_yrhFhrmBC`, 1080×1920 HEVC 60 fps, 1:55.1.
-**Output:** `coach-agz_hct-no-donation_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized). The CRF 16 master stays in scratch if it is over GitHub's 100 MB limit.
+**Output:** `coach-agz_hct-no-donation_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized). Master: `coach-agz_hct-no-donation_1080p_master.mp4` (CRF 16, 81 MB). Checks: 3,277 frames decode, −14.3 LUFS, peak −1.8 dBFS, L/R identical.
 
 ## Order of work
 1. **Audio check:** the voice is in the right channel only (left about −108 dB), with 113 clipped samples. Fixed to dual-mono at the mix (`fix_audio.py`, pan c1).
