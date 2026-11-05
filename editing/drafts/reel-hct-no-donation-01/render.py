@@ -757,6 +757,7 @@ def ctext(d,txt,fn,cx,y,col,a,glow=False):
     x=cx-d.textlength(txt,font=fn)/2; d.text((x,y),txt,font=fn,fill=col+(a,))
     if glow and GL: GL.text((x,y),txt,font=fn,fill=col+(int(a*0.7),))
 def nline(d,pts,col,w,a):
+    if len(pts)<2: return
     d.line(pts,fill=col+(a,),width=w,joint='curve')
     if GL: GL.line(pts,fill=col+(int(a*0.9),),width=w*3,joint='curve')
 def nrect(d,box,col,a,w=4,r=18):
