@@ -1,7 +1,7 @@
 # Reel: "E2 Grinch" — getting emotional on cycle isn't automatically high E2 (native 1080p + phone copy)
 
 **Source:** Drive file `1LVYHNxKPrhz-4OgxNEZ-s4a1JyusAyn8`, 1080×1920 HEVC 60 fps, 1:49.9, car selfie, single take with three in-camera jump cuts (24.1, 27.0, 92.8 s).
-**Output:** `coach-agz_e2-grinch_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_e2-grinch_1080p_master.mp4` (86 MB). Checks: 3,337 frames decode, −14.2 LUFS, peak −1.9 dBFS, L/R identical; QC sheet of 26 frames from the phone file.
+**Output:** `coach-agz_e2-grinch_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_e2-grinch_1080p_master.mp4` (82 MB). Checks (v2): 3,337 frames decode, −14.2 LUFS, peak −1.8 dBFS, L/R identical; QC sheet of 26 frames from the phone file.
 
 ## Order of work
 1. **Audio:** voice in the right channel only (left −108.6 dB), 111 clipped samples. Dual-mono at the mix (`fix_audio.py`, pan c1).
