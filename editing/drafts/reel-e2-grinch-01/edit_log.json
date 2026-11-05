@@ -1,0 +1,111 @@
+{
+  "video": "E2 Grinch (Drive 1LVYHNxKPrhz-4OgxNEZ-s4a1JyusAyn8)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "Crying over the Grinch",
+      "blame your E2"
+    ],
+    "emphasis": [
+      "E2"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "Emotional on cycle",
+      "don't blame E2"
+    ],
+    [
+      "High E2",
+      "doesn't mean an AI"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "A",
+      "lines": [
+        "Crying over the Grinch",
+        "blame your E2"
+      ],
+      "score": 27,
+      "notes": "keeps the comedic open, states the misconception the video flips"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "Emotional on cycle",
+        "don't blame E2"
+      ],
+      "score": 25
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "High E2",
+        "doesn't mean an AI"
+      ],
+      "score": 24,
+      "notes": "gives the answer away"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "Read your E2 right",
+        "3-point framework"
+      ],
+      "score": 22
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "Your E2 red alert",
+        "read it right"
+      ],
+      "score": 21
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-6.0 So I'm sitting there with my 11-year-old kid watching the Grinch... this green motherf*cker has me fighting back tears.",
+    "lock_in_zone": "6.6-14.3 Nothing humbles an enhanced bodybuilder faster than almost crying over a Christmas cartoon... what the hell is going on with my E2?",
+    "first_frame": "car interior, bright side windows behind the hook area -> boxed lines",
+    "subject": "E2 (estradiol)",
+    "tone": "comedic open (0-15 s, no overlays) then educational",
+    "specifics": [
+      "11-year-old",
+      "over a decade",
+      "500+ panels",
+      "3-point framework",
+      "sensitive E2, total T, free T, SHBG"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:14 ('what the hell is going on with my E2?')",
+    "trust_anchor": "MISSING in 0:04-0:12 (comedic setup); 500+ panels card at 0:38"
+  },
+  "visual_hook": "108% punch-in on 'Grinch' at 2.28 s",
+  "topic_band": {
+    "text": "E2 is not your enemy",
+    "from": 15.05,
+    "to": "midpoint 55.6 s (hidden during full-screen scenes)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "visual hook lands at 2.28 s ('Grinch'), outside the 1.5 s rule: the subject E2 is not spoken until 14.3 s",
+    "topic band held back until the educational turn (15.05 s) instead of 6.0 s, per the comedic-open brief",
+    "trust anchor missing in the lock-in window (comedic setup); 500+ panels shown at 0:38"
+  ]
+}
