@@ -1,11 +1,11 @@
-# Reel: "Normal Reference Ranges" (testosterone reference ranges): full edit, native 1080x1920, all-new overlay set
+# Reel: "HCT no Donation" (dropping hematocrit without blood donation): full edit, native 1080x1920, neon overlay set
 # Built on the saved setup: test-06 look + full-test-02 workflow (dead air trimmed, misspeak cut, 108% punch-in per jump cut,
 # captions from the trimmed audio). Usage: python render.py <scratch> [--events|--groups|--still t..|--range n0 n1 out.mp4]
 import json, subprocess, sys, math, re
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
-S=sys.argv[1]; F=S+'/fonts/'; T=S+'/r11/work/'
-W,H=1080,1920; FPS=30; N=3249; DUR=N/FPS
+S=sys.argv[1]; F=S+'/fonts/'; T=S+'/r12/work/'
+W,H=1080,1920; FPS=30; N=3277; DUR=N/FPS
 GOLD=(201,169,110); CREAM=(244,241,234); MUTED=(184,184,188); LABEL=(124,124,130)
 RED=(255,34,28); NAVY=(14,17,23); VGOLD=(255,194,26); CYAN=(0,229,255); GREEN=(30,255,110); DEEP=(2,3,8)
 INNER=(29,29,33); CHIP=(40,12,18)
@@ -78,10 +78,9 @@ def meter(d,x0,y,x1,v,col,h=22):
 
 # ---------------- words / captions: source transcript (gap-guarded windows) mapped through the trim ----------------
 words=json.load(open(T+'words_cut.json'))   # = words_captions.json in this folder
-FIX={185:'YOUR',110:'NANOGRAMS',111:'PER',112:'DECILITER,',285:'F*CKING',337:'SH*T'}
-# 185: heard "total T or free T" by the long pass; both focused passes hear "your free T"
+FIX={104:'FERRITIN,',235:'PRO MUSCLE',243:'DIHYDROQUERCETIN.',254:'OF 57',340:'F*CKING'}
 for i,w in FIX.items(): words[i]['w']=w
-words[301]['w']='15,000'; words[301]['e']=words[302]['e']; del words[302]
+for i,s_ in ((270,'54%'),(11,'49%'),(7,'57%')): words[i]['w']=s_; words[i]['e']=words[i+1]['e']; del words[i+1]   # "57 %" -> "57%" (descending so indices hold)
 for w in words: w['w']=w['w'].upper()
 CAP_Y=1450; CAP_MAX=900
 import difflib as _dl
@@ -599,7 +598,7 @@ DISC='FOR RESEARCH & EDUCATIONAL PURPOSES ONLY'
 # ---- TEXT HOOK (editing/TEXT_HOOK_ENGINE.md): fully visible on frame 0, no entry animation, 0.15 s fade out;
 #      then a compact topic band until the midpoint (nearest jump cut), then the top stays clear ----
 NEWTL=True
-HOOK_LINES=[[('Normal ',CREAM),('TESTOSTERONE',VGOLD)],[('your doctor’s dismissal',CREAM)]]
+HOOK_LINES=[[('HEMATOCRIT',VGOLD),(' 57% to 49%',CREAM)],[('no blood donation',CREAM)]]
 HOOK_END=6.00; HOOK_FADE=0.15; HOOK_Y=262
 THO=(HOOK_END,HOOK_END+HOOK_FADE)
 _mid=DUR/2; _nc=min(CUTS,key=lambda c:abs(c-_mid)); BAND_OUT=_nc if abs(_nc-_mid)<=1.5 else _mid      # nearest jump cut if within 1.5 s, else fade at the midpoint
@@ -618,7 +617,7 @@ def hook_band(im,t):
     if v>0 and t>=HOOK_END:
         B,bd=newL(); bd.rectangle([8,212,W,372],fill=NAVY+(int(235*v),)); im.alpha_composite(B)
         a=int(255*v); fn=f(BAR,64); x=64; y=236
-        for s,c in [('TESTOSTERONE',VGOLD),(' reference ranges',CREAM)]: d.text((x,y),s,font=fn,fill=c+(a,)); x+=d.textlength(s,font=fn)
+        for s,c in [('HEMATOCRIT',VGOLD),(' without donating',CREAM)]: d.text((x,y),s,font=fn,fill=c+(a,)); x+=d.textlength(s,font=fn)
         fs=f(MONO,24); s='@coach.agz'; d.text((1016-d.textlength(s,font=fs),226),s,font=fs,fill=GOLD+(a,))
         d.text((64,334),DISC,font=f(MONO,18),fill=LABEL+(a,))
     im.alpha_composite(L)
@@ -736,7 +735,7 @@ NEWTL=False
 
 
 
-# ======================= "Normal Reference Ranges" overlay set (all new formats) =======================
+# ======================= "HCT no Donation" overlay set (neon) =======================
 EVB=[]
 def sfxb(t,kind,**k): EVB.append(dict(t=round(t,3),kind=kind,**k))
 import re as _re2
@@ -746,267 +745,322 @@ def at(word,near):
         if n(w['w']).startswith(n(word)) and abs(w['s']-near)<3.5 and (best is None or abs(w['s']-near)<abs(best-near)): best=w['s']
     if best is None: raise SystemExit('word not found: %s @%s'%(word,near))
     return best
-MINT=(40,255,200); HOT=(255,60,90); LIME=(190,255,60); SKY=(70,160,255)
+MINT=(40,255,200); HOT=(255,50,110); LIME=(190,255,60); SKY=(70,170,255); PURP=(170,90,255); AMBER=(255,170,20)
 def kinetic(d,txt,fn,x,y,t0,t,col,frm=-1,dur=0.22):
     q=expo((t-t0)/dur)
     if q<=0: return 0
     w=d.textlength(txt,font=fn); xx=x+frm*(1-q)*(W+w)
     d.text((xx,y),txt,font=fn,fill=col+(int(255*min(1,q*1.4)),))
-    if GL and t<t0+0.5: GL.text((xx,y),txt,font=fn,fill=col+(int(150*(1-(t-t0)/0.5)),))
+    if GL: GL.text((xx,y),txt,font=fn,fill=col+(int(120*min(1,q)),))
     return q
-def ctext(d,txt,fn,cx,y,col,a):
-    d.text((cx-d.textlength(txt,font=fn)/2,y),txt,font=fn,fill=col+(a,))
+def ctext(d,txt,fn,cx,y,col,a,glow=False):
+    x=cx-d.textlength(txt,font=fn)/2; d.text((x,y),txt,font=fn,fill=col+(a,))
+    if glow and GL: GL.text((x,y),txt,font=fn,fill=col+(int(a*0.7),))
+def nline(d,pts,col,w,a):
+    d.line(pts,fill=col+(a,),width=w,joint='curve')
+    if GL: GL.line(pts,fill=col+(int(a*0.9),),width=w*3,joint='curve')
+def nrect(d,box,col,a,w=4,r=18):
+    d.rounded_rectangle(box,radius=r,outline=col+(a,),width=w)
+    if GL: GL.rounded_rectangle(box,radius=r,outline=col+(int(a*0.9),),width=w*3)
 def pill(d,cx,y,txt,fn,bg,fg,a):
     w=d.textlength(txt,font=fn); h=fn.size+18; lit_bar(d,cx-w/2-18,y,cx+w/2+18,y+h,bg,a); d.text((cx-w/2,y+8),txt,font=fn,fill=fg+(a,))
-# ---- scene windows (footage pushed back) ----
-S_BELL=(at('we',7.8)-0.05, at('now',15.7)-0.05)
-S_RANGE=(at('now',24.4)-0.05, at('now',46.3)-0.05)
-S_THREE=(at('so',48.0)-0.05, at('ultimately',58.8)-0.05)
-S_WARE=(at('so',60.4)-0.05, at('so',78.1)-0.05)
-S_SLAM=(at('reference',93.7)-0.08, at('now',95.4)-0.02)
-SCENES=[S_BELL,S_RANGE,S_THREE,S_WARE,S_SLAM]
+def float_a(t,t0,t1): return expo((t-t0)/0.25)*(1-ease_io((t-t1)/0.2)) if t0<=t<=t1+0.2 else 0
+def scene_a(t,win): return clamp((t-win[0])/0.2)*(1-ease_io((t-win[1])/0.22))
+S_FLOW=(at('most',17.1)-0.05, at('realistically',23.5)-0.05)
+S_PROB=(at('realistically',23.5)-0.05, at('that',37.2)-0.05)
+S_TUBE=(at('very',41.5)-0.05, at('secondarily',51.9)-0.05)
+S_ECG=(at('secondarily',51.9)-0.05, at('and',60.5)-0.05)
+S_GAUGE=(at('here',69.0)-0.05, at('to',79.9)-0.05)
+S_EQ=(at('lowering',85.0)-0.05, at('because',88.6)-0.05)
+S_AGE=(at('because',88.6)-0.05, at('now',97.5)-0.05)
+SCENES=[S_FLOW,S_PROB,S_TUBE,S_ECG,S_GAUGE,S_EQ,S_AGE]
 def B_push(t):
     g=0
     for a_,b_ in SCENES: g=max(g,clamp((t-a_)/0.22)*clamp((b_-t)/0.22))
     return ease_io(g)
-for a_,b_ in SCENES: sfxb(a_,'whoosh',d=0.22,g=-28); sfxb(a_+0.2,'thud',w=1.3,g=-17)
-def scene_a(t,win): return clamp((t-win[0])/0.2)*(1-ease_io((t-win[1])/0.22))
+for i,(a_,b_) in enumerate(SCENES):
+    if i==0 or abs(a_-SCENES[i-1][1])>0.3: sfxb(a_,'whoosh',d=0.22,g=-28)
+    sfxb(a_+0.2,'thud',w=1.2,g=-18)
 
-# 1) lab chip WITHIN RANGE -> DISMISSED (6.0 - 7.75), top of frame under the band
-DIS=at('dismissal',6.9); C0=6.05; C1=S_BELL[0]
-sfxb(C0,'tick',g=-27); sfxb(DIS,'impact',g=-15)
-def dismiss(L,d,t):
-    if t<C0 or t>C1+0.2: return
-    q=expo((t-C0)/0.22); o=ease_io((t-C1)/0.2); a=int(255*q*(1-o)); x0,y0,x1,y1=150,400,930,560
-    d.rounded_rectangle([x0,y0+30*(1-q),x1,y1+30*(1-q)],radius=18,fill=(250,249,246,a))
-    d.text((x0+30,y0+22),'TOTAL TESTOSTERONE',font=f(MONOB,30),fill=(40,40,48,a))
-    d.text((x0+30,y0+72),'WITHIN REFERENCE RANGE',font=f(BAR,44),fill=(20,110,60,a)); check(d,x1-80,y0+80,(20,150,70,a),6,1.2)
-    if t>=DIS:
-        s=expo((t-DIS)/0.12); ly=y0+100; d.line([(x0+20,ly),(lerp(x0+20,x1-20,s),ly)],fill=RED+(a,),width=8)
-        yb=y1+16; xb=lerp(x0,x1,s)
-        if GL: GL.rectangle([x0-4,yb-6,xb+4,yb+96],outline=RED+(255,),width=10)
-        lit_bar(d,x0,yb,xb,yb+90,RED,a)
-        if s>0.6: ctext(d,'DISMISSED',f(BEB,84),(x0+x1)/2,yb+6,(255,255,255),a)
+# 1) mirror vs bloodwork (floating, top)
+MB0=at('because',12.4); MB1=S_FLOW[0]-0.05; MB_BEAST=at('beast',13.5); MB_BW=at('bloodwork',14.6); MB_DIFF=at('different',16.2)
+sfxb(MB_BEAST,'tick',g=-26); sfxb(MB_BW,'tick',g=-26); sfxb(MB_DIFF,'tick',g=-23)
+def mirror(L,d,t):
+    a=int(255*float_a(t,MB0,MB1))
+    if a<=0: return
+    d.rounded_rectangle([40,392,1040,700],radius=22,fill=(4,6,14,int(a*0.86)))
+    nrect(d,(70,420,520,640),MINT,a); nrect(d,(560,420,1010,640),HOT,a)
+    ctext(d,'THE MIRROR',f(MONOB,26),295,438,MINT,a)
+    if t>=MB_BEAST: ctext(d,'LOOKS GREAT',f(BEB,84),295,500,MINT,a,True)
+    ctext(d,'THE BLOODWORK',f(MONOB,26),785,438,HOT,a)
+    if t>=MB_BW: ctext(d,'HCT  HIGH',f(BEB,84),785,500,HOT,a,True)
+    if t>=MB_DIFF: pill(d,540,648,'TOTALLY DIFFERENT STORY',f(MONOB,24),HOT,(255,255,255),a)
 
-# 2) bell curve, middle 95% shaded
-B_POP=at('population',11.3); B_DRAW=at('draw',12.1); B_95=at('95',12.9); B_NORM=at('normal',15.0)
-sfxb(B_DRAW,'scan',d=0.8,g=-31); sfxb(B_95,'tick',g=-24); sfxb(B_NORM,'thud',w=1.1,g=-19)
-def bell(L,d,t):
-    if t<S_BELL[0] or t>S_BELL[1]+0.25: return
-    a=int(255*scene_a(t,S_BELL)); gx0,gx1,base,top=80,1000,1150,560
-    kinetic(d,'WHERE "NORMAL" COMES FROM',f(BEB,74),80,410,S_BELL[0]+0.15,t,CREAM,-1)
-    g=lambda u: math.exp(-((u-0.5)/0.16)**2/2)
-    q=ease_io((t-S_BELL[0]-0.3)/0.9); pts=[(lerp(gx0,gx1,k/120),base-(base-top)*g(k/120)) for k in range(int(121*q))]
-    d.line([(gx0,base),(gx1,base)],fill=MUTED+(a,),width=3)
-    if t>=B_POP:   # population dots under the curve
-        n=int(160*clamp((t-B_POP)/0.8)); rng=np.random.default_rng(4)
-        for k in range(n):
-            u=float(np.clip(rng.normal(0.5,0.16),0.03,0.97)); yy=base-12-rng.random()*(base-top)*g(u)*0.92; x=lerp(gx0,gx1,u)
-            d.ellipse([x-5,yy-5,x+5,yy+5],fill=SKY+(int(a*0.7),))
-    if t>=B_95:
-        s=ease_io((t-B_95)/0.5); u0,u1=0.5-0.32*s,0.5+0.32*s
-        poly=[(lerp(gx0,gx1,u0),base)]+[(lerp(gx0,gx1,u),base-(base-top)*g(u)) for u in np.linspace(u0,u1,80)]+[(lerp(gx0,gx1,u1),base)]
-        sh=Image.new('RGBA',(W,H),(0,0,0,0)); ImageDraw.Draw(sh).polygon(poly,fill=VGOLD+(int(a*0.45),)); L.alpha_composite(sh)
-        if s>=1:
-            ctext(d,'MIDDLE 95%',f(BEB,96),540,base-(base-top)*0.45,VGOLD,a)
-            for u,lab in ((0.1,'2.5%'),(0.9,'2.5%')): ctext(d,lab,f(MONOB,26),lerp(gx0,gx1,u),base-80,MUTED,a)
-    if len(pts)>1: glow_line(d,pts,CREAM,6,a)
-    if t>=B_NORM: pill(d,540,base+40,'= "PERFECTLY NORMAL"',f(MONOB,34),VGOLD,DEEP,a)
+# 2) flowchart: HCT up -> clinic -> donate
+F_SEE=at('elevated',19.6); F_DON=at('donate',22.6)
+sfxb(F_SEE,'tick',g=-25); sfxb(F_DON,'thud',w=1.4,g=-17)
+def flow(L,d,t):
+    if t<S_FLOW[0] or t>S_FLOW[1]+0.25: return
+    a=int(255*scene_a(t,S_FLOW))
+    kinetic(d,'THE USUAL PLAYBOOK',f(BEB,96),80,400,S_FLOW[0]+0.1,t,SKY,-1)
+    nodes=[('HCT UP',620,HOT,F_SEE),('TRT CLINIC',860,SKY,F_SEE+0.5),('DONATE BLOOD',1100,AMBER,F_DON)]
+    for k,(lab,cy,col,tt) in enumerate(nodes):
+        q=expo((t-tt)/0.2)
+        if q<=0: continue
+        fn=f(BEB,86); w=d.textlength(lab,font=fn)+90
+        nrect(d,(540-w/2,cy-62,540+w/2,cy+62),col,int(a*q),6,26); ctext(d,lab,fn,540,cy-44,col,int(a*q),True)
+        if k>0:
+            y0=nodes[k-1][1]+66; y1=cy-66; s=ease_io((t-tt+0.4)/0.4)
+            nline(d,[(540,y0),(540,lerp(y0,y1,s))],CREAM,5,a)
+            py=lerp(y0,y1,(t*2.5)%1.0); d.ellipse([530,py-10,550,py+10],fill=col+(a,))
+# 3) problem scene: repeated donations -> three neon meters drain
+PR_REP=at('repeated',25.0); PR_IRON=at('iron',26.9); PR_FER=at('ferritin',28.5); PR_FAT=at('fatigue',30.0); PR_UND=at('underlying',35.5)
+for tt in (PR_IRON,PR_FER,PR_FAT): sfxb(tt,'tick',g=-24)
+sfxb(PR_UND,'impact',g=-16)
+def prob(L,d,t):
+    if t<S_PROB[0] or t>S_PROB[1]+0.25: return
+    a=int(255*scene_a(t,S_PROB))
+    kinetic(d,'REPEATED DONATIONS',f(BEB,104),80,400,PR_REP-0.15,t,HOT,-1)
+    d.text((84,520),'WHAT IT CAN COST YOU',font=f(MONOB,26),fill=LABEL+(int(a*clamp((t-PR_REP)/0.2)),))
+    rows=[('IRON STORES',PR_IRON,AMBER),('FERRITIN',PR_FER,PURP),('ENERGY · PERFORMANCE',PR_FAT,LIME)]
+    for k,(lab,tt,col) in enumerate(rows):
+        q=expo((t-tt+0.35)/0.25)
+        if q<=0: continue
+        y=620+k*190; aa=int(a*q)
+        d.text((80,y),lab,font=f(BEB,64),fill=col+(aa,))
+        lvl=lerp(0.92,0.18,ease_io((t-tt)/0.9)) if t>=tt else 0.92
+        x0,x1=80,1000; d.rounded_rectangle([x0,y+80,x1,y+124],radius=22,outline=col+(int(aa*0.6),),width=3)
+        d.rounded_rectangle([x0+6,y+86,x0+6+(x1-x0-12)*lvl,y+118],radius=16,fill=col+(aa,))
+        if GL: GL.rounded_rectangle([x0+6,y+86,x0+6+(x1-x0-12)*lvl,y+118],radius=16,fill=col+(int(aa*0.55),))
+        if t>=tt: tri(d,940,y+8,40,False,HOT+(aa,))
+    if t>=PR_UND:
+        s=expo((t-PR_UND)/0.18); pill(d,540,1210+20*(1-s),"DOESN'T FIX THE CAUSE",f(MONOB,40),HOT,(255,255,255),int(a*s))
 
-# 3) population pictogram (top strip, floats above the cap)
-TRAITS=[('OVERWEIGHT',at('overweight',17.7),ORANGE),('TIRED',at('tired',18.4),(180,140,255)),('DEPRESSED',at('depressed',19.0),SKY),('MEDICATIONS',at('medications',20.2),HOT),('PRESCRIPTIONS',at('prescriptions',21.5),RED),('ANTIDEPRESSANTS',at('antidepressants',22.1),MAGENTA)]
-P0=at('population',17.0)-0.3; P1=S_RANGE[0]
-for _,tt,_c in TRAITS: sfxb(tt,'tick',g=-28)
-def person(d,cx,cy,s,col,a):
-    d.ellipse([cx-s*0.32,cy-s,cx+s*0.32,cy-s*0.36],fill=col+(a,)); d.rounded_rectangle([cx-s*0.48,cy-s*0.3,cx+s*0.48,cy+s*0.7],radius=int(s*0.3),fill=col+(a,))
-def picto(L,d,t):
-    if t<P0 or t>P1+0.2: return
-    q=expo((t-P0)/0.25); o=ease_io((t-P1)/0.2); a=int(255*q*(1-o))
-    d.rounded_rectangle([30,390,1050,700],radius=20,fill=(6,8,14,int(a*0.82)))
-    d.text((60,404),'THE POPULATION THE RANGE IS BUILT ON',font=f(MONOB,24),fill=CREAM+(a,))
-    cols,rows=20,4; k=0; n_on=sum(1 for _,tt,_c in TRAITS if t>=tt)
-    for r in range(rows):
-        for c in range(cols):
-            cx=75+c*49; cy=474+r*52; idx=(c*7+r*3)%len(TRAITS)
-            col=TRAITS[idx][2] if idx<n_on and (c+r)%5!=0 else (90,92,100)
-            person(d,cx,cy,22,col,a)
-    x=60; y=660
-    for lab,tt,col in TRAITS:
-        if t<tt: break
-        fn=f(MONOB,20); w=d.textlength(lab,font=fn); d.rectangle([x,y-28,x+w+16,y-4],fill=col+(a,)); d.text((x+8,y-27),lab,font=fn,fill=DEEP+(a,)); x+=w+26
-        if x>980: break
+# 4) floating top card: BLOOD DONATION != YOUR FIRST MOVE
+NF0=S_PROB[1]; NF1=S_TUBE[0]-0.05; NF_BD=at('blood',38.6); NF_FIRST=at('first',40.3)
+sfxb(NF_BD,'tick',g=-25); sfxb(NF_FIRST,'thud',w=1.0,g=-19)
+def notfirst(L,d,t):
+    a=int(255*float_a(t,NF0,NF1))
+    if a<=0: return
+    d.rounded_rectangle([40,392,1040,690],radius=22,fill=(4,6,14,int(a*0.86)))
+    nrect(d,(70,420,1010,660),PURP,a,4,20)
+    ctext(d,'BLOOD DONATION',f(BEB,104),540,440,CREAM,a)
+    if t>=NF_FIRST:
+        s=expo((t-NF_FIRST)/0.16); ctext(d,'NOT YOUR FIRST MOVE',f(BEB,96),540,548+18*(1-s),HOT,int(a*s),True)
 
-# 4) reference-range bar 250-900 (median 500), markers 300 & 880 -> batteries
-R_YH=at('young',25.4); R_250=at('250',29.7); R_900=at('900',31.1); R_MED=at('500',34.0); R_300=at('300',36.4); R_880=at('880',38.2); R_BOTH=at('both',39.3)
-R_FEEL=at('feel',43.9); R_SAME=at('same',44.8); R_OPT=at('optimized',45.6)
-for tt in (R_250,R_900,R_300,R_880): sfxb(tt,'tick',g=-25)
-sfxb(R_MED,'thud',w=1.0,g=-19); sfxb(R_BOTH,'impact',g=-16); sfxb(R_FEEL,'scan',d=0.5,g=-31); sfxb(R_OPT,'tick',g=-24)
-def battery(d,x,y,w,h,level,col,a):
-    d.rounded_rectangle([x,y,x+w,y+h],radius=14,outline=CREAM+(a,),width=6); d.rectangle([x+w,y+h*0.3,x+w+18,y+h*0.7],fill=CREAM+(a,))
-    d.rounded_rectangle([x+12,y+12,x+12+(w-24)*level,y+h-12],radius=8,fill=col+(a,))
-    if GL: GL.rounded_rectangle([x+12,y+12,x+12+(w-24)*level,y+h-12],radius=8,fill=col+(int(a*0.5),))
-def rangebar(L,d,t):
-    if t<S_RANGE[0] or t>S_RANGE[1]+0.25: return
-    a=int(255*scene_a(t,S_RANGE)); x0,x1,y=80,1000,880
-    kinetic(d,'YOUNG · HEALTHY · NOT OBESE',f(BEB,64),80,410,R_YH,t,MINT,-1)
-    d.text((80,486),'TOTAL TESTOSTERONE · NG/DL',font=f(MONO,24),fill=LABEL+(int(255*clamp((t-R_YH)/0.2)),))
-    X=lambda v: x0+(x1-x0)*v/1200
-    q=ease_io((t-S_RANGE[0]-0.2)/0.6); d.rounded_rectangle([x0,y,x0+(x1-x0)*q,y+40],radius=20,fill=(40,42,52,a))
-    for v in (0,300,600,900,1200):
-        if q>=1: ctext(d,str(v),f(MONO,20),X(v),y+52,LABEL,a)
-    if t>=R_250:
-        e=X(lerp(250,900,ease_io((t-R_900)/0.5))) if t>=R_900 else X(250)+6
-        grad_rect(L,(X(250),y,e,y+40),MINT,(20,180,140),a)
-        ctext(d,'250',f(BEB,64),X(250),y-80,MINT,a)
-        if t>=R_900: ctext(d,'900',f(BEB,64),X(900),y-80,MINT,int(a*clamp((t-R_900)/0.2)))
-    if t>=R_MED:
-        s=expo((t-R_MED)/0.14); d.line([(X(500),y-14),(X(500),y+54)],fill=VGOLD+(int(a*s),),width=6); ctext(d,'MEDIAN 500',f(MONOB,26),X(500),y+100,VGOLD,int(a*s))
-    morph=ease_io((t-R_FEEL+0.4)/0.5) if t>=R_FEEL-0.4 else 0
-    for v,tt,col,lvl in ((300,R_300,HOT,0.18),(880,R_880,LIME,0.92)):
-        if t<tt: continue
-        s=expo((t-tt)/0.2)
-        if morph<1:
-            mx=X(v); my=lerp(y-260,y-150,s); aa=int(a*s*(1-morph))
-            d.polygon([(mx-22,my),(mx+22,my),(mx,my+34)],fill=col+(aa,)); ctext(d,'GUY AT %d'%v,f(MONOB,28),mx,my-44,col,aa)
-        if morph>0:
-            bx=150 if v==300 else 590; battery(d,bx,1030,300,140,lvl*ease_io((t-R_FEEL)/0.8),col,int(a*morph))
-            ctext(d,'%d NG/DL'%v,f(BEB,56),bx+150,1180,col,int(a*morph))
-    if t>=R_BOTH and morph<1: pill(d,540,1010,'BOTH "NORMAL"',f(MONOB,38),VGOLD,DEEP,int(a*(1-morph)))
-    if t>=R_SAME: ctext(d,'SAME FEEL?',f(BEB,90),540,1250,CREAM,int(a*clamp((t-R_SAME)/0.2)))
-    if t>=R_OPT: pill(d,540,1352,'BOTH OPTIMIZED?',f(MONOB,32),HOT,(255,255,255),a)
+# 5) tube scene: STEP 1 HYDRATION, plasma vs red cells
+TB_PCT=at('percentage',44.6); TB_DEH=at('dehydrated',45.6); TB_PL=at('plasma',46.4); TB_HI=at('higher',47.9); TB_RBC=at('producing',49.6)
+sfxb(TB_PCT,'tick',g=-25); sfxb(TB_DEH,'scan',d=0.6,g=-30); sfxb(TB_HI,'thud',w=1.0,g=-19); sfxb(TB_RBC,'tick',g=-25)
+def tube_shape(d,x0,y0,x1,y1,col,a):
+    d.rounded_rectangle([x0,y0,x1,y1],radius=(x1-x0)//2,outline=col+(a,),width=6)
+    if GL: GL.rounded_rectangle([x0,y0,x1,y1],radius=(x1-x0)//2,outline=col+(int(a*0.8),),width=14)
+def tube(L,d,t):
+    if t<S_TUBE[0] or t>S_TUBE[1]+0.25: return
+    a=int(255*scene_a(t,S_TUBE))
+    kinetic(d,'STEP 1',f(BEB,70),80,400,S_TUBE[0]+0.05,t,MINT,-1)
+    kinetic(d,'HYDRATION',f(BEB,130),80,460,S_TUBE[0]+0.15,t,SKY,-1)
+    x0,x1,y0,y1=150,390,640,1300; inner=(x0+10,y0+10,x1-10,y1-10)
+    rbc_h=300                                   # red-cell column never changes
+    pl=lerp(1.0,0.45,ease_io((t-TB_PL)/0.9)) if t>=TB_PL else 1.0
+    pl_h=(y1-y0-20-rbc_h)*pl
+    ry0=y1-10-rbc_h; py0=ry0-pl_h
+    d.rounded_rectangle([inner[0],py0,inner[2],ry0+30],radius=24,fill=AMBER+(int(a*0.55),))
+    d.rounded_rectangle([inner[0],ry0,inner[2],inner[3]],radius=(inner[2]-inner[0])//2,fill=HOT+(a,))
+    for k in range(14):
+        cx=inner[0]+26+(k*53)%(inner[2]-inner[0]-50); cy=ry0+30+((k*97)%(rbc_h-70))
+        d.ellipse([cx-16,cy-10,cx+16,cy+10],outline=(255,170,190,a),width=3)
+    tube_shape(d,x0,y0,x1,y1,CREAM,a)
+    def lab(y,txt,col,aa):
+        d.line([(x1+14,y),(x1+70,y)],fill=col+(aa,),width=4); d.text((x1+84,y-30),txt,font=f(BEB,58),fill=col+(aa,))
+    lab((py0+ry0)/2,'PLASMA',AMBER,a); lab((ry0+y1)/2,'RED CELLS',HOT,a)
+    if t>=TB_PCT:
+        s=clamp((t-TB_PCT)/0.2); d.text((x1+84,680),'HCT = % OF BLOOD',font=f(MONOB,30),fill=CREAM+(int(a*s),))
+        d.text((x1+84,722),'THAT IS RED CELLS',font=f(MONOB,30),fill=CREAM+(int(a*s),))
+    if t>=TB_DEH: pill(d,700,800,'DEHYDRATED',f(MONOB,36),SKY,DEEP,int(a*clamp((t-TB_DEH)/0.2)))
+    if t>=TB_HI:
+        s=expo((t-TB_HI)/0.18); ctext(d,'HCT READS',f(BEB,70),720,960,CREAM,int(a*s)); ctext(d,'HIGHER',f(BEB,120),700,1030,HOT,int(a*s),True)
+        tri(d,880,1050,60,True,HOT+(int(a*s),))
+    if t>=TB_RBC:
+        s=clamp((t-TB_RBC)/0.2); ctext(d,'SAME RED CELLS',f(MONOB,34),720,1190,MINT,int(a*s))
 
-# 5) three-number rule: flip tiles
-T_RULE=at('three',48.8); T_ONE=at('one',50.6); T_TOT=at('total',52.5); T_FREE=at('free',53.3); T_SHBG=at('shbg',54.2); T_FEEL=at('feel',56.2)
-sfxb(T_RULE,'thud',w=1.2,g=-18); sfxb(T_ONE,'tick',g=-24)
-for tt in (T_TOT,T_FREE,T_SHBG): sfxb(tt,'thud',w=0.9,g=-20)
-sfxb(T_FEEL,'tick',g=-25)
-def flip_tile(d,x,y,w,h,num,lab,col,t0,t,a):
-    p=clamp((t-t0)/0.28)
-    if p<=0:
-        d.rounded_rectangle([x,y,x+w,y+h],radius=18,fill=(30,32,40,a)); return
-    sq=abs(math.cos(math.pi*min(p,1))) if p<1 else 1; hh=h*max(0.04,sq)
-    yy=y+(h-hh)/2; face=p>=0.5
-    d.rounded_rectangle([x,yy,x+w,yy+hh],radius=18,fill=(col if face else (30,32,40))+(a,))
-    if GL and face and t<t0+0.6: GL.rounded_rectangle([x,yy,x+w,yy+hh],radius=18,outline=col+(int(200*(1-(t-t0)/0.6)),),width=10)
-    if face and hh>h*0.6:
-        ctext(d,num,f(BEB,120),x+w/2,y+20,DEEP,a); ctext(d,lab,f(MONOB,30),x+w/2,y+h-56,DEEP,a)
-def three(L,d,t):
-    if t<S_THREE[0] or t>S_THREE[1]+0.25: return
-    a=int(255*scene_a(t,S_THREE))
-    kinetic(d,'THE 3-NUMBER RULE',f(BEB,104),80,400,T_RULE-0.2,t,VGOLD,-1)
-    if t>=T_ONE:
-        s=expo((t-T_ONE)/0.16); d.text((80,540),'ONE NUMBER',font=f(BEB,80),fill=MUTED+(int(a*s),))
-        d.line([(70,590),(lerp(70,500,s),590)],fill=RED+(a,),width=10)
-    w,h=290,240
-    for k,(num,lab,col,tt) in enumerate((('1','TOTAL T',VGOLD,T_TOT),('2','FREE T',MINT,T_FREE),('3','SHBG',SKY,T_SHBG))):
-        flip_tile(d,70+k*325,700,w,h,num,lab,col,tt,t,a)
-    if t>=T_FEEL:
-        s=expo((t-T_FEEL)/0.2); y=1010+20*(1-s); d.rounded_rectangle([70,y,1010,y+150],radius=18,outline=HOT+(int(a*s),),width=5)
-        hx,hy=150,y+75; d.polygon([(hx,hy+40),(hx-46,hy-6),(hx-30,hy-36),(hx,hy-18),(hx+30,hy-36),(hx+46,hy-6)],fill=HOT+(int(a*s),))
-        d.text((230,y+36),'+ HOW YOU ACTUALLY FEEL',font=f(BEB,76),fill=CREAM+(int(a*s),))
+# 6) ECG scene: STEP 2 CONSISTENT CARDIO, plasma expands, HCT down
+EC_AER=at('aerobic',53.7); EC_EXP=at('expand',55.0); EC_LOW=at('lowers',57.5); EC_REM=at('removing',59.0)
+sfxb(EC_AER,'scan',d=0.7,g=-31); sfxb(EC_EXP,'tick',g=-24); sfxb(EC_LOW,'thud',w=1.2,g=-18); sfxb(EC_REM,'tick',g=-25)
+def ecg_y(u):
+    p=u%1.0
+    if 0.40<p<0.44: return -0.25
+    if 0.44<=p<0.48: return 1.0
+    if 0.48<=p<0.52: return -0.45
+    if 0.62<p<0.74: return 0.18*math.sin((p-0.62)/0.12*math.pi)
+    return 0
+def ecg(L,d,t):
+    if t<S_ECG[0] or t>S_ECG[1]+0.25: return
+    a=int(255*scene_a(t,S_ECG))
+    kinetic(d,'STEP 2',f(BEB,70),80,400,S_ECG[0]+0.05,t,LIME,-1)
+    kinetic(d,'CONSISTENT CARDIO',f(BEB,110),80,460,S_ECG[0]+0.15,t,MINT,-1)
+    gx0,gx1,gy=60,1020,760; ph=t*0.9
+    for x in range(gx0,gx1,60): d.line([(x,620),(x,900)],fill=(30,60,55,int(a*0.6)),width=1)
+    pts=[(x,gy-120*ecg_y(x/320-ph)) for x in range(gx0,gx1,4)]
+    hx=gx0+((t-S_ECG[0])*420)%(gx1-gx0)
+    nline(d,[p for p in pts if p[0]<=hx],LIME,5,a)
+    nline(d,[p for p in pts if p[0]>hx+60],LIME,5,int(a*0.35))
+    d.ellipse([hx-10,gy-120*ecg_y(hx/320-ph)-10,hx+10,gy-120*ecg_y(hx/320-ph)+10],fill=(255,255,255,a))
+    # plasma volume bar
+    if t>=EC_EXP-0.3:
+        q=clamp((t-EC_EXP+0.3)/0.25); y=960; aa=int(a*q)
+        d.text((80,y),'PLASMA VOLUME',font=f(MONOB,30),fill=AMBER+(aa,))
+        v=lerp(0.45,0.85,ease_io((t-EC_EXP)/1.2)) if t>=EC_EXP else 0.45
+        d.rounded_rectangle([80,y+50,1000,y+100],radius=24,outline=AMBER+(int(aa*0.6),),width=3)
+        d.rounded_rectangle([86,y+56,86+908*v,y+94],radius=18,fill=AMBER+(aa,))
+        if GL: GL.rounded_rectangle([86,y+56,86+908*v,y+94],radius=18,fill=AMBER+(int(aa*0.5),))
+        if t>=EC_EXP: ctext(d,'EXPANDS',f(BEB,56),900,y-14,AMBER,aa)
+    if t>=EC_LOW:
+        s=expo((t-EC_LOW)/0.18); d.text((80,1110+16*(1-s)),'HCT',font=f(BEB,120),fill=CREAM+(int(a*s),))
+        tri(d,290,1150,70,False,MINT+(int(a*s),)); d.text((380,1135),'LOWER',font=f(BEB,96),fill=MINT+(int(a*s),))
+    if t>=EC_REM: pill(d,540,1260,'NO RED CELLS REMOVED',f(MONOB,36),MINT,DEEP,int(a*clamp((t-EC_REM)/0.2)))
 
-# 6) warehouse & trucks schematic
-WH=at('warehouse',62.1); TR=at('trucks',66.6); DEL=at('delivering',70.3); FULL=at('full',71.5); NOTH=at('nothing',72.5); ZERO=at('zero',77.1)
-sfxb(WH,'thud',w=1.3,g=-18); sfxb(TR,'scan',d=0.6,g=-31); sfxb(NOTH,'tick',g=-23); sfxb(ZERO,'impact',g=-15)
-def truck(d,x,y,col,a):
-    d.rectangle([x,y,x+120,y+64],fill=col+(a,)); d.polygon([(x+120,y+18),(x+160,y+18),(x+176,y+40),(x+176,y+64),(x+120,y+64)],fill=col+(a,))
-    for wx in (x+28,x+140): d.ellipse([wx-16,y+52,wx+16,y+84],fill=(10,10,14,a),outline=CREAM+(a,),width=4)
-def ware(L,d,t):
-    if t<S_WARE[0] or t>S_WARE[1]+0.25: return
-    a=int(255*scene_a(t,S_WARE))
-    q=ease_io((t-S_WARE[0]-0.2)/0.6)
-    hx0,hy0,hx1,hy1=80,560,520,960
-    d.polygon([(hx0,hy0+90),((hx0+hx1)/2,hy0),(hx1,hy0+90)],outline=CYAN+(int(a*q),),width=6)
-    d.rectangle([hx0,hy0+90,hx1,hy1],outline=CYAN+(int(a*q),),width=6)
-    if GL: GL.rectangle([hx0,hy0+90,hx1,hy1],outline=CYAN+(int(a*q*0.6),),width=12)
-    n=int(18*clamp((t-WH)/0.8))
-    for k in range(n):
-        cx=hx0+30+(k%6)*68; cy=hy1-70-(k//6)*72; d.rectangle([cx,cy,cx+58,cy+60],fill=VGOLD+(a,),outline=(150,110,0,a),width=3)
-    if t>=WH-0.3: kinetic(d,'TOTAL T = THE WAREHOUSE',f(BEB,70),80,410,WH-0.3,t,VGOLD,-1)
-    d.line([(hx1,hy1),(1040,hy1)],fill=MUTED+(int(a*q),),width=4)
-    stopped=t>=NOTH
-    if t>=TR:
-        d.text((560,410+90),'FREE T = THE TRUCKS',font=f(BEB,64),fill=MINT+(int(255*clamp((t-TR)/0.2)*a/255),))
-        for k in range(3):
-            if stopped: x=hx1+10+k*190
-            else: x=hx1+10+((t-TR)*260+k*190)%330
-            truck(d,x,hy1-90,(MINT if not stopped else (90,92,100)),a)
-            if not stopped and k==0 and t>=DEL: d.rectangle([x+20,hy1-80,x+100,hy1-34],fill=VGOLD+(a,))
-    if t>=DEL and not stopped: ctext(d,'→ DELIVERING TO YOUR SYSTEM',f(MONOB,28),780,hy1+40,MINT,a)
-    if t>=FULL: pill(d,300,hy1+40,'FULL WAREHOUSE',f(MONOB,30),VGOLD,DEEP,a)
-    if stopped: pill(d,780,hy1+40,'NOTHING MOVING',f(MONOB,30),RED,(255,255,255),a)
-    if t>=ZERO:
-        s=expo((t-ZERO)/0.16); fn=f(BEB,int(lerp(320,220,s))); ctext(d,'0%',fn,540,1050,HOT,int(a*s))
-        if GL: GL.text((540-d.textlength('0%',font=fn)/2,1050),'0%',font=fn,fill=HOT+(int(a*s*0.6),))
-        ctext(d,'UTILIZED',f(MONOB,36),540,1290,CREAM,int(a*s))
+# 7) floating top card: STEP 3 nutrition + supplements, ingredient chips as spoken
+N0=S_ECG[1]; N1=S_GAUGE[0]-0.05; N_NUT=at('nutrition',61.4); N_SUP=at('supplements',62.4)
+ING=[('NATTOKINASE',at('nattokinase',66.1),MINT),('GRAPE SEED EXTRACT',at('grape',67.0),PURP),('DIHYDROQUERCETIN',at('dihydroquercetin',67.8),AMBER)]
+sfxb(N_NUT,'tick',g=-26); sfxb(N_SUP,'tick',g=-26)
+for _,tt,_c in ING: sfxb(tt,'thud',w=0.8,g=-21)
+def step3(L,d,t):
+    a=int(255*float_a(t,N0,N1))
+    if a<=0: return
+    d.rounded_rectangle([40,392,1040,700],radius=22,fill=(4,6,14,int(a*0.86)))
+    d.text((70,410),'STEP 3',font=f(MONOB,28),fill=AMBER+(a,))
+    x=70
+    for s_,tt,col in (('NUTRITION',N_NUT,LIME),('  +  ',N_SUP,CREAM),('SUPPLEMENTS',N_SUP,SKY)):
+        if t>=tt: d.text((x,446),s_,font=f(BEB,86),fill=col+(int(a*clamp((t-tt)/0.15)),))
+        x+=d.textlength(s_,font=f(BEB,86))
+    for k,(lab,tt,col) in enumerate(ING):
+        q=expo((t-tt)/0.18)
+        if q<=0: continue
+        fn=f(MONOB,30); w=d.textlength(lab,font=fn); y=[566,566,636][k]; x=70 if k!=1 else 70+d.textlength(ING[0][0],font=fn)+70
+        nrect(d,(x,y-8,x+w+36,y+46),col,int(a*q),3,14); d.text((x+18,y),lab,font=fn,fill=col+(int(a*q),))
 
-# 7) three-zone meter on the chest: MEDIOCRE / OPTIMAL / CHASING A NUMBER
-Z0=at('mediocre',79.9)-0.2; Z1=S_SLAM[0]; Z_MED=at('mediocre',79.9); Z_CH=at('chasing',85.5); Z_OPT=at('optimal',88.9); Z_LAB=at('lab',90.2); Z_AVG=at('average',91.7)
-sfxb(Z0,'whoosh',d=0.2,g=-30); sfxb(Z_MED,'tick',g=-26); sfxb(Z_CH,'tick',g=-26); sfxb(Z_OPT,'thud',w=1.4,g=-16)
-def zones(L,d,t):
-    if t<Z0 or t>Z1+0.2: return
-    q=expo((t-Z0)/0.25); o=ease_io((t-Z1)/0.2); a=int(255*q*(1-o)); x0,x1,y=80,1000,500
-    d.rounded_rectangle([40,392,1040,690],radius=22,fill=(6,8,14,int(a*0.85)))
-    segs=[(x0,x0+300,(120,120,130),'MEDIOCRE'),(x0+300,x0+620,VGOLD,'OPTIMAL'),(x0+620,x1,HOT,'CHASING A NUMBER')]
-    for k,(sx,ex,col,lab) in enumerate(segs):
-        lit=(k==0 and t>=Z_MED) or (k==2 and t>=Z_CH) or (k==1 and t>=Z_OPT)
-        d.rectangle([sx+3,y,ex-3,y+56],fill=col+(int(a*(1 if lit else 0.3)),))
-        if lit and GL and k==1: GL.rectangle([sx,y,ex,y+56],outline=col+(int(a*0.8),),width=10)
-        ctext(d,lab,f(MONOB,24),(sx+ex)/2,y+70,col if lit else MUTED,a)
-    if t>=Z_MED:
-        u=0.15
-        if t>=Z_CH: u=lerp(0.15,0.9,ease_io((t-Z_CH)/0.6))
-        if t>=Z_OPT: u=lerp(0.9,0.5,ease_io((t-Z_OPT)/0.6))
-        mx=lerp(x0,x1,u); d.polygon([(mx-20,y-34),(mx+20,y-34),(mx,y-4)],fill=CREAM+(a,))
-    d.text((80,412),'WHERE YOU WANT TO BE',font=f(MONO,22),fill=LABEL+(a,))
-    if t>=Z_LAB: d.text((80,630),'NOT WHERE THE LAB STARTS CARING',font=f(MONOB,24),fill=CREAM+(int(a*clamp((t-Z_LAB)/0.2)),))
+# 8) gauge scene: HCT scale with the 54 and 57 lines, as stated
+G_57=at('prompt',72.4); G_ANA=at('anabolics',75.6); G_54=at('54',76.7); G_DIV=at('diving',78.5)
+sfxb(G_57,'impact',g=-16); sfxb(G_54,'thud',w=1.2,g=-18); sfxb(G_DIV,'tick',g=-25)
+def gauge_s(L,d,t):
+    if t<S_GAUGE[0] or t>S_GAUGE[1]+0.25: return
+    a=int(255*scene_a(t,S_GAUGE))
+    kinetic(d,'KNOW YOUR LINES',f(BEB,110),80,400,S_GAUGE[0]+0.1,t,CREAM,-1)
+    d.text((84,530),'HEMATOCRIT · %',font=f(MONOB,28),fill=LABEL+(a,))
+    x0,x1,y=80,1000,860; X=lambda v:x0+(x1-x0)*(v-40)/20
+    q=ease_io((t-S_GAUGE[0]-0.2)/0.6)
+    segs=[(40,54,MINT),(54,57,AMBER),(57,60,HOT)]
+    for lo,hi,col in segs:
+        e=min(X(hi),lerp(x0,x1,q))
+        if e>X(lo): d.rectangle([X(lo)+2,y,e-2,y+50],fill=col+(int(a*(0.95 if (lo==54 and t>=G_54) or (lo==57 and t>=G_57) else 0.35)),))
+    if GL and q>0: GL.rectangle([x0,y,lerp(x0,x1,q),y+50],outline=MINT+(int(a*0.4),),width=6)
+    for v in (40,45,50,55,60):
+        if q>=1: ctext(d,str(v),f(MONO,24),X(v),y+64,LABEL,a)
+    if t>=G_57:
+        s=expo((t-G_57)/0.16); aa=int(a*s); xx=X(57)
+        nline(d,[(xx,y-150),(xx,y+50)],HOT,6,aa); ctext(d,'57%',f(BEB,96),xx,y-260,HOT,aa,True)
+        pill(d,540,1000,'PROMPT MEDICAL EVALUATION',f(MONOB,34),HOT,(255,255,255),aa)
+    if t>=G_ANA: ctext(d,'ESPECIALLY ON ANABOLICS',f(MONOB,28),540,1090,CREAM,int(a*clamp((t-G_ANA)/0.2)))
+    if t>=G_54:
+        s=expo((t-G_54)/0.16); aa=int(a*s); xx=X(54)
+        nline(d,[(xx,y-150),(xx,y+50)],AMBER,6,aa); ctext(d,'54%',f(BEB,96),xx-70,y-260,AMBER,aa,True)
+        ctext(d,'THRESHOLD',f(MONOB,26),xx-70,y-150,AMBER,aa)
+    if t>=G_DIV: pill(d,540,1170,'START DIGGING IN',f(MONOB,36),AMBER,DEEP,int(a*clamp((t-G_DIV)/0.2)))
 
-# 8) slam: REFERENCE RANGES MEAN SH*T
-SL_M=at('mean',94.4)
-sfxb(SL_M,'impact',g=-14)
-def slam(L,d,t):
-    if t<S_SLAM[0] or t>S_SLAM[1]+0.25: return
-    a=int(255*scene_a(t,S_SLAM))
-    kinetic(d,'REFERENCE',f(BEB,200),90,560,S_SLAM[0]+0.05,t,CREAM,-1,0.18)
-    kinetic(d,'RANGES',f(BEB,200),90,760,S_SLAM[0]+0.2,t,CREAM,1,0.18)
-    if t>=SL_M:
-        s=expo((t-SL_M)/0.12); d.line([(60,820),(lerp(60,1020,s),760)],fill=RED+(a,),width=22)
-        if GL: GL.line([(60,820),(lerp(60,1020,s),760)],fill=RED+(a,),width=40)
-        ctext(d,'MEAN SH*T',f(BEB,150),540,990,RED,int(a*s))
+# 9) floating 2x2 tiles: what to investigate
+IV0=S_GAUGE[1]; IV1=S_EQ[0]-0.05
+TILES=[('ANDROGEN','EXPOSURE',at('androgen',80.4),PURP),('SLEEP','APNEA',at('sleep',81.6),SKY),('HYDRATION','',at('hydration',82.3),MINT),('CARDIO','RISK',at('cardiovascular',83.6),HOT)]
+for *_,tt,_c in TILES: sfxb(tt,'tick',g=-24)
+def investigate(L,d,t):
+    a=int(255*float_a(t,IV0,IV1))
+    if a<=0: return
+    d.rounded_rectangle([40,392,1040,730],radius=22,fill=(4,6,14,int(a*0.86)))
+    d.text((70,404),'INVESTIGATE',font=f(MONOB,28),fill=CREAM+(a,))
+    for k,(l1,l2,tt,col) in enumerate(TILES):
+        q=expo((t-tt)/0.18)
+        if q<=0: continue
+        cx=70+(k%2)*480; cy=450+(k//2)*136; aa=int(a*q)
+        nrect(d,(cx,cy+10*(1-q),cx+460,cy+120+10*(1-q)),col,aa,4,16)
+        txt=l1+(' '+l2 if l2 else ''); fn=f(BEB,64)
+        while d.textlength(txt,font=fn)>420: fn=f(BEB,fn.size-4)
+        ctext(d,txt,fn,cx+230,cy+28,col,aa,True)
+
+# 10) equation scene: LOWERING THE NUMBER != FIXING THE PROBLEM
+EQ_FIX=at('fixing',86.0); EQ_TWO=at('two',87.3)
+sfxb(EQ_FIX,'tick',g=-24); sfxb(EQ_TWO,'impact',g=-15)
+def equation(L,d,t):
+    if t<S_EQ[0] or t>S_EQ[1]+0.25: return
+    a=int(255*scene_a(t,S_EQ))
+    kinetic(d,'LOWERING',f(BEB,150),80,440,S_EQ[0]+0.05,t,MINT,-1,0.18)
+    kinetic(d,'THE NUMBER',f(BEB,110),80,600,S_EQ[0]+0.15,t,CREAM,-1,0.18)
+    if t>=EQ_FIX-0.3:
+        s=expo((t-EQ_FIX+0.3)/0.16); aa=int(a*s); cx,cy=540,790
+        for dy in (-24,24): d.line([(cx-80,cy+dy),(cx+80,cy+dy)],fill=HOT+(aa,),width=14)
+        d.line([(cx+40,cy-74),(cx-40,cy+74)],fill=HOT+(aa,),width=14)
+        if GL: GL.line([(cx+40,cy-74),(cx-40,cy+74)],fill=HOT+(int(aa*0.5),),width=20)
+    kinetic(d,'FIXING',f(BEB,150),80,880,EQ_FIX,t,AMBER,1,0.18)
+    kinetic(d,'THE PROBLEM',f(BEB,110),80,1040,EQ_FIX+0.1,t,CREAM,1,0.18)
+    if t>=EQ_TWO: pill(d,540,1190,'TWO DIFFERENT THINGS',f(MONOB,40),HOT,(255,255,255),int(a*clamp((t-EQ_TWO)/0.18)))
+
+# 11) age scene: 40 for six more months vs strong at 60
+AG_40=at('40',91.8); AG_6=at('six',92.9); AG_STR=at('strong',94.0); AG_60=at('60',96.9); AG_UNIT=at('unit',95.8)
+sfxb(AG_40,'tick',g=-24); sfxb(AG_6,'thud',w=0.9,g=-20); sfxb(AG_STR,'scan',d=0.6,g=-30); sfxb(AG_60,'impact',g=-15)
+def age(L,d,t):
+    if t<S_AGE[0] or t>S_AGE[1]+0.25: return
+    a=int(255*scene_a(t,S_AGE))
+    kinetic(d,'THE REAL GOAL',f(BEB,110),80,400,S_AGE[0]+0.1,t,CREAM,-1)
+    x0,x1=80,1000; X=lambda age_:x0+(x1-x0)*(age_-35)/30
+    ya,yb=700,1000
+    if t>=AG_40-0.3:
+        q=clamp((t-AG_40+0.3)/0.2); aa=int(a*q)
+        d.text((80,ya-110),'LOOK GREAT AT 40',font=f(BEB,72),fill=MUTED+(aa,))
+        e=X(40.5)*1 if t<AG_6 else lerp(X(40),X(40.5),ease_io((t-AG_6)/0.5))
+        d.rounded_rectangle([X(40),ya,max(X(40)+30,e),ya+56],radius=28,fill=MUTED+(aa,))
+        if t>=AG_6: d.text((X(40.5)+30,ya+2),'+ 6 MONTHS',font=f(BEB,56),fill=MUTED+(aa,))
+    if t>=AG_STR-0.2:
+        q=clamp((t-AG_STR+0.2)/0.2); aa=int(a*q)
+        d.text((80,yb-110),'STRONG + HEALTHY',font=f(BEB,72),fill=LIME+(aa,))
+        e=lerp(X(40),X(60),ease_io((t-AG_STR)/(AG_60-AG_STR)))
+        d.rounded_rectangle([X(40),yb,e,yb+56],radius=28,fill=LIME+(aa,))
+        if GL: GL.rounded_rectangle([X(40),yb,e,yb+56],radius=28,fill=LIME+(int(aa*0.55),))
+    for v in (40,50,60):
+        if t>=AG_40: ctext(d,str(v),f(MONO,26),X(v),yb+76,LABEL,a)
+    if t>=AG_UNIT:
+        s=expo((t-AG_UNIT)/0.18); ctext(d,'STILL A UNIT AT 60',f(BEB,100),540,1180+16*(1-s),LIME,int(a*s),True)
 
 def overlays_b(im,t):
     L,d=newL()
-    dismiss(L,d,t); bell(L,d,t); picto(L,d,t); rangebar(L,d,t); three(L,d,t); ware(L,d,t); zones(L,d,t); slam(L,d,t)
+    mirror(L,d,t); flow(L,d,t); prob(L,d,t); notfirst(L,d,t); tube(L,d,t); ecg(L,d,t); step3(L,d,t)
+    gauge_s(L,d,t); investigate(L,d,t); equation(L,d,t); age(L,d,t)
     im.alpha_composite(L)
 
-# 9) end card: BLOODWORK BIBLE book cover + COMMENT "LEVELS" stamp
-T_END=at('now',95.4); E_BIB=at('bible',97.1); E_C=at('comment',103.4); E_SEND=at('send',105.4)
-sfxb(T_END,'whoosh',d=0.25,g=-28); sfxb(E_BIB,'thud',w=1.5,g=-16); sfxb(E_C,'impact',g=-15); sfxb(E_SEND,'tick',g=-26)
+# 12) neon end card: the right way first, donation last resort, COMMENT "BLOODS"
+T_END=S_AGE[1]; E_DROP=at('drop',99.8); E_LAST=at('last',104.0); E_C=at('comment',104.7); E_BL=at('bloods',105.2); E_SEND=at('send',106.3)
+sfxb(T_END,'whoosh',d=0.25,g=-28); sfxb(E_DROP,'thud',w=1.3,g=-17); sfxb(E_LAST,'tick',g=-24); sfxb(E_BL,'impact',g=-15); sfxb(E_SEND,'tick',g=-26)
 def end_b(im,t):
     if t<T_END: return
     q=ease_io((t-T_END)/0.35); im.alpha_composite(scene_bg(q)); L,d=newL(); a=int(255*q)
     lg=logo().copy(); lg.putalpha(lg.split()[3].point(lambda v:int(v*q))); L.alpha_composite(lg.resize((140,140)),(70,250))
     d.text((230,268),'COACH AGZ',font=f(BAR,52),fill=GOLD+(a,)); d.text((232,332),'@coach.agz',font=f(MONO,28),fill=MUTED+(a,))
-    if t>=E_BIB-0.6:
-        s=ease_io((t-E_BIB+0.6)/0.6); bx0,by0,bx1,by1=250,440,830,1080; dy=60*(1-s)
-        d.rectangle([bx0+16,by0+16+dy,bx1+16,by1+16+dy],fill=(0,0,0,int(a*0.5*s)))
-        d.rectangle([bx0,by0+dy,bx1,by1+dy],fill=(18,12,10,int(a*s)),outline=VGOLD+(int(a*s),),width=6)
-        d.rectangle([bx0,by0+dy,bx0+40,by1+dy],fill=VGOLD+(int(a*s),))
-        if GL: GL.rectangle([bx0,by0+dy,bx1,by1+dy],outline=VGOLD+(int(a*s*0.6),),width=14)
-        cx=(bx0+40+bx1)/2
-        ctext(d,'THE',f(BAR,44),cx,by0+70+dy,VGOLD,int(a*s)); ctext(d,'BLOODWORK',f(BEB,104),cx,by0+120+dy,CREAM,int(a*s)); ctext(d,'BIBLE',f(BEB,150),cx,by0+220+dy,VGOLD,int(a*s))
-        for k,lab in enumerate(('HOW TO OPTIMIZE YOUR BLOODS','RUNNING AT OPTIMAL LEVELS')):
-            ctext(d,lab,f(MONOB,22),cx,by0+420+k*40+dy,MUTED,int(a*s))
+    if t>=E_DROP-0.3:
+        s=expo((t-E_DROP+0.3)/0.2); aa=int(a*s)
+        ctext(d,'DROP YOUR',f(BEB,96),540,470,CREAM,aa)
+        ctext(d,'HEMATOCRIT',f(BEB,150),540,560,MINT,aa,True)
+        ctext(d,'THE RIGHT WAY FIRST',f(BEB,80),540,720,CREAM,aa)
+    if t>=E_LAST-0.3:
+        s=expo((t-E_LAST+0.3)/0.18); aa=int(a*s)
+        nrect(d,(150,840,930,960),AMBER,aa,4,20); ctext(d,'DONATION = LAST RESORT',f(BEB,76),540,862,AMBER,aa,True)
     if t>=E_C:
-        s=expo((t-E_C)/0.16); sc=lerp(1.5,1,s); fn=f(MONOB,int(56*sc)); txt='COMMENT "LEVELS"'; w=d.textlength(txt,font=fn)
-        lit_bar(d,540-w/2-30,1140,540+w/2+30,1140+fn.size+40,VGOLD,int(a*s)); d.text((540-w/2,1160),txt,font=fn,fill=DEEP+(int(a*s),))
-        if GL and t<E_C+0.6: GL.rectangle([540-w/2-34,1136,540+w/2+34,1144+fn.size+40],outline=VGOLD+(int(220*(1-(t-E_C)/0.6)),),width=12)
-    if t>=E_SEND: ctext(d,'SENT TO YOU',f(MONOB,34),540,1280,CREAM,int(a*clamp((t-E_SEND)/0.15)))
-    ctext(d,DISC,f(MONO,20),540,1340,LABEL,a)
+        s=expo((t-E_C)/0.16); sc=lerp(1.5,1,s); fn=f(MONOB,int(56*sc)); txt='COMMENT "BLOODS"'; w=d.textlength(txt,font=fn)
+        lit_bar(d,540-w/2-30,1010,540+w/2+30,1010+fn.size+40,HOT,int(a*s)); d.text((540-w/2,1030),txt,font=fn,fill=(255,255,255,int(a*s)))
+        if GL and t<E_C+0.6: GL.rectangle([540-w/2-34,1006,540+w/2+34,1014+fn.size+40],outline=HOT+(int(220*(1-(t-E_C)/0.6)),),width=12)
+    if t>=E_SEND: ctext(d,'SENT TO YOU',f(MONOB,34),540,1150,CREAM,int(a*clamp((t-E_SEND)/0.15)))
+    ctext(d,DISC,f(MONO,20),540,1210,LABEL,a)
+    ctext(d,'NOT MEDICAL ADVICE · WORK WITH YOUR DOCTOR',f(MONO,20),540,1242,LABEL,a)
     im.alpha_composite(L)
 
 # ---------------- frame ----------------
-SUBJECT_T=0.90      # visual hook: first punch-in lands on the spoken subject "testosterone"
+SUBJECT_T=1.04      # visual hook: first punch-in lands on the spoken subject "hematocrit"
 def zoom_at(t):   # saved setup: 108% punch-in alternates at every jump cut
     if t<CUTS[0]: return 1.08 if t>=SUBJECT_T else 1.0
     return 1.0 if seg_of(t)%2==1 else 1.08
