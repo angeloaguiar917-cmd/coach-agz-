@@ -862,7 +862,7 @@ def tube(L,d,t):
     kinetic(d,'HYDRATION',f(BEB,130),80,460,S_TUBE[0]+0.15,t,SKY,-1)
     x0,x1,y0,y1=150,390,640,1300; inner=(x0+10,y0+10,x1-10,y1-10)
     rbc_h=300                                   # red-cell column never changes
-    pl=lerp(1.0,0.45,ease_io((t-TB_PL)/0.9)) if t>=TB_PL else 1.0
+    pl=lerp(0.72,0.36,ease_io((t-TB_PL)/0.9)) if t>=TB_PL else 0.72
     pl_h=(y1-y0-20-rbc_h)*pl
     ry0=y1-10-rbc_h; py0=ry0-pl_h
     d.rounded_rectangle([inner[0],py0,inner[2],ry0+30],radius=24,fill=AMBER+(int(a*0.55),))
@@ -879,8 +879,10 @@ def tube(L,d,t):
         d.text((x1+84,722),'THAT IS RED CELLS',font=f(MONOB,30),fill=CREAM+(int(a*s),))
     if t>=TB_DEH: pill(d,830,500,'DEHYDRATED',f(MONOB,36),SKY,DEEP,int(a*clamp((t-TB_DEH)/0.2)))
     if t>=TB_HI:
-        s=expo((t-TB_HI)/0.18); ctext(d,'HCT READS',f(BEB,70),720,960,CREAM,int(a*s)); ctext(d,'HIGHER',f(BEB,120),700,1030,HOT,int(a*s),True)
-        tri(d,880,1050,60,True,HOT+(int(a*s),))
+        s=expo((t-TB_HI)/0.18); fa=f(BEB,96); fb=f(BEB,96); w1=d.textlength('HCT READS ',font=fa); w2=d.textlength('HIGHER',font=fb); x=540-(w1+w2+70)/2
+        d.text((x,1316),'HCT READS ',font=fa,fill=CREAM+(int(a*s),)); d.text((x+w1,1316),'HIGHER',font=fb,fill=HOT+(int(a*s),))
+        if GL: GL.text((x+w1,1316),'HIGHER',font=fb,fill=HOT+(int(a*s*0.7),))
+        tri(d,x+w1+w2+20,1336,50,True,HOT+(int(a*s),))
     if t>=TB_RBC:
         s=clamp((t-TB_RBC)/0.2); ctext(d,'SAME RED CELLS',f(MONOB,34),720,1190,MINT,int(a*s))
 
