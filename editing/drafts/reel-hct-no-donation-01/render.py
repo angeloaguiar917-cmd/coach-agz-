@@ -953,7 +953,7 @@ def gauge_s(L,d,t):
     segs=[(40,54,MINT),(54,57,AMBER),(57,60,HOT)]
     for lo,hi,col in segs:
         e=min(X(hi),lerp(x0,x1,q))
-        if e>X(lo): d.rectangle([X(lo)+2,y,e-2,y+50],fill=col+(int(a*(0.95 if (lo==54 and t>=G_54) or (lo==57 and t>=G_57) else 0.35)),))
+        if e>X(lo)+4: d.rectangle([X(lo)+2,y,e-2,y+50],fill=col+(int(a*(0.95 if (lo==54 and t>=G_54) or (lo==57 and t>=G_57) else 0.35)),))
     if GL and q>0: GL.rectangle([x0,y,lerp(x0,x1,q),y+50],outline=MINT+(int(a*0.4),),width=6)
     for v in (40,45,50,55,60):
         if q>=1: ctext(d,str(v),f(MONO,24),X(v),y+64,LABEL,a)
