@@ -10,14 +10,15 @@
 4. **Text hook engine** (`edit_log.json`): **Crying over the Grinch / blame your E2**. Runners-up "Emotional on cycle / don't blame E2", "High E2 / doesn't mean an AI".
 
 ## Tone: comedic open, then educational
-- **0–15 s (Grinch story):** footage only, text hook on frame 0, captions, one punch-in on "Grinch". No graphs, no overlays, no topic band.
-- **From "But honestly" (15.05 s):** topic band **E2** is not your enemy, then the deep-vibrant overlay set.
+- **0–11.2 s (Grinch story):** footage only, text hook on frame 0, captions, one punch-in on "Grinch". No graphs, no overlays, no topic band.
+- **From "And naturally the first thing I think is…" (11.2 s):** the overlay set starts (THE FIRST THOUGHT → THE BACKWARDS LOGIC), with the topic band **E2** is not your enemy.
 - The camera-in-face close-up (24.1–27.0 s, "Estradiol is not your f*cking enemy") is left clean as a punchline.
 
-## Overlay set (every format different, deep violet/magenta/electric palette)
+## Overlay set (every format different; brand neon set: v-gold, v-red, cyan, green, amber on deep navy)
+**v2:** pink and purple replaced with brand neon red and gold; violet panels and push are now deep navy; COMMENT pill is gold.
 | Time | Speech | On screen |
 |---|---|---|
-| 15.1–24.1 | getting emotional ≠ high E2, high E2 ≠ AI | Two cause→effect chains that snap: EMOTIONAL → HIGH E2, HIGH E2 → NEED AN AI |
+| 11.2–24.1 | first thought; getting emotional ≠ high E2, high E2 ≠ AI | Two cause→effect chains that snap: EMOTIONAL → HIGH E2, HIGH E2 → NEED AN AI |
 | 27.0–33.1 | sexual function, brain, bone, muscle | Radial hub: E2 hexagon with four icon nodes |
 | 33.1–37.0 | crush it too low | U-curve graph: OPTIMAL band, the dot slides into TOO LOW |
 | 37.0–42.7 | over a decade, 500 panels | Floating card: fanned lab sheets, 10+ YEARS, odometer counting to 500+ PANELS |

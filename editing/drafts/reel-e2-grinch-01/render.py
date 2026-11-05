@@ -603,7 +603,7 @@ HOOK_LINES=[[('Crying over the Grinch',CREAM)],[('blame your ',CREAM),('E2',VGOL
 HOOK_END=6.00; HOOK_FADE=0.15; HOOK_Y=262
 THO=(HOOK_END,HOOK_END+HOOK_FADE)
 _mid=DUR/2; _nc=min(CUTS,key=lambda c:abs(c-_mid)); BAND_OUT=_nc if abs(_nc-_mid)<=1.5 else _mid      # nearest jump cut if within 1.5 s, else fade at the midpoint
-BAND_IN=15.05      # band waits for the educational turn ("But honestly"): the comedic open stays clean
+BAND_IN=11.21      # band waits for the turn ("And naturally the first thing I think is..."): the comedic open stays clean
 def hook_lines(d,y0,fn,a):
     lh=fn.size+18
     for k,parts in enumerate(HOOK_LINES):
@@ -746,8 +746,9 @@ def at(word,near):
         if n(w['w']).startswith(n(word)) and abs(w['s']-near)<3.5 and (best is None or abs(w['s']-near)<abs(best-near)): best=w['s']
     if best is None: raise SystemExit('word not found: %s @%s'%(word,near))
     return best
-VIO=(150,70,255); MAG=(255,40,170); EBLU=(40,130,255); ECYAN=(0,230,255); CORAL=(255,96,64); ACID=(180,255,40); DEEPV=(12,4,28)
-PUSH_TINT=(14,5,30)
+# brand neon set (BRAND.md overlay accents): v-gold, v-red, cyan, green, amber; deep navy push
+VIO=(255,194,26); MAG=(255,34,28); EBLU=(40,130,255); ECYAN=(0,229,255); CORAL=(255,150,20); ACID=(30,255,110); DEEPV=(2,3,8)
+PUSH_TINT=(5,8,16)
 def kinetic(d,txt,fn,x,y,t0,t,col,frm=-1,dur=0.22):
     q=expo((t-t0)/dur)
     if q<=0: return 0
@@ -773,7 +774,7 @@ def pill(d,cx,y,txt,fn,bg,fg,a):
 def float_a(t,t0,t1): return expo((t-t0)/0.25)*(1-ease_io((t-t1)/0.2)) if t0<=t<=t1+0.2 else 0
 def scene_a(t,win): return clamp((t-win[0])/0.2)*(1-ease_io((t-win[1])/0.22))
 CUT_A,CUT_B,CUT_C=CUTS
-S_MYTH=(at('but',15.1)-0.05, CUT_A-0.06)
+S_MYTH=(at('and',11.26)-0.05, CUT_A-0.06)
 S_HUB=(CUT_B+0.03, at('when',33.1)-0.05)
 S_CURVE=(at('when',33.1)-0.05, at('because',37.0)-0.05)
 S_TRI=(at('the',42.7)-0.05, at('number',45.9)-0.05)
@@ -813,8 +814,9 @@ def chain(d,y,la,lb,ca,cb,t_on,t_snap,t,a):
 def myth(L,d,t):
     if t<S_MYTH[0] or t>S_MYTH[1]+0.25: return
     a=int(255*scene_a(t,S_MYTH))
-    kinetic(d,'THE BACKWARDS LOGIC',f(BEB,100),70,420,S_MYTH[0]+0.1,t,MAG,-1)
-    chain(d,620,'EMOTIONAL','HIGH E2',VIO,MAG,MY_TOT,MY_N1,t,a)
+    if t<MY_TOT: kinetic(d,'THE FIRST THOUGHT',f(BEB,100),70,420,S_MYTH[0]+0.1,t,CREAM,-1)
+    else: kinetic(d,'THE BACKWARDS LOGIC',f(BEB,100),70,420,MY_TOT,t,MAG,1)
+    chain(d,620,'EMOTIONAL','HIGH E2',VIO,MAG,at('what',12.8),MY_N1,t,a)
     chain(d,920,'HIGH E2','NEED AN AI',MAG,EBLU,at('high',21.3)-0.1,MY_N2,t,a)
     if t>=MY_AI: ctext(d,'ASSUMPTION ≠ DIAGNOSIS'.replace('≠','IS NOT A'),f(BEB,64),540,1230,CREAM,int(a*clamp((t-MY_AI)/0.2)))
 
@@ -890,8 +892,8 @@ def panels500(L,d,t):
         q=expo((t-PN_500-k*0.06)/0.25) if t>=PN_500 else 0
         ang=lerp(0,-14+k*7,q); x=150+k*8; y=560-k*6
         sh=Image.new('RGBA',(150,190),(0,0,0,0)); sd=ImageDraw.Draw(sh)
-        sd.rectangle([0,0,149,189],fill=(236,234,244,int(a*0.95)),outline=VIO+(a,),width=3)
-        for r in range(6): sd.line([(14,22+r*26),(136-(r%3)*24,22+r*26)],fill=(120,110,150,a),width=5)
+        sd.rectangle([0,0,149,189],fill=(238,236,232,int(a*0.95)),outline=VIO+(a,),width=3)
+        for r in range(6): sd.line([(14,22+r*26),(136-(r%3)*24,22+r*26)],fill=(120,122,130,a),width=5)
         sh=sh.rotate(ang,expand=True,resample=Image.BICUBIC); L.alpha_composite(sh,(int(x-sh.width/2+60),int(y-sh.height/2+0)))
     if t>=PN_DEC: d.text((330,420),'10+ YEARS',font=f(BEB,84),fill=ECYAN+(int(a*clamp((t-PN_DEC)/0.2)),))
     if t>=PN_500:
@@ -968,8 +970,8 @@ def radar(L,d,t):
     cx,cy,R=540,900,270
     angs=[-90,0,90,180]
     for ring in (0.25,0.5,0.75,1.0):
-        pts=[(cx+R*ring*math.cos(math.radians(g)),cy+R*ring*math.sin(math.radians(g))) for g in angs]; d.polygon(pts,outline=(70,60,110,a))
-    for g in angs: d.line([(cx,cy),(cx+R*math.cos(math.radians(g)),cy+R*math.sin(math.radians(g)))],fill=(70,60,110,a),width=2)
+        pts=[(cx+R*ring*math.cos(math.radians(g)),cy+R*ring*math.sin(math.radians(g))) for g in angs]; d.polygon(pts,outline=(70,74,86,a))
+    for g in angs: d.line([(cx,cy),(cx+R*math.cos(math.radians(g)),cy+R*math.sin(math.radians(g)))],fill=(70,74,86,a),width=2)
     vals=[]
     for (lab,tt,col,v),g in zip(RD,angs):
         q=ease_io((t-tt)/0.45) if t>=tt else 0; vals.append(v*q)
@@ -998,7 +1000,7 @@ def perf(L,d,t):
     x0,x1,yb,yt=110,990,1180,690
     gpanel(d,(60,590,1020,1260),ACID,a,0.55)
     for k,h in enumerate(('6AM','12PM','6PM','10PM')):
-        x=lerp(x0,x1,k/3); d.line([(x,yt),(x,yb)],fill=(50,46,80,a),width=1); ctext(d,h,f(MONO,22),x,yb+20,LABEL,a)
+        x=lerp(x0,x1,k/3); d.line([(x,yt),(x,yb)],fill=(48,52,62,a),width=1); ctext(d,h,f(MONO,22),x,yb+20,LABEL,a)
     for k,(lab,tt,col,lv) in enumerate(PF):
         if t<tt: continue
         span=ease_io((t-tt)/0.6) if t<PF_DAY else 1.0
@@ -1069,16 +1071,16 @@ def labscan(L,d,t):
     if t<S_LAB[0] or t>S_LAB[1]+0.25: return
     a=int(255*scene_a(t,S_LAB))
     q=expo((t-S_LAB[0]-0.1)/0.3); x0,y0,x1,y1=90,440+40*(1-q),990,1180+40*(1-q); aa=int(a*q)
-    d.rectangle([x0,y0,x1,y1],fill=(232,230,238,aa))
-    d.text((x0+40,y0+30),'LABORATORY REPORT',font=f(MONOB,34),fill=(40,36,56,aa))
-    d.line([(x0+40,y0+86),(x1-40,y0+86)],fill=(150,145,170,aa),width=2)
-    for k,(c,xx) in enumerate((('TEST',x0+40),('RESULT',x0+470),('FLAG',x0+650),('RANGE',x0+760))): d.text((xx,y0+104),c,font=f(MONOB,22),fill=(110,104,130,aa))
+    d.rectangle([x0,y0,x1,y1],fill=(236,234,230,aa))
+    d.text((x0+40,y0+30),'LABORATORY REPORT',font=f(MONOB,34),fill=(36,36,40,aa))
+    d.line([(x0+40,y0+86),(x1-40,y0+86)],fill=(150,150,156,aa),width=2)
+    for k,(c,xx) in enumerate((('TEST',x0+40),('RESULT',x0+470),('FLAG',x0+650),('RANGE',x0+760))): d.text((xx,y0+104),c,font=f(MONOB,22),fill=(110,110,118,aa))
     rows=['TESTOSTERONE, TOTAL','TESTOSTERONE, FREE','ESTRADIOL, SENSITIVE','SHBG']
     for k,r in enumerate(rows):
         y=y0+160+k*92; hot=k==2
-        d.text((x0+40,y),r,font=f(MONOB,26),fill=(30,28,40,aa))
-        d.rectangle([x0+470,y+4,x0+590,y+30],fill=(150,145,170,int(aa*0.5)))        # values are blurred out on purpose: no lab values shown
-        d.rectangle([x0+760,y+4,x0+860,y+30],fill=(150,145,170,int(aa*0.35)))
+        d.text((x0+40,y),r,font=f(MONOB,26),fill=(28,28,32,aa))
+        d.rectangle([x0+470,y+4,x0+590,y+30],fill=(150,150,156,int(aa*0.5)))        # values are blurred out on purpose: no lab values shown
+        d.rectangle([x0+760,y+4,x0+860,y+30],fill=(150,150,156,int(aa*0.35)))
         if hot and t>=LB_RED:
             s=expo((t-LB_RED)/0.14); d.text((x0+660,y-4),'H',font=f(MONOB,34),fill=(220,20,40,int(aa*s)))
     yr=y0+160+2*92
@@ -1153,8 +1155,9 @@ def bp_bg(a):
         yy,xx=np.mgrid[0:H,0:W]
         r=np.sqrt(((xx-540)/(W*0.8))**2+((yy-760)/(H*0.55))**2)
         bg=np.zeros((H,W,3),np.float32)+np.array(DEEPV,np.float32)
-        bg+=(np.clip(1-r,0,1)**2)[...,None]*np.array([40,14,70],np.float32)
-        grid=((xx%60)<2)|((yy%60)<2); bg[grid]+=np.array([18,14,40],np.float32)
+        bg+=np.array(NAVY,np.float32)-np.array(DEEPV,np.float32)
+        bg+=(np.clip(1-r,0,1)**2)[...,None]*np.array([34,24,6],np.float32)
+        grid=((xx%60)<2)|((yy%60)<2); bg[grid]+=np.array([10,14,22],np.float32)
         bg+=np.random.default_rng(5).standard_normal((H,W,1)).astype(np.float32)*1.4
         _BP=Image.fromarray(np.clip(bg,0,255).astype(np.uint8)).convert('RGBA')
     l=_BP.copy(); l.putalpha(int(255*a*0.95)); return l
@@ -1184,9 +1187,9 @@ def end_b(im,t):
             check(d,bx0+60,y+4,ACID+(int(aa*r),),5,0.95); d.text((bx0+110,y),lab,font=f(MONOB,30),fill=CREAM+(int(aa*r),))
     if t>=E_C:
         s=expo((t-E_C)/0.16); sc=lerp(1.5,1,s); fn=f(MONOB,int(58*sc)); txt='COMMENT "E2"'; w=d.textlength(txt,font=fn)
-        lit_bar(d,540-w/2-34,1050,540+w/2+34,1050+fn.size+40,MAG,int(a*s)); d.text((540-w/2,1070),txt,font=fn,fill=(255,255,255,int(a*s)))
-        if GL and t<E_C+0.7: GL.rectangle([540-w/2-38,1046,540+w/2+38,1054+fn.size+40],outline=MAG+(int(220*(1-(t-E_C)/0.7)),),width=12)
-    if t>=E_AI: ctext(d,'BEFORE YOU EVER TOUCH AN AI',f(BEB,56),540,1192,VGOLD,int(a*clamp((t-E_AI)/0.2)))
+        lit_bar(d,540-w/2-34,1050,540+w/2+34,1050+fn.size+40,VGOLD,int(a*s)); d.text((540-w/2,1070),txt,font=fn,fill=DEEP+(int(a*s),))
+        if GL and t<E_C+0.7: GL.rectangle([540-w/2-38,1046,540+w/2+38,1054+fn.size+40],outline=VGOLD+(int(220*(1-(t-E_C)/0.7)),),width=12)
+    if t>=E_AI: ctext(d,'BEFORE YOU EVER TOUCH AN AI',f(BEB,56),540,1192,CREAM,int(a*clamp((t-E_AI)/0.2)))
     ctext(d,DISC,f(MONO,20),540,1270,LABEL,a)
     ctext(d,'NOT MEDICAL ADVICE · WORK WITH YOUR DOCTOR',f(MONO,20),540,1300,LABEL,a)
     im.alpha_composite(L)
@@ -1204,7 +1207,7 @@ def frame(src,t):
         cx,cy=540,1000; w,h=W/z,H/z; src=src.crop((cx-w/2,cy-h/2,cx+w/2,cy+h/2)).resize((W,H),Image.BICUBIC)
     tw=WARP(t)
     g=float(B_push(t)); bg=src
-    if g>0: bg=Image.blend(src.filter(ImageFilter.GaussianBlur(18*g)),Image.new('RGB',(W,H),PUSH_TINT),0.70*g)
+    if g>0: bg=Image.blend(src.filter(ImageFilter.GaussianBlur(18*g)),Image.new('RGB',(W,H),PUSH_TINT),0.68*g)
     im=bg.convert('RGBA')
     global _PT
     if _PT is None:

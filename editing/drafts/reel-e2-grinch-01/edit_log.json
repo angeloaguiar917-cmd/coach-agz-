@@ -78,7 +78,7 @@
     "lock_in_zone": "6.6-14.3 Nothing humbles an enhanced bodybuilder faster than almost crying over a Christmas cartoon... what the hell is going on with my E2?",
     "first_frame": "car interior, bright side windows behind the hook area -> boxed lines",
     "subject": "E2 (estradiol)",
-    "tone": "comedic open (0-15 s, no overlays) then educational",
+    "tone": "comedic open (0-11.2 s, no overlays) then educational from \"And naturally the first thing I think is...\"",
     "specifics": [
       "11-year-old",
       "over a decade",
@@ -95,7 +95,7 @@
   "visual_hook": "108% punch-in on 'Grinch' at 2.28 s",
   "topic_band": {
     "text": "E2 is not your enemy",
-    "from": 15.05,
+    "from": 11.21,
     "to": "midpoint 55.6 s (hidden during full-screen scenes)",
     "y_px": [
       212,
@@ -105,7 +105,17 @@
   "flags": [
     "winners.md missing: used the starter power-phrase bank",
     "visual hook lands at 2.28 s ('Grinch'), outside the 1.5 s rule: the subject E2 is not spoken until 14.3 s",
-    "topic band held back until the educational turn (15.05 s) instead of 6.0 s, per the comedic-open brief",
+    "topic band held back until the educational turn (11.21 s) instead of 6.0 s, per the comedic-open brief",
     "trust anchor missing in the lock-in window (comedic setup); 500+ panels shown at 0:38"
+  ],
+  "revisions": [
+    {
+      "v": 2,
+      "changes": [
+        "off-brand pink and purple replaced with the brand neon set: purple -> v-gold #FFC21A, pink -> v-red #FF221C, violet panels/push -> deep navy (#020308 panels, #050810 push at 68%)",
+        "COMMENT \"E2\" pill is the brand gold tag pill",
+        "overlays start at 11.21 s ('And naturally the first thing I think is...'): THE FIRST THOUGHT title, EMOTIONAL -> HIGH E2 chain on 'what the hell...', retitled THE BACKWARDS LOGIC on 'totally backwards'"
+      ]
+    }
   ]
 }
