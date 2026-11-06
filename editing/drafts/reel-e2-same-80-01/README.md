@@ -1,7 +1,7 @@
 # Reel: "E2 same 80" — same estradiol, opposite symptoms (native 1080p + phone copy)
 
 **Source:** Drive file `1CQTalcWg4zjJOKHHPaayBj_TD0YhXpjP`, 1080×1920 HEVC 60 fps, 2:09.5, indoor talking head, single take with in-camera jump cuts at 6.8, 18.4, 33.2, 56.2, 82.7 s.
-**Output:** `coach-agz_e2-same-80_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master.
+**Output:** `coach-agz_e2-same-80_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_e2-same-80_1080p_master.mp4` (86 MB). Checks: 3,925 frames decode, −14.3 LUFS, peak −1.3 dBFS, L/R identical; phone copy 43 MB; QC sheet of 17 frames from the phone file.
 
 ## Order of work
 1. **Audio:** voice in the right channel only (left −109.8 dB), 186 clipped samples. Dual-mono at the mix (`fix_audio.py`, pan c1).
