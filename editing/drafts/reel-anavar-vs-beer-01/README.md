@@ -1,7 +1,7 @@
 # Reel: "Anavar vs beer" — 50 mg Anavar daily vs a six-pack every night (native 1080p + phone copy)
 
 **Source:** Drive file `1EOCULdSPB2BSxxZTLRt1kkOW6Jg7eWRU`, 1080×1920 HEVC 60 fps, 0:46.3, car selfie, one in-camera jump cut (15.9 s).
-**Output:** `coach-agz_anavar-vs-beer_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master.
+**Output:** `coach-agz_anavar-vs-beer_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_anavar-vs-beer_1080p_master.mp4` (34 MB). Checks: 1,353 frames decode, −14.3 LUFS, peak −1.7 dBFS; phone copy 15 MB; QC sheet of 14 frames from the phone file.
 
 ## Order of work
 1. **Audio:** voice in both channels (−26 dB RMS each), no clipping. Channels kept as recorded (`fix_audio.py ... keep`), mastered to −14.2 LUFS.
