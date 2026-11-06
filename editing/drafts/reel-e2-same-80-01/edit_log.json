@@ -1,0 +1,106 @@
+{
+  "video": "E2 same 80 (Drive 1CQTalcWg4zjJOKHHPaayBj_TD0YhXpjP)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "Same E2 of 80",
+      "opposite symptoms"
+    ],
+    "emphasis": [
+      "E2"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "Your E2 red flag",
+      "misread on TRT"
+    ],
+    [
+      "High E2 on TRT",
+      "skip the AI reflex"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "A",
+      "lines": [
+        "Same E2 of 80",
+        "opposite symptoms"
+      ],
+      "score": 28,
+      "notes": "exact figure from the spoken hook, curiosity gap: who has the problem"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "Your E2 red flag",
+        "misread on TRT"
+      ],
+      "score": 25
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "High E2 on TRT",
+        "skip the AI reflex"
+      ],
+      "score": 24,
+      "notes": "gives the answer away"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "Read your E2",
+        "not the lab range"
+      ],
+      "score": 22
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "E2 at 80",
+        "the wrong number to chase"
+      ],
+      "score": 21
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-6.0 So we have one guy who has an estradiol of 80 and he feels phenomenal, while the next guy's estradiol is at 80 and he feels like total garbage.",
+    "lock_in_zone": "6.9-18.3 Who's actually got the estrogen problem? ... TRT guys ... get completely misled by laboratory reference ranges, a little number highlighted in red screaming danger at you.",
+    "first_frame": "indoor, bright white wall behind the hook area -> boxed lines",
+    "subject": "E2 (estradiol)",
+    "specifics": [
+      "estradiol 80 (both men)",
+      "80 and 90 (clients who feel fantastic)"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:07 ('Who's actually got the estrogen problem?')",
+    "trust_anchor": "MISSING in 0:04-0:12; client observation ('I see this almost every day') at 0:44"
+  },
+  "visual_hook": "108% punch-in on the spoken subject 'estradiol' at 1.14 s",
+  "topic_band": {
+    "text": "E2 is not just a number",
+    "from": 6.0,
+    "to": "midpoint 65.4 s (hidden during full-screen scenes)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "trust anchor missing in the lock-in window; the client pattern ('clients feel fantastic at 80 and 90') is shown at 0:44",
+    "E2 value 80 shown without units (none spoken); no other lab values shown"
+  ]
+}
