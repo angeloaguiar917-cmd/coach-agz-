@@ -1,7 +1,7 @@
 # Reel: "TRT weekly rollercoaster" — once-a-week injections vs smaller, more frequent shots (native 1080p + phone copy)
 
 **Source:** Drive file `1GcftrF0TvkJafB6GXEaAkFqcorHSM8hY`, 1080×1920 HEVC 60 fps, 1:30.1, three locations (indoor, outside, car) with in-camera cuts at 4.5, 18.7, 21.8 s.
-**Output:** `coach-agz_trt-weekly-rollercoaster_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master.
+**Output:** `coach-agz_trt-weekly-rollercoaster_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_trt-weekly-rollercoaster_1080p_master.mp4` (62 MB). Checks: 2,741 frames decode, −14.3 LUFS, peak −1.8 dBFS; phone copy 29 MB; QC sheet of 15 frames from the phone file.
 
 ## Order of work
 1. **Audio:** voice in both channels (−25.6 dB RMS), no clipping; channels kept as recorded (`fix_audio.py ... keep`), mastered to −14.2 LUFS.
