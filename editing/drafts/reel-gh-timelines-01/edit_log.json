@@ -1,0 +1,112 @@
+{
+  "video": "GH timelines (Drive 149O_3hyJ5c4ZgvYzXu7HXr3gHx6prrdg)",
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": [
+      "GROWTH HORMONE results",
+      "72 hours to years"
+    ],
+    "emphasis": [
+      "GROWTH HORMONE"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "GH results",
+      "the timeline nobody explains"
+    ],
+    [
+      "GH alone",
+      "won't build muscle"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "B",
+      "lines": [
+        "GROWTH HORMONE results",
+        "72 hours to years"
+      ],
+      "score": 27,
+      "notes": "both ends of the timeline are specifics he gives (72 hours, months/years)"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "GH results",
+        "the timeline nobody explains"
+      ],
+      "score": 25,
+      "notes": "twist of 'nobody explains', from his own spoken hook"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "GH alone",
+        "won't build muscle"
+      ],
+      "score": 24,
+      "notes": "pays off late (0:41)"
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "The 3 GH timelines",
+        "nobody explains"
+      ],
+      "score": 0,
+      "notes": "discarded: he says 3 but delivers 4 timelines"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "GH on the scale",
+        "8 lb fat 6 lb muscle"
+      ],
+      "score": 22
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-3.9 Here are the 3 actual timelines for growth hormone results that nobody ever explains correctly.",
+    "lock_in_zone": "4.5-22.9 The first timeline is intramuscular water retention... within the first 72 hours... not new tissue, volumization.",
+    "first_frame": "car interior, bright side window and roof behind the hook area -> boxed lines",
+    "subject": "GROWTH HORMONE (GH)",
+    "specifics": [
+      "72 hours",
+      "first week",
+      "months upon months, if not years",
+      "8 lb fat, 6 lb muscle, scale 2 lb",
+      "IGF-1"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:09 ('within the first 72 hours')",
+    "trust_anchor": "MISSING (no lab value, study or client result)"
+  },
+  "visual_hook": "108% punch-in on the spoken subject 'growth hormone' at 1.76 s",
+  "topic_band": {
+    "text": "GH results timeline",
+    "from": 6.0,
+    "to": "midpoint 62.1 s (hidden during full-screen scenes)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "spoken hook says '3 actual timelines' but the video walks through 4 (water, fat loss, muscle, structural): the hook avoids the count; captions keep '3' as said",
+    "trust anchor missing: no proof asset in the video; none invented",
+    "no jump cuts in the take: punch-ins alternate on each new timeline / section"
+  ]
+}
