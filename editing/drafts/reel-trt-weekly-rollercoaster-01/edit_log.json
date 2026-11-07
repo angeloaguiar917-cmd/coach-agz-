@@ -1,0 +1,111 @@
+{
+  "video": "TRT weekly rollercoaster (Drive 1GcftrF0TvkJafB6GXEaAkFqcorHSM8hY)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "Weekly TRT injections",
+      "the hormone rollercoaster"
+    ],
+    "emphasis": [
+      "TRT"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "TRT once a week",
+      "your doctor got it wrong"
+    ],
+    [
+      "TRT 3-4x a week",
+      "end the rollercoaster"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "formula": "A",
+      "lines": [
+        "Weekly TRT injections",
+        "the hormone rollercoaster"
+      ],
+      "score": 27,
+      "notes": "his own image ('rollercoaster'), paid off at 0:05-0:16"
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "TRT once a week",
+        "your doctor got it wrong"
+      ],
+      "score": 25,
+      "notes": "twist of 'your doctor misses'"
+    },
+    {
+      "formula": "B",
+      "lines": [
+        "TRT 3-4x a week",
+        "end the rollercoaster"
+      ],
+      "score": 23,
+      "notes": "gives the fix away"
+    },
+    {
+      "formula": "C",
+      "lines": [
+        "Smaller TRT shots",
+        "more stable levels"
+      ],
+      "score": 21
+    },
+    {
+      "formula": "A",
+      "lines": [
+        "TRT spike Tuesday",
+        "crash by Saturday"
+      ],
+      "score": 24
+    }
+  ],
+  "inputs": {
+    "spoken_hook": "0.00-3.9 If your TRT doctor has told you to inject once a week, that advice is f*cking terrible.",
+    "lock_in_zone": "4.6-15.6 Weekly injections turn your hormones into a rollercoaster... inject Monday, spike by Tuesday or Wednesday, crash hard by Saturday.",
+    "first_frame": "indoor, grey wall and ceiling light behind the hook area -> boxed lines",
+    "subject": "TRT (injection frequency)",
+    "specifics": [
+      "once a week",
+      "Monday / Tuesday-Wednesday / Saturday",
+      "day 6",
+      "every day ideal",
+      "3-4 times a week at least",
+      "last three months"
+    ]
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:05-0:16 (the Monday spike / Saturday crash week)",
+    "trust_anchor": "MISSING (no lab value or client result; client context at 1:04 is about schedules)"
+  },
+  "visual_hook": "108% punch-in on the spoken subject 'TRT' at 0.20 s",
+  "topic_band": {
+    "text": "TRT injection frequency",
+    "from": 6.0,
+    "to": "midpoint 45.7 s (hidden during full-screen scenes)",
+    "y_px": [
+      212,
+      372
+    ]
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "trust anchor missing: no proof asset in the video; none invented",
+    "level curves are illustrative shapes (no values, no units); the frequency chart is labelled ILLUSTRATIVE"
+  ]
+}
