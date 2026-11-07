@@ -1,7 +1,7 @@
 # Reel: "GH timelines" — what growth hormone does, and when (native 1080p + phone copy)
 
 **Source:** Drive file `149O_3hyJ5c4ZgvYzXu7HXr3gHx6prrdg`, 1080×1920 HEVC 60 fps, 2:03.0, car selfie, single continuous take (no jump cuts).
-**Output:** `coach-agz_gh-timelines_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master.
+**Output:** `coach-agz_gh-timelines_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_gh-timelines_1080p_master.mp4` (66 MB). Checks: 3,728 frames decode, −14.3 LUFS, peak −1.8 dBFS; phone copy 39 MB; QC sheet of 14 frames from the phone file.
 
 ## Order of work
 1. **Audio:** voice in both channels (−25.8 dB RMS), no clipping; channels kept as recorded (`fix_audio.py ... keep`), mastered to −14.2 LUFS.
