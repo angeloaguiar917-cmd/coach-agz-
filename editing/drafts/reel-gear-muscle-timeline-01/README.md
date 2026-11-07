@@ -3,7 +3,7 @@
 **Source:** Drive file `1Q_eaPSUUjErwTvheSYa2hMp4-YeZf5G7`, 1080×1920 HEVC 60 fps, 2:52.8, single take with one in-camera jump cut (42.8 s).
 **Output:**
 - `coach-agz_gear-muscle-timeline_1080p_phone.mp4`: phone copy, ~2.5 Mbps.
-- `coach-agz_gear-muscle-timeline_1080p_master.mp4`: master, CRF 16.
+- The CRF 16 master is 252 MB, over GitHub's 100 MB limit, so it stays in scratch. Phone copy checks: 5,222 frames, −14.3 LUFS, peak −1.0 dBFS.
 
 ## What this cut has
 - **Audio:** the voice was in the right channel only, so it's made dual-mono and mastered to about −14.2 LUFS.
