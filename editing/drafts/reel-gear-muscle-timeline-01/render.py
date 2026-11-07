@@ -1,11 +1,11 @@
-# Reel: "GH timelines" (what growth hormone does, and when): full edit, native 1080x1920, brand-neon overlay set
+# Reel: "Gear muscle timeline": base cut for hand-off (native 1080x1920): frame-0 hook, captions, punch-ins, end card; topic graphics to be added by another editor
 # Built on the saved setup: test-06 look + full-test-02 workflow (dead air trimmed, misspeak cut, 108% punch-in per jump cut,
 # captions from the trimmed audio). Usage: python render.py <scratch> [--events|--groups|--still t..|--range n0 n1 out.mp4]
 import json, subprocess, sys, math, re
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
-S=sys.argv[1]; F=S+'/fonts/'; T=S+'/r17/work/'
-W,H=1080,1920; FPS=30; N=3728; DUR=N/FPS
+S=sys.argv[1]; F=S+'/fonts/'; T=S+'/r18/work/'
+W,H=1080,1920; FPS=30; N=5222; DUR=N/FPS
 GOLD=(201,169,110); CREAM=(244,241,234); MUTED=(184,184,188); LABEL=(124,124,130)
 RED=(255,34,28); NAVY=(14,17,23); VGOLD=(255,194,26); CYAN=(0,229,255); GREEN=(30,255,110); DEEP=(2,3,8)
 INNER=(29,29,33); CHIP=(40,12,18)
@@ -78,9 +78,8 @@ def meter(d,x0,y,x1,v,col,h=22):
 
 # ---------------- words / captions: source transcript (gap-guarded windows) mapped through the trim ----------------
 words=json.load(open(T+'words_cut.json'))   # = words_captions.json in this folder
-FIX={283:'F*CKING',329:'F*CKING'}
+FIX={}
 for i,w in FIX.items(): words[i]['w']=w
-for i,n_,s_ in ((402,2,'IGF-1'),(339,2,'SELF-AWARE'),(159,2,'IGF-1'),(150,2,'IGF-1')): words[i]['w']=s_; words[i]['e']=words[i+n_-1]['e']; del words[i+1:i+n_]   # descending so indices hold
 for w in words: w['w']=w['w'].upper()
 CAP_Y=1450; CAP_MAX=900
 import difflib as _dl
@@ -168,7 +167,7 @@ def draw_caption(im,t):
 TRIM=json.load(open(T+'trim.json'))
 _acc=0; CUTS=[]
 for a,b in TRIM['keep_frames'][:-1]: _acc+=b-a; CUTS.append(_acc/FPS)      # jump-cut times in the trimmed cut
-CUTS=[4.48,23.28,35.76,59.10,80.74,94.64]   # no jump cuts in the take: the punch-in alternates on each new timeline / section instead
+CUTS=[15.88,25.42,42.7833,52.76,71.44,96.42,113.08,130.02,148.76]   # one in-camera cut (42.78) + section starts: the punch-in alternates on each new section
 def seg_of(t): return sum(1 for c in CUTS if c<=t+1e-6)
 P=(64,470,1016,1260)
 PANELS=[dict(o=8.29,c=18.30,hdr='HISTORY',st=[(8.29,'DASHBOARD · THE OLD WAY')]),
@@ -599,7 +598,7 @@ DISC='FOR RESEARCH & EDUCATIONAL PURPOSES ONLY'
 # ---- TEXT HOOK (editing/TEXT_HOOK_ENGINE.md): fully visible on frame 0, no entry animation, 0.15 s fade out;
 #      then a compact topic band until the midpoint (nearest jump cut), then the top stays clear ----
 NEWTL=True
-HOOK_LINES=[[('GROWTH HORMONE',VGOLD),(' results',CREAM)],[('72 hours to years',CREAM)]]
+HOOK_LINES=[[('3 months on ',CREAM),('GEAR',VGOLD)],[('vs their 5 to 10 years',CREAM)]]
 HOOK_END=6.00; HOOK_FADE=0.15; HOOK_Y=262
 THO=(HOOK_END,HOOK_END+HOOK_FADE)
 _mid=DUR/2; _nc=min(CUTS,key=lambda c:abs(c-_mid)); BAND_OUT=_nc if abs(_nc-_mid)<=1.5 else _mid      # nearest jump cut if within 1.5 s, else fade at the midpoint
@@ -618,7 +617,7 @@ def hook_band(im,t):
     if v>0 and t>=BAND_IN:
         B,bd=newL(); bd.rectangle([8,212,W,372],fill=NAVY+(int(235*v),)); im.alpha_composite(B)
         a=int(255*v); fn=f(BAR,64); x=64; y=236
-        for s,c in [('GH',VGOLD),(' results timeline',CREAM)]: d.text((x,y),s,font=fn,fill=c+(a,)); x+=d.textlength(s,font=fn)
+        for s,c in [('GEAR',VGOLD),(' a realistic timeline',CREAM)]: d.text((x,y),s,font=fn,fill=c+(a,)); x+=d.textlength(s,font=fn)
         fs=f(MONO,24); s='@coach.agz'; d.text((1016-d.textlength(s,font=fs),226),s,font=fs,fill=GOLD+(a,))
         d.text((64,334),DISC,font=f(MONO,18),fill=LABEL+(a,))
     im.alpha_composite(L)
@@ -736,7 +735,7 @@ NEWTL=False
 
 
 
-# ======================= "GH timelines" overlay set (brand neon: v-gold, v-red, cyan, green, amber on deep navy) =======================
+# ======================= "Gear muscle timeline": base cut for hand-off (hook, captions, punch-ins, end card; no topic graphics) =======================
 EVB=[]
 def sfxb(t,kind,**k): EVB.append(dict(t=round(t,3),kind=kind,**k))
 import re as _re2
@@ -746,371 +745,28 @@ def at(word,near):
         if n(w['w']).startswith(n(word)) and abs(w['s']-near)<3.5 and (best is None or abs(w['s']-near)<abs(best-near)): best=w['s']
     if best is None: raise SystemExit('word not found: %s @%s'%(word,near))
     return best
-VRED=(255,34,28); ECYAN=(0,229,255); NGREEN=(30,255,110); AMBER=(255,150,20); DEEPV=(2,3,8)
 PUSH_TINT=(5,8,16)
-def kinetic(d,txt,fn,x,y,t0,t,col,frm=-1,dur=0.22):
-    q=expo((t-t0)/dur)
-    if q<=0: return 0
-    w=d.textlength(txt,font=fn); xx=x+frm*(1-q)*(W+w)
-    d.text((xx,y),txt,font=fn,fill=col+(int(255*min(1,q*1.4)),))
-    if GL: GL.text((xx,y),txt,font=fn,fill=col+(int(110*min(1,q)),))
-    return q
-def ctext(d,txt,fn,cx,y,col,a,glow=False):
-    x=cx-d.textlength(txt,font=fn)/2; d.text((x,y),txt,font=fn,fill=col+(a,))
-    if glow and GL: GL.text((x,y),txt,font=fn,fill=col+(int(a*0.7),))
-def nline(d,pts,col,w,a):
-    if len(pts)<2: return
-    d.line(pts,fill=col+(a,),width=w,joint='curve')
-    if GL: GL.line(pts,fill=col+(int(a*0.9),),width=w*3,joint='curve')
-def nrect(d,box,col,a,w=4,r=18):
-    if box[2]<=box[0] or box[3]<=box[1]: return
-    d.rounded_rectangle(box,radius=r,outline=col+(a,),width=w)
-    if GL: GL.rounded_rectangle(box,radius=r,outline=col+(int(a*0.9),),width=w*3)
-def gpanel(d,box,col,a,fill_a=0.6):
-    if box[2]<=box[0] or box[3]<=box[1]: return
-    d.rounded_rectangle(box,radius=22,fill=DEEPV+(int(a*fill_a),)); nrect(d,box,col,int(a*0.8),3,22)
-def pill(d,cx,y,txt,fn,bg,fg,a):
-    w=d.textlength(txt,font=fn); h=fn.size+18; lit_bar(d,cx-w/2-18,y,cx+w/2+18,y+h,bg,a); d.text((cx-w/2,y+8),txt,font=fn,fill=fg+(a,))
-def float_a(t,t0,t1): return expo((t-t0)/0.25)*(1-ease_io((t-t1)/0.2)) if t0<=t<=t1+0.2 else 0
-def scene_a(t,win): return clamp((t-win[0])/0.2)*(1-ease_io((t-win[1])/0.22))
-def xmark(d,cx,cy,r,col,a,w=12):
-    for dd in ((-r,-r,r,r),(r,-r,-r,r)): d.line([(cx+dd[0],cy+dd[1]),(cx+dd[2],cy+dd[3])],fill=col+(a,),width=w)
-    if GL: GL.line([(cx-r,cy-r),(cx+r,cy+r)],fill=col+(int(a*0.6),),width=w*2)
-# ---- connective element: the 4-step timeline ruler (active step lit) ----
-STEPS=[('72 HRS',ECYAN),('1 WEEK',AMBER),('MONTHS',NGREEN),('MONTHS-YEARS',VGOLD)]
-def ruler(d,k,a,y=566):
-    x0,x1=90,990
-    d.line([(x0,y),(x1,y)],fill=(60,64,78,a),width=4)
-    if k>0: nline(d,[(x0,y),(lerp(x0,x1,k/3),y)],STEPS[k][1],4,a)
-    for i,(lab,col) in enumerate(STEPS):
-        x=lerp(x0,x1,i/3); on=i==k; done=i<k; r=22 if on else 14
-        d.ellipse([x-r,y-r,x+r,y+r],fill=(col if (on or done) else (40,44,56))+(a,),outline=col+(a,),width=3)
-        ctext(d,str(i+1),f(BEB,34 if on else 24),x,y-(19 if on else 13),DEEP if (on or done) else MUTED,a)
-        fn=f(MONOB,22); w=d.textlength(lab,font=fn); tx=min(max(x-w/2,60),1020-w)
-        d.text((tx,y+30),lab,font=fn,fill=(col if on else LABEL)+(a,))
-C=CUTS
-S_T1=(HOOK_END+0.05, at('the',23.28)-0.05)
-S_T2=(at('the',23.28)-0.05, at('then',35.76)-0.05)
-S_IGF=(at('then',35.76)-0.05, at('and',45.86)-0.02)
-S_GATE=(at('and',45.86)-0.02, at('and',59.1)-0.05)
-S_STRUCT=(at('and',59.1)-0.05, at('generally',70.06)-0.05)
-S_BURN=(at('gh',75.7)-0.05, at("here's",80.74)-0.05)
-S_SCALE=(at("here's",80.74)-0.05, at('the',94.64)-0.05)
-S_MIRROR=(at('the',94.64)-0.05, at('as',109.1)-0.05)
-SCENES=[S_T1,S_T2,S_IGF,S_GATE,S_STRUCT,S_BURN,S_SCALE,S_MIRROR]
-def B_push(t):
-    g=0
-    for a_,b_ in SCENES: g=max(g,clamp((t-a_)/0.22)*clamp((b_-t)/0.22))
-    return ease_io(g)
-for i,(a_,b_) in enumerate(SCENES):
-    if i==0 or abs(a_-SCENES[i-1][1])>0.3: sfxb(a_,'whoosh',d=0.22,g=-28); sfxb(a_+0.2,'thud',w=1.2,g=-18)
-    else: sfxb(a_,'scan',d=0.35,g=-29)
-
-# 1) timeline 1: muscle cell fills with glycogen + water in 72 hours (volumization, not new tissue)
-T1_72=at('72',9.3); T1_GLY=at('glycogen',10.8); T1_WAT=at('water',11.6); T1_FULL=at('fuller',13.7); T1_ROUND=at('rounder',14.4); T1_NOT=at('tissue',19.5); T1_VOL=at('volumization',20.3)
-sfxb(T1_72,'tick',g=-23); sfxb(T1_GLY,'tick',g=-25); sfxb(T1_WAT,'scan',d=0.6,g=-30); sfxb(T1_FULL,'thud',w=1.0,g=-19); sfxb(T1_NOT,'impact',g=-16)
-def t1(L,d,t):
-    if t<S_T1[0] or t>S_T1[1]+0.25: return
-    a=int(255*scene_a(t,S_T1))
-    kinetic(d,'WATER INTO MUSCLE',f(BEB,110),70,400,S_T1[0]+0.08,t,ECYAN,-1); ruler(d,0,a)
-    cx,cy=540,900; base=170
-    fill=ease_io((t-T1_WAT)/2.0) if t>=T1_WAT else 0
-    R=base*(1+0.32*fill)
-    d.ellipse([cx-R-24,cy-R-24,cx+R+24,cy+R+24],fill=(40,10,14,int(a*0.7)),outline=VRED+(a,),width=6)
-    if GL: GL.ellipse([cx-R-24,cy-R-24,cx+R+24,cy+R+24],outline=VRED+(int(a*0.6),),width=14)
-    dashed(d,[(cx+base*math.cos(math.radians(k*6)),cy+base*math.sin(math.radians(k*6))) for k in range(61)],CREAM+(int(a*0.7),),3,12,10)
-    rng=np.random.default_rng(5)
-    if t>=T1_GLY:
-        n=int(46*clamp((t-T1_GLY)/1.2))
-        for k in range(n):
-            ang=rng.random()*6.283; rr=rng.random()**0.5*(R-10)
-            x=cx+rr*math.cos(ang); y=cy+rr*math.sin(ang); d.rectangle([x-7,y-7,x+7,y+7],fill=VGOLD+(a,))
-    rng=np.random.default_rng(9)
-    if t>=T1_WAT:
-        n=int(120*fill)
-        for k in range(n):
-            ang=rng.random()*6.283+t*0.2; rr=rng.random()**0.5*(R-8)
-            x=cx+rr*math.cos(ang); y=cy+rr*math.sin(ang); d.ellipse([x-6,y-8,x+6,y+6],fill=ECYAN+(int(a*0.85),))
-    lx=80
-    if t>=T1_72-0.1:
-        gpanel(d,(60,650,300,790),ECYAN,a,0.85); ctext(d,'72',f(BEB,96),180,660,ECYAN,a,True); ctext(d,'HOURS',f(MONOB,22),180,758,MUTED,a)
-    for k,(lab,col,tt) in enumerate((('GLYCOGEN',VGOLD,T1_GLY),('WATER',ECYAN,T1_WAT))):
-        if t>=tt: d.rectangle([800,670+k*50,824,694+k*50],fill=col+(a,)); d.text((838,662+k*50),lab,font=f(MONOB,26),fill=col+(a,))
-    for k,(lab,tt) in enumerate((('FULLER',T1_FULL),('ROUNDER',T1_ROUND))):
-        if t>=tt: pill(d,[300,780][k],1150,lab,f(MONOB,34),NGREEN,DEEP,int(a*clamp((t-tt)/0.2)))
-    if t>=T1_NOT:
-        s=expo((t-T1_NOT)/0.16); pill(d,540,1250,'NOT NEW TISSUE · VOLUMIZATION' if t>=T1_VOL else 'NOT NEW TISSUE',f(MONOB,32),VRED,(255,255,255),int(a*s))
-        ctext(d,'SAME TISSUE',f(MONOB,22),cx,cy+base-34,CREAM,int(a*s))
-
-# 2) timeline 2: fat to fuel inside week one; a shrinking fat droplet feeds a fuel gauge
-T2_FAT=at('fat',24.5); T2_WK=at('week',26.6); T2_OX=at('oxidize',28.9); T2_FUEL=at('fuel',30.5); T2_LEAN=at('leaner',31.2); T2_LIP=at('lipolysis',34.8)
-sfxb(T2_WK,'tick',g=-23); sfxb(T2_OX,'scan',d=0.8,g=-30); sfxb(T2_FUEL,'thud',w=1.0,g=-19); sfxb(T2_LEAN,'tick',g=-23); sfxb(T2_LIP,'tick',g=-24)
-def t2(L,d,t):
-    if t<S_T2[0] or t>S_T2[1]+0.25: return
-    a=int(255*scene_a(t,S_T2))
-    kinetic(d,'FAT BECOMES FUEL',f(BEB,110),70,400,S_T2[0]+0.08,t,AMBER,-1); ruler(d,1,a)
-    sh=ease_io((t-T2_OX)/2.5) if t>=T2_OX else 0
-    cx,cy=290,890; R=190*(1-0.45*sh)
-    d.ellipse([cx-R,cy-R*1.08,cx+R,cy+R*0.92],fill=(255,200,60,int(a*0.85)))
-    d.ellipse([cx-R*0.6,cy-R*0.8,cx-R*0.1,cy-R*0.35],fill=(255,240,180,int(a*0.7)))
-    if GL: GL.ellipse([cx-R,cy-R*1.08,cx+R,cy+R*0.92],outline=AMBER+(int(a*0.8),),width=14)
-    ctext(d,'STORED FAT',f(BEB,52),cx,cy+214,AMBER,a)
-    gx,gy,gr=790,930,170
-    d.arc([gx-gr,gy-gr,gx+gr,gy+gr],start=180,end=360,fill=(40,44,56,a),width=26)
-    v=0.15+0.75*sh
-    d.arc([gx-gr,gy-gr,gx+gr,gy+gr],start=180,end=180+180*v,fill=NGREEN+(a,),width=26)
-    if GL: GL.arc([gx-gr,gy-gr,gx+gr,gy+gr],start=180,end=180+180*v,fill=NGREEN+(int(a*0.7),),width=40)
-    ang=math.radians(180+180*v); d.line([(gx,gy),(gx+(gr-40)*math.cos(ang),gy+(gr-40)*math.sin(ang))],fill=CREAM+(a,),width=6); d.ellipse([gx-12,gy-12,gx+12,gy+12],fill=CREAM+(a,))
-    ctext(d,'E',f(BEB,40),gx-gr+10,gy+10,MUTED,a); ctext(d,'F',f(BEB,40),gx+gr-10,gy+10,MUTED,a); ctext(d,'FUEL',f(BEB,60),gx,gy+30,NGREEN,a)
-    if t>=T2_OX:
-        for k in range(10):
-            p=((t-T2_OX)*0.8+k/10)%1.0; x=lerp(cx+R*0.7,gx-gr+30,p); y=cy-40+math.sin(p*math.pi)*-120
-            d.ellipse([x-8,y-8,x+8,y+8],fill=AMBER+(a,))
-            if GL: GL.ellipse([x-12,y-12,x+12,y+12],fill=AMBER+(int(a*0.6),))
-    if t>=T2_WK-0.1:
-        gpanel(d,(640,650,1000,770),AMBER,a,0.85); ctext(d,'WEEK 1',f(BEB,80),820,660,AMBER,a,True)
-    if t>=T2_LEAN: pill(d,540,1210,'LEANER BEFORE NEW MUSCLE',f(MONOB,32),NGREEN,DEEP,int(a*clamp((t-T2_LEAN)/0.2)))
-    if t>=T2_LIP: ctext(d,'LIPOLYSIS',f(MONOB,30),540,1290,AMBER,int(a*clamp((t-T2_LIP)/0.2)))
-
-# 3) timeline 3a: GH alone does not build muscle; it routes through IGF-1
-I3_MUS=at('muscle',37.7); I3_ALONE=at('alone',41.1); I3_IGF=at('igf-1',43.4); I3_TIS=at('tissue',44.9)
-sfxb(I3_MUS,'tick',g=-24); sfxb(I3_ALONE,'impact',g=-16); sfxb(I3_IGF,'thud',w=1.2,g=-18); sfxb(I3_TIS,'tick',g=-23)
-def node(d,cx,cy,r,lab,col,a,sub=None):
-    d.ellipse([cx-r,cy-r,cx+r,cy+r],fill=DEEPV+(a,),outline=col+(a,),width=6)
-    if GL: GL.ellipse([cx-r,cy-r,cx+r,cy+r],outline=col+(int(a*0.7),),width=16)
-    fn=f(BEB,int(r*0.62)); ctext(d,lab,fn,cx,cy-r*0.4,col,a)
-    if sub: ctext(d,sub,f(MONOB,20),cx,cy+r*0.3,MUTED,a)
-def igf(L,d,t):
-    if t<S_IGF[0] or t>S_IGF[1]+0.25: return
-    a=int(255*scene_a(t,S_IGF))
-    kinetic(d,'MUSCLE NEEDS IGF-1',f(BEB,110),70,400,S_IGF[0]+0.08,t,NGREEN,-1); ruler(d,2,a)
-    g=(220,750); m=(860,1090); i=(220,1090)
-    node(d,*g,110,'GH',VGOLD,a,'GROWTH HORMONE')
-    node(d,*m,110,'MUSCLE',NGREEN if t>=I3_TIS else MUTED,a,'TISSUE GROWTH')
-    if t>=I3_MUS-0.2:
-        s=ease_io((t-I3_MUS+0.2)/0.5); ex=lerp(g[0]+90,m[0]-90,s); ey=lerp(g[1]+70,m[1]-70,s)
-        dashed(d,[(g[0]+90,g[1]+70),(ex,ey)],(MUTED if t<I3_ALONE else VRED)+(a,),5,16,12)
-    if t>=I3_ALONE:
-        s=expo((t-I3_ALONE)/0.14); xmark(d,540,920,int(50*s),VRED,a); ctext(d,'GH ALONE',f(MONOB,26),660,850,VRED,a)
-    if t>=I3_IGF-0.1:
-        s=expo((t-I3_IGF+0.1)/0.25); node(d,i[0],i[1],int(110*s)+1,'IGF-1',ECYAN,int(a*s),'THE DRIVER')
-        p=ease_io((t-I3_IGF)/0.5)
-        nline(d,[(g[0],g[1]+110),(g[0],lerp(g[1]+110,i[1]-110,p))],ECYAN,6,a)
-        if t>=I3_TIS-0.4:
-            p2=ease_io((t-I3_TIS+0.4)/0.5); nline(d,[(i[0]+110,i[1]),(lerp(i[0]+110,m[0]-110,p2),i[1])],NGREEN,6,a)
-            d.polygon([(lerp(i[0]+110,m[0]-110,p2),i[1]-16),(lerp(i[0]+110,m[0]-110,p2)+24,i[1]),(lerp(i[0]+110,m[0]-110,p2),i[1]+16)],fill=NGREEN+(a,))
-
-# 3b) timeline 3b: the IGF-1 response depends on four switches; if not dialed in, no mass
-GT=[('LIVER HEALTH',at('liver',47.7)),('NUTRITION',at('nutrition',48.7)),('INSULIN SENSITIVITY',at('insulin',49.4)),('OTHER ANABOLIC?',at('another',51.4))]
-GT_DIAL=at('dialed',54.3); GT_MASS=at('mass',55.9); GT_LONG=at('long',58.2)
-for _,tt in GT: sfxb(tt,'tick',g=-23)
-sfxb(GT_DIAL,'impact',g=-15); sfxb(GT_MASS,'thud',w=1.1,g=-18)
-def switch(d,x,y,on,col,a):
-    d.rounded_rectangle([x,y,x+110,y+56],radius=28,fill=((col if on else (60,64,78))+(a,)))
-    kx=x+82 if on else x+28; d.ellipse([kx-22,y+6,kx+22,y+50],fill=CREAM+(a,))
-    if on and GL: GL.rounded_rectangle([x,y,x+110,y+56],radius=28,outline=col+(int(a*0.7),),width=10)
-def gate(L,d,t):
-    if t<S_GATE[0] or t>S_GATE[1]+0.25: return
-    a=int(255*scene_a(t,S_GATE))
-    kinetic(d,'WHAT IGF-1 DEPENDS ON',f(BEB,96),70,400,S_GATE[0]+0.08,t,ECYAN,-1); ruler(d,2,a)
-    bad=t>=GT_DIAL
-    for k,(lab,tt) in enumerate(GT):
-        if t<tt-0.15: continue
-        q=expo((t-tt+0.15)/0.2); y=640+k*120; aa=int(a*q)
-        gpanel(d,(60,y,1020,y+100),VRED if bad else NGREEN,aa,0.8)
-        d.text((100,y+22),lab,font=f(BEB,60),fill=CREAM+(aa,))
-        on=not bad or k%2==1 and t<GT_DIAL+0.3
-        switch(d,860,y+22,on,NGREEN,aa)
-    if bad:
-        s=expo((t-GT_DIAL)/0.18); gpanel(d,(60,1130,1020,1240),VRED,int(a*s),0.9)
-        ctext(d,'NOT DIALED IN = NO MASS FROM GH' if t>=GT_MASS else 'NOT DIALED IN',f(BEB,64),540,1146,VRED,int(a*s),True)
-    if t>=GT_LONG: ctext(d,'NO MATTER HOW LONG YOU RUN IT',f(MONOB,26),540,1266,MUTED,int(a*clamp((t-GT_LONG)/0.2)))
-
-# 4) timeline 4: structural remodeling, months to years
-ST=[('BONE DENSITY',at('bone',62.3)),('TENDON THICKNESS',at('tendon',63.2)),('HAND SIZE',at('hand',64.0))]
-ST_MON=at('months',67.8); ST_YRS=at('years',69.3)
-for _,tt in ST: sfxb(tt,'tick',g=-23)
-sfxb(ST_MON,'scan',d=1.2,g=-30); sfxb(ST_YRS,'thud',w=1.2,g=-18)
-def ic_bone(d,cx,cy,s,col,a):
-    d.rounded_rectangle([cx-s*0.7,cy-s*0.14,cx+s*0.7,cy+s*0.14],radius=int(s*0.14),fill=col+(a,))
-    for ex in (-1,1):
-        for ey in (-1,1): d.ellipse([cx+ex*s*0.72-s*0.2,cy+ey*s*0.14-s*0.2,cx+ex*s*0.72+s*0.2,cy+ey*s*0.14+s*0.2],fill=col+(a,))
-def ic_tendon(d,cx,cy,s,col,a):
-    for k in range(-2,3): d.line([(cx-s*0.8,cy+k*s*0.12),(cx+s*0.8,cy+k*s*0.12+math.sin(k)*4)],fill=col+(a,),width=6)
-def ic_hand(d,cx,cy,s,col,a):
-    d.rounded_rectangle([cx-s*0.45,cy-s*0.1,cx+s*0.4,cy+s*0.7],radius=int(s*0.18),fill=col+(a,))
-    for k in range(4): d.rounded_rectangle([cx-s*0.45+k*s*0.22,cy-s*0.75+abs(k-1.5)*s*0.1,cx-s*0.29+k*s*0.22,cy],radius=int(s*0.08),fill=col+(a,))
-    d.rounded_rectangle([cx+s*0.35,cy+s*0.05,cx+s*0.7,cy+s*0.25],radius=int(s*0.1),fill=col+(a,))
-def struct(L,d,t):
-    if t<S_STRUCT[0] or t>S_STRUCT[1]+0.25: return
-    a=int(255*scene_a(t,S_STRUCT))
-    kinetic(d,'STRUCTURAL REMODELING',f(BEB,96),70,400,S_STRUCT[0]+0.08,t,VGOLD,-1); ruler(d,3,a)
-    for k,((lab,tt),ic) in enumerate(zip(ST,(ic_bone,ic_tendon,ic_hand))):
-        q=expo((t-tt)/0.22)
-        if q<=0: continue
-        x0=60+k*325; aa=int(a*q); dy=40*(1-q)
-        gpanel(d,(x0,640+dy,x0+305,940+dy),VGOLD,aa,0.85)
-        ic(d,x0+152,760+dy,70,VGOLD,aa); ctext(d,lab,f(BEB,44 if len(lab)<12 else 36),x0+152,870+dy,CREAM,aa)
-    yb=1080; d.text((70,yb-56),'TIME TO SEE IT',font=f(MONOB,24),fill=LABEL+(a,))
-    for k in range(24):
-        x=70+k*39; on=t>=ST_MON and k<int(24*ease_io((t-ST_MON)/1.6))
-        col=VGOLD if k<12 else AMBER
-        d.rectangle([x,yb,x+32,yb+70],fill=(col if on else (40,44,56))+(a,))
-    d.text((70,yb+82),'MONTHS',font=f(MONOB,22),fill=LABEL+(a,)); d.text((870,yb+82),'YEARS',font=f(MONOB,22),fill=LABEL+(a,))
-    if t>=ST_YRS: pill(d,540,1240,'MONTHS UPON MONTHS · IF NOT YEARS',f(MONOB,30),VGOLD,DEEP,int(a*clamp((t-ST_YRS)/0.2)))
-
-# 5) floating: the bodybuilder-level changes ride on massive doses (dose dial into the red)
-DS0=S_STRUCT[1]; DS1=S_BURN[0]-0.05; DS_ORG=at('organ',71.3); DS_MAS=at('massive',73.6)
-sfxb(DS_ORG,'tick',g=-24); sfxb(DS_MAS,'impact',g=-15)
-def dose(L,d,t):
-    a=int(255*float_a(t,DS0,DS1))
-    if a<=0: return
-    gpanel(d,(40,392,1040,700),VRED,a,0.88)
-    cx,cy,r=230,640,170
-    for k in range(12):
-        v0,v1=k/12,(k+1)/12; col=NGREEN if k<5 else (AMBER if k<8 else VRED)
-        d.arc([cx-r,cy-r,cx+r,cy+r],start=180+180*v0+1,end=180+180*v1-1,fill=col+(int(a*0.85),),width=30)
-    v=0.2+0.72*ease_io((t-DS_MAS)/0.4) if t>=DS_MAS else 0.2
-    ang=math.radians(180+180*v); d.line([(cx,cy),(cx+(r-34)*math.cos(ang),cy+(r-34)*math.sin(ang))],fill=CREAM+(a,),width=7); d.ellipse([cx-14,cy-14,cx+14,cy+14],fill=CREAM+(a,))
-    ctext(d,'GH DOSE',f(MONOB,22),cx,cy+20,MUTED,a)
-    d.text((450,420),'ORGAN GROWTH ·',font=f(BEB,58),fill=CREAM+(a if t>=DS_ORG else int(a*0.4),))
-    d.text((450,480),'BODYBUILDER STUFF',font=f(BEB,58),fill=CREAM+(a if t>=DS_ORG else int(a*0.4),))
-    if t>=DS_MAS:
-        s=expo((t-DS_MAS)/0.16); d.text((450,560),'MASSIVE DOSES',font=f(BEB,96),fill=VRED+(int(a*s),))
-        if GL: GL.text((450,560),'MASSIVE DOSES',font=f(BEB,96),fill=VRED+(int(a*s*0.6),))
-
-# 6) slow burn: consistency across real training blocks (segmented block bar + candle)
-BU_SLOW=at('slow',76.2); BU_CON=at('consistency',78.1); BU_BLK=at('blocks',79.9)
-sfxb(BU_SLOW,'tick',g=-24); sfxb(BU_CON,'scan',d=0.8,g=-30); sfxb(BU_BLK,'thud',w=1.0,g=-19)
-def burn(L,d,t):
-    if t<S_BURN[0] or t>S_BURN[1]+0.25: return
-    a=int(255*scene_a(t,S_BURN))
-    kinetic(d,'A SLOW BURN',f(BEB,120),70,400,S_BURN[0]+0.08,t,AMBER,-1)
-    cx,cy=540,820; h=lerp(260,200,clamp((t-S_BURN[0])/5))
-    d.rounded_rectangle([cx-60,cy-h/2+120,cx+60,cy+240],radius=14,fill=(236,232,220,a))
-    fl=1+0.08*math.sin(t*14); fy=cy-h/2+120
-    d.polygon([(cx,fy-110*fl),(cx+36,fy-30),(cx+20,fy),(cx-20,fy),(cx-36,fy-30)],fill=AMBER+(a,)); d.polygon([(cx,fy-60*fl),(cx+16,fy-16),(cx,fy),(cx-16,fy-16)],fill=(255,240,180,a))
-    if GL: GL.ellipse([cx-70,fy-150,cx+70,fy+20],fill=AMBER+(int(a*0.6),))
-    yb=1130
-    for k in range(6):
-        x=90+k*150; on=t>=BU_CON and k<int(6*ease_io((t-BU_CON)/1.6))+0
-        gpanel(d,(x,yb,x+130,yb+90),NGREEN if on else (60,64,78),a,0.85 if on else 0.6)
-        ctext(d,f'BLOCK {k+1}',f(MONOB,22),x+65,yb+30,NGREEN if on else MUTED,a)
-    if t>=BU_BLK: ctext(d,'CONSISTENCY · REAL TRAINING BLOCKS',f(MONOB,28),540,yb+110,CREAM,int(a*clamp((t-BU_BLK)/0.2)))
-
-# 7) waterfall: -8 lb fat, +6 lb muscle, scale shows 2
-WF_LIE=at('scale',83.0); WF_8=at('eight',88.4); WF_6=at('6',90.4); WF_2=at('2',92.5); WF_SENSE=at('sense',94.0)
-sfxb(WF_LIE,'tick',g=-24); sfxb(WF_8,'thud',w=1.0,g=-19); sfxb(WF_6,'thud',w=1.0,g=-19); sfxb(WF_2,'impact',g=-15)
-def waterfall(L,d,t):
-    if t<S_SCALE[0] or t>S_SCALE[1]+0.25: return
-    a=int(255*scene_a(t,S_SCALE))
-    kinetic(d,'THE SCALE LIES',f(BEB,120),70,400,S_SCALE[0]+0.08,t,VRED,-1)
-    x0,x1=110,990; y0=700; U=48      # px per lb
-    base=y0+8*U*0.15
-    d.line([(x0,base),(x1,base)],fill=MUTED+(a,),width=2); d.text((x0,base-34),'START',font=f(MONOB,20),fill=LABEL+(a,))
-    cols=[('FAT',-8,WF_8,VRED),('MUSCLE',+6,WF_6,NGREEN),('ON THE SCALE',-2,WF_2,VGOLD)]
-    lvl=0
-    for k,(lab,v,tt,col) in enumerate(cols):
-        x=170+k*290; w=200
-        if k<2: top=base+lvl*-U; bot=top+(-v)*U
-        else: top=base; bot=base+(-v)*U
-        if t>=tt:
-            s=ease_io((t-tt)/0.4); y_a=top; y_b=lerp(top,bot,s)
-            ya,yb_=min(y_a,y_b),max(y_a,y_b)
-            d.rectangle([x,ya,x+w,yb_],fill=col+(int(a*0.9),))
-            if GL: GL.rectangle([x,ya,x+w,yb_],outline=col+(int(a*0.7),),width=10)
-            txt=(('+' if v>0 else '−')+f'{abs(v)} LB')
-            ctext(d,txt,f(BEB,80),x+w/2,(yb_+10) if v<0 else (ya-90),col,int(a*s),True)
-            ctext(d,lab,f(MONOB,24),x+w/2,base-40 if v<0 else base+14,col if k<2 else VGOLD,a)
-        if k<2: lvl+=v
-        if k==0 and t>=cols[1][2]: dashed(d,[(x+w,base+8*U),(x+w+90,base+8*U)],(120,124,136,a),3,10,8)
-    if t>=WF_SENSE: pill(d,540,1290,'MAKES NO SENSE ON A SCALE',f(MONOB,32),VRED,(255,255,255),int(a*clamp((t-WF_SENSE)/0.2)))
-
-# 8) mirror vs scale, then what matters more
-MR_SELF=at('self-aware',96.1); MR_MIR=at('mirror',98.3); MR_DIF=at('different',100.2); MR_BAR=at('barely',102.4); MR_MAT=at('matter',105.5); MR_BW=at('weight',107.6)
-sfxb(MR_MIR,'tick',g=-23); sfxb(MR_DIF,'thud',w=1.0,g=-19); sfxb(MR_BAR,'tick',g=-24); sfxb(MR_MAT,'thud',w=1.2,g=-18); sfxb(MR_BW,'impact',g=-16)
-def mirror(L,d,t):
-    if t<S_MIRROR[0] or t>S_MIRROR[1]+0.25: return
-    a=int(255*scene_a(t,S_MIRROR))
-    rank=t>=MR_MAT-0.2
-    if not rank:
-        kinetic(d,'MIRROR VS SCALE',f(BEB,110),70,400,S_MIRROR[0]+0.08,t,CREAM,-1)
-        mx0,my0,mx1,my1=80,560,500,1220
-        d.rounded_rectangle([mx0,my0,mx1,my1],radius=200,fill=(20,26,36,a),outline=VGOLD+(a,),width=8)
-        if GL: GL.rounded_rectangle([mx0,my0,mx1,my1],radius=200,outline=VGOLD+(int(a*0.6),),width=16)
-        ch=ease_io((t-MR_DIF)/0.8) if t>=MR_DIF else 0; cx=290
-        sw=lerp(100,128,ch); ww=lerp(96,74,ch)
-        d.ellipse([cx-40,700,cx+40,780],fill=(150,154,166,a))
-        d.polygon([(cx-sw,800),(cx+sw,800),(cx+ww,1020),(cx-ww,1020)],fill=((150,154,166) if ch<0.5 else NGREEN)+(a,))
-        d.rectangle([cx-ww+4,1020,cx+ww-4,1140],fill=(120,124,136,a))
-        if t>=MR_MIR: ctext(d,'MIRROR',f(BEB,52),cx,1240,VGOLD,a)
-        if t>=MR_DIF: ctext(d,'COMPLETELY DIFFERENT',f(MONOB,22),cx,1300,NGREEN,int(a*clamp((t-MR_DIF)/0.2)))
-        sx,sy=780,900
-        d.rounded_rectangle([sx-200,sy-200,sx+200,sy+260],radius=40,fill=(36,40,52,a),outline=(120,124,136,a),width=6)
-        d.ellipse([sx-130,sy-160,sx+130,sy+100],fill=(236,234,230,a))
-        for k in range(15):
-            ang=math.radians(200+k*10); d.line([(sx+110*math.cos(ang),sy-30+110*math.sin(ang)),(sx+125*math.cos(ang),sy-30+125*math.sin(ang))],fill=(60,60,66,a),width=3)
-        wig=0.4*math.sin(t*3) if t>=MR_BAR else 0; ang=math.radians(270+wig*4)
-        d.line([(sx,sy-30),(sx+100*math.cos(ang),sy-30+100*math.sin(ang))],fill=VRED+(a,),width=6)
-        ctext(d,'SCALE',f(BEB,52),sx,1240,MUTED,a)
-        if t>=MR_BAR: ctext(d,'BARELY SHIFTED',f(MONOB,22),sx,1300,VRED,int(a*clamp((t-MR_BAR)/0.2)))
-    else:
-        kinetic(d,'WHAT MATTERS MORE',f(BEB,110),70,400,MR_MAT-0.2,t,VGOLD,1)
-        for k,(lab,col,tt) in enumerate((('THE MIRROR',VGOLD,MR_MAT-0.1),('YOUR BLOODWORK',ECYAN,MR_MAT+0.15),('BODY WEIGHT',MUTED,MR_BW))):
-            q=expo((t-tt)/0.22)
-            if q<=0: continue
-            y=600+k*190; aa=int(a*q)
-            gpanel(d,(80,y,1000,y+160),col,aa,0.85)
-            ctext(d,str(k+1),f(BEB,110),170,y+14,col,aa,True); d.text((260,y+36),lab,font=f(BEB,90),fill=(CREAM if k<2 else MUTED)+(aa,))
-            if k==2 and t>=MR_BW+0.2: d.line([(250,y+86),(lerp(250,930,expo((t-MR_BW-0.2)/0.2)),y+86)],fill=VRED+(aa,),width=12)
-
-# 9) floating: measure, analyze, pivot, optimize (chevron strip)
-LP0=S_MIRROR[1]; LP1=at('if',113.0)-0.05
-LP=[('MEASURE',at('measure',109.9),ECYAN),('ANALYZE',at('analyze',110.6),VGOLD),('PIVOT',at('pivot',111.4),AMBER),('OPTIMIZE',at('optimize',112.1),NGREEN)]
-for _,tt,_c in LP: sfxb(tt,'tick',g=-24)
-def chevrons(L,d,t):
-    a=int(255*float_a(t,LP0,LP1))
-    if a<=0: return
-    for k,(lab,tt,col) in enumerate(LP):
-        q=expo((t-tt)/0.2)
-        if q<=0: continue
-        x=40+k*250; y=420; aa=int(a*q)
-        pts=[(x,y),(x+220,y),(x+250,y+70),(x+220,y+140),(x,y+140),(x+30,y+70)]
-        d.polygon(pts,fill=DEEPV+(int(aa*0.9),)); d.line(pts+[pts[0]],fill=col+(aa,),width=5)
-        if GL: GL.line(pts+[pts[0]],fill=col+(int(aa*0.7),),width=12)
-        ctext(d,lab,f(BEB,46),x+130,y+44,col,aa)
-
-def overlays_b(im,t):
-    L,d=newL()
-    t1(L,d,t); t2(L,d,t); igf(L,d,t); gate(L,d,t); struct(L,d,t); dose(L,d,t); burn(L,d,t); waterfall(L,d,t); mirror(L,d,t); chevrons(L,d,t)
-    im.alpha_composite(L)
-
-# 10) end card: IGF-1 response + GH timing breakdown, COMMENT "PANEL"
-T_END=LP1; E_IGF=at('igf-1',114.3); E_TIME=at('time',116.0); E_PH=at('phases',117.8); E_C=at('comment',118.7); E_W=at('panel',119.2); E_FREE=at('free',121.7)
-sfxb(T_END,'whoosh',d=0.25,g=-28); sfxb(E_IGF,'thud',w=1.2,g=-18); sfxb(E_TIME,'tick',g=-24); sfxb(E_W,'impact',g=-15); sfxb(E_FREE,'tick',g=-25)
+def B_push(t): return 0.0
+def overlays_b(im,t): return
+T_END=at('with',165.18)-0.05; E_C=at('comment',165.96); E_FREE=at('free',170.36)
+sfxb(T_END,'whoosh',d=0.25,g=-28); sfxb(E_C,'impact',g=-15); sfxb(E_FREE,'tick',g=-25)
 def end_b(im,t):
     if t<T_END: return
     q=ease_io((t-T_END)/0.35); im.alpha_composite(scene_bg(q)); L,d=newL(); a=int(255*q)
-    lg=logo().copy(); lg.putalpha(lg.split()[3].point(lambda v:int(v*q))); L.alpha_composite(lg.resize((130,130)),(70,250))
-    d.text((222,262),'COACH AGZ',font=f(BAR,52),fill=GOLD+(a,)); d.text((224,326),'@coach.agz',font=f(MONO,28),fill=MUTED+(a,))
-    d.text((80,440),'THE FULL BREAKDOWN',font=f(BEB,72),fill=CREAM+(a,))
-    for k,(lab,sub,tt,col) in enumerate((('IGF-1 RESPONSE','what drives it',E_IGF,ECYAN),('GH TIMING','around growth phases',E_TIME,VGOLD))):
-        if t<tt-0.2: continue
-        s=expo((t-tt+0.2)/0.22); y=560+k*200; aa=int(a*s)
-        gpanel(d,(80,y,1000,y+170),col,aa,0.88); d.text((120,y+24),lab,font=f(BEB,90),fill=col+(aa,)); d.text((122,y+118),sub.upper(),font=f(MONOB,24),fill=MUTED+(aa,))
-        if GL: GL.text((120,y+24),lab,font=f(BEB,90),fill=col+(int(aa*0.5),))
-    if t>=E_PH: ruler(d,3,int(a*clamp((t-E_PH)/0.3)),y=1000)
+    lg=logo().copy(); lg.putalpha(lg.split()[3].point(lambda v:int(v*q))); L.alpha_composite(lg.resize((200,200)),(440,440))
+    fn=f(BAR,52); s='COACH AGZ'; d.text((540-d.textlength(s,font=fn)/2,670),s,font=fn,fill=GOLD+(a,))
+    fn=f(MONO,30); s='@coach.agz'; d.text((540-d.textlength(s,font=fn)/2,736),s,font=fn,fill=MUTED+(a,))
     if t>=E_C:
-        s=expo((t-E_C)/0.16); sc=lerp(1.5,1,s); fn=f(MONOB,int(58*sc)); txt='COMMENT "PANEL"'; w=d.textlength(txt,font=fn)
-        lit_bar(d,540-w/2-30,1090,540+w/2+30,1090+fn.size+40,VGOLD,int(a*s)); d.text((540-w/2,1110),txt,font=fn,fill=DEEP+(int(a*s),))
-        if GL and t<E_C+0.7: GL.rectangle([540-w/2-34,1086,540+w/2+34,1094+fn.size+40],outline=VGOLD+(int(220*(1-(t-E_C)/0.7)),),width=12)
-    if t>=E_FREE: ctext(d,'SENT TO YOU · FREE',f(MONOB,34),540,1222,CREAM,int(a*clamp((t-E_FREE)/0.15)))
-    ctext(d,DISC,f(MONO,20),540,1284,LABEL,a)
-    ctext(d,'NOT MEDICAL ADVICE · WORK WITH YOUR DOCTOR',f(MONO,20),540,1314,LABEL,a)
+        s_=expo((t-E_C)/0.16); sc=lerp(1.5,1,s_); fn=f(MONOB,int(60*sc)); txt='COMMENT "MUSCLE"'; w=d.textlength(txt,font=fn)
+        lit_bar(d,540-w/2-30,880,540+w/2+30,880+fn.size+40,VGOLD,int(a*s_)); d.text((540-w/2,900),txt,font=fn,fill=DEEP+(int(a*s_),))
+    if t>=E_FREE:
+        fn=f(MONOB,34); s='SENT TO YOU · FREE'; d.text((540-d.textlength(s,font=fn)/2,1030),s,font=fn,fill=CREAM+(int(a*clamp((t-E_FREE)/0.15)),))
+    fn=f(MONO,20)
+    for k,s in enumerate((DISC,'NOT MEDICAL ADVICE · WORK WITH YOUR DOCTOR')): d.text((540-d.textlength(s,font=fn)/2,1110+k*30),s,font=fn,fill=LABEL+(a,))
     im.alpha_composite(L)
 
 # ---------------- frame ----------------
-SUBJECT_T=1.76      # visual hook: first punch-in lands on the spoken subject "growth hormone"
+SUBJECT_T=0.80      # visual hook: first punch-in lands on the spoken subject "gear"
 def zoom_at(t):   # saved setup: 108% punch-in alternates at every jump cut
     if t<CUTS[0]: return 1.08 if t>=SUBJECT_T else 1.0
     return 1.0 if seg_of(t)%2==1 else 1.08
