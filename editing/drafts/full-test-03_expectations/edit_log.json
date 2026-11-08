@@ -1,0 +1,37 @@
+{
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Expecting 20 to 30 lbs", "in 6 months on STEROIDS"],
+    "emphasis": ["STEROIDS"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "notes": "DM Sans Bold 78px on a frosted navy box with the gold edge rule; STEROIDS in v-gold #FFC21A. Slow 100->104% scale over the hold (static opening frame). Spoken hook runs to 6.5s, so the hold is capped at 6.0s."
+  },
+  "runners_up": [
+    ["Muscle worth keeping", "on STEROIDS"],
+    ["80 to 85% of guys", "lack the GENETICS"]
+  ],
+  "candidates_scored": [
+    { "lines": ["Expecting 20 to 30 lbs", "in 6 months on STEROIDS"], "formula": "A pain", "score": 27 },
+    { "lines": ["Muscle worth keeping", "on STEROIDS"], "formula": "B outcome", "score": 24 },
+    { "lines": ["80 to 85% of guys", "lack the GENETICS"], "formula": "A pain", "score": 24, "note": "pays off at 1:48, fails the lock-in check" },
+    { "lines": ["Your GENETICS cap", "what gear can build"], "formula": "C state change", "score": 21 },
+    { "lines": ["Your first 90 DAYS", "vs their fifth year"], "formula": "A pain", "score": 20 }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:07",
+    "trust_anchor": "MISSING"
+  },
+  "topic_band": { "text": "Real expectations on STEROIDS", "start": 6.0, "end": 60.0 },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No proof in the lock-in zone (0:04-0:12). Suggest a client progress screenshot or intake-form card if you have one; nothing was invented",
+    "Spoken '20 or 30 pounds'; the hook says '20 to 30 lbs' (same range)",
+    "STEROIDS is the subject term; the video says 'anabolic steroids' at 1:33, not in the first seconds"
+  ]
+}
