@@ -1,0 +1,36 @@
+{
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["2 to 3 hours of sleep", "wasting your TREN cycle"],
+    "emphasis": ["TREN"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 276 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "notes": "DM Sans Bold 78px on a frosted navy box with the gold edge rule, TREN in v-gold. Slow 100->104% scale. The spoken hook runs about 10 s with no pause, so the hold is capped at 6.0 s. The 24h-clock panel enters at 2.9 s below the hook; the hook stays on top."
+  },
+  "runners_up": [
+    ["Grow more on TREN", "fix your sleep first"],
+    ["TREN without sleep", "all sides no gains"]
+  ],
+  "candidates_scored": [
+    { "lines": ["2 to 3 hours of sleep", "wasting your TREN cycle"], "formula": "A pain", "score": 28 },
+    { "lines": ["Grow more on TREN", "fix your sleep first"], "formula": "B outcome", "score": 24 },
+    { "lines": ["TREN without sleep", "all sides no gains"], "formula": "A pain", "score": 24 },
+    { "lines": ["SLEEP beats your", "next TREN cycle"], "formula": "C state change", "score": 20 },
+    { "lines": ["8 hours of SLEEP", "outgrows TREN"], "formula": "B outcome", "score": 19, "note": "two subjects compete" }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:02",
+    "trust_anchor": "MISSING"
+  },
+  "topic_band": { "text": "Your sleep on TREN", "start": 6.15, "end": 26.1 },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No proof in the lock-in zone (0:04-0:12). A client sleep log or wearable screenshot would anchor it; nothing was invented",
+    "The spoken hook runs about 10 s without a pause; the text hook is capped at 6.0 s by rule"
+  ]
+}
