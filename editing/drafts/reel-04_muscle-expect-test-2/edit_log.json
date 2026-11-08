@@ -1,0 +1,95 @@
+{
+  "video": "Drive 1aUEDUCnRBLFlIhipbCnbzG5clP9-KxHx (\"Muscle expect test 2\", 1080x1920 HEVC 60fps, 1:57)",
+  "output": {
+    "resolution": "1080x1920",
+    "fps": 30,
+    "duration_s": 114.37
+  },
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": [
+      "Muscle on GEAR",
+      "3 months to 5 years"
+    ],
+    "emphasis": [
+      "GEAR"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 300
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "notes": "Spoken hook ends 5.6 s ('...build over time?'), so hold = 5.6 + 0.5 capped at 6.0. Barlow Condensed ExtraBold stand-in, GEAR in v-gold, slow 100->104% scale"
+  },
+  "candidates": [
+    {
+      "lines": [
+        "Muscle on GEAR",
+        "3 months to 5 years"
+      ],
+      "formula": "subject+outcome",
+      "total": 27
+    },
+    {
+      "lines": [
+        "Your first CYCLE",
+        "3 to 8 lbs of muscle"
+      ],
+      "formula": "subject+outcome",
+      "total": 25
+    },
+    {
+      "lines": [
+        "20 lbs in 6 months",
+        "the GEAR myth"
+      ],
+      "formula": "subject+pain",
+      "total": 23
+    },
+    {
+      "lines": [
+        "GEAR timeline",
+        "the real numbers"
+      ],
+      "formula": "subject+state_change",
+      "total": 21
+    },
+    {
+      "lines": [
+        "Muscle on GEAR",
+        "the number nobody checks"
+      ],
+      "formula": "subject+pain",
+      "total": 19
+    }
+  ],
+  "runners_up": [
+    [
+      "Your first CYCLE",
+      "3 to 8 lbs of muscle"
+    ],
+    [
+      "20 lbs in 6 months",
+      "the GEAR myth"
+    ]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:12",
+    "trust_anchor": "MISSING: the ranges are his coaching estimates; nearest anchor is '10 years on and off gear' at 0:58"
+  },
+  "flags": [
+    "winners.md missing (used starter power-phrase bank)",
+    "no proof in the lock-in window; consider a client-result or panel card at 0:06-0:12",
+    "illustrative: heatmap cycle pattern, 2-4 year band points (interpolated between his 1 yr and 5 yr numbers), growth step line, risk gauge level"
+  ],
+  "topic_band": {
+    "text": "Realistic muscle on GEAR",
+    "start": 6.0,
+    "end": 57.2
+  }
+}
