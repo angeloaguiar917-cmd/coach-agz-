@@ -1,0 +1,36 @@
+{
+  "video": "GH2 (Drive 1EmdecevkcPlbECVQX3jHrENQ11d5Zhsx)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Your GH results", "aren't on the scale"],
+    "emphasis": ["GH"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 4.9,
+    "position": { "anchor": "top-center", "y_px": 282 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates": [
+    { "lines": ["Your GH results", "aren't on the scale"], "formula": "subject+pain", "score": 27 },
+    { "lines": ["Stop weighing yourself", "on GH"], "formula": "subject+pain", "score": 25 },
+    { "lines": ["GH muscle shows up", "after 6 months"], "formula": "subject+outcome", "score": 24 },
+    { "lines": ["GH leans you out", "before it builds"], "formula": "subject+state_change", "score": 22 },
+    { "lines": ["Tracking the wrong thing", "on GROWTH HORMONE"], "formula": "subject+pain", "score": 21 }
+  ],
+  "runners_up": [
+    ["Stop weighing yourself", "on GH"],
+    ["GH muscle shows up", "after 6 months"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:06",
+    "trust_anchor": "MISSING (no lab value, panel or client result in 0:04-0:12; '2-3 weeks' is a timeframe, not proof)"
+  },
+  "topic_band": { "text": "GH results · track the right thing", "start": 4.9, "end": 53.27 },
+  "flags": [
+    "hooks/winners.md missing; used starter power-phrase bank",
+    "trust anchor missing in lock-in zone; a real client body-comp or IGF-1 panel screenshot at ~0:09 would fill it",
+    "scale reading 214.6 lb, body-comp percentages and graph curves are illustrative, not data"
+  ]
+}
