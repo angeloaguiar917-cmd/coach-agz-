@@ -1,7 +1,7 @@
 # Reel: "Genetics ceiling" — stop comparing; genetics set the ceiling (native 1080p + phone copy)
 
 **Source:** Drive file `1TrzT5jxrZwFy2cE7Y8H65TmFdZQ_nOhQ`, 1080×1920 HEVC 60 fps, 1:06.2, single take with one in-camera jump cut (49.3 s).
-**Output:** `coach-agz_genetics-ceiling_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master.
+**Output:** `coach-agz_genetics-ceiling_1080p_phone.mp4`, 1080×1920, 30 fps, two-pass ~2.5 Mbps (phone-sized), plus the CRF 16 master `coach-agz_genetics-ceiling_1080p_master.mp4` (59 MB). Checks: 2,011 frames decode, −14.4 LUFS, peak −1.8 dBFS, L/R identical; phone copy 21 MB.
 
 ## Order of work
 1. **Audio:** the voice is in the right channel only (left −108.8 dB) and there are 44 clipped samples. Made dual-mono at the mix and mastered to about −14.2 LUFS.
