@@ -1,0 +1,136 @@
+{
+  "video": "Drive 1OgV5GIAG-zA8v1fRuaqhxomiAoMcTGBc (\"Long form expect\", 1080x1920 HEVC 60fps, 7:45)",
+  "output": {
+    "resolution": "1080x1920",
+    "fps": 30,
+    "duration_s": 436.43
+  },
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": [
+      "Real muscle on GEAR",
+      "3 months vs 5 years"
+    ],
+    "emphasis": [
+      "GEAR"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.3,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 300
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "notes": "Barlow Condensed ExtraBold stand-in (Bebas has no lowercase, which rule 8 needs); white on black rounded box; GEAR in v-gold #FFC21A; slow 100->104% scale over the hold (no punch-in lands on the subject in the first 1.5 s)"
+  },
+  "candidates": [
+    {
+      "lines": [
+        "Real muscle on GEAR",
+        "3 months vs 5 years"
+      ],
+      "formula": "subject+outcome",
+      "scores": {
+        "subject": 4,
+        "curiosity": 5,
+        "specificity": 5,
+        "power_phrase": 3,
+        "glance": 5,
+        "spoken_align": 5
+      },
+      "total": 27
+    },
+    {
+      "lines": [
+        "First CYCLE gains",
+        "mostly water"
+      ],
+      "formula": "subject+pain",
+      "scores": {
+        "subject": 4,
+        "curiosity": 5,
+        "specificity": 3,
+        "power_phrase": 4,
+        "glance": 5,
+        "spoken_align": 3
+      },
+      "total": 24
+    },
+    {
+      "lines": [
+        "5 years on GEAR",
+        "20 to 40 lbs of muscle"
+      ],
+      "formula": "subject+outcome",
+      "scores": {
+        "subject": 4,
+        "curiosity": 3,
+        "specificity": 5,
+        "power_phrase": 3,
+        "glance": 4,
+        "spoken_align": 4
+      },
+      "total": 23
+    },
+    {
+      "lines": [
+        "Your GEAR timeline",
+        "the real numbers"
+      ],
+      "formula": "subject+state_change",
+      "scores": {
+        "subject": 4,
+        "curiosity": 4,
+        "specificity": 2,
+        "power_phrase": 3,
+        "glance": 5,
+        "spoken_align": 4
+      },
+      "total": 22
+    },
+    {
+      "lines": [
+        "Muscle on GEAR",
+        "the number nobody checks"
+      ],
+      "formula": "subject+pain",
+      "scores": {
+        "subject": 4,
+        "curiosity": 4,
+        "specificity": 1,
+        "power_phrase": 4,
+        "glance": 4,
+        "spoken_align": 3
+      },
+      "total": 20
+    }
+  ],
+  "runners_up": [
+    [
+      "First CYCLE gains",
+      "mostly water"
+    ],
+    [
+      "5 years on GEAR",
+      "20 to 40 lbs of muscle"
+    ]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11",
+    "trust_anchor": "MISSING in 0:04-0:12 (the 70% figure is his own estimate). First proof: the 13.4 lb controlled-trial card at 1:30"
+  },
+  "flags": [
+    "winners.md missing (used starter power-phrase bank)",
+    "no proof in the lock-in window; nearest trust anchor is the trial card at 1:30",
+    "study citations on screen (Bhasin et al. NEJM 1996; Bhasin et al. 2001) were added from the numbers he quotes; verify before posting",
+    "chapter tracker stays at the top until 4:02, past the 3:38 midpoint (topic-band rule)"
+  ],
+  "topic_band": {
+    "text": "Realistic muscle on GEAR",
+    "start": 3.3,
+    "end": "replaced by the chapter tracker at 1:08; top clear from 4:02"
+  }
+}
