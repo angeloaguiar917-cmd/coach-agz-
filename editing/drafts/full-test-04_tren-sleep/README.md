@@ -39,3 +39,21 @@ Full panels alternate with top strips, so the face comes back at 0:11 and 0:38.
 ## Notes
 - **Values:** Chart values (hormone curve shapes, marker positions) are **illustrative**. The only figures on screen are the ones you say: 2–3 hrs, 3 hrs, 8 hrs, plus 5 hrs lost (8 − 3).
 - **Fonts:** Stand-ins.
+
+## QC done
+- **Format:** 1080×1920, 30 fps, H.264 High@4.2 with AAC 192k, faststart. 26.7 MB, 1,595 frames, 0:53.
+- **Audio:** −14.2 LUFS, true peak −1.3 dBFS.
+- **Visual review:**
+  - Stills of every scene, plus a contact sheet at 1 frame per second.
+  - 15 fps frame strips at three handoffs: clock → KPI strip, overnight → comparison, and priority → CTA.
+- **Fixed during review:**
+  - The hook box overlapped the panel top, so I lowered the panel to y 502 and raised the hook to y 276.
+  - The 3-hour cut fired at 3.5 s; "three hours" had matched "two to three hours", so I re-cued it to "only getting three".
+  - The clock legend collided with the 00 label.
+  - Scene and strip overlaps at 15 s, 27 s and 41 s.
+  - The CTA entered over the exiting priority panel.
+- **Captions:**
+  - Every word comes from a medium.en transcript of the cut audio.
+  - A focused re-check confirmed "always want" and "Then fix".
+  - "trend" is displayed as TREN, and numbers as digits.
+- **Not done:** listening. Check the SFX balance by ear.
