@@ -1,0 +1,39 @@
+{
+  "video": "Muscle expect test 2 (Drive 1aUEDUCnRBLFlIhipbCnbzG5clP9-KxHx)",
+  "edited_cut_duration_s": 114.667,
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": ["Realistic MUSCLE gain", "3 months to 5 years"],
+    "emphasis": ["MUSCLE"],
+    "mode": "premium",
+    "font": "Barlow Condensed ExtraBold (stand-in), subject in v-gold #FFC21A, dark rounded box",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 295 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "motion": "slow 100 to 104% scale over the hold"
+  },
+  "candidates_scored": [
+    { "lines": ["Realistic MUSCLE gain", "3 months to 5 years"], "formula": "subject+outcome", "score": 27 },
+    { "lines": ["Your first CYCLE", "won't add 40 lb"], "formula": "subject+pain", "score": 25 },
+    { "lines": ["Pounds of MUSCLE", "by year 5 on gear"], "formula": "subject+outcome", "score": 24 },
+    { "lines": ["Stop comparing day 90", "to their YEAR 5"], "formula": "subject+pain", "score": 22 },
+    { "lines": ["MUSCLE GAIN math", "just got honest"], "formula": "subject+state_change", "score": 18 }
+  ],
+  "runners_up": [
+    ["Your first CYCLE", "won't add 40 lb"],
+    ["Pounds of MUSCLE", "by year 5 on gear"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:12 (3 months: 3-8 lb), full range by 0:35 (5 years: 20-40 lb)",
+    "trust_anchor": "MISSING in 0:04-0:12. Nearest proof is spoken at 0:58 (10 years on and off gear). No panel, client result or study asset was supplied."
+  },
+  "topic_band": { "text": "Realistic MUSCLE gain · 3 months to 5 years", "start": 6.0, "end": 57.45 },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "Trust anchor missing in the lock-in zone (no proof asset available)",
+    "Section 10: the spoken subject word 'muscle' lands at 3.4 s, after the 1.5 s window, so the opening move is the slow 100 to 104% hook scale instead of a punch-in"
+  ]
+}
