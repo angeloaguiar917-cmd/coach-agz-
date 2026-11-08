@@ -72,7 +72,9 @@ def cross(d, x, y, col, s=1.0, a=1.0):
         d.line(p, fill=A(col, a), width=int(6 * s))
         if GL: GL.line(p, fill=A(col, a), width=int(12 * s))
 def dashed(d, x0, y0, x1, y1, col, w=3, dash=14, gap=10, a=1.0, glow=False):
-    L = math.hypot(x1 - x0, y1 - y0); n = int(L // (dash + gap)) + 1
+    L = math.hypot(x1 - x0, y1 - y0)
+    if L < 1: return
+    n = int(L // (dash + gap)) + 1
     for k in range(n):
         s0 = k * (dash + gap) / L; s1 = min(1, (k * (dash + gap) + dash) / L)
         if s0 >= 1: break
