@@ -542,7 +542,7 @@ def build_timeline():
     global SCENES, STRIPS, CTAS, VERDICTS, P_in, HOOK_END, BAND_END
     SCENES = [  # t_in, t_out, fn, header_left, header_right
         (cue("they're") - 0.05, cend('social media') + 0.45, scene_timeline, 'CLIENT INTAKE', 'EXPECTATION CHECK'),
-        (cue('because the goal') - 0.05, cend('keeping') + 0.55, scene_gauge, 'THE GOAL', 'SPEED vs QUALITY'),
+        (cue('because the goal') - 0.05, cend('keeping') + 0.12, scene_gauge, 'THE GOAL', 'SPEED vs QUALITY'),
         (cue('genetic ceiling') - 0.25, cend('ronnie coleman') + 0.45, scene_genetics, 'GENETIC PROFILE', 'RESPONSE MAP'),
         (cue('handful') - 0.1, cend('insane') + 0.45, scene_client, 'CLIENT FILE', 'EVIDENCE'),
         (cue('probably') - 0.1, cend('five years') + 0.45, scene_bars, 'MUSCLE GAINED', 'THEM vs ME'),
@@ -550,7 +550,7 @@ def build_timeline():
         (cue('80') - 0.25, cend('unfortunate') + 0.3, scene_waffle, 'THE ODDS', 'POPULATION'),
     ]
     STRIPS = [
-        (cue('without') - 0.05, cend('around you') + 0.35, strip_ecg),
+        (cend('keeping') + 0.32, cend('around you') + 0.35, strip_ecg),
         (cue('training') - 0.1, cend('every single day', cue('optimized')) + 0.5, strip_inputs),
         (cue('progress') - 0.15, END, strip_progress),
     ]
@@ -568,7 +568,8 @@ SCENES = STRIPS = CTAS = VERDICTS = None; P_in = [0]
 HOOK = (['Expecting 20 to 30 lbs', 'in 6 months on '], 'STEROIDS')
 def text_hook(im, t):
     if t >= HOOK_END + 0.15: return
-    a = 1 - clamp((t - HOOK_END) / 0.15)
+    fade = 1 - clamp((t - HOOK_END) / 0.15); a = 1.0
+    base = im.copy() if fade < 1 else None
     s = lerp(1.0, 1.04, clamp(t / HOOK_END))
     fn = f(DMB, int(78 * s)); d = ImageDraw.Draw(im, 'RGBA')
     l1 = HOOK[0][0]; l2a = HOOK[0][1]; l2b = HOOK[1]
@@ -581,10 +582,11 @@ def text_hook(im, t):
     d.text(((W - w1) / 2, y), l1, font=fn, fill=A(WHITE, a))
     x = (W - w2) / 2; d.text((x, y + lh), l2a, font=fn, fill=A(WHITE, a)); x += d.textlength(l2a, font=fn)
     d.text((x, y + lh), l2b, font=fn, fill=A(VGOLD, a))
-    if GL: GL.text((x, y + lh), l2b, font=fn, fill=A(VGOLD, 0.6 * a))
+    if GL and fade >= 1: GL.text((x, y + lh), l2b, font=fn, fill=A(VGOLD, 0.6 * a))
+    if base is not None: im.paste(Image.blend(base, im, fade))
 def topic_band(im, t):
-    if not (HOOK_END <= t < BAND_END + 0.15): return
-    a = clamp((t - HOOK_END) / 0.15) * (1 - clamp((t - BAND_END) / 0.15))
+    if not (HOOK_END + 0.15 <= t < BAND_END + 0.15): return
+    a = clamp((t - HOOK_END - 0.15) / 0.15) * (1 - clamp((t - BAND_END) / 0.15))
     d = ImageDraw.Draw(im, 'RGBA')
     d.rectangle([8, 212, W, 352], fill=A(NAVY, 0.88 * a))
     d.line([(64, 240), (108, 240)], fill=A(GOLD, a), width=4); txt(d, 122, 224, '@coach.agz', f(MONO, 28), GOLD, a)

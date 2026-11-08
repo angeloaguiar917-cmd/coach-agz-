@@ -41,3 +41,19 @@ See the final report in chat. All chart values are **illustrative**, except the 
 
 ## Rebuild
 `render.py <scratch> chunk n0 n1 out.mp4` renders frames from `ex/cut.mov`. `sfx.py <scratch>` writes `ex/sfx.wav`. Both read `ex/trim.json` and `ex/words_final.json` (also copied here).
+
+## QC done
+- **Format:** 1080×1920, 30 fps, H.264 High@4.2, yuv420p, AAC 192k, faststart. 62.7 MB, 3,630 frames, 2:01.
+- **Audio:** −14.5 LUFS integrated, true peak −1.1 dBFS.
+- **Visuals:**
+  - Checked stills of every scene, a contact sheet every 2 s, and 10–30 fps frame strips at the hook exit, the gauge→ECG handoff and the verdict slam.
+- **Fixed during review:**
+  - Tags clipped at the panel edge, and label collisions on the zoomed timeline.
+  - "NO FATHER" was white on white.
+  - "HYPER-RESPONDER" collided with the panel header, and the OUTLIER stamp covered the dose field.
+  - Top strips moved up off the eyes.
+  - The gauge panel overlapped the ECG strip entrance.
+  - The hook box hard-cut instead of fading and overlapped the topic band for 2 frames.
+  - A divide-by-zero on the first frame of the ceiling draw-on.
+- **Captions:** built from the medium.en transcript of the cut audio, with fixes for "anabolic", "gonna", "I have a" (from a focused re-check) and "85%".
+- **Not done:** listening. Check the SFX balance and the "will only optimize" caption by ear.
