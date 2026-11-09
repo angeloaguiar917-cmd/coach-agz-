@@ -48,6 +48,8 @@ wh=lambda t,d=0.4,g=-28: place(whoosh(d),t-d*0.7,gain=dB(g))
 t3=T('three',0.6)
 for i in range(3): tk(t3+0.08*i,-32)
 place(thud(0.8),T('last',5.8),gain=dB(-22))
+# band slots unlock as each compound is named
+for w,nr in (('primobolan',12.0),('masteron',32.4),('equipoise',56.8)): tk(T(w,nr),-27,3400)
 # 01 primo card
 wh(SC[0][0],0.35); hit(SC[0][0]+0.1,-21); tk(T('aromatizer',13.4),-27,3200)
 for tt in (T('dht',17.3),T("doesn't",17.9),T('lower',19.3)): tk(tt-0.05,-28)

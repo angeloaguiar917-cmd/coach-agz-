@@ -178,13 +178,27 @@ def lineup(d,t):   # 3 numbered slots under the hook; #3 flags on "last one"
 # ---------------- topic band (hook exit -> midpoint) ----------------
 MID_RAW=None
 def band(im,t,hide):
+    """Locked lineup: names stay redacted until spoken, so the band never gives away the payoff."""
     if t<HOOK_END+0.15 or t>=MID_RAW+0.15: return
     a=min(appear(t,HOOK_END+0.15,0.15),1-clamp((t-MID_RAW)/0.15))*(1-hide)
     if a<=0: return
     d=ImageDraw.Draw(im,'RGBA')
-    d.rectangle([8,212,W,372],fill=NAVY+(int(228*a),)); d.line([(64,244),(108,244)],fill=A(GOLD,a),width=4); txt(d,122,228,'@coach.agz',f(MONO,28),GOLD,a)
-    fn=f(BAR,66); p1='Managing E2 with '; p2='PRIMO · MASTERON · EQ'
-    x=64; txt(d,x,272,p1,fn,CREAM,a); x+=d.textlength(p1,font=fn); txt(d,x,272,p2,fn,VGOLD,a)
+    d.rectangle([8,212,W,392],fill=NAVY+(int(232*a),))
+    fn=f(BAR,54); p1='3 compounds for '; txt(d,64,222,p1,fn,CREAM,a); txt(d,64+d.textlength(p1,font=fn),222,'E2',fn,VGOLD,a)
+    hf=f(MONO,24); tw=d.textlength('@coach.agz',font=hf); txt(d,940-tw,240,'@coach.agz',hf,GOLD,a)
+    slots=[('01','PRIMO',T('primobolan',12.0),VGOLD),('02','MASTERON',T('masteron',32.4),VGOLD),('03','EQUIPOISE',T('equipoise',56.8),RED)]
+    for i,(n,name,tr,col) in enumerate(slots):
+        x0=64+i*296; x1=x0+280; y0=302; y1=372; r=expo((t-tr)/0.22) if t>=tr else 0
+        bad=(i==2)
+        edge=col if (r>0 or bad) else (90,94,110)
+        d.rectangle([x0,y0,x1,y1],fill=A((10,12,20),0.95*a),outline=A(edge,a),width=3)
+        if GL and (r>0 or bad): GL.rectangle([x0,y0,x1,y1],outline=A(edge,a*(0.5+0.5*r)),width=6)
+        txt(d,x0+12,y0+18,n,f(MONOB,26),col if (r>0 or bad) else LBL,a)
+        if r<1:   # redaction bar wipes away on reveal
+            rx0=x0+60+lerp(0,x1-x0-74,r); d.rectangle([rx0,y0+22,x1-14,y1-22],fill=A((60,64,80) if not bad else (110,20,24),a))
+            if bad and r==0: cross(d,x1-46,y0+21,RED,0.9,a)
+        if r>0:
+            ff=f(BAR,46 if len(name)<9 else 42); txt(d,x0+60,y0+8,name,ff,CREAM if not bad else (255,120,110),a*r)
 # ---------------- scenes ----------------
 def sc_primo(im,d,t):     # SPEC CARD with aromatizer spectrum (top zone, crimson-bar glass card)
     x0,y0,x1,y1=60,400,940,868

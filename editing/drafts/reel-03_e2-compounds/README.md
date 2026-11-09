@@ -7,7 +7,7 @@
 One clean take, so no retakes to remove. Seven pauses of 0.27–0.40 s were trimmed to about 0.12 s (`trim.json`, 1.3 s removed). Punch-ins alternate 100/108% at each jump cut.
 
 ## Text hook (TEXT_HOOK_ENGINE, see `edit_log.json`)
-"3 compounds for **E2** / last one wrecks new users", fully visible on frame 0 and held to 6.0 s. Then the topic band "Managing E2 with PRIMO · MASTERON · EQ" runs until the midpoint.
+"3 compounds for **E2** / last one wrecks new users", fully visible on frame 0 and held to 6.0 s. Then a **locked-lineup band** runs until the midpoint: "3 compounds for **E2**" with slots 01 / 02 / 03. The names stay redacted and unlock only when spoken: PRIMO at 0:12, MASTERON at 0:32, and EQUIPOISE (red) at 0:56. Version 1 listed all three names in the band from 0:06, which gave the payoff away. Coach AGZ's feedback fixed that, and it is now a rule in `TEXT_HOOK_ENGINE.md`.
 
 ## Overlays: a different type for every beat
 | Time | Beat | Overlay type |
