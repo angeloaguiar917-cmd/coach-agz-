@@ -33,3 +33,18 @@ Same synth palette as the full test (sub hits, scan sweeps, digital ticks, one i
 
 ## Files
 `reel_render.py` (frames), `sfx.py`, `cut2.py` + `trim.json` (cut), `words.json` (caption timing on the cut), `edit_log.json` (text hook).
+
+## QC done
+- **Overview:** a frame every 1.5 s across the whole render (`qc_overview.jpg`), plus frame strips at the 01 bumper slam, the split-screen entry and the push-aside entry.
+- **Layout fixes during build:**
+  - "NEVER AGAIN" stamp contrast.
+  - "0 DATA POINTS" collision with the bars.
+  - 02 bumper crowding.
+  - AI pills and the CRASHED/FLAT tags colliding with the spectrum.
+  - Flat trend chart.
+  - "52%" on the gauge needle.
+  - Missing ↑ glyph in Bebas (now drawn arrows).
+- **Captions:** the final audio was re-transcribed. 372/374 words match; the 2 misses are transcriber variance. Drift: median 0.00 s, p95 0.05 s.
+  - Known: "And" (0:57) and "Now" (1:26) show about 0.37 s early.
+- **Loudness:** −14.1 LUFS integrated, limiter at −1.5 dBFS.
+- **Not done:** listening. SFX sync was set by script time, not by ear. Fonts are stand-ins.
