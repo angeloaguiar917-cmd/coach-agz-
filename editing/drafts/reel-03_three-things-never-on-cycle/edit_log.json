@@ -1,0 +1,36 @@
+{
+  "video": "3 things I'd never do on cycle again (Drive 1wuVOxJrpFsdvpQO_HP8uNlXEyiz4RoUh)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["3 CYCLE mistakes", "your clinic won't like #3"],
+    "emphasis": ["CYCLE"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 260 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates": [
+    { "lines": ["3 CYCLE mistakes", "your clinic won't like #3"], "formula": "A", "score": 27, "note": "specific count + subject + open loop on #3; aligns with 'number three will piss some doctors off'" },
+    { "lines": ["Stay healthy on CYCLE", "skip these 3 mistakes"], "formula": "B", "score": 22 },
+    { "lines": ["Your CYCLE bloodwork", "needs week 0 first"], "formula": "C", "score": 21 },
+    { "lines": ["3 CYCLE mistakes", "I'd never make again"], "formula": "A", "score": 19, "note": "transcribes the spoken hook (rule 9)" },
+    { "lines": ["500mg TREN for a year", "3 mistakes I'd never repeat"], "formula": "A", "discarded": "line 2 is 27 chars; Tren is not the video's topic (rule 11)" }
+  ],
+  "runners_up": [
+    ["Stay healthy on CYCLE", "skip these 3 mistakes"],
+    ["Your CYCLE bloodwork", "needs week 0 first"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:09 ('number three will probably piss some doctors off'); paid off at 0:57 ('the one your TRT clinic is not gonna like')",
+    "trust_anchor": "MISSING (only the spoken '500 mg Tren for a year straight' at 0:04; no panel or client proof on screen)"
+  },
+  "topic_band": { "lines": ["3 CYCLE mistakes"], "start": 6.0, "end": 48.533, "exit": "jump cut nearest the 49.7 s midpoint" },
+  "flags": [
+    "winners.md missing: hooks/winners.md not built yet; used the starter power-phrase bank",
+    "No trust anchor in the 0:04-0:12 lock-in window: suggest a real past-cycle panel screenshot over the CYCLE LOG card if one exists",
+    "Premium mode uses Barlow Condensed (stand-in) because Bebas Neue has no lowercase for the sentence-case rule"
+  ]
+}
