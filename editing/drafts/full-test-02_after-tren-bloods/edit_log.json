@@ -1,0 +1,36 @@
+{
+  "video": "After Tren bloods (Drive 1b3iFLzSHLldcCyWdAkGzQavKxkfi90kN)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["500+ TREN panels", "same red flags every time"],
+    "emphasis": ["TREN"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.5,
+    "position": { "anchor": "top-center", "y_px": 268 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Shredded on TREN", "bloodwork says otherwise"],
+    ["HDL 52 to 18", "after 12 weeks of TREN"]
+  ],
+  "candidates_scored": [
+    { "lines": ["500+ TREN panels", "same red flags every time"], "formula": "specific+subject+pain", "score": 26 },
+    { "lines": ["Shredded on TREN", "bloodwork says otherwise"], "formula": "subject+pain", "score": 26 },
+    { "lines": ["HDL 52 to 18", "after 12 weeks of TREN"], "formula": "specific+subject+pain", "score": 24 },
+    { "lines": ["TREN just rewrote", "your bloodwork"], "formula": "subject+state_change", "score": 20 },
+    { "lines": ["Read your bloods right", "after TREN"], "formula": "subject+outcome", "score": 19 }
+  ],
+  "tie_break": "500+ TREN panels beats Shredded on TREN on specificity",
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:18",
+    "trust_anchor": "spoken 500+ panels at 0:18, shown as the 500+ counter card with lab-sheet stack (0:18-0:22)"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "Claim is paid off at 0:18, after the 0:05-0:12 lock-in window (the mirror lines fill that window). The 500+ proof card lands on the spoken line."
+  ],
+  "topic_band": { "lines": ["Bloodwork after 12 weeks on TREN"], "start": 5.5, "end": 51.2 }
+}
