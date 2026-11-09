@@ -570,8 +570,8 @@ def hook_text(im,t):
     GL.text(((W-w1)/2+d.textlength('500+ ',font=f1),by0+14),'TREN',font=f1,fill=A(VGOLD,0.6*a))
 BAND_END=51.2
 def topic_band(d,t):
-    if not (HOOK_END<=t<BAND_END+0.15): return
-    a=min(clamp((t-HOOK_END)/0.15),1-clamp((t-BAND_END)/0.15))
+    if not (HOOK_END+0.15<=t<BAND_END+0.15): return
+    a=min(clamp((t-HOOK_END-0.15)/0.15),1-clamp((t-BAND_END)/0.15))
     d.rectangle([8,212,W,372],fill=NAVY+(int(228*a),)); d.line([(64,244),(108,244)],fill=A(GOLD,a),width=4); txt(d,122,228,'@coach.agz',f('mono',28),GOLD,a)
     fn=f('bar',72); parts=[('Bloodwork after 12 weeks on ',CREAM),('TREN',VGOLD)]; x=64
     for s,c in parts: txt(d,x,268,s,fn,c,a); x+=d.textlength(s,font=fn)

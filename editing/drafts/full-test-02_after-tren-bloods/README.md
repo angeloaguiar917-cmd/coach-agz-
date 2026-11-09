@@ -40,3 +40,17 @@ Generated clinical SFX (`sfx.py`): sub hits on panel landings, scan sweeps, digi
 
 ## Files
 `render.py` (frames), `sfx.py`, `trim.json`, `words_cut.json`, `words_cap.json`, `edit_log.json`.
+
+## QC done
+- **Full decode:** 3073 frames with no errors. The final file is 56 MB, H.264 High@4.1, yuv420p, AAC 192k, `faststart`.
+- **Visual review:** an overview every 1.5 s across the whole cut. Frame strips at the hook exit and at every render-chunk seam (frames 769, 1537 and 2305 are continuous). Stills at every overlay build.
+- **Fixed during review:**
+  - Axis tag collided with the gauges.
+  - VASCULAR callout sat on the cheek.
+  - Dial readout sat on the tick labels.
+  - Highlighter hid PROLACTIN.
+  - Roadmap labels were crossed by lines.
+  - Plaque shapes were too blobby.
+  - The topic band overlapped the fading hook for 5 frames; the band now enters after the hook's 0.15 s fade.
+- **Loudness:** −14.0 LUFS integrated, peak −1.1 dBFS.
+- **Not done:** listening to the mix (only levels were measured) and checking SFX placement by ear. The fonts are stand-ins.
