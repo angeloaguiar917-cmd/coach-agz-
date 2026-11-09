@@ -1,0 +1,36 @@
+{
+  "video": "3 e2 lowerin compounds (Drive 1DwfnUXWXIeJsI8DgH-3T0KNEr-O-EcLL)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["3 compounds for E2", "last one wrecks new users"],
+    "emphasis": ["E2"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["3 compounds for E2", "last one wrecks new users"], "formula": "subject+pain", "score": 27},
+    {"lines": ["Lower your E2", "without a blind AI"], "formula": "subject+outcome", "score": 24},
+    {"lines": ["Blind AIs crash your E2", "3 smarter options"], "formula": "subject+pain", "score": 23},
+    {"lines": ["PRIMO MASTERON EQ", "ranked for E2"], "formula": "subject+outcome", "score": 22},
+    {"lines": ["Your AI isn't", "the only E2 tool"], "formula": "subject+state_change", "score": 19},
+    {"lines": ["3 compounds lower E2", "..."], "formula": "rejected", "score": 0, "why": "false: he says Masteron does NOT lower systemic E2 (rule 11 / no bait)"}
+  ],
+  "runners_up": [
+    ["Lower your E2", "without a blind AI"],
+    ["Blind AIs crash your E2", "3 smarter options"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11 (Number one is Primobolan); 'last one' pays off 0:56-1:28 (Equipoise)",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No trust anchor in the 0:04-0:12 lock-in zone. Suggest a real client panel screenshot (E2 before/after Primo) as a proof card there if one is available. Nothing was invented.",
+    "Premium mode uses Barlow Condensed ExtraBold (stand-in) because Bebas has no lowercase, which rule 8 needs."
+  ]
+}
