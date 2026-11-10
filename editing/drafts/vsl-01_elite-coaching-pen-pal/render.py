@@ -375,7 +375,7 @@ c_horm=cue('and hormones cannot'); c_holding=cue('holding you back')
 @scene(c_biz, c_horm+1.25,'full','YOUR WEEK','LIFE LOAD')
 def s_cal(lay,d,t):
     full_bg(d,t,'YOUR LIFE · THIS WEEK','BUILT AROUND','',' YOUR WEEK.')
-    gx0,gy0,gx1=96,820,984; cw=(gx1-gx0)/5; ch=150
+    gx0,gy0,gx1=96,780,984; cw=(gx1-gx0)/5; ch=128
     for i,day in enumerate(['MON','TUE','WED','THU','FRI']):
         ctext(d,gx0+cw*i+cw/2,gy0-46,day,f(MONO,26),MUTED)
     for r in range(3):
@@ -385,11 +385,11 @@ def s_cal(lay,d,t):
         p=expo((t-tt)/0.16); yy=lerp(gy0+r*ch-60,gy0+r*ch,p)
         X0=gx0+c*cw+8; X1=gx0+(c+span)*cw-8
         lit_bar(d,X0,yy+8,X1,yy+ch-8,tuple(int(v*0.55) for v in col),p); d.rectangle([X0,yy+8,X0+8,yy+ch-8],fill=A(col,p))
-        fn=f(BEB,48 if span>1 else 40); txt(d,X0+22,yy+ch/2-26,s,fn,WHITE,p)
+        fn=f(BEB,46 if span>1 else 38); txt(d,X0+22,yy+ch/2-24,s,fn,WHITE,p)
     if t>=c_horm:
-        a=appear(t,c_horm); yy=gy0+3*ch+30
-        d.rounded_rectangle([gx0,yy,gx1,yy+110],radius=12,fill=A((40,6,10),a),outline=A(RED,a),width=4)
-        txt(d,gx0+30,yy+22,'HORMONES',f(BEB,70),WHITE,a)
+        a=appear(t,c_horm); yy=gy0+3*ch+22
+        d.rounded_rectangle([gx0,yy,gx1,yy+100],radius=12,fill=A((40,6,10),a),outline=A(RED,a),width=4)
+        txt(d,gx0+30,yy+16,'HORMONES',f(BEB,70),WHITE,a)
         if t>=c_holding: tag(d,gx0+330,yy+30,'CANNOT HOLD YOU BACK',RED,32,appear(t,c_holding))
 
 # ---- 10 step graph: "optimizing you every step of the way" (lower stage)
