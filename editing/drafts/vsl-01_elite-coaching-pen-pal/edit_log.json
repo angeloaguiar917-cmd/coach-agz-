@@ -1,0 +1,115 @@
+{
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "Paying for ELITE COACHING",
+      "getting a pen pal"
+    ],
+    "emphasis": [
+      "ELITE COACHING"
+    ],
+    "mode": "native",
+    "start": 0.0,
+    "end": 5.87,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 300
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "5 to 6 days",
+      "for your COACH to reply"
+    ],
+    [
+      "ELITE COACHING",
+      "built around your life"
+    ]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:05",
+    "trust_anchor": "MISSING in 0:04-0:12 (first client proof lands at 1:35, the 'limits and beyond' message)"
+  },
+  "flags": [
+    "winners.md missing: used starter power-phrase bank",
+    "no trust anchor in the lock-in window; a client message or result card could be moved to 0:05-0:12"
+  ],
+  "topic_band": {
+    "text": "ELITE COACHING not a pen pal",
+    "from": 5.87,
+    "to_src": 127.8
+  },
+  "cut": {
+    "source": "Drive 1NGYByHp5u7xNq-7qLh4Vp2kmMrzQuksp (1080x1920 HEVC 60fps, 4:17)",
+    "removed_src_spans": [
+      [
+        39.46666666666667,
+        39.63333333333333
+      ],
+      [
+        119.6,
+        119.83333333333333
+      ],
+      [
+        127.56666666666666,
+        127.8
+      ],
+      [
+        167.33333333333334,
+        167.53333333333333
+      ],
+      [
+        171.3,
+        171.56666666666666
+      ],
+      [
+        183.63333333333333,
+        183.86666666666667
+      ],
+      [
+        184.73333333333332,
+        185.0
+      ],
+      [
+        187.83333333333334,
+        188.1
+      ],
+      [
+        204.6,
+        206.13333333333333
+      ],
+      [
+        213.36666666666667,
+        213.56666666666666
+      ],
+      [
+        217.46666666666667,
+        217.7
+      ],
+      [
+        219.1,
+        219.36666666666667
+      ],
+      [
+        226.83333333333334,
+        227.03333333333333
+      ],
+      [
+        227.56666666666666,
+        227.79999999999998
+      ],
+      [
+        231.9,
+        232.4
+      ],
+      [
+        245.2,
+        245.4
+      ]
+    ],
+    "output_duration": 251.97
+  }
+}
