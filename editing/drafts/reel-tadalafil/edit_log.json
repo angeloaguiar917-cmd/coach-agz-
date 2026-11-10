@@ -1,0 +1,35 @@
+{
+  "video": "Tadalafil (Drive 1gEMiIqvnFhJ2gXxqyztmakzkyedwIXVs)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Your blast is missing", "5mg TADALAFIL"],
+    "emphasis": ["TADALAFIL"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 5.3,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["TADALAFIL isn't only", "for the bedroom"],
+    ["Protect heart + prostate", "on TADALAFIL"]
+  ],
+  "candidates_scored": [
+    {"lines": ["Your blast is missing", "5mg TADALAFIL"], "formula": "A pain", "score": 27, "note": "specific dose, aligns with lock-in 'still missing that one piece'"},
+    {"lines": ["TADALAFIL isn't only", "for the bedroom"], "formula": "C state change", "score": 24},
+    {"lines": ["Protect heart + prostate", "on TADALAFIL"], "formula": "B outcome", "score": 24},
+    {"lines": ["Better pumps all year", "on 5mg TADALAFIL"], "formula": "B outcome", "score": 23},
+    {"lines": ["The underrated compound", "TADALAFIL"], "formula": "A", "score": 19, "note": "transcribes the spoken hook, adds nothing"}
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:10 ('still missing out that one piece'); 5mg paid off at 1:09",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "winners.md missing: used starter power-phrase bank",
+    "No proof in the 0:04-0:13 lock-in window. Suggest a client lab screenshot (PSA in range on 5mg) as a proof card if you have one",
+    "Spoken '5 milligrams daily' lands at 1:09, outside the lock-in zone"
+  ]
+}
