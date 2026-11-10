@@ -1,0 +1,36 @@
+{
+  "video": "22 year old (Drive 1PY_iKz_Dsk9zPNHnSmnuSQfZqGyvTAaP)",
+  "cut": { "source_duration_s": 97.65, "edited_duration_s": 94.633, "trims": 13, "file": "trim.json" },
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["STEROIDS at 22", "the damage you can't see"],
+    "emphasis": ["STEROIDS"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 4.4,
+    "position": { "anchor": "top-center", "y_px": 308 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["On STEROIDS at 22", "still here at 80"],
+    ["What STEROIDS are doing", "your mirror won't show"]
+  ],
+  "candidates_scored": [
+    { "lines": ["STEROIDS at 22", "the damage you can't see"], "formula": "A pain", "score": 27 },
+    { "lines": ["On STEROIDS at 22", "still here at 80"], "formula": "B outcome", "score": 25 },
+    { "lines": ["What STEROIDS are doing", "your mirror won't show"], "formula": "A pain", "score": 24 },
+    { "lines": ["HEMATOCRIT at 58", "your mirror hides it"], "formula": "A pain", "score": 21, "note": "off the video's main subject" },
+    { "lines": ["STEROIDS at 22", "what I'd tell myself now"], "formula": "C state change", "score": 19 }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:05 (22-year-old self) and 0:09 (heart working overtime, RBC through the roof: damage you can't see)",
+    "trust_anchor": "MISSING in 0:04-0:12. First hard numbers arrive at 0:26 (224 lb, +18 lb / 10 wk) and 0:37 (hematocrit 58)"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank (hidden damage)",
+    "No proof in the lock-in window: a real lab screenshot (e.g. his own hematocrit 58 panel) at 0:09-0:12 would anchor it",
+    "Word before 'brother' at 0:08.6 is unclear in the audio (So / Listen); left out of the captions, please check by ear"
+  ]
+}
