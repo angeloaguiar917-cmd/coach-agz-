@@ -41,3 +41,10 @@ Built from a transcript of the edited cut (363 words). Corrected: 22-year-old, 2
 
 ## Files
 `render.py` (frames), `sfx.py` (sound), `trim.json` (cut), `words_final.json` (captions), `edit_log.json` (text hook).
+
+## QC done (v01)
+- Output checked: 1080×1920, 30 fps, 2,838 frames, 94.6 s, H.264 High@4.2 + AAC 192k, faststart, 78 MB. −14.3 LUFS, peak −1.1 dBFS.
+- Stills at every scene before the full render. Two layout bugs were found and fixed: cards covering the mouth, and translucent fills rendering as solid. Cards were moved to the cap zone, and vector overlays now draw on their own layer.
+- Final render: a contact sheet every 1.5 s, plus 8-frame strips at the split-screen wipe, the receipt entry, the FALSE CHOICE slam and the roadmap entry. Nothing clipped or jumping.
+- Known nit: the FALSE CHOICE stamp briefly covers the AGE 22 / 50 axis labels.
+- **Not done:** listening. SFX timing is placed to the same frame as each visual by script, but it hasn't been checked by ear. Fonts are stand-ins.
