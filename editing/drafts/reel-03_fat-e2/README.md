@@ -49,3 +49,24 @@ Synthesised, clinical (`sfx.py`):
 2. Build the audio: `assemble_audio.py` (voice) and `sfx.py` (effects).
 3. Render the video: `render.py <scratch> chunk n0 n1 out.mp4`, in chunks.
 4. Mux the audio with loudnorm to −14 LUFS.
+
+## QC done
+- **Cut:** the cut audio was re-transcribed with a filler-preserving prompt. No clipped words. The only stumble (the retake) is removed.
+- **Captions:**
+  - 356 of 365 caption words matched a fresh transcript of the final mix. The rest are formatting ("200 milligrams" vs "200mg", "bloodwork" vs "blood work", "out-dose") or the checked ambiguities.
+  - Drift: median 0.00 s, p95 0.14 s.
+  - Three onsets were corrected from speech energy: "Meanwhile" (was crossing the jump cut), "Just" and "Notice".
+- **Visuals:**
+  - Stills at every scene, then 15 fps frame strips around every panel in/out, the hook exit and band entry, the roadmap → lab handoff, and the CTA.
+  - Exact frame strips on the clinic-note exit. A stale chunk was found and re-rendered, and a 2-frame stamp-glow tail was fixed.
+- **Layout fixes during build:**
+  - Missing arrow glyphs in Bebas (now drawn).
+  - The scan tags clipped past the panel edge.
+  - The E2 line crossed the dose labels.
+  - Roadmap labels overlapped their icons.
+  - The lab flag collided with a row.
+  - The comparison bracket label collided with a tag.
+- **Sound:**
+  - Hits and impacts sit within 1 ms of their target frames in the SFX stem.
+  - −14.4 LUFS integrated, −1.4 dBFS true peak.
+- **Not done:** listening. Audio was checked by measurement only. The lab card's fade overlaps the FIG 05 panel entry by about 0.1 s (minor).

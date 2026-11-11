@@ -183,10 +183,10 @@ def card_clinic(im,t):
     for L in (sh,c):
         if al<1: L.putalpha(L.split()[3].point(lambda v:int(v*al)))
     im.alpha_composite(sh,(x+10,y+18)); im.alpha_composite(c,(x,y))
-    if t>=24.92:  # verdict stamp
+    if t>=24.92 and pout<0.5:  # verdict stamp
         d=ImageDraw.Draw(im,'RGBA'); p=expo((t-24.92)/0.10); s=lerp(1.25,1.0,p)
         lab='DISMISSED'; fn=f(BEB,int(96*s)); tw=d.textlength(lab,font=fn); cx,cy=x+380,y+150
-        a=p*(1-pout)
+        a=p*(1-2*pout)
         lit_bar(d,cx-tw/2-26,cy-56*s,cx+tw/2+26,cy+56*s,RED,a); txt(d,cx,cy+4,lab,fn,WHITE,a,'mm')
         if GL: GL.rectangle([cx-tw/2-30,cy-60*s,cx+tw/2+30,cy+60*s],outline=A(RED,a),width=12)
         tag(d,cx-tw/2-26,cy+66*s,'SOURCE NOT CHECKED',RED,26,a*ap(t,25.1))
