@@ -42,8 +42,8 @@
 | 3:27.0 | **Testimonial phone:** his report message (IGF-1/ApoB), then "most in-depth feedback I've received" | phone mockup |
 | 3:34.0 | **Testimonial:** "You have my absolute trust" | top card |
 | 3:36.9 | Older client's before/after + **healthspan graph** + AT 70 / 80 / 90 | panel |
-| 3:59.3 | Lower third: DM @coach.agz | free card |
-| 4:09.5 | End card: logo + DM @coach.agz pill on "reach out" | free card |
+| 3:59.3 | Lower third: "Application below" | free card |
+| 4:09.5 | End card: logo + gold pill "Fill out the application below" / "to see if we're a good fit" on "reach out" | free card |
 
 ## Privacy and accuracy
 - Testimonial crops leave out client names, avatars and the campground/location details in `8.png`.
@@ -73,6 +73,8 @@
   - the client wall colliding with captions
   - the shoulder quote being too small inside the phone
   - Gantt label collisions
-  - lowercase @coach.agz on the CTA
 - Loudness measured: −14.0 LUFS integrated, −1.5 dBFS peak.
 - **Not done:** listening (I can't hear audio), so check SFX levels and the speech cut at about 3:22 by ear. The fonts are still stand-ins.
+
+## Revision 2026-11-11
+CTA changed from "DM @coach.agz" to "Fill out the application below to see if we're a good fit" on the end card. The 3:59 lower third now says "Application below". Only the last render chunk was rebuilt; the rest of the video is unchanged.

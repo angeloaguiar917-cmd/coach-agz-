@@ -690,24 +690,27 @@ c_quest=cue('any questions'); c_nerd=cue('nerd out'); c_reach=cue('reach out'); 
 @scene(c_quest-0.1, c_happy+3.0,'free')
 def s_q(lay,d,t):
     a=appear(t,c_quest-0.1,0.2)*(1-clamp((t-c_happy-2.8)/0.2)); y=1010
-    frosted(lay,(64,y,800,y+190),0.82,10)
-    brackets(d,64,y,800,y+190,A(VGOLD,a),26,5)
+    frosted(lay,(64,y,820,y+190),0.82,10)
+    brackets(d,64,y,820,y+190,A(VGOLD,a),26,5)
     txt(d,96,y+24,'QUESTIONS · COACHING · DIRECTION',f(MONO,26),VGOLD,a)
-    txt(d,96,y+78,'DM @coach.agz',f(DMX,72),WHITE,a)
+    txt(d,96,y+82,'Application below',f(DMX,62),WHITE,a)
 @scene(cue('make sure you reach out')-0.05, 999,'free')
 def s_cta(lay,d,t):
     t0=cue('make sure you reach out')-0.05; a=appear(t,t0,0.2); y=980
     frosted(lay,(56,y,1024,y+300),0.84,12)
     brackets(d,56,y,1024,y+300,A(VGOLD,a),30,5)
     lg=LOGO(); lg2=lg.copy(); lg2.putalpha(lg2.split()[3].point(lambda v:int(v*a))); lay.alpha_composite(lg2,(84,y+40))
-    txt(d,300,y+40,'REACH OUT · 1:1 COACHING',f(MONO,26),VGOLD,a)
-    txt(d,300,y+80,'Bloodwork. Protocol. Your life.',f(DMB,34),CREAM,a)
+    txt(d,300,y+36,'1:1 COACHING · APPLY',f(MONO,26),VGOLD,a)
     if t>=c_reach:
-        b=expo((t-c_reach)/0.12); s=lerp(1.12,1.0,b); fn=f(DMX,int(60*s)); label='DM @coach.agz'
-        while tl(d,label,fn)>650: fn=f(BEB,fn.size-2)
-        w=tl(d,label,fn)
-        lit_bar(d,300,y+150,300+w+40,y+150+int(104*s),VGOLD,b); d.text((320,y+164),label,font=fn,fill=A(INK,b))
-        if GL: GL.rectangle([296,y+146,304+w+40,y+154+int(104*s)],outline=A(VGOLD,b),width=12)
+        b=expo((t-c_reach)/0.12); s=lerp(1.12,1.0,b); label='Fill out the application below'
+        fn=f(DMX,int(46*s))
+        while tl(d,label,fn)>640: fn=f(DMX,fn.size-1)
+        w=tl(d,label,fn); h=int(84*s)
+        lit_bar(d,300,y+86,300+w+40,y+86+h,VGOLD,b); d.text((320,y+86+(h-fn.size)/2-6),label,font=fn,fill=A(INK,b))
+        if GL: GL.rectangle([296,y+82,304+w+40,y+90+h],outline=A(VGOLD,b),width=12)
+        txt(d,300,y+196,"to see if we're a good fit",f(DMB,40),CREAM,appear(t,c_reach+0.15))
+    else:
+        txt(d,300,y+90,'Bloodwork. Protocol. Your life.',f(DMB,34),CREAM,a)
 _logo=None
 def LOGO():
     global _logo
