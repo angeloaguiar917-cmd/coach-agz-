@@ -1,0 +1,37 @@
+{
+  "video": "Two things to lower E2 (fat) — Drive 18ikiGLLdKcgUpHlMFxvWy6a0pWSBAKrn",
+  "candidates": [
+    {"lines": ["High ESTROGEN", "fix this before an AI"], "formula": "subject+pain", "scores": {"subject": 5, "gap": 5, "specific": 3, "power": 4, "glance": 5, "align": 5}, "total": 27},
+    {"lines": ["Lower your ESTROGEN", "without an AI"], "formula": "subject+outcome", "total": 25},
+    {"lines": ["Higher TEST doses", "diminishing returns"], "formula": "subject+state_change", "total": 22},
+    {"lines": ["400mg of TEST", "into a fat body"], "formula": "subject+pain", "total": 21},
+    {"lines": ["Your BODY FAT", "is making estrogen"], "formula": "subject+state_change", "total": 20, "note": "gives the answer away, weak gap"}
+  ],
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["High ESTROGEN", "fix this before an AI"],
+    "emphasis": ["ESTROGEN"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 3.6,
+    "position": {"anchor": "top-center", "y_px": 300},
+    "animation_in": "none",
+    "animation_out": "hard_cut_on_jump_cut_3.6s",
+    "visual_hook": "static opening: text scales 100->104% over the hold"
+  },
+  "runners_up": [
+    ["Lower your ESTROGEN", "without an AI"],
+    ["Higher TEST doses", "diminishing returns"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11 (Nolvadex or an AI is the first thing they reach for, and it's wrong)",
+    "trust_anchor": "MISSING"
+  },
+  "topic_band": {"text": "High ESTROGEN the real fix", "start": 3.6, "end": 38.4167, "exit": "hard cut on the jump cut nearest the midpoint (40.2s)"},
+  "flags": [
+    "winners.md missing: used starter power-phrase bank",
+    "No trust anchor in the lock-in zone (0:04-0:12): no lab value or client result is shown or said. Suggest a real client E2 panel (before/after fat loss) as a proof card if one is available.",
+    "Spoken hook says 'two simple things' but the video lists three numbered steps"
+  ]
+}
