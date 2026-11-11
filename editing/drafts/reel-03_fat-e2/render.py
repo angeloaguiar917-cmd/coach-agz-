@@ -158,7 +158,7 @@ def clinic_card(t):
     w,h=640,330; im=Image.new('RGBA',(w+40,h+40),(0,0,0,0)); d=ImageDraw.Draw(im,'RGBA')
     d.rectangle([20,20,20+w,20+h],fill=A(PAPER)); d.rectangle([20,20,20+w,74],fill=A(COARED))
     txt(d,40,32,'PATIENT FOLLOW-UP',f(MONOB,26),WHITE); txt(d,20+w-20,32,'WK 3',f(MONOB,26),WHITE,1,'ra')
-    rows=[('Complaint','bloating · low mood · water',20.9),('Assessment','expected adjustment',21.6),('Plan','continue · reassure',22.3)]
+    rows=[('Complaint','bloating · low mood · water',20.05),('Assessment','expected adjustment',21.26),('Plan','continue · reassure',21.86)]
     y=96
     for lab,val,t0 in rows:
         a=ap(t,t0,0.12)
@@ -167,9 +167,9 @@ def clinic_card(t):
     txt(d,40,y+14,'Signed · clinic provider',f(MONO,20),(120,120,126))
     return im
 def card_clinic(im,t):
-    t0,t1=19.82,25.45
-    if not (t0<=t<t1+0.25): return
-    pin=expo((t-t0)/0.22); pout=ease_io((t-t1)/0.22)
+    t0,t1=19.82,25.30
+    if not (t0<=t<t1+0.17): return
+    pin=expo((t-t0)/0.22); pout=ease_io((t-t1)/0.16)
     c=clinic_card(t)
     hl=None
     if t>=23.58:  # bracket on the assessment line
@@ -177,9 +177,9 @@ def card_clinic(im,t):
         brackets(d,30,186,520,256,A(VGOLD,p),20,6)
     c=c.rotate(-2.2,resample=Image.BICUBIC,expand=True)
     if pin<1: c=c.filter(ImageFilter.GaussianBlur(6*(1-pin)))
-    x=70; y=int(lerp(1060,960,pin)+lerp(0,500,pout))
+    x=70; y=int(lerp(1060,960,pin)+lerp(0,40,pout))
     sh=Image.new('RGBA',c.size,(0,0,0,0)); sh.putalpha(c.split()[3].point(lambda v:int(v*0.55)))
-    sh=sh.filter(ImageFilter.GaussianBlur(14)); al=pin
+    sh=sh.filter(ImageFilter.GaussianBlur(14)); al=pin*(1-pout)
     for L in (sh,c):
         if al<1: L.putalpha(L.split()[3].point(lambda v:int(v*al)))
     im.alpha_composite(sh,(x+10,y+18)); im.alpha_composite(c,(x,y))

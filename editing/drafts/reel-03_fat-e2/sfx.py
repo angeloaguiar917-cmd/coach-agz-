@@ -66,7 +66,7 @@ wh=lambda t,d=0.3: place(whoosh(d),t-d*0.7,gain=dB(-27))
 # S1 line chart
 hit(7.95); tk(12.7); tk(14.30,-24); tk(15.38); tk(16.00); sw(17.6,0.5); tk(19.12,-25)
 # S2 clinic note + stamp
-wh(19.95); [tk(x,-32) for x in (20.9,21.6,22.3)]; tk(23.58); imp(24.95)
+wh(19.95); [tk(x,-32) for x in (20.05,21.26,21.86)]; tk(23.58); imp(24.95)
 # S3 scan
 hit(25.58); sw(25.6,0.9); tk(29.1); tk(30.62); tk(35.0); [tk(38.40+i*0.07,-31) for i in range(5)]; tk(40.96,-24); tk(41.34)
 # case files
