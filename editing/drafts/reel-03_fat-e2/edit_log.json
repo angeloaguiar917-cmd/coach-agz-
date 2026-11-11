@@ -1,0 +1,37 @@
+{
+  "video": "Fat e2 (Drive 1NrmdWG-0sUnVOsM789VE4jaI8bXQLhy8)",
+  "edited_cut": "trim.json, 1:40.9 after cuts",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Puffy by week 3 on TRT", "BODY FAT is the real cause"],
+    "emphasis": ["BODY FAT"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates": [
+    { "lines": ["Puffy by week 3 on TRT", "BODY FAT is the real cause"], "formula": "subject+pain", "score": 26 },
+    { "lines": ["200mg to 300mg", "E2 keeps climbing"], "formula": "subject+pain", "score": 24 },
+    { "lines": ["Your BODY FAT", "is pumping out your E2"], "formula": "subject+state_change", "score": 23 },
+    { "lines": ["Feel great past week 3", "drop BODY FAT first"], "formula": "subject+outcome", "score": 21 },
+    { "lines": ["Clinics call it normal", "BODY FAT says otherwise"], "formula": "subject+pain", "score": 20 }
+  ],
+  "runners_up": [
+    ["200mg to 300mg", "E2 keeps climbing"],
+    ["Your BODY FAT", "is pumping out your E2"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:14 (puff up after 2-3 weeks), cause paid off at 0:28-0:42",
+    "trust_anchor": "MISSING (spoken only: 'coached hundreds of guys' at 0:00)"
+  },
+  "topic_band": { "text": ["BODY FAT", " is making your E2"], "start": 6.0, "end": "first jump cut after midpoint (53.30)" },
+  "flags": [
+    "winners.md missing - starter power-phrase bank used",
+    "No visual trust anchor in the lock-in window: a real client bloodwork screenshot (E2 before/after fat loss) would fit at 0:05-0:12 if one is available",
+    "Spoken line says 'break it down in 60 seconds' but the cut runs 1:41"
+  ]
+}
