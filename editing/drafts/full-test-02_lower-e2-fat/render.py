@@ -340,7 +340,7 @@ def s6(d, g, t, lay):
             txt(d, 104, 1350, '= ?', f(BEB, 80), WHITE, b)
     else:
         cx, cy, R = 540, 1250, 380
-        a = appear(t, 35.6333, 0.12)
+        a = 1.0
         txt(d, 100, 640, 'AROMATASE OUTPUT', f(MONOB, 32), CREAM, a)
         segs = [(180, 225, BLUE), (225, 270, GREEN), (270, 315, AMBER), (315, 360, RED)]
         bb = [cx - R, cy - R, cx + R, cy + R]
@@ -767,6 +767,7 @@ def frame(src, t):
             d0 = ImageDraw.Draw(im, 'RGBA'); d0.rounded_rectangle(box, radius=rad, outline=A(VGOLD, q), width=6); G.rounded_rectangle(box, radius=rad, outline=A(VGOLD, q), width=12)
     if sc and sc['mode'] == 'full':
         p = expo((t - sc['t0']) / 0.32); xw = p * W
+        im = Image.blend(src, src.filter(ImageFilter.GaussianBlur(16)), 1.0).convert('RGBA'); im.alpha_composite(Image.new('RGBA', (W, H), (5, 8, 16, int(255 * 0.80))))
         nb = navy_bg(); m = Image.new('L', (W, H), 0); ImageDraw.Draw(m).rectangle([0, 0, xw, H], fill=255); im.paste(nb, (0, 0), m)
         d0 = ImageDraw.Draw(im, 'RGBA')
         if p < 0.999: d0.rectangle([xw - 8, 0, xw, H], fill=A(GOLD)); G.rectangle([xw - 10, 0, xw + 2, H], fill=A(VGOLD))
