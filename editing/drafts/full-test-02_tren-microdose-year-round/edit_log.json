@@ -1,0 +1,37 @@
+{
+  "video": "Tren micro year round (Drive 1lEcBtKd5b8V0xOxfFajNPcZCkvXJ3c9M)",
+  "candidates": [
+    {"lines": ["20 to 70mg TREN", "the year round red flag"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 4, "specificity": 5, "power_phrase": 4, "glance": 4, "spoken_alignment": 5}, "total": 27},
+    {"lines": ["Microdose TREN", "your heart still pays"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 5, "specificity": 3, "power_phrase": 4, "glance": 5, "spoken_alignment": 4}, "total": 26},
+    {"lines": ["Low dose TREN", "52 weeks nonstop"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 4, "specificity": 5, "power_phrase": 3, "glance": 5, "spoken_alignment": 3}, "total": 25},
+    {"lines": ["Keep the gains", "on low dose TREN"], "formula": "subject+outcome", "scores": {"subject": 5, "curiosity": 3, "specificity": 2, "power_phrase": 2, "glance": 5, "spoken_alignment": 3}, "total": 20},
+    {"lines": ["Year round TREN", "changes your bloodwork"], "formula": "subject+state_change", "scores": {"subject": 5, "curiosity": 4, "specificity": 2, "power_phrase": 3, "glance": 4, "spoken_alignment": 4}, "total": 22}
+  ],
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["20 to 70mg TREN", "the year round red flag"],
+    "emphasis": ["TREN"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 5.9,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Microdose TREN", "your heart still pays"],
+    ["Low dose TREN", "52 weeks nonstop"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:29 (few weeks vs 52 weeks uninterrupted), 0:36 (ApoB, HDL, LDL, hematocrit, BP)",
+    "trust_anchor": "MISSING in 0:05-0:13 (lock-in is a question plus a roadmap line). Nearest proof is the client-results line at 0:21. Suggest a real client panel or bloodwork screenshot card for 0:05-0:13 if one is available."
+  },
+  "flags": [
+    "hooks/winners.md missing; used the starter power-phrase bank (red flag)",
+    "Trust anchor missing in the lock-in zone (see lock_in_check)",
+    "Spoken subject word 'trenbolone' lands at 2.42 s, after the 1.5 s visual-hook window. Used a slow 100 to 104% scale on the text hook plus a punch-in on 'trenbolone'",
+    "Line 1 '20 to 70mg TREN' mirrors the spoken dose; line 2 adds the pain the spoken hook does not state"
+  ],
+  "topic_band": {"text": "Microdosing TREN year round", "start": 5.9, "end": 49.233, "exit": "hard cut on the jump cut nearest the 49.47 s midpoint"}
+}
