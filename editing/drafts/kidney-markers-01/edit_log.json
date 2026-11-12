@@ -1,0 +1,36 @@
+{
+  "video": "Kidney markers (Drive 1cf2RsVI_TWmpyPI_tKNKevXQiM1jIYMT)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["High CREATININE", "before you panic"],
+    "emphasis": ["CREATININE"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Read your CREATININE", "like a lifter"],
+    ["CYSTATIN C changes", "your kidney panel"]
+  ],
+  "candidates_scored": [
+    {"lines": ["High CREATININE", "before you panic"], "formula": "A pain", "scores": {"subject": 5, "gap": 5, "specific": 4, "power": 4, "glance": 5, "spoken_align": 5}, "total": 28},
+    {"lines": ["Read your CREATININE", "like a lifter"], "formula": "B outcome", "scores": {"subject": 5, "gap": 4, "specific": 4, "power": 3, "glance": 5, "spoken_align": 4}, "total": 25},
+    {"lines": ["CYSTATIN C changes", "your kidney panel"], "formula": "C state change", "scores": {"subject": 4, "gap": 4, "specific": 4, "power": 3, "glance": 5, "spoken_align": 3}, "total": 23},
+    {"lines": ["Red alert CREATININE", "the wrong panic"], "formula": "A pain", "scores": {"subject": 5, "gap": 3, "specific": 3, "power": 3, "glance": 4, "spoken_align": 4}, "total": 22},
+    {"lines": ["High CREATININE", "the false red flag"], "formula": "A pain", "discarded": "bait: the video also says don't ignore it (0:65), so 'false' over-promises"}
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:10.6 (elevated creatinine doesn't automatically mean your kidneys are failing)",
+    "trust_anchor": "MISSING (no lab value, study or client result is spoken 0:04-0:12). Suggested: a proof card from a real client panel showing high creatinine with normal cystatin C, if one can be supplied. Not invented in this edit."
+  },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "trust anchor missing in the lock-in zone",
+    "0:04.6 spoken stumble 'might not be to actually telling you' left in: no clean cut point confirmed without listening",
+    "'Coach Axe' (transcription) captioned as COACH AGZ"
+  ]
+}
