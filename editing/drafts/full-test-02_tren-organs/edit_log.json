@@ -1,0 +1,37 @@
+{
+  "video": "Tren without shitting out your organs (Drive 1UJUl_XO_OzRxbm2n9F2-EpZUIcHlY2jt)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["3 TREN rules", "before your organs pay"],
+    "emphasis": ["TREN"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.1,
+    "position": { "anchor": "top-center", "y_px": 262 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["More TREN", "isn't more muscle"],
+    ["High dose TREN", "the hidden cost"]
+  ],
+  "candidates_scored": {
+    "3 TREN rules / before your organs pay": 29,
+    "More TREN / isn't more muscle": 26,
+    "High dose TREN / the hidden cost": 24,
+    "TREN gains / without the organ damage": 23,
+    "Microdose TREN / the smarter play": 22
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:05",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "winners.md missing (starter power-phrase bank used)",
+    "trust anchor missing in 0:04-0:12: no lab value, panel or client result is said in that window; nothing invented. The first personal-observation proof is 'I've literally witnessed guys' at 1:06",
+    "first punch-in lands on the subject word 'trenbolone' at 1.70 s (target 1.5 s); the word itself starts at 1.70 s after the head trim",
+    "runner-up 'TREN gains / without the organ damage' kept as the post-hook topic band (it restates the spoken hook, so it lost as the frame-0 hook)"
+  ],
+  "topic_band": { "text": "TREN without the organ damage", "start": 5.1, "end": 52.367, "note": "exits on the jump cut nearest the midpoint (51.9 s)" }
+}
