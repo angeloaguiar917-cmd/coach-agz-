@@ -1,0 +1,36 @@
+{
+  "video": "Fix before increase (Drive 1pXAOg25itC9e5tEVlqbpX2I_XwQIbPpo)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["ESTROGEN through the roof", "an AI won't fix it"],
+    "emphasis": ["ESTROGEN"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.47,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "hard_cut_on_jump_cut"
+  },
+  "candidates": [
+    {"lines": ["ESTROGEN through the roof", "an AI won't fix it"], "formula": "subject+pain", "score": 27},
+    {"lines": ["Your body fat is", "an ESTROGEN factory"], "formula": "subject+state_change", "score": 26},
+    {"lines": ["Same TEST dose", "better ESTROGEN numbers"], "formula": "subject+outcome", "score": 24},
+    {"lines": ["Sore nipples on TEST", "stop reaching for Nolva"], "formula": "subject+pain", "score": 22},
+    {"lines": ["Lean out before", "raising your TEST dose"], "formula": "subject+outcome", "score": 20}
+  ],
+  "runners_up": [
+    ["Your body fat is", "an ESTROGEN factory"],
+    ["Same TEST dose", "better ESTROGEN numbers"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:12 (Nolvadex or an AI ... it's wrong)",
+    "trust_anchor": "MISSING"
+  },
+  "topic_band": {"text": "Fix BODY FAT before more TEST", "start": 3.47, "end": 38.2},
+  "flags": [
+    "winners.md missing: used starter power-phrase bank",
+    "No proof in the lock-in window (0:04-0:12): suggest a real bloodwork screenshot with high E2 at ~0:06 if one is available",
+    "Spoken hook says 'Two simple things' but the video lists three numbered steps"
+  ]
+}
