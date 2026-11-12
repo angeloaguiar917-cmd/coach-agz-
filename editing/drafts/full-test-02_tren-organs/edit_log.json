@@ -1,0 +1,35 @@
+{
+  "video": "Tren shit organs 2 (Drive 1L9eym3Z9b3YWq9mMn_uR3peo2tOXF1LS)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["3 TREN rules", "before your organs pay"],
+    "emphasis": ["TREN"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 270 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["3 TREN rules", "before your organs pay"], "formula": "A pain", "score": 27, "note": "specific count from 0:04, subject, power-phrase twist on 'shitting out your organs'"},
+    {"lines": ["Keep your organs", "on TREN"], "formula": "B outcome", "score": 24},
+    {"lines": ["TREN mistake 3", "most enhanced guys make"], "formula": "A pain", "score": 23},
+    {"lines": ["Microdose TREN daily", "the high-dose fix"], "formula": "C state change", "score": 19, "note": "pays off at 1:00, outside the lock-in zone"},
+    {"lines": ["TREN without", "organ damage"], "formula": "A pain", "score": 0, "note": "discarded: bad line break, 'without' splits the phrase"}
+  ],
+  "runners_up": [
+    ["Keep your organs", "on TREN"],
+    ["TREN mistake 3", "most enhanced guys make"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:04 ('three things') and 0:10 ('First and foremost')",
+    "trust_anchor": "MISSING (no lab value, study or client result in 0:04-0:12)"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "Trust anchor missing in the lock-in zone. Suggest a client bloodwork screenshot card at 0:07 if one exists",
+    "Hook starts on 'If you want...'; subject word 'Trenbolone' lands at 1.7 s, so the visual move is a 100->104% scale on the text, not a punch-in"
+  ]
+}
