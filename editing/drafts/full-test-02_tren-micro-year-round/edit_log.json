@@ -1,0 +1,38 @@
+{
+  "video": "Tren micro year round (Drive 1lEcBtKd5b8V0xOxfFajNPcZCkvXJ3c9M)",
+  "source": "1080x1920 HEVC 60 fps, 1:41.0",
+  "cut": "dead air trimmed (13 runs), 1:38.6, 30 fps",
+  "text_hook_candidates": [
+    {"lines": ["20 to 70mg TREN", "52 weeks of hidden cost"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 5, "specificity": 5, "power_phrase": 4, "glance": 4, "spoken_alignment": 5}, "total": 28},
+    {"lines": ["Micro TREN year round", "the red flag nobody checks"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 5, "specificity": 3, "power_phrase": 5, "glance": 4, "spoken_alignment": 4}, "total": 26},
+    {"lines": ["Year round TREN", "the dose your heart pays"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 4, "specificity": 3, "power_phrase": 4, "glance": 5, "spoken_alignment": 4}, "total": 25},
+    {"lines": ["Protect your heart", "on micro TREN"], "formula": "subject+outcome", "scores": {"subject": 4, "curiosity": 4, "specificity": 2, "power_phrase": 3, "glance": 5, "spoken_alignment": 3}, "total": 21},
+    {"lines": ["Low dose TREN", "52 weeks changes it all"], "formula": "subject+state_change", "scores": {"subject": 5, "curiosity": 4, "specificity": 4, "power_phrase": 3, "glance": 4, "spoken_alignment": 3}, "total": 23}
+  ],
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["20 to 70mg TREN", "52 weeks of hidden cost"],
+    "emphasis": ["TREN"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.9,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Micro TREN year round", "the red flag nobody checks"],
+    ["Year round TREN", "the dose your heart pays"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:31 (few weeks vs 52 weeks of uninterrupted exposure), costs listed 0:36-0:58",
+    "trust_anchor": "MISSING - only anecdotal client results at 0:22; no panel or lab proof on screen"
+  },
+  "flags": [
+    "winners.md missing - used starter power-phrase bank",
+    "trust anchor missing in 0:05-0:13 - a real client bloodwork card (ApoB/HDL/HCT before vs after) at 0:22 would anchor it",
+    "dose '20 to 70 milligrams' heard identically by two transcription passes but not listened to - confirm by ear",
+    "spoken subject word 'trenbolone' lands at 2.42 s, after the 1.5 s visual-hook window; slow 100 to 104% text scale used instead plus a punch-in on 'trenbolone'"
+  ]
+}
