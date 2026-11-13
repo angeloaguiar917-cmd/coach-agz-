@@ -1,0 +1,38 @@
+{
+  "video": "Fat e2 2 (Drive 18Ii2e9b6mRKuZb2GAErHxKZt9TdLsx7n)",
+  "source": "1080x1920 HEVC 60 fps, 34.6 s, single selfie take in the car",
+  "edited_cut": "33.77 s; six silent runs of 0.22 s or more trimmed to about 0.12 s (trim.json)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["BODY FAT on TRT", "your hidden E2 factory"],
+    "emphasis": ["BODY FAT"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.0,
+    "position": { "anchor": "top-center", "y_px": 270 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Same TRT dose", "higher E2 from BODY FAT"],
+    ["Bloated on TRT", "it's your BODY FAT"]
+  ],
+  "candidates": [
+    {"lines": ["BODY FAT on TRT", "your hidden E2 factory"], "formula": "subject+pain", "score": 26},
+    {"lines": ["Same TRT dose", "higher E2 from BODY FAT"], "formula": "subject+state_change", "score": 24},
+    {"lines": ["Bloated on TRT", "it's your BODY FAT"], "formula": "subject+pain", "score": 23},
+    {"lines": ["Lower your E2", "without touching your dose"], "formula": "subject+outcome", "score": null, "discarded": "rule 11: the video never promises a fix without a dose change"},
+    {"lines": ["AROMATASE in BODY FAT", "the E2 your doctor misses"], "formula": "subject+pain", "score": null, "discarded": "rule 11: the video never mentions doctors"}
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:03 (making a lot more estrogen) and 0:06 (fat tissue holds aromatase)",
+    "trust_anchor": "MISSING: no lab value, study or client result in 0:04-0:12. The aromatase mechanism diagram (0:06-0:11) explains it but is not proof."
+  },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No trust anchor in the lock-in window. A real panel showing E2 next to body-fat change (with client consent) would be the right proof card.",
+    "Bebas Neue has no lowercase, so the sentence-case parts of the hook use Barlow Condensed Bold (stand-in font)"
+  ],
+  "topic_band": {"text": ["BODY FAT", "your hidden E2 factory"], "start": 3.0, "end": 16.88, "exit": "fade_0.15s at the midpoint"}
+}
