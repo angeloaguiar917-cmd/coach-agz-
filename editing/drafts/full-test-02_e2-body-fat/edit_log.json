@@ -1,0 +1,47 @@
+{
+  "video": "E2 fat short (Drive 1s2PFARuUlnzD_WB8dAjdnFOWhRfHOWNv)",
+  "source": "1080x1920 HEVC 60 fps, 31.45 s, one take in the car",
+  "transcript_edited_cut": "So why exactly does higher body fat raise estrogen on TRT? It's literally just one enzyme, aromatase. Now aromatase lives in adipose tissue. It converts testosterone to estradiol, so higher body fat increases conversion rate, which is independent of the actual dose within itself. And unfortunately as a result, you get yourself water retention, sensitive nipples, emotional volatility, and the labs will confirm it before any protocol change ever. If you want my E2 management checklist absolutely free, comment the word E2 below, I'll send it out to you guys, appreciate you guys.",
+  "raw_material": {
+    "subject": "ESTROGEN (E2) / aromatase / body fat",
+    "pain": "higher estrogen on TRT: water retention, sensitive nipples, emotional volatility",
+    "outcome": "understanding what actually drives E2 up",
+    "state_change": "conversion is driven by body fat, independent of the dose",
+    "specifics": ["one enzyme (aromatase)", "no doses, lab values or timeframes are stated, so none are shown"]
+  },
+  "candidates": [
+    {"lines": ["High ESTROGEN on TRT", "it's not your dose"], "formula": "subject+pain", "scores": {"subject": 5, "gap": 5, "specific": 4, "power": 4, "glance": 5, "align": 5}, "total": 28},
+    {"lines": ["Your fat cells make", "ESTROGEN on TRT"], "formula": "subject+state_change", "scores": {"subject": 5, "gap": 4, "specific": 4, "power": 4, "glance": 5, "align": 4}, "total": 26},
+    {"lines": ["AROMATASE lives", "in your body fat"], "formula": "subject+state_change", "scores": {"subject": 4, "gap": 4, "specific": 4, "power": 3, "glance": 5, "align": 4}, "total": 24},
+    {"lines": ["Body fat raising", "your ESTROGEN"], "formula": "subject+pain", "scores": {"subject": 5, "gap": 3, "specific": 3, "power": 3, "glance": 5, "align": 3}, "total": 22},
+    {"lines": ["Lower your E2", "without touching your dose"], "formula": "subject+outcome", "discarded": "the video explains the cause but never says how to lower E2, so this would be bait and switch (rule 11 / lock-in)"}
+  ],
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["High ESTROGEN on TRT", "it's not your dose"],
+    "emphasis": ["ESTROGEN"],
+    "mode": "premium",
+    "font": "Barlow Condensed ExtraBold (stand-in; Bebas has no lowercase, so it can't do rule 8 sentence case)",
+    "start": 0.0,
+    "end": 3.87,
+    "position": {"anchor": "top-center", "y_px": 300},
+    "animation_in": "none",
+    "animation_out": "fade_0.15s",
+    "visual_hook": "punch-in to 106% on 'body' at 1.14 s; text scales 100 to 104% over its hold"
+  },
+  "runners_up": [
+    ["Your fat cells make", "ESTROGEN on TRT"],
+    ["AROMATASE lives", "in your body fat"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:13 ('independent of the actual dose')",
+    "trust_anchor": "MISSING"
+  },
+  "topic_band": {"text": ["Body fat raises", "ESTROGEN"], "start": 3.87, "end": "first jump cut after the midpoint (source 15.74 s)"},
+  "flags": [
+    "hooks/winners.md missing: starter power-phrase bank used",
+    "No trust anchor in the lock-in zone (no lab value, panel or client result is said). Suggest a real E2 panel screenshot (yours or a client's, anonymised) for 0:06 to 0:12 next time",
+    "No numbers are said in the video, so every graph is drawn as a concept (axes labelled LOW/HIGH, tagged 'concept, not to scale'); no values were invented"
+  ]
+}
