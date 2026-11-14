@@ -1,0 +1,36 @@
+{
+  "video": "Drive 1Ijl8wEUSXqbeEvCmi3fkUWZi8sflEJ2t (1080x1920 HEVC 60fps, 1:46, single take in car)",
+  "cut": "14 dead-air trims (2.3 s total), no retakes; final 1:43.9",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Online PROTOCOLS", "zero data on you"],
+    "emphasis": ["PROTOCOLS"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.8,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["Online PROTOCOLS", "zero data on you"], "formula": "A pain", "score": 27, "note": "adds the reason the spoken hook leaves out; confirmed by 0:09-0:18 and 0:26 'zero data'"},
+    {"lines": ["500+ BLOODWORK panels", "flying blind every time"], "formula": "A pain + specific", "score": 26, "note": "most specific, but the payoff lands at 1:05-1:16, outside the lock-in zone"},
+    {"lines": ["Pull BLOODWORK first", "skip the guesswork"], "formula": "B outcome", "score": 23},
+    {"lines": ["Your PROTOCOL is a guess", "dressed in confidence"], "formula": "A pain", "score": 20, "note": "transcribes the spoken hook (rule 9)"},
+    {"lines": ["BLOODWORK is the roadmap", "not internet opinions"], "formula": "C state change", "score": 18, "note": "weak state change; nothing in the video is new"}
+  ],
+  "runners_up": [
+    ["500+ BLOODWORK panels", "flying blind every time"],
+    ["Pull BLOODWORK first", "skip the guesswork"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:09",
+    "trust_anchor": "MISSING in 0:04-0:12 (the 500+ panels proof is spoken at 1:06). Added a '500+ PANELS REVIEWED' chip to the topic band from 0:05.8 so the proof is visible early; it's a fact from this video, not invented."
+  },
+  "topic_band": {"text": "Your PROTOCOL starts with bloodwork", "chip": "500+ PANELS REVIEWED", "start": 5.8, "end": 51.9},
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "Subject 'protocol' is first spoken at 1.94 s, so the opening punch-in lands there (rule 10 asks for <=1.5 s); the hook text also scales 100->104% over its hold"
+  ]
+}
