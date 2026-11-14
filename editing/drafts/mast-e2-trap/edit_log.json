@@ -1,0 +1,35 @@
+{
+  "video": "Mast and e2 trap (Drive 1JKTSbw86rvBXs-HciOywZQwFqocepdPy)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["MASTERON hides symptoms", "not the E2 number"],
+    "emphasis": ["MASTERON"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 286 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["The E2 trap", "coming off MASTERON"],
+    ["Come off MASTERON", "without the E2 rebound"]
+  ],
+  "candidates_scored": {
+    "MASTERON hides symptoms / not the E2 number (A pain)": 27,
+    "The E2 trap / coming off MASTERON (A pain)": 25,
+    "Come off MASTERON / without the E2 rebound (B outcome)": 23,
+    "MASTERON is not / an aromatase inhibitor (C state change)": 21,
+    "Off MASTERON / everything lands at once (A pain)": 22
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:14 (\"Masteron effectively hides the symptoms, not the actual systemic number\")",
+    "trust_anchor": "MISSING (no lab value, panel or client result in 0:04-0:17; the panel-vs-feel graph is illustrative)"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "trust anchor missing in the lock-in zone: a real anonymised client E2 panel at ~0:10 would make this stronger",
+    "subject word Masteron lands at 0:00.44, so the first punch-in is at 0:00.44"
+  ]
+}
