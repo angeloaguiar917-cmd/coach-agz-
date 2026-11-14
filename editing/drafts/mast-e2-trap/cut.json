@@ -1,0 +1,6 @@
+{"source":"Drive 1JKTSbw86rvBXs-HciOywZQwFqocepdPy (Mast and e2 trap.mov, 1080x1920 HEVC 60fps, 2:03.85)",
+ "fps":30,
+ "remove":[[17.333333,17.533333],[119.4,120.466667]],
+ "remove_why":["0.32 s dead air before 'And generally speaking' trimmed to 0.12 s","stumble 'without any gyno, no' -> 'correctly, without skyrocketing'"],
+ "src_end":123.85,
+ "source_cuts":[7.95,13.2333,23.1167,27.7,78.3167]}
