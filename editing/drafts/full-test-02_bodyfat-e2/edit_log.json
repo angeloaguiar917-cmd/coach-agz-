@@ -1,0 +1,52 @@
+{
+  "video": "Bf TRTe2 2 (Drive 1qSYB-nobpVU2wUSjnwrYLTzr4483UUyE)",
+  "source": "1080x1920 HEVC 60fps, 31.45 s, single take, no retakes; burned-in captions (whole clip, y~1405-1480) and a burned-in title 'BODYFAT and Estrogen?' (0-4.93 s, y~405-475)",
+  "output": "coach-agz_bodyfat-e2_1080p30.mp4, 1080x1920, 30 fps, H.264 High yuv420p + AAC, faststart",
+  "cut": "no trims: one clean take, no stumbles, no silent run over 0.9 s",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["BODY FAT raises your E2", "at any TRT dose"],
+    "emphasis": ["BODY FAT"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 4.95,
+    "position": { "anchor": "top-center", "y_px": 280 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["High E2 on TRT", "your BODY FAT is why"],
+    ["Sensitive nipples on TRT", "check your BODY FAT"]
+  ],
+  "candidates_scored": [
+    { "lines": ["BODY FAT raises your E2", "at any TRT dose"], "formula": "subject+pain", "score": 27 },
+    { "lines": ["High E2 on TRT", "your BODY FAT is why"], "formula": "subject+pain", "score": 25 },
+    { "lines": ["Sensitive nipples on TRT", "check your BODY FAT"], "formula": "subject+pain", "score": 24 },
+    { "lines": ["AROMATASE", "the enzyme behind high E2"], "formula": "subject+state_change", "score": 21 },
+    { "lines": ["Lower your E2 on TRT", "without touching the dose"], "formula": "subject+outcome", "score": 0, "discarded": "promise not delivered (video never explains how to lower it)" }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:10.7 (higher body fat increases conversion rate) and 0:13.1 (independent of the actual dose)",
+    "trust_anchor": "MISSING - no lab value, panel or client result in 0:04-0:12; the enzyme scan and adipose lens explain the mechanism but aren't proof. A real client panel (E2 before/after a fat-loss phase) would fit at 0:21 (labs confirm)."
+  },
+  "flags": [
+    "winners.md missing - used the starter power-phrase bank",
+    "hook held to 4.95 s (default would be 3.9 s) to cover the burned-in source title that runs to 4.93 s",
+    "trust anchor missing in the lock-in zone",
+    "source has burned-in captions; a frosted caption plate covers them for the whole video",
+    "graph and bar-chart shapes are illustrative (no numbers on screen); lab report rows show flags only, no values"
+  ],
+  "overlay_types": [
+    { "t": "0:00-0:05", "type": "frame-0 text hook card (premium)" },
+    { "t": "0:03.8-0:06.4", "type": "side scan widget: rotating wireframe enzyme, AROMATASE tag" },
+    { "t": "0:06.4-0:08.5", "type": "microscope lens: adipose tissue slide, aromatase sites light up (enzyme flies in = handoff)" },
+    { "t": "0:08.5-0:10.5", "type": "process flow diagram T -> aromatase -> E2 with particles (lens shrinks into the hex = handoff)" },
+    { "t": "0:10.6-0:13.1", "type": "stacked layout: line graph, body fat vs conversion, curve draws on speech" },
+    { "t": "0:13.1-0:15.4", "type": "bar chart: same dose, lean vs higher body fat E2 output" },
+    { "t": "0:15.9-0:21.0", "type": "E2 dial gauge into red + symptom card stack with icons (punch-in 108%)" },
+    { "t": "0:21.0-0:24.5", "type": "lab report document drop, range markers, CONFIRMED stamp, labs -> protocol order steps" },
+    { "t": "0:24.7-0:27.8", "type": "freebie checklist mockup, boxes tick, FREE stamp" },
+    { "t": "0:27.8-end", "type": "gold COMMENT \"E2\" pill, down chevrons, logo lockup" }
+  ]
+}
