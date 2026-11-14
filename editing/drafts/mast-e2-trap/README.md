@@ -41,6 +41,18 @@ The last full test put a centre panel and a blur over the face. This one tracks 
 ## Sound
 Synth clinical SFX (sub hits on layout entries, scan sweeps on draws, ticks on rows, three impacts with a 3-frame shake). Speech is loudness-normalised and the mix is about −14 LUFS. Not listened to.
 
+## QC done
+- **Stills during build:** 28 stills plus a second pass after fixes.
+  - Fixed: the deck pushed the eyes behind the topic band, the compound card overflowed, the stamp covered the diagram, a red blob sat behind the PiP, labels collided on the lag and off-cycle graphs, and the watermark overlapped the top strips.
+- **Final file:**
+  - Overview every 2 s.
+  - Frame strips at every hard layout change (7.97, 27.53, 60.6, 71.27, 78.17 s), the three impacts (39.84, 69.88, 112.84 s), the CTA entry and the render-chunk seams.
+  - All clean, and no face covered.
+- **Encode:**
+  - 1080×1920 30 fps, H.264 High at about 6.4 Mbps, AAC 192k, faststart, 98 MB.
+  - SSIM 0.991 against the CRF-16 master.
+- **Known soft spot:** 0:52.6–0:53.3, where the READOUT deck is up for about 0.7 s before the first gauge appears.
+
 ## Not verified / placeholders
 - Graph shapes and lab-order rows are illustrative (no real values shown).
 - Fonts are stand-ins (Bebas Neue, DM Sans, Barlow Condensed, JetBrains Mono).
