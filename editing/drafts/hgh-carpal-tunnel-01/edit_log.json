@@ -1,0 +1,35 @@
+{
+  "video": "Carpal Tunnel HGH (Drive 1qOH6RUCFto9htVJlQhdLiGsNha34Od0S)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["HGH hand numbness", "starts in your kidneys"],
+    "emphasis": ["HGH"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates": [
+    {"lines": ["HGH hand numbness", "starts in your kidneys"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 5, "specificity": 4, "power_phrase": 4, "glance": 4, "spoken_alignment": 5}, "total": 27},
+    {"lines": ["Numb fingers", "on GROWTH HORMONE"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 3, "specificity": 4, "power_phrase": 3, "glance": 5, "spoken_alignment": 4}, "total": 24},
+    {"lines": ["Keep your grip", "on HGH"], "formula": "subject+outcome", "scores": {"subject": 5, "curiosity": 3, "specificity": 3, "power_phrase": 4, "glance": 5, "spoken_alignment": 3}, "total": 23},
+    {"lines": ["HGH numb hands", "the real reason"], "formula": "subject+pain", "scores": {"subject": 5, "curiosity": 4, "specificity": 2, "power_phrase": 4, "glance": 5, "spoken_alignment": 3}, "total": 23},
+    {"lines": ["CARPAL TUNNEL on HGH", "starts with sodium"], "formula": "subject+state_change", "scores": {"subject": 4, "curiosity": 4, "specificity": 4, "power_phrase": 3, "glance": 3, "spoken_alignment": 4}, "total": 22}
+  ],
+  "runners_up": [
+    ["Numb fingers", "on GROWTH HORMONE"],
+    ["Keep your grip", "on HGH"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:14 (\"your kidneys decide how much sodium your body holds\")",
+    "trust_anchor": "MISSING: mechanism explanation only, no lab value, study or client result in 0:04-0:14. Kidney/sodium diagram shown instead; a client bloodwork or IGF-1 panel card would strengthen this window if one is available."
+  },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No trust anchor in the lock-in zone (see lock_in_check)",
+    "Native mode chosen over premium: Bebas has no lowercase, so premium would break rule 8 (sentence case outside the subject)"
+  ]
+}
