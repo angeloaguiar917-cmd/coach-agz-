@@ -1,0 +1,35 @@
+{
+  "video": "3 steps reverse gyno w/o dosages (Drive 1Kzoip1xjdSzQobme25Kqhq0TuZKJypfq)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Reverse GYNO in 3 steps", "before it turns surgical"],
+    "emphasis": ["GYNO"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 4.8,
+    "position": { "anchor": "top-center", "y_px": 290 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Reverse GYNO", "before it needs surgery"],
+    ["GYNO turns surgical", "after a few months"]
+  ],
+  "candidates_scored": {
+    "Reverse GYNO in 3 steps / before it turns surgical (A, specific)": 28,
+    "Reverse GYNO / before it needs surgery (A)": 27,
+    "GYNO turns surgical / after a few months (C)": 24,
+    "Reverse GYNO / in 3 steps (B)": 25,
+    "Sore nipple on TRT / early GYNO red flag (A)": 24
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11 (best time to reverse) / 0:15 (few months = surgical) / 0:33 (three steps)",
+    "trust_anchor": "MISSING in 0:04-0:12; first proof is the client case at 1:46 (E2 120, gone within 4 weeks)"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "No trust anchor in the lock-in window: the client case (1:46) is the only proof; consider a 1-line teaser of it near 0:08 if you want one",
+    "Topic band hides while split-screen / picture-in-picture scenes are up (they carry their own STEP headers), then exits at the midpoint as usual"
+  ]
+}
