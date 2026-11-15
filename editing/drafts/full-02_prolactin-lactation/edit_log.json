@@ -1,0 +1,10 @@
+{
+  "source": "Drive 1rrRo38vXU-S5lEXxRItxpNN74mCOBSYS (\"Lactationresponse educational\", 1080x1920 HEVC 60fps, 2:02)",
+  "text_hook": {
+    "status": "skipped_by_user",
+    "note": "Coach AGZ instruction for this video (2026-11-15): do not add a text hook at the beginning. No frame-0 hook or topic band rendered; engine candidates not generated."
+  },
+  "runners_up": [],
+  "lock_in_check": null,
+  "flags": ["text hook skipped per user instruction", "winners.md missing"]
+}
