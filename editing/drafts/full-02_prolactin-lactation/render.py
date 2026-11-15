@@ -624,16 +624,22 @@ def group_at(t):
     if t>end and (not nxt or WORDS[nxt[0][0]]['s']>t): return None
     return lo
 ACCENT={'PROLACTIN':RED,'LACTATED':RED,'LACTATING':RED,'LACTATION':RED,'GYNO':RED,'ESTROGEN':CYAN,'E2':CYAN,'DOPAMINE':CYAN,'TREN':VGOLD,'NPP':VGOLD,'DECA':VGOLD,'CABERGOLINE':VGOLD,'LIBIDO':VGOLD,'ZERO':RED,'FALSE':RED,'SWITCH':VGOLD}
-def cap_params(t):
-    # caption centre x, top y, max width depending on layout
+CAPPOS={'CHEST':(540,262,920),'SIDE_R':(700,1290,700),'SIDE_L':(380,1290,640),'SPLIT':(520,955,880)}
+def _raw(t):
     cur=None
     for sc in SCENES:
         if sc[0]<=t<sc[1]: cur=sc[2]
-    return {'CHEST':(540,262,920),'SIDE_R':(700,1290,700),'SIDE_L':(380,1290,640),'SPLIT':(520,955,880)}.get(cur,(540,1335,920))
+    return CAPPOS.get(cur,(540,1335,920))
+_BND=sorted(set([sc[0] for sc in SCENES]+[sc[1] for sc in SCENES]))
+def cap_params(t):
+    tb=max([b for b in _BND if b<=t],default=None)
+    if tb is None or t-tb>=TRANS: return _raw(t)
+    a=_raw(tb-0.001); b=_raw(t); q=ease_io((t-tb)/TRANS)
+    return tuple(lerp(x,y,q) for x,y in zip(a,b))
 def captions(im,t):
     g=group_at(t)
     if not g: return
-    cx,cy,maxw=cap_params(WORDS[g[0]]['s']+0.01)
+    cx,cy,maxw=cap_params(t); cy=int(cy)
     d=ImageDraw.Draw(im,'RGBA')
     ws=[WORDS[i]['w'].upper().rstrip(',.?!') for i in g]
     size=124
