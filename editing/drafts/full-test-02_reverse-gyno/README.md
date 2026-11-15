@@ -1,7 +1,7 @@
 # Full test 02: "3 steps to reverse gyno" (1080×1920, 30 fps)
 
 **Source:** Drive `1Tt6_B_dkgFsGB1g886ZXEb12rQjOG-Fa` (1080×1920 HEVC, 60 fps, 2:40, a single car selfie take).
-**Output:** `coach-agz_reverse-gyno_1080p30.mp4` (uploaded to Drive; too large for git). 1080×1920, 30 fps, 2:32.5, H.264 High plus AAC, faststart, for phone playback and download.
+**Output:** `coach-agz_reverse-gyno_1080p30.mp4` (delivered in the Claude app; 122 MB is over the 10 MB Drive upload limit from the session and the 100 MB git limit). 1080×1920, 30 fps, 2:32.5, H.264 High plus AAC, faststart, for phone playback and download.
 **Status:** a full edit in the test-06 / full-test-01 style. Fonts are still stand-ins.
 
 ## Brief from Coach AGZ (2026-11-15)
@@ -50,7 +50,9 @@
 ## QC done
 - Re-transcribed the trimmed cut against the source: 585 words against 588. The differences are Whisper variance on "MENT" and "comment the word".
 - Caption timing drift against the trimmed transcript: median 0.01 s, p95 0.05 s.
-- Video and audio length: 152.53 s each.
+- Video and audio length: 152.53 s each. Final mix −14.7 LUFS, true peak −1.5 dBFS, 6.4 Mbps.
+- Final file checked with an overview every 3 s and 10 fps strips across the layout morphs.
+- Known nit: one caption group ("CONVERSATION STEP THREE") runs across a jump cut at about 1:12.
 - Stills inspected across every scene. Fixed during the build:
   - Panel content was too small (bottom third empty), so every panel scene was enlarged.
   - The chest tag collided with the captions.
