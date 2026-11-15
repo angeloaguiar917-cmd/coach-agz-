@@ -1,0 +1,35 @@
+{
+  "video": "3 steps to reverse gyno (Drive 1Tt6_B_dkgFsGB1g886ZXEb12rQjOG-Fa)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Reverse GYNO", "before it needs surgery"],
+    "emphasis": ["GYNO"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 4.68,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Sore nipple on TRT", "reverse GYNO in 3 steps"],
+    ["Sore nipple on TRT", "your GYNO window is now"]
+  ],
+  "candidates_scored": {
+    "Reverse GYNO / before it needs surgery": "A pain; 26 of 30; claim paid off in the lock-in zone",
+    "Sore nipple on TRT / reverse GYNO in 3 steps": "B outcome; 25 of 30; most specific, but '3 steps' isn't confirmed until 0:31",
+    "Sore nipple on TRT / your GYNO window is now": "C state change; 23 of 30",
+    "Early GYNO / 3 steps to reverse it": "B outcome; 21 of 30; weaker curiosity gap",
+    "Your GYNO window / closes in months": "C state change; 20 of 30; vague"
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11-0:17 ('right now is the best time to reverse it… your only option is going to be surgical')",
+    "trust_anchor": "MISSING (first proof is the client case, E2 at 120, gone in 4 weeks, at 1:52)"
+  },
+  "flags": [
+    "winners.md missing; used the starter power-phrase bank",
+    "No trust anchor in 0:04-0:12. The client case (E2 120, lump gone within 4 weeks) is the only proof, and it arrives at 1:52",
+    "Spoken hook ends 4.18 s, so the hook holds to 4.68 s, then the topic band 'GYNO reversal in 3 steps' runs to the midpoint (76.3 s)"
+  ]
+}
