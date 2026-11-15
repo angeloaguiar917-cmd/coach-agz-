@@ -751,10 +751,13 @@ def frame(src, t):
             d.ellipse([ds[0] + 22, ds[3] - 44, ds[0] + 38, ds[3] - 28], fill=A(RED, 1 if int(t * 2) % 2 == 0 else 0.3))
             txt(d, ds[0] + 48, ds[3] - 50, 'LIVE', f(MONOB, 22), WHITE, p)
         lay = Image.new('RGBA', (W, H), (0, 0, 0, 0)); ld = ImageDraw.Draw(lay, 'RGBA')
+        g2 = Image.new('RGBA', (W, H), (0, 0, 0, 0)); GLs = GL; GL = ImageDraw.Draw(g2, 'RGBA')
         if PIPS[0][0] - 0.1 <= t < PIPS[0][1] + 0.4: sc_step1(lay, ld, t)
         else: sc_case(lay, ld, t)
-        if p < 1: lay.putalpha(lay.split()[3].point(lambda v: int(v * ease_io((p - 0.3) / 0.7))))
-        im.alpha_composite(lay)
+        GL = GLs; k_ = ease_io((p - 0.3) / 0.7)
+        if p < 1:
+            lay.putalpha(lay.split()[3].point(lambda v: int(v * k_))); g2.putalpha(g2.split()[3].point(lambda v: int(v * k_)))
+        im.alpha_composite(lay); glow.alpha_composite(g2)
     else:
         im = src.convert('RGBA')
         if s > 0.001:
@@ -765,10 +768,13 @@ def frame(src, t):
             for k in range(40): d.line([(0, py - 40 + k), (W, py - 40 + k)], fill=(8, 11, 19, int(200 * (k / 40) ** 2)))
             d.line([(0, py), (W, py)], fill=A(GOLD, 1), width=3); GL.line([(0, py), (W, py)], fill=A(VGOLD, 0.7), width=6)
             lay = Image.new('RGBA', (W, H), (0, 0, 0, 0)); ld = ImageDraw.Draw(lay, 'RGBA'); dy = py - PANEL_Y
+            g2 = Image.new('RGBA', (W, H), (0, 0, 0, 0)); GLs = GL; GL = ImageDraw.Draw(g2, 'RGBA')
             if t < 40: sc_window(lay, ld, t, dy)
             else: sc_step3(lay, ld, t, dy)
-            if s < 1: lay.putalpha(lay.split()[3].point(lambda v: int(v * ease_io((s - 0.4) / 0.6))))
-            im.alpha_composite(lay)
+            GL = GLs; k_ = ease_io((s - 0.4) / 0.6)
+            if s < 1:
+                lay.putalpha(lay.split()[3].point(lambda v: int(v * k_))); g2.putalpha(g2.split()[3].point(lambda v: int(v * k_)))
+            im.alpha_composite(lay); glow.alpha_composite(g2)
         # top/bottom legibility scrims (very light, no grade on face)
         yy = np.arange(H); a2 = np.where(yy > 1240, np.clip((yy - 1240) / 260, 0, 1) * 100, 0); a2 = np.maximum(a2, np.where(yy < 470, (1 - yy / 470) * 110, 0))
         a2 = (a2 * (1 - s)).astype(np.uint8)
