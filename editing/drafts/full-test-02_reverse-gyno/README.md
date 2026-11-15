@@ -40,3 +40,16 @@ Only the case numbers that were spoken are shown as numbers: E2 120, a lump pres
 - `render.py`: compositor (`stills` / `chunk` modes); `sfx.py`: synthesized SFX bed.
 - `transcribe.py`: Whisper word-timestamp transcription; `words_final.json`: corrected caption words; `trim.json`: the cut.
 - `edit_log.json`: text hook engine output.
+
+## QC done
+- **Rendered file inspected:** an overview every 3 s, and 15 fps frame strips across every split / PiP transition and the CTA landing. Face clear of graphics in every scene.
+- **Fixes after review:**
+  - Moved the step 2 gauge, the MENT verdict bar and the COMMENT "GYNO" pill off the mouth and chin (the face sits lower in the second half).
+  - Made the redacted file a paper card so the bars read.
+  - Glow on panel content now fades with the panel (it was flashing early during transitions).
+  - "HIGH-END" caption fixed.
+- **Captions:** the final audio was re-transcribed. 510 caption words against 510 heard; drift median 0.00 s, p95 0.04 s, max 0.30 s. The remaining text differences are the term corrections (anabolics, Raloxifene, Nolvadex, MENT, GYNO) plus two ambiguous small words ("could/can", one "Now").
+- **Audio:** −14.7 LUFS integrated, peak −1.1 dBFS (the two-pass loudnorm stopped 0.7 dB short of −14 to hold the true-peak ceiling).
+- **Delivery:** 1080×1920, 30 fps, 4,123 frames, H.264 High@4.2 at 5.2 Mb/s (2-pass), AAC 192k, faststart, 88 MB.
+- **Not done:** listening. I could only measure the audio, so check the SFX mix by ear. The fonts are stand-ins (Bebas Neue, DM Sans, Barlow Condensed, JetBrains Mono).
+- **Drive:** the Drive connector here caps uploads at 10 MB, so the video was sent through the Claude app and committed here instead.
