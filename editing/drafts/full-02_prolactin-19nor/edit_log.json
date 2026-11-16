@@ -1,0 +1,52 @@
+{
+  "source": "Drive 1AKylfQ6Jecdac6XflOmFoeGN4IT61bt7 (1080x1920 HEVC, 60 fps, 1:44)",
+  "output": {
+    "resolution": "1080x1920",
+    "fps": 30,
+    "codec": "H.264 High, yuv420p, AAC 48k, faststart",
+    "duration_s": 99.3,
+    "loudness": "-14.5 LUFS, -1.6 dBTP"
+  },
+  "text_hook": {
+    "status": "skipped",
+    "reason": "Coach AGZ instruction for this video (2026-11-16): do not add a text hook at the beginning. Frame 0 is clean footage; the post-card mockup enters at 0:00.9 as a depiction, not a title. The post-hook topic band was skipped as well.",
+    "runners_up": [],
+    "flags": [
+      "hook engine not run by request",
+      "winners.md missing"
+    ]
+  },
+  "cuts": {
+    "stumble": "mammary glan- (src 41.80-42.60)",
+    "dead_air_trims": 17,
+    "removed_s": 5.0
+  },
+  "overlay_types": [
+    "0:01 social post mockup + MISLABELED forensic flag",
+    "0:04 prior-upload video tiles (TROLL / REACTION, ticked) + ENGAGEMENT meter tagged BAIT",
+    "0:13 toggle switch FLEX -> WARNING SIGN",
+    "0:17 two-step stepper (callback at 1:12)",
+    "0:20 horizontal bar chart, relative prolactin output (no numbers)",
+    "0:28 heavy compound chips DECA / NPP / TREN",
+    "0:32 full-screen mechanism, face in circle PiP: receptor docking + prolactin meter + X-ray duct schematic",
+    "0:43 trend line graph crossing lactation threshold -> GALACTORRHEA",
+    "0:53 full-screen gyno domino, face in circle PiP: dial gauges + balance scale + tissue target",
+    "1:03 lab document (paper) -> scan wipe -> two-lane pathway diagram",
+    "1:14 fork diagram: 1 hormone -> lactation / gyno",
+    "1:20 post-card callback + NOT ELITE GAINS verdict slam",
+    "1:24 full-screen protocol checklist, face in portrait PiP",
+    "1:31 CTA protocol cover card + COMMENT \"PROLACTIN\" pill"
+  ],
+  "notes": [
+    "Footage ungraded.",
+    "Lab document values are generic (IN RANGE / PALPABLE), no invented numbers.",
+    "Profanity in captions starred (F*CK, SH*T).",
+    "Fonts are stand-ins."
+  ],
+  "qc": {
+    "caption_sync": "327 words matched vs final-audio transcript, median 0.00 s, p95 0.06 s",
+    "frames": 2979,
+    "checked": "overview every 1.5 s, frame strips at PiP in/out, verdict slam, chip handoff",
+    "not_done": "listening (audio levels measured only)"
+  }
+}
