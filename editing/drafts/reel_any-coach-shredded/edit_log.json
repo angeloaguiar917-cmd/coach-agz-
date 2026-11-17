@@ -1,0 +1,14 @@
+{
+  "video": "Coach anyone can get it done (Drive 1qVTGq3vbVPceTNdSvcew8DZl4zGR9E1p)",
+  "edit_date": "2026-11-17",
+  "output": {"resolution": "1080x1920", "fps": 30, "codec": "H.264 High, yuv420p, AAC 48 kHz, faststart", "duration_s": 118.0, "loudness_lufs": -14.3, "true_peak_dbfs": -1.5},
+  "text_hook": {
+    "status": "skipped_by_user",
+    "note": "Coach AGZ instructed: do not add a text hook at the beginning. No frame-0 hook and no topic band were rendered. The engine was not run for this edit.",
+    "lines": [],
+    "emphasis": []
+  },
+  "runners_up": [],
+  "lock_in_check": {"claim_confirmed": null, "confirmed_at": null, "trust_anchor": "n/a (no hook)"},
+  "flags": ["text hook disabled by user for this edit", "hooks/winners.md missing", "'health phase' at 0:30 transcribed by two models; not verified by ear"]
+}
