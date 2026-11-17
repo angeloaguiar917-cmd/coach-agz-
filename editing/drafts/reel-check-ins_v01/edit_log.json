@@ -1,0 +1,33 @@
+{
+  "source": "Drive 1SmPveeMgbLfZ-TYHVZJMUJvW5kIY3n9A ('The guys who check-in succeed', 1080x1920 HEVC 60fps, 1:01)",
+  "cut": { "duration_s": 52.53, "segments": "segments.json", "removed": ["dead air >0.25s trimmed to ~0.16s (beats kept after 'one thing' and before 'you know')", "stumble 'Consistently. Not- it's not that' -> 'Consistently. It's not that'"] },
+  "text_hook": {
+    "formula": "subject+outcome",
+    "lines": ["My best CLIENTS", "never skip a week"],
+    "emphasis": ["CLIENTS"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 5.5,
+    "position": { "anchor": "top-center", "y_px": 262 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Zero progress CLIENTS", "all skip one thing"],
+    ["Insane TRANSFORMATIONS", "start with one habit"]
+  ],
+  "candidates_rejected": [
+    ["WEEKLY CHECK-INS", "beat any cycle", "claim not in video"],
+    ["After so long COACHING", "I finally noticed this", "vague, weak curiosity"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:30 ('check in every single week')",
+    "trust_anchor": "client before/after photos at 0:19-0:25 (outside the 0:04-0:12 lock-in window)"
+  },
+  "flags": [
+    "winners.md missing - starter power-phrase bank used",
+    "lock-in zone (0:05-0:11) is the midnight check-in context, not the payoff; payoff lands at 0:30, proof at 0:19",
+    "no spoken CTA in the take - end card shows brand + handle only, no comment keyword"
+  ]
+}
