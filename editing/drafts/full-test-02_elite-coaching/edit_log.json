@@ -1,0 +1,86 @@
+{
+  "video": "Elite coaching (Drive file titled \"Winstrol\")",
+  "source": "Drive 1gID1v7i15g2YemMMHh8LplQaFCNFsJ_N, 1080x1920 HEVC 60fps, 1:38",
+  "output": "coach-agz_elite-coaching_1080p30.mp4, 1080x1920, 30fps, H.264 High, AAC 192k, faststart, 1:33.8, -14.3 LUFS",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": [
+      "ELITE COACHING",
+      "vs just a protocol"
+    ],
+    "emphasis": [
+      "ELITE",
+      "COACHING"
+    ],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.74,
+    "position": {
+      "anchor": "top-center",
+      "y_px": 262
+    },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    [
+      "ELITE COACHING",
+      "optimal for life"
+    ],
+    [
+      "Lab REFERENCE RANGES",
+      "built for the sick"
+    ]
+  ],
+  "candidates_scored": [
+    {
+      "lines": [
+        "ELITE COACHING",
+        "vs just a protocol"
+      ],
+      "formula": "A",
+      "score": 26
+    },
+    {
+      "lines": [
+        "ELITE COACHING",
+        "optimal for life"
+      ],
+      "formula": "B",
+      "score": 23
+    },
+    {
+      "lines": [
+        "Lab REFERENCE RANGES",
+        "built for the sick"
+      ],
+      "formula": "A",
+      "score": 23
+    },
+    {
+      "lines": [
+        "ELITE COACHING",
+        "now tracks your mood"
+      ],
+      "formula": "C",
+      "score": 19
+    },
+    {
+      "lines": [
+        "Daily CHECK-INS",
+        "your coach skips"
+      ],
+      "formula": "A",
+      "score": 18
+    }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:03",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "winners.md missing (hooks/winners.md not built yet; starter power-phrase bank used)",
+    "No proof in the lock-in zone (0:03-0:12). Suggest a real client check-in or dashboard screenshot as a proof card if one can be shared."
+  ]
+}
