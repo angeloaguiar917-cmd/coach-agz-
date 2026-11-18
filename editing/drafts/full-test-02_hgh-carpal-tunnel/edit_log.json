@@ -1,0 +1,36 @@
+{
+  "video": "HGH carpal 2 (Drive 1fFI471CcCtDn2JFKejmy-DKjaOhHu8RH)",
+  "output": "coach-agz_hgh-carpal-tunnel_1080p30.mp4",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["GH CARPAL TUNNEL", "starts in your kidneys"],
+    "emphasis": ["GH CARPAL TUNNEL"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 4.62,
+    "position": { "anchor": "top-center", "y_px": 310 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Numb hands on GH", "the real reason"],
+    ["Hands numb at night", "on GH"]
+  ],
+  "candidates_scored": [
+    {"lines": ["GH CARPAL TUNNEL", "starts in your kidneys"], "formula": "subject+pain", "score": 27},
+    {"lines": ["Numb hands on GH", "the real reason"], "formula": "subject+pain", "score": 24},
+    {"lines": ["Hands numb at night", "on GH"], "formula": "subject+pain", "score": 22},
+    {"lines": ["Stop GH numb hands", "without quitting GH"], "formula": "subject+outcome", "score": 20},
+    {"lines": ["GH CARPAL TUNNEL", "fixed by a dose change"], "formula": "subject+state_change", "score": 19}
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:09",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "winners.md missing: used the starter power-phrase bank",
+    "No proof in the lock-in window (0:04-0:12): the kidney/sodium mechanism diagram starts there, but it explains, it doesn't prove. Suggest a client lab or symptom log if you have one.",
+    "Topic band skipped: the top third carries graphics almost continuously until the midpoint"
+  ]
+}
