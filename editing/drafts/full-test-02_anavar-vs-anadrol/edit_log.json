@@ -1,0 +1,41 @@
+{
+  "source": "Drive 1Ar0JpA2sVbQ6W4qmstbIaWE7Q19W4V6m (1080x1920 HEVC, 30 fps, 80.7 s, single take in the car)",
+  "cut": {
+    "keep_source_frames": [[0, 406], [412, 1994], [2006, 2418]],
+    "removed": ["0.20 s pause after 'defined' (13.53-13.73)", "0.40 s pause after 'sodium' (66.47-66.87)", "tail after 'appreciate you guys' (80.60-80.73)"],
+    "duration_s": 80.0
+  },
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["ANAVAR vs ANADROL", "What most guys get wrong"],
+    "emphasis": ["ANAVAR", "ANADROL"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 310 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["ANAVAR vs ANADROL", "Neither beats your diet"],
+    ["The real reason", "ANADROL makes you bloat"]
+  ],
+  "candidates_scored": [
+    { "lines": ["ANAVAR vs ANADROL", "What most guys get wrong"], "formula": "A", "score": 27 },
+    { "lines": ["ANAVAR vs ANADROL", "Neither beats your diet"], "formula": "C", "score": 25 },
+    { "lines": ["The real reason", "ANADROL makes you bloat"], "formula": "A", "score": 24 },
+    { "lines": ["Hard dry look", "ANAVAR vs ANADROL"], "formula": "B", "score": 21 },
+    { "lines": ["ANAVAR vs ANADROL", "your diet decides"], "formula": "C", "score": 21 }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:07 (both compounds' looks) and 0:13 ('here's what most guys get wrong')",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "hooks/winners.md missing: used the starter power-phrase bank",
+    "No proof in the 0:04-0:12 lock-in window; the clinical-trial mention arrives at about 0:45. Consider a citation card there in a future version",
+    "Hook end held at the 6.0 s cap (the spoken hook runs to 6.9 s)",
+    "Topic band shows from 6.0 s to the 40 s midpoint, per the engine notes"
+  ]
+}
