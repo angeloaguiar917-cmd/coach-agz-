@@ -150,15 +150,11 @@ def make_bg():
 def place_footage(src, lay, bgp):
     k, ox, oy, box, r, ba = lay
     if bgp <= 0.001 and abs(k - 1) < 1e-4 and abs(ox) < .5 and abs(oy) < .5: return src.convert('RGBA'), None
-    canvas = BG.copy() if bgp > 0 else Image.new('RGBA', (W, H), (0, 0, 0, 255))
-    if 0 < bgp < 1:
-        canvas = Image.blend(Image.new('RGBA', (W, H), (0, 0, 0, 255)), canvas, bgp)
+    canvas = BG.copy()  # window morphs over the brand background
     sw, sh = int(round(W * k)), int(round(H * k))
     fs = src.resize((sw, sh), Image.BILINEAR).convert('RGBA')
     lay_im = Image.new('RGBA', (W, H), (0, 0, 0, 0)); lay_im.paste(fs, (int(round(ox)), int(round(oy))))
     mk = Image.new('L', (W, H), 0); ImageDraw.Draw(mk).rounded_rectangle([int(v) for v in box], radius=int(r), fill=255)
-    if bgp < 1:  # still transitioning from full frame: show raw footage underneath too
-        under = src.convert('RGBA'); canvas = Image.blend(under, canvas, bgp)
     canvas.paste(lay_im, (0, 0), Image.fromarray(np.minimum(np.asarray(mk), np.asarray(lay_im.split()[3]))))
     return canvas, (box, r, ba)
 
@@ -559,6 +555,8 @@ SC = [
     (sc_cta, 88.7, 999, None, 262),
 ]
 SCN = [(fn, c(a), c(b) if b < 900 else DUR + 1, lay, cy) for fn, a, b, lay, cy in SC]
+for _i in range(len(SCN) - 1):  # close short gaps so layouts hand off directly (no snap to full frame)
+    if SCN[_i + 1][1] - SCN[_i][2] < 0.5: SCN[_i] = SCN[_i][:2] + (SCN[_i + 1][1],) + SCN[_i][3:]
 MID = DUR / 2
 BAND_OUT = min([b0 for b0, b1 in BOUNDS if abs(b0 - MID) < 1.2] or [MID], key=lambda x: abs(x - MID))
 
@@ -581,9 +579,10 @@ def layout_at(t):
     if lay and not (nxt and nxt[1] - t1 < 0.5):  # return to full frame
         q = ease_io((t1 - t) / D); cur = lay_lerp(full, cur, q); bgp = q
     else: bgp = 1.0
-    if not lay: bgp = 0.0
+    from_lay = bool(prev and prev[3] and t0 - prev[2] < 0.5)
+    if not lay: bgp = (1 - p) if from_lay else 0.0
     else:
-        src_bg = 1.0 if (prev and prev[3] and t0 - prev[2] < 0.5) else 0.0
+        src_bg = 1.0 if from_lay else 0.0
         bgp = min(bgp, lerp(src_bg, 1.0, p))
     return cur, bgp
 
