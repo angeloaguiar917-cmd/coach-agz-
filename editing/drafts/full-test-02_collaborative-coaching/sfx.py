@@ -102,7 +102,7 @@ sw(81.40,0.6,-31)
 for t in (81.60,86.04,86.70): tk(t,-28)
 hit(88.38,-19)
 # S12 CTA
-imp(89.56,-15); tk(93.32,-29); hit(94.40,-17)
+imp(89.56,-15); tk(90.90,-27); tk(93.32,-29); hit(94.40,-17)
 out=np.stack([L,R],1); pk=np.max(np.abs(out)); print('sfx peak dBFS',20*np.log10(pk))
 w=wave.open('sfx.wav','wb'); w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
 w.writeframes((np.clip(out,-1,1)*32767).astype(np.int16).tobytes()); w.close()

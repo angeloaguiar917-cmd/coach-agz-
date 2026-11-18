@@ -30,7 +30,7 @@ Captions move down to 1405 px whenever the footage is shifted. No grade is appli
 | 1:00 | No graphic. A punch-in only, so the beat has room. | full |
 | 1:05 | **Two-tab client dashboard**: KPI tiles with status lights and bars, then the deep-dive scroll, a mechanism diagram and a measured → expected forecast chart | drop-frame |
 | 1:21 | **Lifetime timeline** with no panel: decades, an "optimal, held" line, and LEADER / FATHER / HUSBAND chips, then FOR LIFE | top scrim |
-| 1:29 | **CTA**: logo, gold COMMENT "ELITE" slam, a protocol sheet struck on "not just a protocol", and the disclaimer | top deck |
+| 1:29 | **CTA**: logo, gold COMMENT "ELITE" slam, a cyan LINK IN BIO tag with an up-arrow at 1:31, a protocol sheet struck on "not just a protocol", and the disclaimer | top deck |
 
 ## Edit
 - The false start "Those" is cut.

@@ -554,7 +554,7 @@ def s12(im, t):
     global LOGO
     if t < 89.50: return
     a = appear(t, 89.50, 0.2)
-    x0, y0, x1, y1 = 48, 290, 1032, 640
+    x0, y0, x1, y1 = 48, 290, 1032, 690
     frosted(im, (x0, y0, x1, y1), 0.88)
     d = ImageDraw.Draw(im, 'RGBA')
     panel_frame(im, d, (x0, y0, x1, y1), a, '', '', handle=False)
@@ -579,7 +579,14 @@ def s12(im, t):
         for k in range(5): d.rectangle([px + 12, py + 46 + k * 20, px + 12 + [140, 110, 130, 90, 120][k], py + 54 + k * 20], fill=A((170, 170, 176), q))
         if t >= 94.40:
             r = expo((t - 94.40) / 0.1); cross(d, px + 20, py + 15, RED, 4.6 * r + 0.01, r)
-    fd = f(MONO, 18); txt(d, x0 + 36, y1 - 34, 'FOR RESEARCH & EDUCATIONAL PURPOSES ONLY', fd, MUTED, a)
+    if t >= 90.90:   # link in bio: cyan tag + drawn arrow pointing up toward the profile
+        q = expo((t - 90.90) / 0.14); yy = lerp(y0 + 330, y0 + 316, q)
+        xe = tag(d, x0 + 36, yy, 'LINK IN BIO', CYAN, 40, q)
+        ax = xe + 34; d.line([(ax, yy + 44), (ax + 30, yy + 10)], fill=A(CYAN, q), width=6)
+        d.line([(ax + 10, yy + 8), (ax + 32, yy + 8), (ax + 32, yy + 30)], fill=A(CYAN, q), width=6)
+        if GL: GL.line([(ax, yy + 44), (ax + 30, yy + 10)], fill=A(CYAN, q), width=12)
+    fd = f(MONO, 18); tw = d.textlength('FOR RESEARCH & EDUCATIONAL PURPOSES ONLY', font=fd)
+    txt(d, x1 - 36 - tw, y1 - 34, 'FOR RESEARCH & EDUCATIONAL PURPOSES ONLY', fd, MUTED, a)
 
 # ---------------- captions ----------------
 FIX = {'did': None}
