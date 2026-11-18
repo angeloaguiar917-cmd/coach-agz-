@@ -18,11 +18,11 @@
 | 0:03 | Three esters | **Top chips** over the cap | Three X-ray vial chips (CYP / ENAN / PROP), each drawing its own curve shape. Tag: SAME HORMONE · 3 CURVES |
 | 0:09 | Cypionate | **Split screen** (face in a gold-framed window, dossier below) | #1 SCRIPTED · US stamp. **Half-life range bar 5–8 days.** Stacked mg bar: 100 mg cyp ≈ 70 mg testosterone + 30 mg ester (DEAD WEIGHT) |
 | 0:21 | Flexibility | **Full takeover chart + circular face-cam** | Serum line chart over 14 days: 2×/week (amber) → 3×/week (gold) → daily (green) inside a STABLE ZONE band. Tag: LONG TAIL = FORGIVES A LATE PIN |
-| 0:36 | Enanthate | **Side rail** (footage pushed right, evidence column left) | Vertical half-life ruler: **ENAN 4–5 days** next to a CYP ghost bar. Then a red-header research document with a highlighted line and a SUGGESTS · EARLY DATA tag. Then a weekday pin-dot strip: 2× → 3× → daily |
-| 0:52 | Propionate | **Full takeover + square face-cam** | 90% ring counts up (OF CASES / it makes no sense). **Big stat: half-life 20–36 HRS.** Then a **half-life bar chart of all three** (CYP 5–8 days, ENAN 4–5 days, PROP 20–36 hrs) with SHORTEST bracketed |
-| 1:01 | Missed day | **Top HUD monitor** over full footage | Cyan oscilloscope of daily prop pins. One pin is crossed out and the line drops into the red TROUGH zone (MISSED 1 DAY) |
-| 1:09 | Same molecule | **Glass card, lower** | X-ray steroid skeleton. The ester tail cycles cyp → enan → prop, gets cut and drifts off, and the core turns green (ESTER = CARRIER, SAME MOLECULE). Hands off into a table: pins/week and missed-pin tolerance |
-| 1:18 | Pick a schedule | **Selector cards** | A cursor sweeps the CYP / ENAN / PROP cards, then a gold verdict bar lands: THE ONE YOU WILL ACTUALLY KEEP |
+| 0:37 | Enanthate | **Side rail** (footage pushed right, evidence column left) | Vertical half-life ruler: **ENAN 4–5 days** next to a CYP ghost bar. Then a red-header research document with a highlighted line and a SUGGESTS · EARLY DATA tag. Then a weekday pin-dot strip: 2× → 3× → daily |
+| 0:53 | Propionate | **Full takeover + square face-cam** | 90% ring counts up (OF CASES / it makes no sense). **Big stat: half-life 20–36 HRS.** Then a **half-life bar chart of all three** (CYP 5–8 days, ENAN 4–5 days, PROP 20–36 hrs) with SHORTEST bracketed |
+| 1:02 | Missed day | **Top HUD monitor** over full footage | Cyan oscilloscope of daily prop pins. One pin is crossed out and the line drops into the red TROUGH zone (MISSED 1 DAY) |
+| 1:10 | Same molecule | **Glass card, lower** | X-ray steroid skeleton. The ester tail cycles cyp → enan → prop, gets cut and drifts off, and the core turns green (ESTER = CARRIER, SAME MOLECULE). Hands off into a table: pins/week and missed-pin tolerance |
+| 1:19 | Pick a schedule | **Selector cards** | A cursor sweeps the CYP / ENAN / PROP cards, then a gold verdict bar lands: THE ONE YOU WILL ACTUALLY KEEP |
 | 1:22 | Consistency | **Top HUD streak log** | A 30-day pin log fills green, with a DAY counter and EVERY SINGLE TIME |
 | 1:27 | CTA | **End card, lower** | Logo, @coach.agz, CYP / ENAN / PROP poll chips ("comment yours"), then a gold COMMENT "LABS" bar |
 
@@ -40,3 +40,15 @@
 
 ## Files
 `render.py` (frames), `sfx.py` (sound), `edit_log.json` (text hook). Source cut and words are in the session scratch (`build/timeline.json`, `build/words.json`).
+
+## QC done (final file)
+- **Specs:** 1080×1920, H.264 High, 30 fps, 2,826 frames, 1:34.2, about 81 MB, faststart.
+- **Audio:** −14.0 LUFS integrated, peak −1.4 dBFS.
+- **Visuals:** an overview every 2 s, plus 10 fps frame strips across every layout handoff (split → circle → rail → square → full).
+- **Fixes during review:**
+  - Scenes less than 0.5 s apart now hand off directly. Before the fix, the face cam snapped to full frame for a few frames.
+  - The window morph no longer shows a ghost double image.
+  - Captions keep the position of the scene they started in.
+  - Tick labels that read like "0" were replaced.
+- **SFX sync:** the stamp, ENAN bar, cross, half-life stat, trough, verdict and LABS-bar sounds were each measured at 0 ms from their cue frame.
+- **Not done:** listening. The fonts are stand-ins. The serum curves are illustrative.

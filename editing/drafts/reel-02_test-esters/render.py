@@ -636,7 +636,7 @@ def captions(im, t):
     for k, i in enumerate(idx):
         if WORDS[i]['s'] <= t: act = k
     g0 = WORDS[idx[0]]['s']; s = lerp(0.9, 1, expo((t - g0) / 0.10))
-    CY = cap_y(t)
+    CY = cap_y(WORDS[idx[0]]['s'] + 0.01)  # position fixed by the scene the line started in
     cap = Image.new('RGBA', (W, 300), (0, 0, 0, 0)); cd = ImageDraw.Draw(cap); shd = Image.new('RGBA', (W, 300), (0, 0, 0, 0)); sd = ImageDraw.Draw(shd)
     prev = max(0, act - 1); bt = expo((t - WORDS[idx[act]]['s']) / 0.07) if act > 0 else 1
     bx0 = lerp(xs[prev], xs[act], bt) - 18; bx1 = lerp(xs[prev] + wd[prev], xs[act] + wd[act], bt) + 18
