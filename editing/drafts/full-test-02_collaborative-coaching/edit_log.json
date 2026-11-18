@@ -1,0 +1,35 @@
+{
+  "video": "Collaborative Coaching (Drive 1eMtNBxoCzfhHjl8mZqsSodDYBrq_-ivD)",
+  "output": "coach-agz_collaborative-coaching_1080p30.mp4",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["The DAILY CHECK-INS", "your coach skips"],
+    "emphasis": ["DAILY CHECK-INS"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.5,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["ELITE COACHING", "tracks more than bloodwork"],
+    ["ELITE COACHING", "not just a protocol"]
+  ],
+  "candidates_scored": [
+    { "lines": ["The DAILY CHECK-INS", "your coach skips"], "formula": "subject+pain", "score": 25, "note": "specific (daily) + twisted power phrase 'your doctor misses'" },
+    { "lines": ["ELITE COACHING", "tracks more than bloodwork"], "formula": "subject+state_change", "score": 25 },
+    { "lines": ["ELITE COACHING", "not just a protocol"], "formula": "subject+pain", "score": 23 },
+    { "lines": ["ELITE COACHING", "optimal for life"], "formula": "subject+outcome", "score": 20 },
+    { "lines": ["Reference ranges", "built for the SICK"], "formula": "subject+pain", "score": 0, "note": "discarded: rule 11, swaps the subject to a sub-point" }
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:03 (weekly check-ins, daily check-ins, daily blood pressure)",
+    "trust_anchor": "MISSING"
+  },
+  "flags": [
+    "winners.md missing (starter power-phrase bank used)",
+    "trust anchor missing in 0:03-0:12: no client result, panel or count is spoken. Suggest a real client check-in screenshot as a proof card if one can be shared."
+  ]
+}
