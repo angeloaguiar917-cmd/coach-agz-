@@ -1,0 +1,38 @@
+{
+  "video": "Ester hook main 1 (Drive 1WWdxwf7M-pWPfWLjVNBrDSjqyf0XIX_9)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["CYP vs ENAN vs PROP", "stop guessing your ester"],
+    "emphasis": ["CYP", "ENAN", "PROP"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.4,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["Same TESTOSTERONE", "three different curves"],
+    ["New research favors", "TEST ENANTHATE"]
+  ],
+  "candidates_rejected": [
+    {"lines": ["CYP vs ENAN vs PROP", "which ester fits your pins"], "reason": "connector 'which' (rule 4)"},
+    {"lines": ["TEST PROP", "makes no sense for most"], "reason": "covers one third of the video only (rule 11 drift)"}
+  ],
+  "scores": {
+    "CYP vs ENAN vs PROP / stop guessing your ester": {"subject": 5, "curiosity": 4, "specificity": 4, "power_phrase": 4, "glance": 5, "alignment": 5},
+    "Same TESTOSTERONE / three different curves": {"subject": 4, "curiosity": 4, "specificity": 3, "power_phrase": 3, "glance": 5, "alignment": 4},
+    "New research favors / TEST ENANTHATE": {"subject": 4, "curiosity": 5, "specificity": 3, "power_phrase": 4, "glance": 5, "alignment": 2}
+  },
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:03",
+    "trust_anchor": "MISSING (no lab panel or study shown in 0:04-0:12); half-life range chart used as the proof element from 0:14"
+  },
+  "flags": [
+    "hooks/winners.md missing: starter power-phrase bank used",
+    "Spoken propionate half-life is 24-48 h; on-screen value is 20-36 h as supplied by Coach AGZ",
+    "Enanthate research claim (0:41) has no citation in the video; overlay is labelled SUGGESTS / EARLY DATA and names no study",
+    "Runner-up 2 over-states the research ('might be superior' in the video)"
+  ]
+}
