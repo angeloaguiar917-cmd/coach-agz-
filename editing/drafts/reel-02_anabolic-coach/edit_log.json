@@ -1,0 +1,33 @@
+{
+  "video": "How I know you're gay (anabolic coach bit)",
+  "source": "Drive 1DncHT3F1nJz4LXnaCNhR540sEM2ihCyA (1080x1920 HEVC 60 fps, 25.5 s)",
+  "output": "coach-agz_anabolic-coach_1080p.mp4 (1080x1920, 30 fps, H.264 High, AAC, faststart, 24.43 s, -14.0 LUFS)",
+  "text_hook": {
+    "rendered": false,
+    "reason": "Coach AGZ instruction for this video: do not add a text hook at the start. Engine run for the log only.",
+    "formula": "subject+pain",
+    "lines": ["Your ANABOLIC COACH", "stares all day"],
+    "emphasis": ["ANABOLIC COACH"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 3.6,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["ANABOLIC COACH", "builds lethal units"],
+    ["Half naked pictures", "ANABOLIC COACH life"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:03",
+    "trust_anchor": "client before/after photos at 0:10-0:22 (outside the 0:04-0:12 lock-in window)"
+  },
+  "flags": [
+    "Text hook not rendered (user override)",
+    "hooks/winners.md missing: starter power-phrase bank used",
+    "Identity-callout fallback: comedy bit with no compound/marker subject",
+    "Trust anchor lands after the lock-in zone"
+  ]
+}
