@@ -1,0 +1,36 @@
+{
+  "video": "Heart health hook 2 (Drive 1SDghaagxtVeR_pmtaty6n5oHTsZ5Il0f)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Silent HEART WALL damage", "your bloodwork misses"],
+    "emphasis": ["HEART WALL"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    { "lines": ["Silent HEART WALL damage", "your bloodwork misses"], "formula": "subject+pain", "score": 27 },
+    { "lines": ["The HEART damage", "your panel never shows"], "formula": "subject+pain", "score": 25 },
+    { "lines": ["2 compounds protecting", "your HEART on cycle"], "formula": "subject+outcome", "score": 23 },
+    { "lines": ["Your HEART WALL", "is thickening on cycle"], "formula": "subject+pain", "score": 23 },
+    { "lines": ["Reverse HEART WALL growth", "on cycle"], "formula": "subject+state_change", "score": null, "discarded": "overclaims: the LV-mass regression studies were in hypertensive patients, not people on cycle" }
+  ],
+  "runners_up": [
+    ["The HEART damage", "your panel never shows"],
+    ["2 compounds protecting", "your HEART on cycle"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:06 (no symptoms, nothing on a standard panel unless you get an EKG or ECG)",
+    "trust_anchor": "MISSING in 0:04-0:12. The only proof in the video is the LV-mass regression studies at 1:08. No study screenshot or panel asset was supplied, so no proof card was built."
+  },
+  "spoken_hook": "If you're on cycle and your blood pressure is creeping up little by little, your heart wall is already adapting to it. (0:00-0:05.9)",
+  "topic_band": { "text": "Protect your HEART on cycle", "start": 6.0, "end": 58.98, "note": "exits on the telmisartan reveal, 0.1 s before the 59.08 s midpoint" },
+  "flags": [
+    "hooks/winners.md missing: starter power-phrase bank used",
+    "trust anchor missing in the lock-in zone"
+  ]
+}
