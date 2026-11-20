@@ -1,0 +1,87 @@
+{
+ "video": "full-02_heart-health (Drive 1ByY1VxgIV3k-2U3hO93SRD5RZoaCk9DR, '2 heart health')",
+ "text_hook": {
+  "formula": "subject+pain",
+  "lines": [
+   "2 compounds",
+   "every STEROID cycle needs"
+  ],
+  "emphasis": [
+   "STEROID"
+  ],
+  "mode": "premium",
+  "start": 0.0,
+  "end": 4.48,
+  "position": {
+   "anchor": "top-center",
+   "y_px": 300
+  },
+  "animation_in": "none",
+  "animation_out": "fade_0.15s",
+  "source": "supplied by Coach AGZ; engine run as a check"
+ },
+ "candidates": [
+  {
+   "lines": [
+    "2 compounds",
+    "every STEROID cycle needs"
+   ],
+   "formula": "A",
+   "score": 4.5,
+   "note": "supplied; specific count, curiosity gap, matches spoken hook"
+  },
+  {
+   "lines": [
+    "Unprotected HEART",
+    "on every STEROID cycle"
+   ],
+   "formula": "A",
+   "score": 4.2
+  },
+  {
+   "lines": [
+    "Reverse HEART thickening",
+    "on a STEROID cycle"
+   ],
+   "formula": "B",
+   "score": 4.0
+  },
+  {
+   "lines": [
+    "TELMISARTAN beats",
+    "beta blockers on cycle"
+   ],
+   "formula": "C",
+   "score": 3.4
+  },
+  {
+   "lines": [
+    "The lipid fix",
+    "your STEROID cycle skips"
+   ],
+   "formula": "A",
+   "score": 3.3
+  }
+ ],
+ "runners_up": [
+  [
+   "Unprotected HEART",
+   "on every STEROID cycle"
+  ],
+  [
+   "Reverse HEART thickening",
+   "on a STEROID cycle"
+  ]
+ ],
+ "lock_in_check": {
+  "claim_confirmed": true,
+  "confirmed_at": "0:00-0:08 ('these two compounds... here's exactly why'); compounds named 0:33 and 1:24",
+  "trust_anchor": "MISSING in 0:04-0:12 (first proof: 'clinical data shows regression of LV mass' at 1:54)"
+ },
+ "flags": [
+  "hooks/winners.md missing: starter power-phrase bank used",
+  "line break moved: supplied as '2 compounds every / STEROID cycle needs'; rule 6 keeps 'every' with its noun phrase, so it renders '2 compounds / every STEROID cycle needs'",
+  "trust anchor missing in lock-in window: add a study or bloodwork proof card at 0:04-0:12 if you have one",
+  "topic band after the hook suppressed this video: top zone carries graphics through the first half"
+ ]
+}
