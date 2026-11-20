@@ -1,0 +1,36 @@
+{
+  "video": "Heart health hook 4 (Drive 1J-npLHxpoxHeExnrwk4KectorYgjRZsX)",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["2 HEART compounds", "Your cardiologist skips"],
+    "emphasis": ["HEART"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["2 HEART compounds", "Your cardiologist skips"], "formula": "subject+pain", "score": 27},
+    {"lines": ["Run gear into your 60s", "Protect your HEART"], "formula": "subject+outcome", "score": 24},
+    {"lines": ["HEART damage on gear", "Mostly reversible"], "formula": "subject+state_change", "score": 23},
+    {"lines": ["Gear into your 60s", "2 HEART compounds"], "formula": "subject+outcome", "score": 21},
+    {"lines": ["Enlarged HEART on gear", "Most of it reverses"], "formula": "subject+state_change", "score": 20}
+  ],
+  "runners_up": [
+    ["Run gear into your 60s", "Protect your HEART"],
+    ["HEART damage on gear", "Mostly reversible"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:05 (two interventions your cardiologist might not use) and 0:11 (two most important health compounds)",
+    "trust_anchor": "MISSING in 0:04-0:12; first proof is the hypertensive-patient LV mass study line at 0:36 (study card shown there)"
+  },
+  "topic_band": {"text": "Protect your HEART on gear", "start": 6.0, "end": 54.633, "note": "exits on the jump cut nearest the midpoint (54.8)"},
+  "flags": [
+    "winners.md missing - used starter power-phrase bank",
+    "'skips' compresses 'might not use at all' - slightly stronger than spoken; swap to runner-up 1 if that reads as overclaiming",
+    "trust anchor not in lock-in window"
+  ]
+}

@@ -1,0 +1,2132 @@
+[
+{
+"w": "IF",
+"s": 0.0,
+"e": 0.0,
+"end": false
+},
+{
+"w": "YOU",
+"s": 0.0,
+"e": 0.1,
+"end": false
+},
+{
+"w": "WANT",
+"s": 0.1,
+"e": 0.2,
+"end": false
+},
+{
+"w": "TO",
+"s": 0.2,
+"e": 0.32,
+"end": false
+},
+{
+"w": "RUN",
+"s": 0.32,
+"e": 0.48,
+"end": false
+},
+{
+"w": "GEAR",
+"s": 0.48,
+"e": 0.72,
+"end": false
+},
+{
+"w": "INTO",
+"s": 0.72,
+"e": 1.02,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 1.02,
+"e": 1.2,
+"end": false
+},
+{
+"w": "40S",
+"s": 1.2,
+"e": 1.64,
+"end": true
+},
+{
+"w": "50S",
+"s": 1.68,
+"e": 2.02,
+"end": true
+},
+{
+"w": "OR",
+"s": 2.1,
+"e": 2.14,
+"end": false
+},
+{
+"w": "EVEN",
+"s": 2.14,
+"e": 2.3,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 2.3,
+"e": 2.5,
+"end": false
+},
+{
+"w": "60S",
+"s": 2.5,
+"e": 3.04,
+"end": true
+},
+{
+"w": "YOUR",
+"s": 3.12,
+"e": 3.2,
+"end": false
+},
+{
+"w": "EXIT",
+"s": 3.2,
+"e": 3.54,
+"end": false
+},
+{
+"w": "ISN'T",
+"s": 3.54,
+"e": 3.9,
+"end": false
+},
+{
+"w": "A",
+"s": 3.9,
+"e": 4.12,
+"end": false
+},
+{
+"w": "CYCLE",
+"s": 4.12,
+"e": 4.46,
+"end": false
+},
+{
+"w": "OFF",
+"s": 4.46,
+"e": 4.86,
+"end": true
+},
+{
+"w": "TWO",
+"s": 4.96,
+"e": 5.02,
+"end": false
+},
+{
+"w": "INTERVENTIONS",
+"s": 5.02,
+"e": 5.46,
+"end": false
+},
+{
+"w": "THAT",
+"s": 5.46,
+"e": 5.72,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 5.72,
+"e": 5.86,
+"end": false
+},
+{
+"w": "CARDIOLOGIST",
+"s": 5.86,
+"e": 6.5,
+"end": false
+},
+{
+"w": "MIGHT",
+"s": 6.5,
+"e": 6.84,
+"end": false
+},
+{
+"w": "NOT",
+"s": 6.84,
+"e": 7.04,
+"end": false
+},
+{
+"w": "USE",
+"s": 7.04,
+"e": 7.3,
+"end": false
+},
+{
+"w": "AT",
+"s": 7.3,
+"e": 7.44,
+"end": false
+},
+{
+"w": "ALL",
+"s": 7.44,
+"e": 7.7,
+"end": true
+},
+{
+"w": "THE",
+"s": 7.9,
+"e": 8.06,
+"end": false
+},
+{
+"w": "GOOD",
+"s": 8.06,
+"e": 8.2,
+"end": false
+},
+{
+"w": "NEWS",
+"s": 8.2,
+"e": 8.4,
+"end": false
+},
+{
+"w": "IS",
+"s": 8.4,
+"e": 8.6,
+"end": false
+},
+{
+"w": "MOST",
+"s": 8.6,
+"e": 8.82,
+"end": false
+},
+{
+"w": "OF",
+"s": 8.82,
+"e": 9.0,
+"end": false
+},
+{
+"w": "THE",
+"s": 9.0,
+"e": 9.06,
+"end": false
+},
+{
+"w": "DAMAGE",
+"s": 9.06,
+"e": 9.28,
+"end": false
+},
+{
+"w": "IS",
+"s": 9.28,
+"e": 9.46,
+"end": false
+},
+{
+"w": "REVERSIBLE",
+"s": 9.46,
+"e": 9.9,
+"end": false
+},
+{
+"w": "IF",
+"s": 9.9,
+"e": 10.2,
+"end": false
+},
+{
+"w": "YOU",
+"s": 10.2,
+"e": 10.34,
+"end": false
+},
+{
+"w": "USE",
+"s": 10.34,
+"e": 10.56,
+"end": false
+},
+{
+"w": "IT",
+"s": 10.56,
+"e": 10.72,
+"end": true
+},
+{
+"w": "SO",
+"s": 10.88,
+"e": 10.98,
+"end": false
+},
+{
+"w": "LET'S",
+"s": 10.98,
+"e": 11.14,
+"end": false
+},
+{
+"w": "TALK",
+"s": 11.14,
+"e": 11.26,
+"end": false
+},
+{
+"w": "ABOUT",
+"s": 11.26,
+"e": 11.48,
+"end": false
+},
+{
+"w": "THE",
+"s": 11.48,
+"e": 11.64,
+"end": false
+},
+{
+"w": "TWO",
+"s": 11.64,
+"e": 11.84,
+"end": false
+},
+{
+"w": "MOST",
+"s": 11.84,
+"e": 12.18,
+"end": false
+},
+{
+"w": "IMPORTANT",
+"s": 12.18,
+"e": 12.6,
+"end": false
+},
+{
+"w": "HEALTH",
+"s": 12.6,
+"e": 12.88,
+"end": false
+},
+{
+"w": "COMPOUNDS",
+"s": 12.88,
+"e": 13.38,
+"end": false
+},
+{
+"w": "IN",
+"s": 13.38,
+"e": 13.78,
+"end": false
+},
+{
+"w": "ANABOLIC",
+"s": 13.78,
+"e": 14.18,
+"end": false
+},
+{
+"w": "STEROIDS",
+"s": 14.18,
+"e": 14.64,
+"end": false
+},
+{
+"w": "THAT",
+"s": 14.64,
+"e": 14.96,
+"end": false
+},
+{
+"w": "YOU",
+"s": 14.96,
+"e": 15.18,
+"end": false
+},
+{
+"w": "SHOULD",
+"s": 15.18,
+"e": 15.44,
+"end": false
+},
+{
+"w": "START",
+"s": 15.44,
+"e": 15.88,
+"end": false
+},
+{
+"w": "TODAY",
+"s": 15.88,
+"e": 16.32,
+"end": true
+},
+{
+"w": "BLOOD",
+"s": 16.6,
+"e": 16.72,
+"end": false
+},
+{
+"w": "PRESSURE",
+"s": 16.72,
+"e": 17.12,
+"end": false
+},
+{
+"w": "AND",
+"s": 17.12,
+"e": 17.34,
+"end": false
+},
+{
+"w": "CARDIOVASCULAR",
+"s": 17.34,
+"e": 17.94,
+"end": false
+},
+{
+"w": "REMODELING",
+"s": 17.94,
+"e": 19.0,
+"end": true
+},
+{
+"w": "ELEVATED",
+"s": 19.18,
+"e": 19.58,
+"end": false
+},
+{
+"w": "PRESSURE",
+"s": 19.58,
+"e": 19.86,
+"end": false
+},
+{
+"w": "INCREASES",
+"s": 19.86,
+"e": 20.4,
+"end": false
+},
+{
+"w": "THE",
+"s": 20.4,
+"e": 20.6,
+"end": false
+},
+{
+"w": "WORKLOAD",
+"s": 20.6,
+"e": 20.92,
+"end": false
+},
+{
+"w": "ON",
+"s": 20.92,
+"e": 21.18,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 21.18,
+"e": 21.36,
+"end": false
+},
+{
+"w": "HEART",
+"s": 21.36,
+"e": 21.62,
+"end": true
+},
+{
+"w": "CONTRIBUTING",
+"s": 21.72,
+"e": 22.06,
+"end": false
+},
+{
+"w": "TO",
+"s": 22.06,
+"e": 22.38,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 22.38,
+"e": 22.52,
+"end": false
+},
+{
+"w": "LEFT",
+"s": 22.52,
+"e": 22.74,
+"end": false
+},
+{
+"w": "VENTRICULAR",
+"s": 22.74,
+"e": 23.22,
+"end": false
+},
+{
+"w": "HYPERTROPHY",
+"s": 23.22,
+"e": 23.9,
+"end": false
+},
+{
+"w": "AND",
+"s": 23.9,
+"e": 24.04,
+"end": false
+},
+{
+"w": "A",
+"s": 24.04,
+"e": 24.18,
+"end": false
+},
+{
+"w": "TON",
+"s": 24.18,
+"e": 24.32,
+"end": false
+},
+{
+"w": "OF",
+"s": 24.32,
+"e": 24.46,
+"end": false
+},
+{
+"w": "OTHER",
+"s": 24.46,
+"e": 24.68,
+"end": false
+},
+{
+"w": "ISSUES",
+"s": 24.68,
+"e": 25.0,
+"end": true
+},
+{
+"w": "THIS",
+"s": 25.14,
+"e": 25.32,
+"end": false
+},
+{
+"w": "MY",
+"s": 25.32,
+"e": 25.48,
+"end": false
+},
+{
+"w": "FRIENDS",
+"s": 25.48,
+"e": 25.68,
+"end": false
+},
+{
+"w": "IS",
+"s": 25.68,
+"e": 25.86,
+"end": false
+},
+{
+"w": "WHERE",
+"s": 25.86,
+"e": 26.02,
+"end": false
+},
+{
+"w": "MY",
+"s": 26.02,
+"e": 26.22,
+"end": false
+},
+{
+"w": "FAVORITE",
+"s": 26.22,
+"e": 26.6,
+"end": false
+},
+{
+"w": "HEALTH",
+"s": 26.6,
+"e": 26.94,
+"end": false
+},
+{
+"w": "COMPOUND",
+"s": 26.94,
+"e": 27.42,
+"end": false
+},
+{
+"w": "OF",
+"s": 27.42,
+"e": 27.56,
+"end": false
+},
+{
+"w": "ALL",
+"s": 27.56,
+"e": 27.72,
+"end": false
+},
+{
+"w": "TIME",
+"s": 27.72,
+"e": 27.98,
+"end": false
+},
+{
+"w": "ENTERS",
+"s": 27.98,
+"e": 28.34,
+"end": true
+},
+{
+"w": "IT'S",
+"s": 28.52,
+"e": 28.72,
+"end": false
+},
+{
+"w": "TELMISARTAN",
+"s": 28.72,
+"e": 29.66,
+"end": true
+},
+{
+"w": "IT",
+"s": 29.66,
+"e": 29.86,
+"end": false
+},
+{
+"w": "BLOCKS",
+"s": 29.86,
+"e": 30.14,
+"end": false
+},
+{
+"w": "ANGIOTENSIN",
+"s": 30.14,
+"e": 30.9,
+"end": false
+},
+{
+"w": "2",
+"s": 30.9,
+"e": 31.14,
+"end": false
+},
+{
+"w": "AT",
+"s": 31.14,
+"e": 31.38,
+"end": false
+},
+{
+"w": "THE",
+"s": 31.38,
+"e": 31.5,
+"end": false
+},
+{
+"w": "AT1",
+"s": 31.5,
+"e": 32.18,
+"end": false
+},
+{
+"w": "RECEPTOR",
+"s": 32.18,
+"e": 32.56,
+"end": true
+},
+{
+"w": "SO",
+"s": 32.78,
+"e": 32.92,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 32.92,
+"e": 33.08,
+"end": false
+},
+{
+"w": "BLOOD",
+"s": 33.08,
+"e": 33.32,
+"end": false
+},
+{
+"w": "VESSELS",
+"s": 33.32,
+"e": 33.62,
+"end": false
+},
+{
+"w": "COULD",
+"s": 33.62,
+"e": 33.86,
+"end": false
+},
+{
+"w": "RELAX",
+"s": 33.86,
+"e": 34.32,
+"end": true
+},
+{
+"w": "YOUR",
+"s": 34.48,
+"e": 34.58,
+"end": false
+},
+{
+"w": "BLOOD",
+"s": 34.58,
+"e": 34.84,
+"end": false
+},
+{
+"w": "PRESSURE",
+"s": 34.84,
+"e": 35.22,
+"end": false
+},
+{
+"w": "FALLS",
+"s": 35.22,
+"e": 35.62,
+"end": true
+},
+{
+"w": "AND",
+"s": 35.9,
+"e": 35.92,
+"end": false
+},
+{
+"w": "THE",
+"s": 35.92,
+"e": 36.02,
+"end": false
+},
+{
+"w": "CRAZIEST",
+"s": 36.02,
+"e": 36.48,
+"end": false
+},
+{
+"w": "THING",
+"s": 36.48,
+"e": 36.64,
+"end": false
+},
+{
+"w": "I'VE",
+"s": 36.64,
+"e": 36.76,
+"end": false
+},
+{
+"w": "EVER",
+"s": 36.76,
+"e": 36.92,
+"end": false
+},
+{
+"w": "SEEN",
+"s": 36.92,
+"e": 37.14,
+"end": false
+},
+{
+"w": "IS",
+"s": 37.14,
+"e": 37.3,
+"end": false
+},
+{
+"w": "THAT",
+"s": 37.3,
+"e": 37.46,
+"end": false
+},
+{
+"w": "STUDIES",
+"s": 37.46,
+"e": 37.7,
+"end": false
+},
+{
+"w": "IN",
+"s": 37.7,
+"e": 37.9,
+"end": false
+},
+{
+"w": "HYPERTENSIVE",
+"s": 37.9,
+"e": 38.48,
+"end": false
+},
+{
+"w": "PATIENTS",
+"s": 38.48,
+"e": 38.84,
+"end": false
+},
+{
+"w": "HAVE",
+"s": 38.84,
+"e": 39.08,
+"end": false
+},
+{
+"w": "DEMONSTRATED",
+"s": 39.08,
+"e": 39.54,
+"end": false
+},
+{
+"w": "A",
+"s": 39.54,
+"e": 39.78,
+"end": false
+},
+{
+"w": "REGRESSION",
+"s": 39.78,
+"e": 40.12,
+"end": false
+},
+{
+"w": "OF",
+"s": 40.12,
+"e": 40.52,
+"end": false
+},
+{
+"w": "LEFT",
+"s": 40.52,
+"e": 40.76,
+"end": false
+},
+{
+"w": "VENTRICULAR",
+"s": 40.76,
+"e": 41.32,
+"end": false
+},
+{
+"w": "MASS",
+"s": 41.32,
+"e": 41.82,
+"end": true
+},
+{
+"w": "THAT",
+"s": 41.96,
+"e": 42.1,
+"end": false
+},
+{
+"w": "IS",
+"s": 42.1,
+"e": 42.3,
+"end": false
+},
+{
+"w": "HUGE",
+"s": 42.3,
+"e": 42.6,
+"end": true
+},
+{
+"w": "WITH",
+"s": 42.88,
+"e": 43.04,
+"end": false
+},
+{
+"w": "TELMISARTAN",
+"s": 43.04,
+"e": 43.7,
+"end": false
+},
+{
+"w": "WE",
+"s": 43.7,
+"e": 43.92,
+"end": false
+},
+{
+"w": "WON'T",
+"s": 43.92,
+"e": 44.1,
+"end": false
+},
+{
+"w": "EVEN",
+"s": 44.1,
+"e": 44.28,
+"end": false
+},
+{
+"w": "TALK",
+"s": 44.28,
+"e": 44.46,
+"end": false
+},
+{
+"w": "ABOUT",
+"s": 44.46,
+"e": 44.7,
+"end": false
+},
+{
+"w": "HOW",
+"s": 44.7,
+"e": 44.9,
+"end": false
+},
+{
+"w": "IT",
+"s": 44.9,
+"e": 45.0,
+"end": false
+},
+{
+"w": "IMPROVES",
+"s": 45.0,
+"e": 45.32,
+"end": false
+},
+{
+"w": "INSULIN",
+"s": 45.32,
+"e": 45.72,
+"end": false
+},
+{
+"w": "SENSITIVITY",
+"s": 45.72,
+"e": 46.22,
+"end": true
+},
+{
+"w": "ACTUALLY",
+"s": 46.58,
+"e": 46.84,
+"end": true
+},
+{
+"w": "SOME",
+"s": 46.94,
+"e": 47.1,
+"end": false
+},
+{
+"w": "STUDIES",
+"s": 47.1,
+"e": 47.36,
+"end": false
+},
+{
+"w": "SHOW",
+"s": 47.36,
+"e": 47.6,
+"end": false
+},
+{
+"w": "IT",
+"s": 47.6,
+"e": 47.72,
+"end": false
+},
+{
+"w": "ACTUALLY",
+"s": 47.72,
+"e": 48.04,
+"end": false
+},
+{
+"w": "UPREGULATES",
+"s": 48.04,
+"e": 48.74,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 48.74,
+"e": 48.94,
+"end": false
+},
+{
+"w": "ANDROGEN",
+"s": 48.94,
+"e": 49.24,
+"end": false
+},
+{
+"w": "RECEPTOR",
+"s": 49.24,
+"e": 49.58,
+"end": true
+},
+{
+"w": "ANABOLICS",
+"s": 49.8,
+"e": 50.18,
+"end": false
+},
+{
+"w": "CAN",
+"s": 50.18,
+"e": 50.38,
+"end": false
+},
+{
+"w": "ABSOLUTELY",
+"s": 50.38,
+"e": 50.84,
+"end": false
+},
+{
+"w": "DEMOLISH",
+"s": 50.84,
+"e": 51.54,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 51.54,
+"e": 51.68,
+"end": false
+},
+{
+"w": "HDL",
+"s": 51.68,
+"e": 52.1,
+"end": false
+},
+{
+"w": "AND",
+"s": 52.1,
+"e": 52.5,
+"end": false
+},
+{
+"w": "NEGATIVELY",
+"s": 52.5,
+"e": 52.86,
+"end": false
+},
+{
+"w": "AFFECT",
+"s": 52.86,
+"e": 53.24,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 53.24,
+"e": 53.42,
+"end": false
+},
+{
+"w": "LDL",
+"s": 53.42,
+"e": 53.74,
+"end": false
+},
+{
+"w": "AND",
+"s": 53.74,
+"e": 54.0,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 54.0,
+"e": 54.12,
+"end": false
+},
+{
+"w": "APOB",
+"s": 54.12,
+"e": 54.44,
+"end": true
+},
+{
+"w": "THAT'S",
+"s": 54.56,
+"e": 54.76,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 54.76,
+"e": 54.86,
+"end": false
+},
+{
+"w": "CARDIOVASCULAR",
+"s": 54.86,
+"e": 55.34,
+"end": false
+},
+{
+"w": "RISK",
+"s": 55.34,
+"e": 55.86,
+"end": false
+},
+{
+"w": "CLIMBING",
+"s": 55.86,
+"e": 56.34,
+"end": false
+},
+{
+"w": "WHILE",
+"s": 56.34,
+"e": 56.72,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 56.72,
+"e": 56.98,
+"end": false
+},
+{
+"w": "PHYSIQUE",
+"s": 56.98,
+"e": 57.34,
+"end": false
+},
+{
+"w": "LOOKS",
+"s": 57.34,
+"e": 57.68,
+"end": false
+},
+{
+"w": "FREAKING",
+"s": 57.68,
+"e": 58.08,
+"end": false
+},
+{
+"w": "INCREDIBLE",
+"s": 58.08,
+"e": 58.58,
+"end": true
+},
+{
+"w": "THAT'S",
+"s": 58.58,
+"e": 59.12,
+"end": false
+},
+{
+"w": "WHERE",
+"s": 59.12,
+"e": 59.22,
+"end": false
+},
+{
+"w": "WE",
+"s": 59.22,
+"e": 59.4,
+"end": false
+},
+{
+"w": "ENTER",
+"s": 59.4,
+"e": 59.72,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 59.72,
+"e": 59.96,
+"end": false
+},
+{
+"w": "EZETIMIBE",
+"s": 59.96,
+"e": 60.68,
+"end": true
+},
+{
+"w": "IT",
+"s": 60.9,
+"e": 60.94,
+"end": false
+},
+{
+"w": "BLOCKS",
+"s": 60.94,
+"e": 61.16,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 61.16,
+"e": 61.38,
+"end": false
+},
+{
+"w": "NPC1L1",
+"s": 61.38,
+"e": 63.16,
+"end": true
+},
+{
+"w": "A",
+"s": 63.16,
+"e": 63.4,
+"end": false
+},
+{
+"w": "CHOLESTEROL",
+"s": 63.4,
+"e": 63.82,
+"end": false
+},
+{
+"w": "TRANSPORTER",
+"s": 63.82,
+"e": 64.34,
+"end": false
+},
+{
+"w": "IN",
+"s": 64.34,
+"e": 64.6,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 64.6,
+"e": 64.72,
+"end": false
+},
+{
+"w": "ACTUAL",
+"s": 64.72,
+"e": 65.14,
+"end": false
+},
+{
+"w": "INTESTINES",
+"s": 65.14,
+"e": 65.88,
+"end": false
+},
+{
+"w": "THE",
+"s": 65.88,
+"e": 65.98,
+"end": false
+},
+{
+"w": "LESS",
+"s": 65.98,
+"e": 66.16,
+"end": false
+},
+{
+"w": "CHOLESTEROL",
+"s": 66.16,
+"e": 66.66,
+"end": false
+},
+{
+"w": "IS",
+"s": 66.66,
+"e": 66.82,
+"end": false
+},
+{
+"w": "ULTIMATELY",
+"s": 66.82,
+"e": 67.22,
+"end": false
+},
+{
+"w": "ABSORBED",
+"s": 67.22,
+"e": 67.62,
+"end": false
+},
+{
+"w": "WHILE",
+"s": 67.62,
+"e": 67.88,
+"end": false
+},
+{
+"w": "MORE",
+"s": 67.88,
+"e": 68.2,
+"end": false
+},
+{
+"w": "LDL",
+"s": 68.2,
+"e": 68.62,
+"end": false
+},
+{
+"w": "CLEARED",
+"s": 68.62,
+"e": 69.06,
+"end": false
+},
+{
+"w": "THROUGH",
+"s": 69.06,
+"e": 69.36,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 69.36,
+"e": 69.54,
+"end": false
+},
+{
+"w": "LIVER",
+"s": 69.54,
+"e": 70.02,
+"end": false
+},
+{
+"w": "LOWER",
+"s": 70.02,
+"e": 70.44,
+"end": false
+},
+{
+"w": "LDL",
+"s": 70.44,
+"e": 71.0,
+"end": false
+},
+{
+"w": "LOWER",
+"s": 71.0,
+"e": 71.54,
+"end": false
+},
+{
+"w": "APOB",
+"s": 71.54,
+"e": 72.06,
+"end": true
+},
+{
+"w": "THAT",
+"s": 72.06,
+"e": 72.5,
+"end": false
+},
+{
+"w": "IS",
+"s": 72.5,
+"e": 72.64,
+"end": false
+},
+{
+"w": "A",
+"s": 72.64,
+"e": 72.78,
+"end": false
+},
+{
+"w": "GOOD",
+"s": 72.78,
+"e": 72.96,
+"end": false
+},
+{
+"w": "THING",
+"s": 72.96,
+"e": 73.28,
+"end": false
+},
+{
+"w": "NOW",
+"s": 73.28,
+"e": 73.52,
+"end": false
+},
+{
+"w": "MY",
+"s": 73.52,
+"e": 73.7,
+"end": false
+},
+{
+"w": "FRIENDS",
+"s": 73.7,
+"e": 74.0,
+"end": false
+},
+{
+"w": "WE",
+"s": 74.0,
+"e": 74.2,
+"end": false
+},
+{
+"w": "SIMPLIFY",
+"s": 74.2,
+"e": 74.94,
+"end": false
+},
+{
+"w": "EZETIMIBE",
+"s": 74.94,
+"e": 75.6,
+"end": false
+},
+{
+"w": "TARGETS",
+"s": 75.6,
+"e": 75.94,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 75.94,
+"e": 76.14,
+"end": false
+},
+{
+"w": "CHOLESTEROL",
+"s": 76.14,
+"e": 76.68,
+"end": false
+},
+{
+"w": "ABSORPTION",
+"s": 76.68,
+"e": 77.26,
+"end": false
+},
+{
+"w": "WHILE",
+"s": 77.26,
+"e": 77.5,
+"end": false
+},
+{
+"w": "TELMISARTAN",
+"s": 77.5,
+"e": 78.24,
+"end": false
+},
+{
+"w": "TARGETS",
+"s": 78.24,
+"e": 78.58,
+"end": false
+},
+{
+"w": "BLOOD",
+"s": 78.58,
+"e": 78.88,
+"end": false
+},
+{
+"w": "PRESSURE",
+"s": 78.88,
+"e": 79.2,
+"end": false
+},
+{
+"w": "AND",
+"s": 79.2,
+"e": 79.48,
+"end": false
+},
+{
+"w": "ANGIOTENSIN",
+"s": 79.48,
+"e": 80.24,
+"end": false
+},
+{
+"w": "SIGNALING",
+"s": 80.24,
+"e": 80.84,
+"end": false
+},
+{
+"w": "GOAL",
+"s": 80.84,
+"e": 81.14,
+"end": false
+},
+{
+"w": "HERE",
+"s": 81.14,
+"e": 81.36,
+"end": false
+},
+{
+"w": "IS",
+"s": 81.36,
+"e": 81.46,
+"end": false
+},
+{
+"w": "NEVER",
+"s": 81.46,
+"e": 81.64,
+"end": false
+},
+{
+"w": "GOING",
+"s": 81.64,
+"e": 81.84,
+"end": false
+},
+{
+"w": "TO",
+"s": 81.84,
+"e": 81.94,
+"end": false
+},
+{
+"w": "BE",
+"s": 81.94,
+"e": 82.04,
+"end": false
+},
+{
+"w": "JUST",
+"s": 82.04,
+"e": 82.24,
+"end": false
+},
+{
+"w": "BUILDING",
+"s": 82.24,
+"e": 82.58,
+"end": false
+},
+{
+"w": "A",
+"s": 82.58,
+"e": 82.76,
+"end": false
+},
+{
+"w": "BIGGER",
+"s": 82.76,
+"e": 83.14,
+"end": false
+},
+{
+"w": "BODY",
+"s": 83.14,
+"e": 83.6,
+"end": false
+},
+{
+"w": "THAT'S",
+"s": 83.6,
+"e": 83.94,
+"end": false
+},
+{
+"w": "STRONGER",
+"s": 83.94,
+"e": 84.3,
+"end": false
+},
+{
+"w": "AND",
+"s": 84.3,
+"e": 84.76,
+"end": false
+},
+{
+"w": "LOOKS",
+"s": 84.76,
+"e": 85.02,
+"end": false
+},
+{
+"w": "GOOD",
+"s": 85.02,
+"e": 85.5,
+"end": false
+},
+{
+"w": "IT'S",
+"s": 85.5,
+"e": 85.74,
+"end": false
+},
+{
+"w": "LITERALLY",
+"s": 85.74,
+"e": 85.94,
+"end": false
+},
+{
+"w": "ABOUT",
+"s": 85.94,
+"e": 86.22,
+"end": false
+},
+{
+"w": "PROTECTING",
+"s": 86.22,
+"e": 86.64,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 86.64,
+"e": 86.92,
+"end": false
+},
+{
+"w": "HEART",
+"s": 86.92,
+"e": 87.16,
+"end": false
+},
+{
+"w": "AND",
+"s": 87.16,
+"e": 87.38,
+"end": false
+},
+{
+"w": "KEEPING",
+"s": 87.38,
+"e": 87.6,
+"end": false
+},
+{
+"w": "YOU",
+"s": 87.6,
+"e": 87.82,
+"end": false
+},
+{
+"w": "ALIVE",
+"s": 87.82,
+"e": 88.1,
+"end": false
+},
+{
+"w": "SO",
+"s": 88.1,
+"e": 88.28,
+"end": false
+},
+{
+"w": "THAT",
+"s": 88.28,
+"e": 88.42,
+"end": false
+},
+{
+"w": "YOU",
+"s": 88.42,
+"e": 88.54,
+"end": false
+},
+{
+"w": "CAN",
+"s": 88.54,
+"e": 88.7,
+"end": false
+},
+{
+"w": "SPEND",
+"s": 88.7,
+"e": 89.02,
+"end": false
+},
+{
+"w": "TIME",
+"s": 89.02,
+"e": 89.32,
+"end": false
+},
+{
+"w": "WITH",
+"s": 89.32,
+"e": 89.48,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 89.48,
+"e": 89.62,
+"end": false
+},
+{
+"w": "FAMILY",
+"s": 89.62,
+"e": 90.02,
+"end": true
+},
+{
+"w": "LEAD",
+"s": 90.44,
+"e": 90.48,
+"end": false
+},
+{
+"w": "FROM",
+"s": 90.48,
+"e": 90.76,
+"end": false
+},
+{
+"w": "THE",
+"s": 90.76,
+"e": 90.94,
+"end": false
+},
+{
+"w": "FRONT",
+"s": 90.94,
+"e": 91.2,
+"end": true
+},
+{
+"w": "SPEND",
+"s": 91.54,
+"e": 91.6,
+"end": false
+},
+{
+"w": "TIME",
+"s": 91.6,
+"e": 91.86,
+"end": false
+},
+{
+"w": "WITH",
+"s": 91.86,
+"e": 92.04,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 92.04,
+"e": 92.18,
+"end": false
+},
+{
+"w": "KIDS",
+"s": 92.18,
+"e": 92.38,
+"end": false
+},
+{
+"w": "AT",
+"s": 92.38,
+"e": 92.6,
+"end": false
+},
+{
+"w": "6PM",
+"s": 92.6,
+"e": 93.22,
+"end": false
+},
+{
+"w": "EVERY",
+"s": 93.26,
+"e": 93.44,
+"end": false
+},
+{
+"w": "DAY",
+"s": 93.44,
+"e": 93.74,
+"end": true
+},
+{
+"w": "SPEND",
+"s": 94.02,
+"e": 94.12,
+"end": false
+},
+{
+"w": "TIME",
+"s": 94.12,
+"e": 94.42,
+"end": false
+},
+{
+"w": "WITH",
+"s": 94.42,
+"e": 94.6,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 94.6,
+"e": 94.7,
+"end": false
+},
+{
+"w": "WIFE",
+"s": 94.7,
+"e": 94.9,
+"end": false
+},
+{
+"w": "EVERY",
+"s": 94.9,
+"e": 95.26,
+"end": false
+},
+{
+"w": "DAY",
+"s": 95.26,
+"e": 95.58,
+"end": true
+},
+{
+"w": "NOW",
+"s": 95.84,
+"e": 95.86,
+"end": false
+},
+{
+"w": "WITH",
+"s": 95.86,
+"e": 95.98,
+"end": false
+},
+{
+"w": "THAT",
+"s": 95.98,
+"e": 96.12,
+"end": false
+},
+{
+"w": "BEING",
+"s": 96.12,
+"e": 96.26,
+"end": false
+},
+{
+"w": "SAID",
+"s": 96.26,
+"e": 96.44,
+"end": true
+},
+{
+"w": "IF",
+"s": 96.52,
+"e": 96.56,
+"end": false
+},
+{
+"w": "YOU",
+"s": 96.56,
+"e": 96.62,
+"end": false
+},
+{
+"w": "WANT",
+"s": 96.62,
+"e": 96.72,
+"end": false
+},
+{
+"w": "MY",
+"s": 96.72,
+"e": 96.86,
+"end": false
+},
+{
+"w": "FULL",
+"s": 96.86,
+"e": 97.1,
+"end": false
+},
+{
+"w": "CARDIOVASCULAR",
+"s": 97.1,
+"e": 97.82,
+"end": false
+},
+{
+"w": "BLOOD",
+"s": 97.82,
+"e": 98.18,
+"end": false
+},
+{
+"w": "WORK",
+"s": 98.18,
+"e": 98.44,
+"end": false
+},
+{
+"w": "BREAKDOWN",
+"s": 98.44,
+"e": 98.8,
+"end": false
+},
+{
+"w": "ABSOLUTELY",
+"s": 98.8,
+"e": 99.44,
+"end": false
+},
+{
+"w": "FREE",
+"s": 99.44,
+"e": 99.9,
+"end": false
+},
+{
+"w": "WITH",
+"s": 99.9,
+"e": 100.2,
+"end": false
+},
+{
+"w": "ALL",
+"s": 100.2,
+"e": 100.42,
+"end": false
+},
+{
+"w": "THE",
+"s": 100.42,
+"e": 100.56,
+"end": false
+},
+{
+"w": "PROPER",
+"s": 100.56,
+"e": 100.84,
+"end": false
+},
+{
+"w": "DOSAGES",
+"s": 100.84,
+"e": 101.36,
+"end": true
+},
+{
+"w": "TIMING",
+"s": 101.52,
+"e": 101.8,
+"end": true
+},
+{
+"w": "AND",
+"s": 102.08,
+"e": 102.26,
+"end": false
+},
+{
+"w": "THE",
+"s": 102.26,
+"e": 102.4,
+"end": false
+},
+{
+"w": "BEST",
+"s": 102.4,
+"e": 102.62,
+"end": false
+},
+{
+"w": "COMPOUNDS",
+"s": 102.62,
+"e": 103.12,
+"end": false
+},
+{
+"w": "TO",
+"s": 103.12,
+"e": 103.34,
+"end": false
+},
+{
+"w": "UTILIZE",
+"s": 103.34,
+"e": 103.7,
+"end": false
+},
+{
+"w": "FOR",
+"s": 103.7,
+"e": 103.98,
+"end": false
+},
+{
+"w": "YOUR",
+"s": 103.98,
+"e": 104.16,
+"end": false
+},
+{
+"w": "HEART",
+"s": 104.16,
+"e": 104.4,
+"end": false
+},
+{
+"w": "HEALTH",
+"s": 104.4,
+"e": 104.72,
+"end": true
+},
+{
+"w": "COMMENT",
+"s": 104.84,
+"e": 104.98,
+"end": false
+},
+{
+"w": "THE",
+"s": 104.98,
+"e": 105.16,
+"end": false
+},
+{
+"w": "WORD",
+"s": 105.16,
+"e": 105.34,
+"end": false
+},
+{
+"w": "HEALTH",
+"s": 105.34,
+"e": 105.64,
+"end": false
+},
+{
+"w": "BELOW",
+"s": 105.64,
+"e": 106.08,
+"end": false
+},
+{
+"w": "AND",
+"s": 106.08,
+"e": 106.38,
+"end": false
+},
+{
+"w": "I'LL",
+"s": 106.38,
+"e": 106.48,
+"end": false
+},
+{
+"w": "SEND",
+"s": 106.48,
+"e": 106.64,
+"end": false
+},
+{
+"w": "IT",
+"s": 106.64,
+"e": 106.76,
+"end": false
+},
+{
+"w": "OUT",
+"s": 106.76,
+"e": 106.88,
+"end": false
+},
+{
+"w": "TO",
+"s": 106.88,
+"e": 106.98,
+"end": false
+},
+{
+"w": "YOU",
+"s": 106.98,
+"e": 107.06,
+"end": false
+},
+{
+"w": "GUYS",
+"s": 107.06,
+"e": 107.2,
+"end": false
+},
+{
+"w": "ABSOLUTELY",
+"s": 107.2,
+"e": 107.6,
+"end": false
+},
+{
+"w": "FREE",
+"s": 107.6,
+"e": 107.94,
+"end": true
+},
+{
+"w": "I",
+"s": 108.08,
+"e": 108.22,
+"end": false
+},
+{
+"w": "APPRECIATE",
+"s": 108.22,
+"e": 108.5,
+"end": false
+},
+{
+"w": "YOU",
+"s": 108.5,
+"e": 108.86,
+"end": false
+},
+{
+"w": "GUYS",
+"s": 108.86,
+"e": 109.14,
+"end": true
+}
+]
