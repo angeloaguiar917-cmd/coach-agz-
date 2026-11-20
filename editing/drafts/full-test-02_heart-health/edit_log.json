@@ -1,0 +1,36 @@
+{
+  "video": "Heart health hook 3 (Drive 1GbymYovTITwoK3ACAw718PP8dr2jTltf)",
+  "cut": "Take A hook 0:00-0:13.62 + Take B body 2:00.70-3:47.40, dead air >=0.22s trimmed to 0.12s; 1:55.97",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Your HEART on anabolics", "2 hits nobody manages"],
+    "emphasis": ["HEART"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 5.5,
+    "position": { "anchor": "top-center", "y_px": 262 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["Your HEART on anabolics", "2 hits nobody manages"], "formula": "A", "score": 27},
+    {"lines": ["Stay on for years", "protect your HEART"], "formula": "B", "score": 24},
+    {"lines": ["2 HEART compounds", "to add on cycle today"], "formula": "C", "score": 23},
+    {"lines": ["HEART risk climbing", "physique still peaking"], "formula": "A", "score": 22},
+    {"lines": ["2 HEART compounds", "for enhanced lifters"], "formula": "B (identity)", "score": 21}
+  ],
+  "runners_up": [
+    ["Stay on for years", "protect your HEART"],
+    ["2 HEART compounds", "to add on cycle today"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:09 (managing neither one) and 0:11 (two health compounds); hits paid off at 0:18 lipids and 0:44 blood pressure",
+    "trust_anchor": "MISSING in 0:04-0:12; first proof is the spoken hypertensive-patient study line at 1:04 (shown as a study card)"
+  },
+  "flags": [
+    "winners.md missing - starter power-phrase bank used",
+    "trust anchor missing in lock-in window - no lab/panel asset supplied; suggest a real bloodwork screenshot card at 0:05-0:12 if available",
+    "fonts are stand-ins (Bebas Neue, DM Sans, JetBrains Mono, Barlow Condensed)"
+  ]
+}
