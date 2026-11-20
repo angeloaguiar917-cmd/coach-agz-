@@ -616,11 +616,12 @@ def frame(src,t):
     global GL
     glow=Image.new('RGBA',(W,H),(0,0,0,0)); GL=ImageDraw.Draw(glow,'RGBA')
     text_hook(im,t)
-    hide=p if (sc and sc[3] in ('pip','iris','avatar')) else 0
+    hide=p if (sc and sc[3] in ('pip','iris','avatar','side')) else 0
     band(im,t,hide)
     cap_y=1335; cap_size=124
     if sc:
         a=min(appear(t,sc[0],0.22),1-clamp((t-sc[1])/0.22))
+        if sc[3]!='full': a=min(a,clamp(p*1.25))
         if a>0:
             layer=im.copy(); d=ImageDraw.Draw(layer,'RGBA')
             sc[2](layer,d,t,sc[0],sc[1],1.0)
