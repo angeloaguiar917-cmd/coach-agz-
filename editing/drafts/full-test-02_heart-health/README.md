@@ -1,8 +1,8 @@
 # Full test 02: "Heart health on cycle" (ezetimibe + telmisartan), 1080p
 
 **Source:** Drive `1M80U7LkVqeSsQ0a-yHFn_BQSDNNEE4xO` ("Hook 1 heart Health", 1080×1920 HEVC, 60 fps, 2:02, one continuous car selfie take).
-**Output:** `coach-agz_heart-health_1080p.mp4`: 1080×1920, 30 fps, H.264 High + AAC, faststart (plays and saves on a phone), 1:56, about −14 LUFS.
-Delivered to the same Drive folder as the source.
+**Output:** `coach-agz_heart-health_1080p.mp4`: 1080×1920, 30 fps, H.264 High 4.2 (CRF 20) + AAC 256k, faststart (plays and saves on a phone), 1:56, 97 MB, −14.2 LUFS, −1.3 dBTP.
+Sent through the Claude app (Drive upload from the session is capped at 10 MB). Not committed: the file is close to GitHub's 100 MB limit.
 
 ## Cut
 - One clean take, so no retakes to remove. 27 dead-air pauses (−28 dB, ≥0.22 s) trimmed to about 0.12 s each: 5.97 s removed. Frame-aligned cuts with 8 ms length-preserving audio crossfades (`segments.json`).
@@ -48,5 +48,7 @@ Palette: test-06 high-pop overlay palette with bloom. Footage is not graded.
 ## QC done
 - Stills reviewed across every scene; fixed chapter-slab/caption collision, chart label overlaps, ezetimibe diagram overlapping the PiP, rank-card overflow.
 - Found and fixed a compositing bug where PIL ignored text alpha on RGB frames (faded text stayed on screen); translucent text now goes through a layer.
-- See the final frame-strip and sync checks in the chat report.
+- Final file: a contact sheet every 2.5 s, plus 30 fps frame strips across every layout change (chapter 01, lift exit, PiP in/out for both compounds, the CTA lift). No jumps or caption collisions found.
+- Audio: the source clips at a few points. An oversampled limiter and a 10 ms fade-in on frame 0 fixed an AAC over at the start.
+- SFX are placed by timestamp on each graphic's landing frame (`sfx.py`).
 - **Not done:** listening. Values on charts are illustrative (no numbers were invented; charts show direction only). Fonts are stand-ins (Bebas Neue, Barlow Condensed, JetBrains Mono, DM Sans).
