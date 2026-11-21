@@ -5,7 +5,7 @@
   "output": "1080x1920, 30fps, 1:43.3, -14.7 LUFS, TP -1.5 dBFS, H.264 high@4.0 + faststart",
   "text_hook": {
     "status": "SUPPRESSED_BY_REQUEST",
-    "note": "Coach AGZ asked for NO frame-0 on-screen text hook on this edit; a visual hook is used instead (three diagnostic HUD chips HDL/LIVER/LIPIDS + a cyan scan-reticle sweep over 0.0-5.4s, no headline title card).",
+    "note": "Coach AGZ asked for NO frame-0 text hook; a REDACTED visual hook is used instead -- a 'RUNNING FULL BLOOD PANEL / SCANNING' card with MARKER 01/02/03 as locked, scanning bars (0.0-5.4s). It signals three markers are coming but withholds which ones and the verdict, so the payoff is not spoiled up front.",
     "formula": "subject+pain",
     "lines": [],
     "emphasis": [],
@@ -15,19 +15,38 @@
     "animation_in": "none",
     "animation_out": "none",
     "candidates_not_rendered": [
-      ["WINSTROL destroys", "3 markers nobody checks"],
-      ["HDL crashes hardest", "on WINSTROL"],
-      ["The damage is silent", "on WINSTROL oral"]
+      [
+        "WINSTROL destroys",
+        "3 markers nobody checks"
+      ],
+      [
+        "HDL crashes hardest",
+        "on WINSTROL"
+      ],
+      [
+        "The damage is silent",
+        "on WINSTROL oral"
+      ]
     ]
   },
   "runners_up": [
-    ["WINSTROL destroys", "3 markers nobody checks"],
-    ["HDL crashes hardest", "on WINSTROL"]
+    [
+      "WINSTROL destroys",
+      "3 markers nobody checks"
+    ],
+    [
+      "HDL crashes hardest",
+      "on WINSTROL"
+    ]
   ],
   "visual_hook": {
-    "type": "diagnostic HUD + scan reticle",
+    "type": "redacted blood-panel scan (no payoff)",
     "window": "0.0-5.4s",
-    "elements": ["HDL/LIVER/LIPIDS status chips with live pulse dots", "cyan scan line sweep", "corner brackets"]
+    "elements": [
+      "RUNNING FULL BLOOD PANEL / SCANNING card",
+      "MARKER 01/02/03 rows with scanning bars, all LOCKED",
+      "cyan scan-reticle sweep"
+    ]
   },
   "lock_in_check": {
     "claim_confirmed": true,
@@ -35,21 +54,55 @@
     "trust_anchor": "illustrative lab values only (HDL 21, ALT 88, AST 74, TG 210) -- flagged as placeholders, not a real panel"
   },
   "graphics_timeline": [
-    {"t": "0.0-5.4", "type": "HUD chips + scan reticle (visual hook)"},
-    {"t": "20.6-31.5", "type": "line crash chart", "marker": "HDL collapse 58->21 mg/dL"},
-    {"t": "31.8-39.8", "type": "molecule schematic", "marker": "17AA oral / C-17 methyl"},
-    {"t": "40.0-53.4", "type": "liver load polygon + ALT/AST vertical bars"},
-    {"t": "53.5-62.1", "type": "lab panel table", "marker": "HDL/ALT/AST/TG flagged"},
-    {"t": "65.8-71.7", "type": "radial ring gauge", "marker": "organ damage %"},
-    {"t": "85.9-92.3", "type": "roadmap chevrons", "marker": "ANALYZE -> PIVOT -> OPTIMIZE"},
-    {"t": "98.6-end", "type": "CTA end card", "marker": "COMMENT \"WIN\" gold pill"}
+    {
+      "t": "0.0-5.4",
+      "type": "redacted blood-panel scan (visual hook, no payoff)"
+    },
+    {
+      "t": "20.6-31.5",
+      "type": "line crash chart",
+      "marker": "HDL collapse 58->21 mg/dL"
+    },
+    {
+      "t": "31.8-39.8",
+      "type": "molecule schematic",
+      "marker": "17AA oral / C-17 methyl"
+    },
+    {
+      "t": "40.0-53.4",
+      "type": "liver load polygon + ALT/AST vertical bars"
+    },
+    {
+      "t": "53.5-62.1",
+      "type": "lab panel table",
+      "marker": "HDL/ALT/AST/TG flagged"
+    },
+    {
+      "t": "65.8-71.7",
+      "type": "radial ring gauge",
+      "marker": "organ damage %"
+    },
+    {
+      "t": "85.9-92.3",
+      "type": "roadmap chevrons",
+      "marker": "ANALYZE -> PIVOT -> OPTIMIZE"
+    },
+    {
+      "t": "98.6-end",
+      "type": "CTA end card",
+      "marker": "COMMENT \"WIN\" gold pill"
+    }
   ],
   "flags": [
     "winners.md missing -- starter power-phrase bank used for candidate hooks",
-    "text hook intentionally omitted per Coach AGZ request (visual hook only)",
+    "text hook intentionally omitted per request; cold-open redacts the markers so the payoff is not shown up front",
     "all lab/graph values are illustrative placeholders",
     "fonts are free stand-ins (Bebas Neue, DM Sans, Barlow Condensed, JetBrains Mono)",
     "audio SFX added blind (not listened to) -- please check the mix by ear",
     "footage left ungraded per brand rule; overlays carry all the vibrance"
-  ]
+  ],
+  "captions": {
+    "position": "low on the chest (CAP_Y=1258), dropped from the earlier 1110 so they never cover the face, including lean-in frames",
+    "style": "Bebas, red active-word block, accent words recolour on the spoken word"
+  }
 }

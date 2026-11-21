@@ -1,7 +1,7 @@
 # Full test 02: "Winstrol destroys biomarkers" (1080p30)
 
 **Source:** Drive `1jPhbNzfBY9LM6Uhxq8kUzgVAgcAEMltE` ("Winstrol destroys biomarkers", 1080×1920 HEVC, 60 fps, 1:46, car selfie).
-**Output:** `coach-agz_winstrol-biomarkers_1080p30.mp4` — 1080×1920, 30 fps, **1:43.3**, −14.7 LUFS, true peak −1.5 dBFS, H.264 high@4.0 + faststart (phone-downloadable). ~93 MB, delivered to Coach AGZ directly; not committed (binary, see examples/README convention).
+**Output:** `coach-agz_winstrol-biomarkers_1080p30.mp4` — 1080×1920, 30 fps, **1:43.3**, −14.7 LUFS, true peak −1.5 dBFS, H.264 high@4.0 + faststart (phone-downloadable). ~90 MB, delivered to Coach AGZ directly; not committed (binary, see examples/README convention).
 
 This is a **final-spec** edit (1080p, test-06 vibrant-overlay style) and the first in this niche. Footage left as shot; all vibrance is in the overlays.
 
@@ -9,13 +9,13 @@ This is a **final-spec** edit (1080p, test-06 vibrant-overlay style) and the fir
 - Use saved setup + style, **keep 1080p**, make it **downloadable to phone** → done (faststart, 93 MB H.264).
 - **Different overlay types, with variety — don't repeat one overlay type** → 7 distinct graphic archetypes (below).
 - More graphics, vibrant, on-brand, eye-catching → test-06 accent palette (`#FF221C`/`#FFC21A`/`#00E5FF`/`#1EFF6E`), bloom on edges/bars.
-- **Keep the face recognizable** → every graphic lives in a stage **below y≈1050** (the face band is 430–1050); the face is never covered. Captions sit on the upper chest, clear of the face.
-- **No frame-0 text hook**, but a **visual hook is allowed** → the opening uses a diagnostic HUD (HDL/LIVER/LIPIDS chips) + a cyan scan-reticle sweep instead of a title card.
+- **Keep the face recognizable** → every graphic lives in a stage **below y≈1400** (face band 430–1050); the face is never covered. Captions dropped to **CAP_Y=1258** (low on the chest), clear of the face on every frame including lean-ins.
+- **No frame-0 text hook**, but a **visual hook is allowed** → the opening is a **redacted** diagnostic: a `RUNNING FULL BLOOD PANEL / SCANNING` card with `MARKER 01/02/03` locked, scanning bars + a cyan scan-reticle. It signals three markers are coming but **withholds which ones / the verdict, so the payoff is not spoiled up front** (revision per request).
 
 ## Graphics (one type per beat, for variety)
 | Beat | Overlay type |
 |---|---|
-| 0:00–0:05 | HUD diagnostic chips + scan reticle (**visual hook**, no text headline) |
+| 0:00–0:05 | Redacted blood-panel **scan** (MARKER 01/02/03 LOCKED) + reticle (**visual hook, no payoff**) |
 | 0:21 HDL | **Line-crash chart** — HDL plummets 58 → 21 mg/dL into a red zone |
 | 0:32 mechanism | **Molecule schematic** — steroid rings with the C-17 methyl highlighted, "17AA ORAL" |
 | 0:40 liver | **Organ load polygon** (fills red) + **ALT/AST vertical bars** rising into HIGH flags |

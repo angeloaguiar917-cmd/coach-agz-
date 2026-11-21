@@ -171,22 +171,22 @@ def lab_card(im,d,x0,y0,t,a=1.0):
           ('ALT (SGPT)','88','U/L','HIGH',RED,55.6),
           ('AST (SGOT)','74','U/L','HIGH',RED,56.1),
           ('TRIGLYCERIDES','210','mg/dL','HIGH',AMBER,56.6)]
-    wx=W-2*x0
-    card(im,d,x0,y0,x0+wx,y0+92+len(rows)*94+18,a,bar=VGOLD,r=22,dark=0.9)
+    wx=W-2*x0; RH=86
+    card(im,d,x0,y0,x0+wx,y0+82+len(rows)*RH+16,a,bar=VGOLD,r=22,dark=0.9)
     d=ImageDraw.Draw(im,'RGBA')
-    txt(d,x0+34,y0+24,'LIPID / CMP PANEL',f(BEB,58),CREAM,a)
-    txt(d,x0+wx-34,y0+44,'NOT ORDERED',f(MONO,24),MUT,a,anchor='ra')
-    yy=y0+104
+    txt(d,x0+34,y0+22,'LIPID / CMP PANEL',f(BEB,56),CREAM,a)
+    txt(d,x0+wx-34,y0+40,'NOT ORDERED',f(MONO,24),MUT,a,anchor='ra')
+    yy=y0+96
     for i,(nm,v,u,flag,col,t0) in enumerate(rows):
         p=appear(t,t0,0.25)
-        if p<=0: yy+=94; continue
-        txt(d,x0+34,yy,nm,f(DMB,38),CREAM,a*p)
-        txt(d,x0+34,yy+46,'flagged out of range',f(MONO,20),MUT,a*p)
-        txt(d,x0+wx-250,yy-4,v,f(BEB,64),col,a*p)
-        txt(d,x0+wx-158,yy+18,u,f(MONO,22),MUT,a*p)
-        if p>0.6: tag(d,x0+wx-150,yy+4,flag,col,28,a)
-        d.line([(x0+30,yy+84),(x0+wx-30,yy+84)],fill=A((48,52,66),a*p),width=2)
-        yy+=94
+        if p<=0: yy+=RH; continue
+        txt(d,x0+34,yy,nm,f(DMB,36),CREAM,a*p)
+        txt(d,x0+34,yy+44,'flagged out of range',f(MONO,19),MUT,a*p)
+        txt(d,x0+wx-250,yy-4,v,f(BEB,60),col,a*p)
+        txt(d,x0+wx-162,yy+16,u,f(MONO,22),MUT,a*p)
+        if p>0.6: tag(d,x0+wx-150,yy+2,flag,col,28,a)
+        d.line([(x0+30,yy+RH-10),(x0+wx-30,yy+RH-10)],fill=A((48,52,66),a*p),width=2)
+        yy+=RH
 
 # ---------------- persistent corner HUD (visual hook, varied, non-text-headline) ----------------
 def hud(im,d,t):
@@ -194,83 +194,88 @@ def hud(im,d,t):
     intro = clamp((t-0.2)/0.5)
     fade = 1.0 if t<5.4 else lerp(1.0,0.0,clamp((t-5.4)/0.6))
     if fade<=0: return
-    chips=[('HDL',RED,'CRASH'),('LIVER',AMBER,'STRESS'),('LIPIDS',VGOLD,'OFF')]
-    bw=300; x=60; y=250
-    for i,(lab,col,st) in enumerate(chips):
-        p=ease(clamp((t-0.2-i*0.18)/0.5))
-        if p<=0: continue
-        dx=lerp(-40,0,p); al=p*fade*(0.95 if t<5.4 else 0.5+0.5*fade)
-        bx=x+i*bw+dx
-        d.rounded_rectangle([bx,y,bx+bw-24,y+70],radius=12,fill=A((10,13,20),0.82*al),outline=A(col,al))
-        d.ellipse([bx+16,y+24,bx+40,y+48],fill=A(col,al*(0.6+0.4*math.sin(t*6+i))))
-        if GL: GL.ellipse([bx+12,y+20,bx+44,y+52],fill=A(col,al*0.7))
-        txt(d,bx+52,y+8,lab,f(BEB,40),CREAM,al)
-        txt(d,bx+52,y+44,st,f(MONO,20),col,al)
+    # REDACTED cold-open: shows a panel is being scanned but hides WHICH markers (no payoff)
+    y0=1400; y1=1762
+    if fade>0.01:
+        card(im,d,56,y0,W-56,y1,a=fade,bar=CYAN,r=26,dark=0.88)
+        d=ImageDraw.Draw(im,'RGBA')
+        kicker(d,96,y0+26,'RUNNING FULL BLOOD PANEL',CYAN,fade)
+        txt(d,W-96,y0+30,'SCANNING'+'.'*(1+int(t*3)%3),f(MONO,26),CYAN,fade,anchor='ra')
+        for i in range(3):
+            ry=y0+112+i*76; p=ease(clamp((t-0.3-i*0.3)/0.6))
+            if p<=0: continue
+            txt(d,120,ry,f'MARKER 0{i+1}',f(BEB,52),CREAM,fade)
+            bx0,bx1=430,W-120
+            d.rounded_rectangle([bx0,ry+8,bx1,ry+52],radius=8,outline=A((70,74,92),fade),width=2)
+            nb=int((bx1-bx0-12)//40); fn_=int(nb*(0.35+0.6*abs(math.sin(t*2.2+i*1.3))))
+            for b in range(min(nb,fn_)):
+                d.rounded_rectangle([bx0+8+b*40,ry+14,bx0+8+b*40+30,ry+46],radius=4,fill=A(CYAN,0.5*fade))
+            txt(d,bx1-14,ry+12,'LOCKED',f(MONO,22),CYAN,0.8*fade,anchor='ra')
     # scan reticle sweep on hook
-    if t<3.0:
-        sp=ease(clamp(t/2.4)); sy=lerp(360,1500,sp); al=(1-clamp((t-2.2)/0.8))*intro
-        d.line([(50,sy),(W-50,sy)],fill=A(CYAN,0.5*al),width=3)
-        if GL: GL.line([(50,sy),(W-50,sy)],fill=A(CYAN,0.6*al),width=5)
-        brackets(d,56,360,W-56,1520,A(CYAN,0.35*al),40,3)
+    if t<3.2:
+        sp=ease(clamp(t/2.6)); sy=lerp(380,1360,sp); al=(1-clamp((t-2.4)/0.8))*intro
+        d.line([(60,sy),(W-60,sy)],fill=A(CYAN,0.5*al),width=3)
+        if GL: GL.line([(60,sy),(W-60,sy)],fill=A(CYAN,0.6*al),width=5)
+        brackets(d,60,380,W-60,1360,A(CYAN,0.30*al),40,3)
 
 # ---------------- SCENES (lower-third / behind-head graphics) ----------------
-STG0,STG1=1246,1858   # graphics stage (below the face)
+STG0,STG1=1400,1876   # graphics stage (below the lowered captions, clear of the face)
 def sc_crash(im,d,t):   # HDL line crash  ~20.6-31.5
     card(im,d,56,STG0,W-56,STG1,a=1.0,bar=RED,r=26,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
-    kicker(d,96,STG0+26,'MARKER 01 · CARDIOVASCULAR',RED)
-    line_crash(d,160,STG0+104,W-160,1746,t,20.9,label='HDL (GOOD CHOLESTEROL)',v0=58,v1=21)
-    if t>27.2: tag(d,160,1766,'TOTAL COLLAPSE',RED,30,appear(t,27.2))
-    if t>29.4: tag(d,560,1766,'SYSTEM DEFENSELESS',RED,30,appear(t,29.4))
+    kicker(d,96,STG0+24,'MARKER 01 · CARDIOVASCULAR',RED)
+    line_crash(d,160,STG0+92,W-160,1792,t,20.9,label='HDL (GOOD CHOLESTEROL)',v0=58,v1=21)
+    if t>27.2: tag(d,160,1806,'TOTAL COLLAPSE',RED,28,appear(t,27.2))
+    if t>29.4: tag(d,560,1806,'SYSTEM DEFENSELESS',RED,28,appear(t,29.4))
 def sc_mol(im,d,t):     # 17aa oral molecule ~31.8-39.8
     card(im,d,56,STG0,W-56,STG1,a=1.0,bar=VGOLD,r=26,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
-    kicker(d,96,STG0+26,'WHY IT HAPPENS · THE MECHANISM',VGOLD)
-    molecule(d,250,1486,t,33.0)
+    kicker(d,96,STG0+24,'WHY IT HAPPENS · THE MECHANISM',VGOLD)
+    molecule(d,250,1650,t,33.0)
     if t>34.4:
-        a1=appear(t,34.4); txt(d,636,1392,'17AA',f(BEB,96),VGOLD,a1); txt(d,636,1486,'ORAL',f(BEB,96),CREAM,appear(t,35.2))
-        txt(d,636,1588,'17-alpha-alkylated',f(DMR,30),MUT,a1)
-    if t>37.3: tag(d,636,1632,'SURVIVES THE LIVER',CYAN,30,appear(t,37.3))
-    if t>38.6: tag(d,636,1696,'STAYS ACTIVE',GREEN,28,appear(t,38.6))
-    if t>36.0: txt(d,96,1792,'the armor that beats your liver is what makes it toxic',f(DMR,28),MUT,appear(t,36.0))
+        a1=appear(t,34.4); txt(d,620,1480,'17AA',f(BEB,86),VGOLD,a1); txt(d,620,1566,'ORAL',f(BEB,86),CREAM,appear(t,35.2))
+        txt(d,620,1660,'17-alpha-alkylated',f(DMR,28),MUT,a1)
+    if t>37.3: tag(d,620,1700,'SURVIVES THE LIVER',CYAN,28,appear(t,37.3))
+    if t>38.6: tag(d,620,1760,'STAYS ACTIVE',GREEN,26,appear(t,38.6))
+    if t>36.0: txt(d,96,1826,'the armor that beats your liver is what makes it toxic',f(DMR,26),MUT,appear(t,36.0))
 def sc_liver(im,d,t):   # liver load + enzyme bars ~40.0-53.4
     card(im,d,56,STG0,W-56,STG1,a=1.0,bar=RED,r=26,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
-    kicker(d,96,STG0+26,'MARKER 02 · LIVER ENZYMES',RED)
-    lx,ly=130,1420
-    pts=[(lx,ly+70),(lx+46,ly),(lx+170,ly-8),(lx+280,ly+34),(lx+258,ly+172),(lx+100,ly+196),(lx+22,ly+150)]
+    kicker(d,96,STG0+24,'MARKER 02 · LIVER ENZYMES',RED)
+    lx,ly=140,1560
+    pts=[(lx,ly+60),(lx+42,ly),(lx+154,ly-8),(lx+252,ly+30),(lx+232,ly+156),(lx+90,ly+178),(lx+20,ly+136)]
     frac=ease(clamp((t-41.0)/2.0))
     miny=min(p[1] for p in pts); maxy=max(p[1] for p in pts); fy=lerp(maxy,miny,frac)
     clip=Image.new('L',(W,H),0); ImageDraw.Draw(clip).polygon(pts,fill=255)
     lay=Image.new('RGBA',(W,H),(0,0,0,0)); ld=ImageDraw.Draw(lay,'RGBA')
-    lit_bar(ld,lx-20,fy,lx+300,maxy, RED if frac>0.6 else AMBER)
+    lit_bar(ld,lx-20,fy,lx+270,maxy, RED if frac>0.6 else AMBER)
     lay.putalpha(Image.composite(lay.split()[3],Image.new('L',(W,H),0),clip))
     im.alpha_composite(lay); d=ImageDraw.Draw(im,'RGBA')
     d.polygon(pts,outline=A(WHITE,1),width=4)
     if GL and frac>0.3: GL.polygon(pts,outline=A(RED,frac),width=5)
-    txt(d,lx+60,ly-74,'TOXIC LOAD',f(MONO,26),CREAM,appear(t,41.0))
-    txt(d,lx+70,maxy+14,f'{int(frac*100)}%',f(BEB,54),RED if frac>0.6 else AMBER,appear(t,41.4))
+    txt(d,lx+54,ly-72,'TOXIC LOAD',f(MONO,24),CREAM,appear(t,41.0))
+    txt(d,lx+64,maxy+8,f'{int(frac*100)}%',f(BEB,50),RED if frac>0.6 else AMBER,appear(t,41.4))
     if t>47.0:
         specs=[('ALT',0.86,RED,'H',47.1),('AST',0.74,RED,'H',47.5)]
-        vbars(d,560,1716,specs,t,maxh=300,bw=130,gap=96)
-    if t>50.3: tag(d,96,1792,'ELEVATED ENZYMES = THE MECHANISM',RED,30,appear(t,50.3))
+        vbars(d,560,1800,specs,t,maxh=256,bw=128,gap=94)
+    if t>50.3: tag(d,96,1826,'ELEVATED ENZYMES = THE MECHANISM',RED,28,appear(t,50.3))
 def sc_lab(im,d,t):     # lab panel ~53.5-62.1
     lab_card(im,d,56,STG0,t,a=1.0)
     d=ImageDraw.Draw(im,'RGBA')
-    if t>59.6: txt(d,W/2,STG1-42,'MOST NEVER RUN THIS PANEL',f(BEB,56),RED,appear(t,59.6),anchor='mm')
+    if t>59.6: txt(d,W-96,STG0+40,'MOST NEVER RUN IT',f(BEB,40),RED,appear(t,59.6),anchor='ra')
 def sc_measure(im,d,t): # ring gauge ~65.8-71.7
     card(im,d,56,STG0,W-56,STG1,a=1.0,bar=VGOLD,r=26,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
-    kicker(d,96,STG0+26,'THE PART NOBODY POSTS',VGOLD)
+    kicker(d,96,STG0+24,'THE PART NOBODY POSTS',VGOLD)
     frac=ease(clamp((t-66.6)/2.0))
-    ring_gauge(d,300,1570,128,frac,RED,'ORGAN DAMAGE', f'{int(frac*100)}%',warn=1)
+    ring_gauge(d,300,1650,124,frac,RED,'ORGAN DAMAGE', f'{int(frac*100)}%',warn=1)
     if t>68.2:
-        txt(d,540,1440,'MEASURABLE',f(BEB,88),RED,appear(t,68.2))
-        txt(d,540,1524,'& SILENT',f(BEB,88),CREAM,appear(t,69.0))
-    if t>69.6: tag(d,540,1620,'GYM LIGHTING LIES',AMBER,28,appear(t,69.6))
-    if t>70.6: tag(d,540,1684,'BLOODWORK DOESNT',GREEN,28,appear(t,70.6))
+        txt(d,540,1512,'MEASURABLE',f(BEB,84),RED,appear(t,68.2))
+        txt(d,540,1594,'& SILENT',f(BEB,84),CREAM,appear(t,69.0))
+    if t>69.6: tag(d,540,1690,'GYM LIGHTING LIES',AMBER,26,appear(t,69.6))
+    if t>70.6: tag(d,540,1748,'BLOODWORK DOESNT',GREEN,26,appear(t,70.6))
 def sc_road(im,d,t):    # roadmap ~85.9-92.3
     card(im,d,56,STG0,W-56,STG1,a=1.0,bar=GREEN,r=26,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
-    kicker(d,96,STG0+26,'BLOODWORK IS THE ROADMAP',GREEN)
-    roadmap(d,118,1430,t)
-    if t>90.6: tag(d,118,1600,'THE COACH AGZ WAY',VGOLD,32,appear(t,90.6))
-    if t>87.5: txt(d,118,1720,'you read it · you adjust · you get your look AND your health',f(DMR,28),MUT,appear(t,87.5))
+    kicker(d,96,STG0+24,'BLOODWORK IS THE ROADMAP',GREEN)
+    roadmap(d,118,1536,t)
+    if t>90.6: tag(d,118,1690,'THE COACH AGZ WAY',VGOLD,30,appear(t,90.6))
+    if t>87.5: txt(d,118,1804,'you read it · you adjust · you get your look AND your health',f(DMR,26),MUT,appear(t,87.5))
 
 SCENES=[(20.6,31.5,sc_crash),(31.8,39.8,sc_mol),(40.0,53.4,sc_liver),
         (53.5,62.1,sc_lab),(65.8,71.7,sc_measure),(85.9,92.3,sc_road)]
@@ -284,7 +289,7 @@ LOGO=None
 def cta(im,t):
     if t<98.6: return
     d=ImageDraw.Draw(im,'RGBA'); a=appear(t,98.7,0.25)
-    y=1300; card(im,d,56,y,W-56,y+372,a,bar=VGOLD,r=28,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
+    y=1400; card(im,d,56,y,W-56,y+372,a,bar=VGOLD,r=28,dark=0.9); d=ImageDraw.Draw(im,'RGBA')
     global LOGO
     if LOGO is None:
         lg=Image.open(B+'logo.jpg').convert('RGB'); s=min(lg.size)
@@ -324,7 +329,7 @@ ACCENT={'WINSTROL':VGOLD,'HDL':RED,'CRASHES':RED,'COLLAPSE':RED,'DEFENSELESS':RE
  'HEPATOTOXIC':RED,'POISON':RED,'LIVER':AMBER,'ENZYME':RED,'MECHANISM':VGOLD,'DAMAGE':RED,
  'MEASURABLE':RED,'BLOODWORK':CYAN,'BLOODWORKS':CYAN,'ROADMAP':GREEN,'WIN':VGOLD,'LABS':CYAN,
  'DESTROYS':RED,'LIPIDS':VGOLD,'CMP':VGOLD,'OPTIMIZE':GREEN,'ENHANCED':VGOLD,'ORAL':AMBER}
-CAP_Y=1110
+CAP_Y=1258
 def group_at(t):
     lo=None
     for g in GROUPS:
