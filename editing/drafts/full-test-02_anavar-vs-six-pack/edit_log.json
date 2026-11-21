@@ -1,0 +1,34 @@
+{
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["50mg ANAVAR vs 6 beers", "both hit the same 3 systems"],
+    "emphasis": ["ANAVAR"],
+    "mode": "premium",
+    "start": 0.0,
+    "end": 6.0,
+    "position": { "anchor": "top-center", "y_px": 300 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "candidates_scored": [
+    {"lines": ["50mg ANAVAR vs 6 beers", "both hit the same 3 systems"], "formula": "subject+pain", "score": 27, "note": "paid off at 0:11 (same three systems)"},
+    {"lines": ["ANAVAR vs 6 beers a night", "the one nobody tracks"], "formula": "subject+pain", "score": 26, "note": "strongest gap, but payoff only at 1:13, fails lock-in"},
+    {"lines": ["50mg ANAVAR vs a six pack", "your lipids disagree"], "formula": "subject+pain", "score": 24},
+    {"lines": ["Protect your liver", "ANAVAR vs nightly beer"], "formula": "subject+outcome", "score": 19},
+    {"lines": ["ANAVAR is not the worst", "one on your panel"], "formula": "subject+state_change", "score": 17}
+  ],
+  "runners_up": [
+    ["ANAVAR vs 6 beers a night", "the one nobody tracks"],
+    ["50mg ANAVAR vs a six pack", "your lipids disagree"]
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:11",
+    "trust_anchor": "MISSING (no panel or client result in 0:04-0:12)"
+  },
+  "flags": [
+    "winners.md missing, starter power-phrase bank used",
+    "trust anchor missing in lock-in zone; suggest a real panel screenshot at 0:11-0:15",
+    "6 beers is a compression of 'six pack of beer'"
+  ]
+}
