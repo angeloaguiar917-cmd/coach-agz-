@@ -1,0 +1,30 @@
+{
+  "video": "Anadrol vs Superdrol",
+  "source_drive_id": "1qthpM8sdux_XgEZIIQsOToFHM5idYD9d",
+  "output": "coach-agz_anadrol-vs-superdrol_1080p30.mp4",
+  "spec": {"res": "1080x1920", "fps": 30, "dur_s": 94.03, "lufs": -14.6, "true_peak_dbfs": -1.5},
+  "text_hook": {
+    "status": "SKIPPED_BY_REQUEST",
+    "note": "Coach AGZ asked for no on-screen text hook at the open on this edit. TEXT_HOOK_ENGINE run was intentionally not applied to frame 0. Revisit per-video.",
+    "lines": [],
+    "mode": "none",
+    "start": 0.0, "end": 0.0
+  },
+  "overlay_variety": [
+    "S1 dual-line risk-over-time chart (ER-fast vs quiet-years)",
+    "S2 compound ID cards + drawn 17a-alkylated steroid nucleus",
+    "S3 strength bar-ramp morphing into a 4-6 week cycle grid",
+    "S4 build-vs-peak select rows (cross/check)",
+    "S5 two-column legitimacy compare (approved/prescribed/60yr vs GNC/banned/0 trials) with count-up",
+    "S6 Superdrol pro chips -> 3-week HDL-down / liver-up trend",
+    "S7 Anadrol clinical gauges (water / hematocrit / BP into red)",
+    "S8 decision tree (meet->Anadrol, beach recomp->Superdrol) with PIP face circle",
+    "S9 illustrative baseline bloodwork table -> AVOID BOTH bar",
+    "S10 acute-risk gradient scale with Superdrol marker slam",
+    "S11 branded CTA card + COMMENT \"HDL\" gold pill"
+  ],
+  "lab_values": "ILLUSTRATIVE placeholders (labelled on screen), per request",
+  "footage": "untouched (no grade/saturation/contrast); reframed into rounded brand cards only; graphics/captions carry all the pop",
+  "face": "tracked; all overlays kept clear of the face; PIP circle re-centres on the face",
+  "flags": ["hooks/winners.md missing (not needed; hook skipped by request)"]
+}
