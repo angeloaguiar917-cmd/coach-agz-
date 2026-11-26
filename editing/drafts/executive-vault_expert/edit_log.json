@@ -1,0 +1,37 @@
+{
+  "video": "Expert.MOV (Drive 1nnKP9qVYy6yvxZ3QmQJU637fwjzYdH-I) — Executive Vault offer",
+  "text_hook": {
+    "formula": "subject+pain",
+    "lines": ["Reddit BLOODWORK advice", "is gambling your health"],
+    "emphasis": ["BLOODWORK"],
+    "mode": "native",
+    "start": 0.0,
+    "end": 4.3,
+    "position": { "anchor": "top-center", "y_px": 290 },
+    "animation_in": "none",
+    "animation_out": "fade_0.15s"
+  },
+  "runners_up": [
+    ["250+ CYCLE protocols", "in one vault"],
+    ["15 years of CYCLE know-how", "searchable in minutes"]
+  ],
+  "candidates_scored": [
+    {"lines": ["Reddit BLOODWORK advice", "is gambling your health"], "formula": "A pain", "score": 27},
+    {"lines": ["250+ CYCLE protocols", "in one vault"], "formula": "B outcome", "score": 25},
+    {"lines": ["15 years of CYCLE know-how", "searchable in minutes"], "formula": "C state change", "score": 23},
+    {"lines": ["Your BLOODWORK", "deserves a custom read"], "formula": "B outcome", "score": 21},
+    {"lines": ["Stop guessing", "your CYCLE bloodwork"], "formula": "A pain", "score": 21}
+  ],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "confirmed_at": "0:06 (Reddit) and 0:15 (gambling with your own health)",
+    "trust_anchor": "client WhatsApp feedback card at 0:12 (customized to you); full client proof deck 0:44–0:53"
+  },
+  "topic_band": { "text": "Your BLOODWORK expertise", "start": 4.3, "end": 29.2, "exit": "hard cut on the jump cut nearest the midpoint" },
+  "flags": [
+    "hooks/winners.md missing — used the starter power-phrase bank",
+    "'even, even my own' kept: the repeat couldn't be cut cleanly without listening — check by ear",
+    "Fonts are stand-ins (Bebas Neue, DM Sans, JetBrains Mono, Barlow Condensed)",
+    "Testimonial t7 cropped to remove the client's campground location and medication; t4 and t5 quote the same message (shown 40 s apart)"
+  ]
+}
