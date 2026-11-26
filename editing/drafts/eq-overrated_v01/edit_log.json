@@ -1,0 +1,15 @@
+{
+  "text_hook": null,
+  "text_hook_omitted": true,
+  "reason": "Coach AGZ instructed: do not add an opening text hook on this edit. The TEXT_HOOK_ENGINE frame-0 hook was intentionally skipped per that direction.",
+  "runners_up": [],
+  "lock_in_check": {
+    "claim_confirmed": true,
+    "note": "Opening line 'everybody puts EQ on a pedestal... one of the most overrated compounds' is carried by the pedestal overlay + word captions, no title card."
+  },
+  "flags": [
+    "No frame-0 text hook (owner instruction override of CLAUDE.md / TEXT_HOOK_ENGINE).",
+    "hooks/winners.md missing.",
+    "Fonts are open-source stand-ins (Bebas Neue, Barlow Condensed, DM Sans, JetBrains Mono)."
+  ]
+}
