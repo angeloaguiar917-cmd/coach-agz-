@@ -1,0 +1,9 @@
+# Open-source stand-in fonts (see editing/brand/BRAND.md); supply real brand fonts here.
+fonts/
+# Render build artifacts (regenerate with the scripts)
+part_*.mp4
+video_mute.mp4
+concat.txt
+qc/
+*.wav
+_*.log
